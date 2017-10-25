@@ -8,8 +8,8 @@ return array(
 	'apptitle'	=> '信呼辦公OA',	//APP上或PC客户端上的标题
 	'db_host'	=> '127.0.0.1',	//数据库地址
 	'db_user'	=> 'root',	//数据库用户名
-	'db_pass'	=> 'nice999P@ssw0rd',	//数据库密码
-	'db_base'	=> 'ROCK',	//数据库名称
+	'db_pass'	=> 'P@ssw0rd',	//数据库密码
+	'db_base'	=> 'big5',	//数据库名称
 	'db_engine'	=> 'MyISAM',
 	'perfix'	=> 'xinhu_',	//数据库表名前缀
 	'qom'	=> 'xinhu_',	//session、cookie前缀
