@@ -50,7 +50,7 @@ CREATE TABLE `xinhu_admin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用戶表';
 
 INSERT INTO `xinhu_admin` (`id`, `num`, `user`, `name`, `pass`, `loginci`, `status`, `type`, `sex`, `tel`, `face`, `deptid`, `deptname`, `deptids`, `deptnames`, `rankings`, `deptallname`, `superid`, `superman`, `ranking`, `sort`, `deptpath`, `superpath`, `groupname`, `mobile`, `apptx`, `workdate`, `email`, `lastpush`, `adddt`, `weixinid`, `quitdt`, `style`, `pingyin`, `emailpass`, `companyid`, `online`, `lastonline`) VALUES
-(1,	NULL,	'admin',	'管理員',	'613ae340ed85807e6c1437d70b7c58d8',	1962,	1,	1,	'男',	NULL,	'upload/face/1_5433.jpg',	5,	'管理部',	NULL,	NULL,	NULL,	'信呼辦公/管理部',	NULL,	NULL,	'admin',	0,	'[1],[5]',	NULL,	NULL,	'15800000123',	1,	'2016-06-01',	NULL,	'2017-03-08 09:52:30',	NULL,	NULL,	NULL,	1,	'guanliyuan',	NULL,	1,	0,	'2017-10-23 18:00:27');
+(1,	NULL,	'admin',	'管理員',	'e10adc3949ba59abbe56e057f20f883e',	1962,	1,	1,	'男',	NULL,	'upload/face/1_5433.jpg',	5,	'管理部',	NULL,	NULL,	NULL,	'信呼辦公/管理部',	NULL,	NULL,	'admin',	0,	'[1],[5]',	NULL,	NULL,	'15800000123',	1,	'2016-06-01',	NULL,	'2017-03-08 09:52:30',	NULL,	NULL,	NULL,	1,	'guanliyuan',	NULL,	1,	0,	'2017-10-23 18:00:27');
 
 DROP TABLE IF EXISTS `xinhu_assetm`;
 CREATE TABLE `xinhu_assetm` (
