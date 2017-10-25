@@ -91,3 +91,11 @@
 16、騰訊地圖：http://map.qq.com/
 
 17、nodejs：https://nodejs.org/
+
+### 修改部分代碼為 big5 測試至需求的功能可使用
+SQL 部分請匯出後再轉換成 big 5
+
+iconv -f utf8 -t gb2312 export.sql | iconv -f gb2312 -t big5 | iconv -f big5 -t utf8 > big5.sql
+
+
+
