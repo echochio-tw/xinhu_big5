@@ -97,9 +97,9 @@ SQL 部分是匯出後再轉換成 big 5
 
 代碼是用下列工具轉換的
 
-少數用 "Unicode编码转换" 工具先轉換成 GB2312 再轉 big5
-
 iconv -f utf8 -t gb2312 export.sql | iconv -f gb2312 -t big5 | iconv -f big5 -t utf8 > big5.sql
+
+少數代碼用 "Unicode编码转换" 工具先轉換成 GB2312 再轉 big5
 
 
 
