@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<title>修改密碼</title>
+<link rel="stylesheet" type="text/css" href="mode/weui/weui.min.css"/>
+<link rel="stylesheet" type="text/css" href="web/res/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="webmain/css/rui.css">
+<link rel="shortcut icon" href="favicon.ico" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/jswx.js"></script>
+<script>
+ismobile = 1;
+function loginsubmit(){
+	var opass	= $('#oldpass').val();
+	var pass	= $('#newpass').val();
+	
+	if(opass==''){
+		js.msg('msg','舊密碼不能為空');
+		return false;
+	}
+
+	if(pass.length <4){
+		js.msg('msg','新密碼不能少于4個字符');
+		return false;
+	}
+	if(!/[a-zA-Z]{1,}/.test(pass) || !/[0-9]{1,}/.test(pass)){
+		js.msg('msg','新密碼必須使用字母+數字');
+		return false;
+	}
+	if(opass==pass){
+		js.msg('msg','新密碼不能和舊密碼相同');
+		return false;
+	}
+	js.ajax('user','editpass',{passoldPost:opass,passwordPost:pass},function(){
+		js.wx.msgok('密碼修改成功',function(){
+			js.back();
+		},1);
+	});
+}
+</script>
+</head>
+
+
+<body>
+<?php if($showheader==1){?>
+<div>
+	<div class="r-header">
+		<div class="r-header-text" id="header_title">修改密碼</div>
+		<span onclick="js.back()" class="r-position-left r-header-btn"><i class="icon-chevron-left"></i></span>
+	</div>
+	<div class="blank50"></div>
+</div>
+<?php }?>
+
+
+<div class="weui_cells weui_cells_form">
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label class="weui_label">舊密碼</label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+			<input class="weui_input" type="text" id="oldpass" maxlength="20"  placeholder="請輸入舊密碼"/>
+		</div>
+	</div>
+	
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label class="weui_label">新密碼</label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+			<input class="weui_input" id="newpass" maxlength="20" type="password" placeholder="請輸入新密碼"/>
+		</div>
+	</div>
+</div>
+
+<div class="weui_btn_area">
+	<input class="weui_btn weui_btn_primary" type="button" onclick="loginsubmit()" value="確定" id="btn0">
+</div>
+
+</body>
+</html>
