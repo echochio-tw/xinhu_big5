@@ -1,6 +1,6 @@
 <?php
 if(!defined('HOST'))die('not access');
-//[邱學誠]在2017-10-19 16:17:13通过[系统→系统工具→系统设置]，保存修改了配置文件
+//通过[系统→系统工具→系统设置]，保存修改了配置文件
 return array(
 	'url'	=> 'http://flow.nicelink.com.tw/',	//系统URL
 	'localurl'	=> '',	//本地系统URL，用于服务器上浏览地址
