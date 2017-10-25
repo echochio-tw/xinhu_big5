@@ -1,4 +1,4 @@
-# 信呼，免費開源的辦公OA系統
+# 信呼，免費開源的辦公OA系統 _ BIG5 修改
 
 開發者：雨中磐石(rainrock)
 郵箱：admin@rockoa.com
