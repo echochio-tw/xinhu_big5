@@ -4,8 +4,8 @@ if(!defined('HOST'))die('not access');
 return array(
 	'url'	=> 'http://flow.nicelink.com.tw/',	//系统URL
 	'localurl'	=> '',	//本地系统URL，用于服务器上浏览地址
-	'title'	=> '威勁國際',	//系统默认标题
-	'apptitle'	=> '威勁國際OA',	//APP上或PC客户端上的标题
+	'title'	=> '信呼辦公',	//系统默认标题
+	'apptitle'	=> '信呼辦公OA',	//APP上或PC客户端上的标题
 	'db_host'	=> '127.0.0.1',	//数据库地址
 	'db_user'	=> 'root',	//数据库用户名
 	'db_pass'	=> 'nice999P@ssw0rd',	//数据库密码
