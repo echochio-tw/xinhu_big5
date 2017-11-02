@@ -2,16 +2,16 @@
 class flow_emailmClassModel extends flowModel
 {
 	
-	private $readunarr = array();//未读人员
+	private $readunarr = array();//未讀人員
 	
-	//判断是否有读取权限
+	//判斷是否有讀取權限
 	protected function flowisreadqx()
 	{
 		$to  = m('emails')->rows('`mid`='.$this->id.' and `uid`='.$this->adminid.'');
 		return $to>0;
 	}
 	
-	//立即发送提醒
+	//立即發送提醒
 	protected function flowsubmit($na, $sm)
 	{
 		if($this->rs['isturn']==1 && $this->rs['type']==0){
@@ -20,24 +20,24 @@ class flow_emailmClassModel extends flowModel
 			$cont 	= $h->substrstr($cont,0, 50);
 			$receid = $this->rs['receid'];
 			if(!isempt($this->rs['ccid']))$receid.=','.$this->rs['ccid'];
-			$this->push($receid, '邮件', $cont.'...', $this->rs['title']);
+			$this->push($receid, '郵件', $cont.'...', $this->rs['title']);
 		}
 	}
 	
-	//重写方法将邮件标识已读邮件了
+	//重寫方法將郵件標識已讀郵件了
 	protected function flowdatalog($arr)
 	{
 		$where 	= '`mid`='.$this->id.' and `uid`='.$this->adminid.'';
 		$dbs 	= m('emails');
 		$dbs->update('`zt`=1', $where);
-		//判断我是否可以回复
+		//判斷我是否可以回復
 		$ishuifu = 0;
 		$readunarr = array();
 		if($this->rs['isturn']==1){
 			$tos = $dbs->rows($where.' and `type` in(0,1)');
 			if($tos>0)$ishuifu = 1;
 			
-			//读取未读人员
+			//讀取未讀人員
 			$uids  = '';
 			$uarrs = $dbs->getall('`mid`='.$this->id.' and `zt`=0 and `type` in(0,1) and `isdel`=0');
 			foreach($uarrs as $k=>$rs)$uids.=','.$rs['uid'].'';
@@ -67,7 +67,7 @@ class flow_emailmClassModel extends flowModel
 	}
 	
 	/**
-	*	读取原来邮件内容
+	*	讀取原來郵件內容
 	*/
 	private function getoldcont($hid, $bo=true)
 	{
@@ -77,11 +77,11 @@ class flow_emailmClassModel extends flowModel
 		if(!$hrs)return '';
 		$dts 	= $this->dtssss($hrs['senddt']);
 		$fstr	= m('file')->getstr($this->mtable, $hrs['id'], 1);
-		$s = '<div style="color:#888888;font-size:12px;margin-top:20px">------------------ 原始邮件 ------------------</div>';
-		$s.= '<div style="font-size: 12px;background:#efefef;padding:8px;line-height:18px;">发件人: '.$hrs['sendname'].'<br>
-			发送时间: '.$dts.'<br>
+		$s = '<div style="color:#888888;font-size:12px;margin-top:20px">------------------ 原始郵件 ------------------</div>';
+		$s.= '<div style="font-size: 12px;background:#efefef;padding:8px;line-height:18px;">發件人: '.$hrs['sendname'].'<br>
+			發送時間: '.$dts.'<br>
 			收件人: '.$hrs['recename'].'<br>
-			主题: '.$hrs['title'].'</div>';
+			主題: '.$hrs['title'].'</div>';
 		$s.= '<div style="margin-top:10px">'.$hrs['content'].'<br>'.$fstr.'</div>';
 		if($bo)$s.= $this->getoldcont($hrs['hid'], $bo);
 		return $s;
@@ -96,12 +96,12 @@ class flow_emailmClassModel extends flowModel
 		$dt 	= $this->rock->post('dt');
 		$dbs 	= m('emailm');
 		
-		//所有邮件
+		//所有郵件
 		if($lx=='' || $lx=='def' || $lx=='sjx'){
 			$where 		= $dbs->gettowhere($uid, 0);
 		}
 		
-		//未读邮件
+		//未讀郵件
 		if($lx=='wdyj'){
 			$where 		= $dbs->gettowhere($uid, 1);
 		}
@@ -111,12 +111,12 @@ class flow_emailmClassModel extends flowModel
 			$where 		= $dbs->gettowhere($uid, 2);
 		}
 		
-		//已发送
+		//已發送
 		if($lx == 'yfs'){
 			$where 		= $dbs->gettowhere($uid, 3);
 		}
 		
-		//已删除
+		//已刪除
 		if($lx == 'ysc'){
 			$where 		= $dbs->gettowhere($uid, 4);
 		}
@@ -154,16 +154,16 @@ class flow_emailmClassModel extends flowModel
 	}
 	
 	/**
-	*	邮件回复
-	*	$cont 回复内容
+	*	郵件回復
+	*	$cont 回復內容
 	*/
 	public function huifu($cont)
 	{
 		$rs 	= $this->rs;
 		$rers 	= $this->gethuifuarr();
-		if(!$rers)return '没有发送人';
+		if(!$rers)return '沒有發送人';
 		$cont	= str_replace("\n", '<br>', $cont);
-		$arr['title'] 	 	= '回复：'.$rs['title'].'';
+		$arr['title'] 	 	= '回復：'.$rs['title'].'';
 		$arr['content'] 	= $cont;
 		$arr['sendid'] 		= $this->adminid;
 		$arr['uid'] 		= $this->adminid;
@@ -189,8 +189,8 @@ class flow_emailmClassModel extends flowModel
 		m('emails')->insert($sarr);
 		$this->savesubmid($arr['sendid'], $id, 2,1);
 		
-		m('emails')->update('ishui=1','`mid`='.$this->id.' and `uid`='.$this->adminid.' and `type`=0');//更新已回复
-		//需要外发
+		m('emails')->update('ishui=1','`mid`='.$this->id.' and `uid`='.$this->adminid.' and `type`=0');//更新已回復
+		//需要外發
 		if($rs['type']==1 && !isempt($rers['email'])){
 			$cont 	 =  $arr['content'];
 			$cont 	.=  $this->getoldcont($this->id, false);
@@ -203,12 +203,12 @@ class flow_emailmClassModel extends flowModel
 		}
 		
 		$this->loaddata($id, false);
-		$this->submit('回复');
+		$this->submit('回復');
 		
 		return 'ok';
 	}
 	
-	//获取要回复的接收人
+	//獲取要回復的接收人
 	public function gethuifuarr()
 	{
 		$rs = m('emails')->getone('`mid`='.$this->id.' and `type`=2');

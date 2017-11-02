@@ -1,5 +1,5 @@
 /**
-	edittable 编辑单元格
+	edittable 編輯單元格
 	caratename：chenxihu
 	caratetime：214-04-06 21:40:00
 	email:qqqq2900@126.com
@@ -111,7 +111,7 @@
 			var s	= '<font color="'+ocaa.displaycolor[nval]+'">'+ocaa.display[nval]+'</font>';
 			oba.html(s);
 		};
-		//保存数据
+		//保存數據
 		this.savedata	= function(o,nval,oval){
 			if(nval == oval)return;
 			var canid	= o.attr('changeid');
@@ -132,9 +132,9 @@
 	
 	$.fn.edittable	= function(options){
 		var defaultVal = {
-			trigger:'dblclick', //默认双击编辑
+			trigger:'dblclick', //默認雙擊編輯
 			data:{},
-			keyfields:'id',//主键字段名
+			keyfields:'id',//主鍵字段名
 			saveurl:js.getajaxurl('saveeditable','user','system'),	//保存表格的地址
 			savedata:function(url,das,sboole){
 				$.post(url,das,sboole);

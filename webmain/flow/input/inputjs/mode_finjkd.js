@@ -22,7 +22,7 @@ function initbodys(){
 }
 function changesubmit(){
 	var jg = parseFloat(form('money').value);
-	if(jg<=0)return '借款金额不能小于0';
+	if(jg<=0)return '借款金額不能小于0';
 }
 function changesubmitbefore(){
 	cchangtongss();

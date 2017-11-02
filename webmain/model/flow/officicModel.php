@@ -1,5 +1,5 @@
 <?php
-//公文查阅
+//公文查閱
 class flow_officicClassModel extends flowModel
 {
 
@@ -9,7 +9,7 @@ class flow_officicClassModel extends flowModel
 		$this->logobj = m('log');
 	}
 	
-	//打开详情时跳转到地理位置显示
+	//打開詳情時跳轉到地理位置顯示
 	protected function flowchangedata()
 	{
 		if(!isajax()){

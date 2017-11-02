@@ -1,7 +1,7 @@
 <?php
 /**
-*	此文件是流程模块【userract.员工合同】对应接口文件。
-*	可在页面上创建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_userract|input','flow')调用到对应方法
+*	此文件是流程模塊【userract.員工合同】對應接口文件。
+*	可在頁面上創建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_userract|input','flow')調用到對應方法
 */ 
 class mode_userractClassAction extends inputAction{
 	
@@ -25,7 +25,7 @@ class mode_userractClassAction extends inputAction{
 		
 	}
 	
-	//签署公司数据源
+	//簽署公司數據源
 	public function companydata()
 	{
 		return m('company')->getselectdata(1);

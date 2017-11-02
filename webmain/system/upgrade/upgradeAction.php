@@ -29,8 +29,8 @@ class upgradeClassAction extends Action
 				if($rs['updatedt']>$ors['updatedt'])$state=2;
 				$key= $ors['key'];
 			}
-			$view = '<a href="'.$wet.'view_'.$rs['num'].'.html" target="_blank" class="a">介绍</a>';
-			if($state==0 && $rs['price']>0)$view.=',<a href="'.$wet.'view_'.$rs['num'].'.html" target="_blank" style="color:red">去购买</a>';
+			$view = '<a href="'.$wet.'view_'.$rs['num'].'.html" target="_blank" class="a">介紹</a>';
+			if($state==0 && $rs['price']>0)$view.=',<a href="'.$wet.'view_'.$rs['num'].'.html" target="_blank" style="color:red">去購買</a>';
 			$rows[] = array(
 				'id' 	=> $id,
 				'name' 	=> $rs['name'],
@@ -48,7 +48,7 @@ class upgradeClassAction extends Action
 	}
 	
 	/**
-	*	获取需要更新的文件
+	*	獲取需要更新的文件
 	*/
 	public function shengjianAjax()
 	{
@@ -62,7 +62,7 @@ class upgradeClassAction extends Action
 		$uparr  = array();
 		$huira  = $this->gethuiarr($id);
 		
-		//获取模块忽略升级文件，停用也不升级
+		//獲取模塊忽略升級文件，停用也不升級
 		$morrs	= $this->getmodeuprs();
 		
 		foreach($rows as $k=>$rs){
@@ -75,7 +75,7 @@ class upgradeClassAction extends Action
 			if($rs['isup']==1)$bo = true;
 			if(isset($huira[$rs['id']]))$bo = false;
 			
-			//如果模块忽略升级，就不升级。
+			//如果模塊忽略升級，就不升級。
 			if(in_array($file, $morrs))$bo = false;
 			
 			if($bo){
@@ -115,31 +115,31 @@ class upgradeClassAction extends Action
 		),$where);
 	}
 	
-	//获取模块忽略升级文件，停用也不升
+	//獲取模塊忽略升級文件，停用也不升
 	private function getmodeuprs()
 	{
 		$rows = m('flow_set')->getall('1=1', '`num`,`status`,`isup`','`sort`');
 		$hurs = array();
 		foreach($rows as $k=>$rs){
 			$num = $rs['num'];
-			//停用就不升级了
+			//停用就不升級了
 			if($rs['status']=='0' || $rs['isup']=='0'){
-				$hurs[] = ''.P.'/flow/input/inputjs/mode_'.$num.'.js'; //模块录入js文件
-				$hurs[] = ''.P.'/flow/input/mode_'.$num.'Action.php'; //模块控制器
-				$hurs[] = ''.P.'/flow/page/input_'.$num.'.html'; //PC录入模版
+				$hurs[] = ''.P.'/flow/input/inputjs/mode_'.$num.'.js'; //模塊錄入js文件
+				$hurs[] = ''.P.'/flow/input/mode_'.$num.'Action.php'; //模塊控制器
+				$hurs[] = ''.P.'/flow/page/input_'.$num.'.html'; //PC錄入模版
 				$hurs[] = ''.P.'/flow/page/view_'.$num.'_0.html'; //PC展示模版
-				$hurs[] = ''.P.'/flow/page/view_'.$num.'_1.html'; //手机展示模版
+				$hurs[] = ''.P.'/flow/page/view_'.$num.'_1.html'; //手機展示模版
 				$hurs[] = ''.P.'/flow/page/viewpage_'.$num.'.html'; //子模版展示
 				$hurs[] = ''.P.'/flow/page/viewpage_'.$num.'_0.html';//子模版PC展示
-				$hurs[] = ''.P.'/flow/page/viewpage_'.$num.'_1.html';//子模版手机展示
-				$hurs[] = ''.P.'/flow/page/rock_page_'.$num.'.php'; //列表页面
-				$hurs[] = ''.P.'/model/flow/'.$num.'Model.php'; //模块接口文件
+				$hurs[] = ''.P.'/flow/page/viewpage_'.$num.'_1.html';//子模版手機展示
+				$hurs[] = ''.P.'/flow/page/rock_page_'.$num.'.php'; //列表頁面
+				$hurs[] = ''.P.'/model/flow/'.$num.'Model.php'; //模塊接口文件
 			}
 		}
 		return $hurs;
 	}
 	
-	//弃用
+	//棄用
 	public function shengjianssAjax()
 	{
 		$mid 	= (int)$this->post('id');
@@ -167,9 +167,9 @@ class upgradeClassAction extends Action
 				}
 				if($type==9){
 					$this->rock->createdir($filepath);
-					$this->beifenfile($filepath);//备份原来的文件到upload/当前月份
+					$this->beifenfile($filepath);//備份原來的文件到upload/當前月份
 					@$bo = file_put_contents($filepath, $fcont);
-					if(!$bo)exit('无法写入：'.$filepath.'');
+					if(!$bo)exit('無法寫入：'.$filepath.'');
 				}
 			}
 			$udt = $data['updatedt'];
@@ -182,7 +182,7 @@ class upgradeClassAction extends Action
 		echo 'ok';
 	}
 	
-	//备份原来的文件
+	//備份原來的文件
 	private function beifenfile($path)
 	{
 		if(!file_exists($path))return;
@@ -247,14 +247,14 @@ class upgradeClassAction extends Action
 		$data 	= $barr['data'];
 		if($lx==0)$this->tonbbumenu($data['menu']);
 		if($lx==1)$this->tonbbumode($data['mode']);
-		if($lx==4)$this->tonbbumodewq($data['mode']);//完全和官网一样
+		if($lx==4)$this->tonbbumodewq($data['mode']);//完全和官網一樣
 		if($lx==2)$this->tonbbuying($data['yydata']);
 		if($lx==3)$this->tonbbutask($data['task']);
 		
 		echo '同步完成';
 	}
 	
-	//同步菜单
+	//同步菜單
 	private function tonbbumenu($data)
 	{
 		$db = m('menu');
@@ -271,7 +271,7 @@ class upgradeClassAction extends Action
 		}
 	}
 	
-	//同步模块
+	//同步模塊
 	private function tonbbumode($data)
 	{
 		$db 	= m('flow_set');
@@ -320,7 +320,7 @@ class upgradeClassAction extends Action
 				$db->update($flow_set, $modeid);*/
 			}
 			
-			//流程模块条件
+			//流程模塊條件
 			$flow_where = $arr['flow_where'];
 			foreach($flow_where as $k6=>$rs6){
 				$rs6['setid'] = $modeid;
@@ -335,7 +335,7 @@ class upgradeClassAction extends Action
 				}
 			}
 			
-			//if($isup==0)continue; //不同步更新，就跳过
+			//if($isup==0)continue; //不同步更新，就跳過
 			
 			
 			//字段
@@ -352,7 +352,7 @@ class upgradeClassAction extends Action
 				}
 			}
 			
-			//权限
+			//權限
 			$flow_extent= $arr['flow_extent'];
 			foreach($flow_extent as $k3=>$rs3){
 				$rs3['modeid'] = $modeid;
@@ -364,7 +364,7 @@ class upgradeClassAction extends Action
 				}
 			}
 			
-			//操作菜单
+			//操作菜單
 			$flow_menu= $arr['flow_menu'];
 			$sids 	  = '0';
 			foreach($flow_menu as $k2=>$rs2){
@@ -380,7 +380,7 @@ class upgradeClassAction extends Action
 			}
 			$db2->delete("`id` not in($sids)");
 			
-			//审核步骤
+			//審核步驟
 			if(isset($arr['flow_course'])){
 				if($db5->rows('setid='.$modeid.'')==0){
 					$flow_course = $arr['flow_course'];
@@ -395,7 +395,7 @@ class upgradeClassAction extends Action
 		}
 	}
 	
-	//跟官网完全一样同步模块
+	//跟官網完全一樣同步模塊
 	private function tonbbumodewq($data)
 	{
 		$db 	= m('flow_set');
@@ -439,7 +439,7 @@ class upgradeClassAction extends Action
 		}
 	}
 	
-	//同步应用
+	//同步應用
 	private function tonbbuying($data)
 	{
 		$db 	= m('im_group');
@@ -498,7 +498,7 @@ class upgradeClassAction extends Action
 		$dbs->delete("pid='$pid' and `mid`='$mid' and `id` not in($ssid)");
 	}
 	
-	//同步计划任务
+	//同步計劃任務
 	private function tonbbutask($data)
 	{
 		$db 	= m('task');
@@ -526,7 +526,7 @@ class upgradeClassAction extends Action
 	}
 	
 	
-	//更新文件对比显示
+	//更新文件對比顯示
 	public function datadubiAjax()
 	{
 		$id = (int)$this->get('id');

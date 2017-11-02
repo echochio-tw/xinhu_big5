@@ -18,7 +18,7 @@ class mode_finjkdClassAction extends inputAction{
 	}
 	
 	
-	//借款统计
+	//借款統計
 	public function jktotalbeforeshow($table)
 	{
 	

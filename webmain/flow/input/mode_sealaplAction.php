@@ -12,7 +12,7 @@ class mode_sealaplClassAction extends inputAction{
 		
 	}
 	
-	//获取印章
+	//獲取印章
 	public function getsealdata()
 	{
 		return  m('seal')->getall('1=1','`id`as value,`name`','`sort`');

@@ -9,7 +9,7 @@ class whereClassModel extends Model
 	}
 	
 	/**
-	*	条件格式化，返回是没有and开头的
+	*	條件格式化，返回是沒有and開頭的
 	*/
 	public function getstrwhere($str, $uid=0, $fid='')
 	{
@@ -17,8 +17,8 @@ class whereClassModel extends Model
 		if($uid==0)$uid = $this->adminid;
 		$dbs		= m('admin');
 		$sw1		= $this->rock->dbinstr('superid',$uid);
-		$super		= "select `id` from `[Q]admin` where $sw1";//我的直属下属
-		$allsuper	= "select `id` from `[Q]admin` where instr(`superpath`,'[$uid]')>0"; //我所有下属的下属
+		$super		= "select `id` from `[Q]admin` where $sw1";//我的直屬下屬
+		$allsuper	= "select `id` from `[Q]admin` where instr(`superpath`,'[$uid]')>0"; //我所有下屬的下屬
 		
 		$urs 		= $dbs->getone($uid, '`deptid`,`name`,`ranking`,`user`');
 		
@@ -38,7 +38,7 @@ class whereClassModel extends Model
 		$str 		= m('base')->strreplace($str, $uid);
 		$str 		= str_replace(array('{super}','{allsuper}'), array($super,$allsuper), $str);
 		
-		//未读替换
+		//未讀替換
 		if(contain($str,'{unread}')){
 			$rstr = '';
 			if($this->moders){
@@ -47,7 +47,7 @@ class whereClassModel extends Model
 			}
 			$str = str_replace('{unread}', $rstr, $str);
 		}
-		//已读替换
+		//已讀替換
 		if(contain($str,'{read}')){
 			$rstr = '';
 			if($this->moders){
@@ -61,12 +61,12 @@ class whereClassModel extends Model
 			$rstr= $dbs->getjoinstr('{asqom}`receid`', $uid, 1);
 			$str = str_replace('{receid}', '('.$rstr.')', $str);
 		}
-		//本周一{weekfirst}
+		//本週一{weekfirst}
 		if(contain($str,'{weekfirst}')){
 			$rstr= c('date')->getweekfirst($this->rock->date);
 			$str = str_replace('{weekfirst}', $rstr, $str);
 		}
-		//本周日{weeklast}
+		//本週日{weeklast}
 		if(contain($str,'{weeklast}')){
 			$rstr= c('date')->getweeklast($this->rock->date);
 			$str = str_replace('{weeklast}', $rstr, $str);
@@ -78,31 +78,31 @@ class whereClassModel extends Model
 			$fie	= $_artr[0];
 			if($fie=='asqom')continue;
 			if(isset($_artr[1]))$type = $_artr[1];
-			//包含uid里面：{uid,uidin}
+			//包含uid裡面：{uid,uidin}
 			if($type=='uidin'){
 				$rstr= $this->rock->dbinstr('{asqom}`'.$fie.'`', $uid);
 			}
-			//我直属下级：{uid,down}
+			//我直屬下級：{uid,down}
 			if($type=='down'){
 				$rstr= $dbs->getdownwhere('{asqom}`'.$fie.'`', $uid, 1);
 			}
-			//我全部直属下级：{uid,downall}
+			//我全部直屬下級：{uid,downall}
 			if($type=='downall'){
 				$rstr= $dbs->getdownwhere('{asqom}`'.$fie.'`', $uid, 0);
 			}
-			//字段包含部门人员Id：{uid,receall}
+			//字段包含部門人員Id：{uid,receall}
 			if($type=='receall'){
 				$rstr= $dbs->getjoinstr('{asqom}`'.$fie.'`', $uid, 1);
 			}
-			//字段包含部门人员Id，空全部：{uid,recenot}
+			//字段包含部門人員Id，空全部：{uid,recenot}
 			if($type=='recenot'){
 				$rstr= $dbs->getjoinstr('{asqom}`'.$fie.'`', $uid, 1, 1);
 			}
-			//我的同级部门人员：{uid,dept}
+			//我的同級部門人員：{uid,dept}
 			if($type=='dept'){
 				$rstr= '{asqom}`'.$fie.'` in(select `id` from `[Q]admin` where `deptid`='.arrvalue($urs,'deptid','0').')';
 			}
-			$str = str_replace('{'.$match.'}', '( '.$rstr.' )', $str); //加上括号
+			$str = str_replace('{'.$match.'}', '( '.$rstr.' )', $str); //加上括號
 		}
 		return $str;
 	}

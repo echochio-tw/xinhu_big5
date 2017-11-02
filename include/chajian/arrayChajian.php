@@ -1,10 +1,10 @@
 <?php 
 /**
-	数组操作
+	數組操作
 */
 class arrayChajian extends Chajian{
 	/**
-		二维数组排序
+		二維數組排序
 	*/
 	public function order($arr, $field, $tyee='desc')
 	{
@@ -22,7 +22,7 @@ class arrayChajian extends Chajian{
 	}
 	
 	/**
-		转换为用数字做的键值
+		轉換為用數字做的鍵值
 	*/
 	public function tonumarray($arr, $otarr='')
 	{
@@ -40,7 +40,7 @@ class arrayChajian extends Chajian{
 	}
 	
 	/**
-		$str  转化为 数组 0|昨天,2|d
+		$str  轉化為 數組 0|昨天,2|d
 	*/
 	public function strtoarray($str)
 	{
@@ -59,7 +59,7 @@ class arrayChajian extends Chajian{
 	}
 	
 	/**
-		$str  转化为 数组对象 0|昨天,2|d
+		$str  轉化為 數組對象 0|昨天,2|d
 	*/
 	public function strtoobject($str)
 	{
@@ -72,7 +72,7 @@ class arrayChajian extends Chajian{
 	}
 	
 	/**
-		[{}]数组转化为{ke1:ke2}
+		[{}]數組轉化為{ke1:ke2}
 	*/
 	public function arrrytoobject($arr, $lx=0)
 	{

@@ -2,7 +2,7 @@
 class indexreimClassAction extends apiAction
 {
 	/**
-	*	PC客户端首页读取
+	*	PC客戶端首頁讀取
 	*/
 	public function indexinitAction()
 	{
@@ -66,7 +66,7 @@ class indexreimClassAction extends apiAction
 	}
 	
 	/**
-	*	手机网页版读取
+	*	手機網頁版讀取
 	*/
 	public function mwebinitAction()
 	{
@@ -124,12 +124,12 @@ class indexreimClassAction extends apiAction
 		if(!$arr)$this->showreturn('','not user', 201);
 		if(isempt($arr['face']))$arr['face']='images/noface.png';
 		$arr['admintoken']  = $this->admintoken;
-		//$arr['isgzh'] 		= m('wxgzh:index')->isusegzh(1); //判断是否有设置公众号
+		//$arr['isgzh'] 		= m('wxgzh:index')->isusegzh(1); //判斷是否有設置公眾號
 		
 		$this->showreturn($arr);
 	}
 	
-	//同步微信上头像
+	//同步微信上頭像
 	public function tongbufaceAction()
 	{
 		$reim = m('reim');
@@ -143,7 +143,7 @@ class indexreimClassAction extends apiAction
 				if($barr['errcode'] != 0)$this->showreturn('',$barr['msg'],202);
 				$this->showreturn($barr);
 			}else{
-				$this->showreturn('','没安装微信企业号',201);
+				$this->showreturn('','沒安裝微信企業號',201);
 			}
 		}
 		

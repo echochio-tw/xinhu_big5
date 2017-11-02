@@ -3,14 +3,14 @@ js.wx={};
 js.wx.alert=function(msg,fun,tit, cof1){
 	$('#weui_dialog_alert_div').remove();
 	var s='';
-	if(!tit)tit='系统提示';
+	if(!tit)tit='系統提示';
 	s+='<div id="weui_dialog_alert_div" class="weui_dialog_alert" >';
     s+='<div class="weui_mask"></div>';
     s+='<div class="weui_dialog">';
     s+='    <div class="weui_dialog_hd"><strong class="weui_dialog_title">'+tit+'</strong></div>';
     s+='    <div class="weui_dialog_bd">'+msg+'</div>';
     s+='    <div class="weui_dialog_ft">';
-	s+='        <a href="javascript:;" id="confirm_btn" sattr="yes" class="weui_btn_dialog primary">确定</a>';
+	s+='        <a href="javascript:;" id="confirm_btn" sattr="yes" class="weui_btn_dialog primary">確定</a>';
     if(cof1==1)s+='       <a href="javascript:;" id="confirm_btn1" sattr="no" class="weui_btn_dialog default">取消</a>';
     s+='   </div>';
     s+='</div>';
@@ -62,7 +62,7 @@ js.ajax  = function(m,a,d,funs, mod,checs, erfs, glx){
 		return;
 	}
 	if(typeof(bs)=='object')d=js.apply(d,bs);
-	var tsnr = '努力处理中...';
+	var tsnr = '努力處理中...';
 	if(mod=='wait')js.msg(mod, tsnr);
 	if(mod=='mode')js.wx.load(tsnr);
 	function errsoers(ts){
@@ -92,20 +92,20 @@ js.ajax  = function(m,a,d,funs, mod,checs, erfs, glx){
 			}
 		},
 		error:function(e){
-			errsoers('内部出错:'+e.responseText+'');
+			errsoers('內部出錯:'+e.responseText+'');
 		}
 	};
 	$.ajax(ajaxcan);
 	js.ajax_time = setTimeout(function(){
 		if(js.ajaxbool){
-			errsoers('Error:请求超时?');
+			errsoers('Error:請求超時?');
 		}
 	}, 1000*30);
 }
 js.wx.load=function(txt){
 	this.unload();
 	if(txt=='none')return;
-	if(!txt)txt='加载中...';
+	if(!txt)txt='加載中...';
 	var s='';
 	s+='<div id="loadingToastsss" class="weui_loading_toast">'+
     '<div class="weui_mask_transparent"></div>'+
@@ -258,7 +258,7 @@ js.jssdkwixin = function(qxlist,afe){
 }
 
 /**
-*	微信公众号jssdk授权
+*	微信公眾號jssdk授權
 */
 js.jssdkwxgzh = function(qxlist,afe){
 	if(!js.iswxbo())return js.jssdkcall(false);

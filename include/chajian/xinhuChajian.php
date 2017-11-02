@@ -32,7 +32,7 @@ class xinhuChajian extends Chajian{
 	{
 		$url 	= $this->geturlstr($act, $can);
 		$cont 	= c('curl')->getcurl($url);
-		$data  	= array('code'=>199,'msg'=>'出错'.URLY.',返回:'.htmlspecialchars($cont).'');
+		$data  	= array('code'=>199,'msg'=>'出錯'.URLY.',返回:'.htmlspecialchars($cont).'');
 		if($cont!='' && substr($cont,0,1)=='{'){
 			$data  	= json_decode($cont, true);
 		}
@@ -41,7 +41,7 @@ class xinhuChajian extends Chajian{
 	
 	public function helpstr($num, $na='')
 	{
-		if($na=='')$na='帮助';
+		if($na=='')$na='幫助';
 		return '<a style="color:blue" href="'.$this->updatekey.'view_'.$num.'.html" target="_blank">['.$na.']</a>';
 	}
 	

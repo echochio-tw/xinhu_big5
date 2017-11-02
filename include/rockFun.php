@@ -1,20 +1,20 @@
 <?php 
 /**
 	*****************************************************************
-	* 联系QQ： 290802026											*
+	* 聯系QQ： 290802026											*
 	* 版  本： V2.0													*
-	* 开发者：雨中磐石工作室										*
-	* 邮  箱： admin@rockoa.com										*
-	* 网  址： http://www.rockoa.com/								*
-	* 说  明: 定义常用的方法										*
-	* 备  注: 未经允许不得商业出售，代码欢迎参考纠正				*
+	* 開發者：雨中磐石工作室										*
+	* 郵  箱： admin@rockoa.com										*
+	* 網  址： http://www.rockoa.com/								*
+	* 說  明: 定義常用的方法										*
+	* 備  注: 未經允許不得商業出售，代碼歡迎參考糾正				*
 	*****************************************************************
 */
 
 
 
 /**
-*	m 读取数据模型，操作数据库的
+*	m 讀取數據模型，操作數據庫的
 *	$name 表名/文件名
 */
 $GLOBALS['rockModelImport']	= array();
@@ -53,9 +53,9 @@ function m($name)
 
 /**
 *	引入插件
-*	$name 插件名称
+*	$name 插件名稱
 *	$inbo 是否初始化
-*	$param1,2,参数 
+*	$param1,2,參數 
 */
 function c($name, $inbo=true, $param1='', $param2='')
 {
@@ -87,7 +87,7 @@ function import($name, $inbo=true)
 }
 
 /**
-*	读取配置
+*	讀取配置
 */
 function getconfig($key, $dev='')
 {
@@ -100,7 +100,7 @@ function getconfig($key, $dev='')
 }
 
 /**
-*	判断变量是否为空
+*	判斷變量是否為空
 *	@return boolean
 */
 function isempt($str)
@@ -111,7 +111,7 @@ function isempt($str)
 }
 
 /**
-*	判断变量是否包含在另一变量里面
+*	判斷變量是否包含在另一變量裡面
 *	@return boolean
 */
 function contain($str,$a)
@@ -125,7 +125,7 @@ function contain($str,$a)
 }
 
 /**
-*	获取请求的头
+*	獲取請求的頭
 *	@return string/array
 */
 function getheader($key='')
@@ -137,7 +137,7 @@ function getheader($key='')
 }
 
 /**
-*	是否ajax请求
+*	是否ajax請求
 *	@return boolean
 */
 function isajax()
@@ -149,7 +149,7 @@ function isajax()
 	};
 }
 
-function backmsg($msg='', $demsg='处理成功', $da=array())
+function backmsg($msg='', $demsg='處理成功', $da=array())
 {
 	$code = 201;
 	if($msg == ''){
@@ -160,7 +160,7 @@ function backmsg($msg='', $demsg='处理成功', $da=array())
 }
 
 /**
-*	返回错误信息
+*	返回錯誤信息
 */
 function returnerror($msg='', $code=201, $carr=array())
 {
@@ -172,7 +172,7 @@ function returnerror($msg='', $code=201, $carr=array())
 }
 
 /**
-*	返回正确信息
+*	返回正確信息
 */
 function returnsuccess($data=array())
 {
@@ -203,7 +203,7 @@ function showreturn($arr='', $msg='', $code=200)
 }
 
 /**
-*	错误处理
+*	錯誤處理
 */
 function rockerror($errno, $errstr,$err_file = '', $err_line = 0){
 	$str = "File:".$err_file." Line:[$err_line] Error: [$errno] $errstr";
@@ -211,7 +211,7 @@ function rockerror($errno, $errstr,$err_file = '', $err_line = 0){
 }
 
 /**
-*	在数组里读取变量
+*	在數組裡讀取變量
 *	@return value
 */
 function arrvalue($arr, $k, $dev='')
@@ -222,7 +222,7 @@ function arrvalue($arr, $k, $dev='')
 }
 
 /**
-*	在对象里读取变量
+*	在對象裡讀取變量
 *	@return value
 */
 function objvalue($arr, $k, $dev='')
@@ -233,7 +233,7 @@ function objvalue($arr, $k, $dev='')
 }
 
 /**
-*	过滤字符串的空格
+*	過濾字符串的空格
 */
 function trimstr($str)
 {

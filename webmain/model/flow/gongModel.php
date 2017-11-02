@@ -1,7 +1,7 @@
 <?php
 class flow_gongClassModel extends flowModel
 {
-	private $readunarr = array();//未读人员
+	private $readunarr = array();//未讀人員
 	
 	public function initModel()
 	{
@@ -42,7 +42,7 @@ class flow_gongClassModel extends flowModel
 		if($this->rs['status']==1)$this->tisongtodo();
 	}
 	
-	//审核完成后发通知
+	//審核完成後發通知
 	protected function flowcheckfinsh($zt)
 	{
 		if($zt==1)$this->tisongtodo();
@@ -65,7 +65,7 @@ class flow_gongClassModel extends flowModel
 	}
 	
 	
-	//发送推送通知
+	//發送推送通知
 	private function tisongtodo()
 	{
 		$h 	  = c('html');
@@ -116,7 +116,7 @@ class flow_gongClassModel extends flowModel
 	}
 	
 	
-	//显示投票
+	//顯示投票
 	protected function flowdatalog($arr)
 	{
 		$istoupiao	= 0;
@@ -149,13 +149,13 @@ class flow_gongClassModel extends flowModel
 			$touarr['touitems'] = $touitems;
 			
 			if($istoupiao==1){
-				if($this->rs['startdt']>$this->rock->now)$istoupiao = 2; //未开始
-				if($this->rs['enddt']<$this->rock->now)$istoupiao = 3; //结束
+				if($this->rs['startdt']>$this->rock->now)$istoupiao = 2; //未開始
+				if($this->rs['enddt']<$this->rock->now)$istoupiao = 3; //結束
 			}
 			
 			$touarr['type']		= ($mintou==1 && $maxtou==1)? 'radio': 'checkbox';
 		
-			//判断我是否投票了
+			//判斷我是否投票了
 			if($istoupiao==1 && $status==1){
 				$towheer	= $this->mwhere." and `name`='投票' and `checkid`='$this->adminid'";
 				if($this->flogmodel->rows($towheer)>0){
@@ -167,7 +167,7 @@ class flow_gongClassModel extends flowModel
 			}
 			$touarr['toutype'] = $toutype;
 			
-			//判断是否可以显示结果
+			//判斷是否可以顯示結果
 			$showtou	= 0;
 			if($istoupiao!=2 && $status==1 && ($toutype==1 || $toutype==0))$showtou = 1;
 			if($showtou==0){
@@ -181,17 +181,17 @@ class flow_gongClassModel extends flowModel
 			$touarr['maxtou'] = $maxtou;
 		}
 		
-		$toupiaoarrr		= explode(',',',<font color=blue>投票进行中</font>,<font color=#ff6600>未开始</font>,<font color=#888888>已结束</font>,<font color=#888888>你不在投票对象中</font>,<font color=green>已投票过了</font>');
+		$toupiaoarrr		= explode(',',',<font color=blue>投票進行中</font>,<font color=#ff6600>未開始</font>,<font color=#888888>已結束</font>,<font color=#888888>你不在投票對象中</font>,<font color=green>已投票過了</font>');
 		
 		
-		$arr['istoupiao'] 	= $istoupiao; //投票状态0不能,1可以，2未开始，3结束 4你不需要投票
+		$arr['istoupiao'] 	= $istoupiao; //投票狀態0不能,1可以，2未開始，3結束 4你不需要投票
 		$arr['toupiaostatus'] 	= $toupiaoarrr[$istoupiao];
 		$arr['title'] 		= '';
 		$arr['touarr'] 		= $touarr;
 		if($logarr)$arr['logarr'] 	= $logarr;
 		
 		
-		$arr['readunarr'] 			= $this->readunarr;//读取未查阅
+		$arr['readunarr'] 			= $this->readunarr;//讀取未查閱
 		
 		return $arr;
 	}

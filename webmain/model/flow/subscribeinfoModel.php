@@ -1,5 +1,5 @@
 <?php
-//订阅的
+//訂閱的
 class flow_subscribeinfoClassModel extends flowModel
 {
 	
@@ -14,7 +14,7 @@ class flow_subscribeinfoClassModel extends flowModel
 		}else{
 			$filepath	= '<a href="'.URL.''.$filepath.'"';
 			if(!$this->rock->ismobile())$filepath.=' target="_blank"';
-			$filepath	.= '>打开</a>';
+			$filepath	.= '>打開</a>';
 		}
 		$rs['filepath'] = $filepath;
 		return $rs;
@@ -22,16 +22,16 @@ class flow_subscribeinfoClassModel extends flowModel
 
 	
 	/**
-	*	订阅运行发送
+	*	訂閱運行發送
 	*/
 	public function subscribe($id, $nowid=0, $receid='', $recename='')
 	{
 		$rs 		= $this->db->getone('[Q]subscribe','`id`='.$id.'');
 		if(!$rs)return returnerror('不存在');
 		
-		if($rs['status']=='0')return returnerror('未启用不能运行');
-		$title 		= $rs['title']; //订阅标题
-		$cont 		= $rs['cont'];	//提醒内容
+		if($rs['status']=='0')return returnerror('未啟用不能運行');
+		$title 		= $rs['title']; //訂閱標題
+		$cont 		= $rs['cont'];	//提醒內容
 		$suburl 	= $this->rock->jm->base64decode($rs['suburl']);
 		$suburlpost = $this->rock->jm->base64decode($rs['suburlpost']);
 		if(isempt($suburl) || isempt($suburlpost))return;
@@ -42,7 +42,7 @@ class flow_subscribeinfoClassModel extends flowModel
 		$cont	= $base->strreplace($cont,0,1);
 		
 		$url 	= getconfig('localurl', URL).$suburl;
-		//请求参数处理
+		//請求參數處理
 		$params = array();
 		$canarr	= explode('&', $suburlpost);
 		foreach($canarr as $csnstr){
@@ -59,7 +59,7 @@ class flow_subscribeinfoClassModel extends flowModel
 		$params['excelfields'] 		= $this->rock->jm->encrypt($params['excelfields']);
 		$params['excelheader'] 		= $this->rock->jm->encrypt($params['excelheader']);
 		
-		//传个让不需要登录验证(免登陆设置，不知道会不会有漏洞，求告知)
+		//傳個讓不需要登錄驗證(免登陸設置，不知道會不會有漏洞，求告知)
 		$subscribe_post 			= 'subscribe_'.time().'';
 		$subscribe_key				= md5($url.time().$subscribe_post); 
 		$params['subscribe_key']	= $subscribe_key;
@@ -71,14 +71,14 @@ class flow_subscribeinfoClassModel extends flowModel
 		$this->db->update('[Q]subscribe',"`lastdt`='{$this->rock->now}'", '`id`='.$id.'');
 	
 		if(!isempt($bstr) && substr($bstr, 0, 1)=='{'){
-			$publicurl	= getconfig('publicurl', URL);//公网URL
+			$publicurl	= getconfig('publicurl', URL);//公網URL
 			$barr 		= json_decode($bstr, true);
 			$htmlpath 	= $barr['url'];
 			
-			if($barr['downCount']==0)return returnerror('记录数为0,没有可订阅数据');
+			if($barr['downCount']==0)return returnerror('記錄數為0,沒有可訂閱數據');
 			
 			$url 		= $publicurl.$htmlpath;
-			//发送提醒
+			//發送提醒
 			if(isempt($receid)){
 				$receid 	= $rs['optid'];
 				$recename 	= $rs['optname'];
@@ -103,7 +103,7 @@ class flow_subscribeinfoClassModel extends flowModel
 			
 			return returnsuccess();
 		}else{
-			m('log')->addlogs('订阅运行', 'ID('.$id.')运行失败:'.$bstr.'', 2);
+			m('log')->addlogs('訂閱運行', 'ID('.$id.')運行失敗:'.$bstr.'', 2);
 			return returnerror('error:'.$bstr.'');
 		}
 	}

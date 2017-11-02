@@ -11,7 +11,8 @@ $(document).ready(function(){
 	{params}
 	var modenum = 'officic',modename='公文查閱',isflow=0,modeid='69',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
-var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部門","fields":"base_deptname"},{"name":"單號","fields":"sericnum"},{"fields":"num","name":"公文編號","fieldstype":"text","ispx":"0","isalign": "0","islb":"1"},{"fields":"title","name":"標題","fieldstype":"text","ispx":"0","isalign": "0","islb":"1"},{"fields":"unitsame","name":"發文單位","fieldstype":"text","ispx":"0","isalign" :"0","islb":"1"},{"fields":"miji","name":"公文密級","fieldstype":"text","ispx":"0","isalign ":"0","islb":"0"},{"fields":"optdt","name":"操作時間","fieldstype":"datetime","ispx":"1"," isalign":"0","islb":"1"}],fieldsselarr= [];
+	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"num","name":"\u516c\u6587\u7f16\u53f7","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"title","name":"\u6807\u9898","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"unitsame","name":"\u53d1\u6587\u5355\u4f4d","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"miji","name":"\u516c\u6587\u5bc6\u7ea7","fieldstype":"text","ispx":"0","isalign":"0","islb":"0"},{"fields":"optdt","name":"\u64cd\u4f5c\u65f6\u95f4","fieldstype":"datetime","ispx":"1","isalign":"0","islb":"1"}],fieldsselarr= [];
+	
 	var c = {
 		reload:function(){
 			a.reload();

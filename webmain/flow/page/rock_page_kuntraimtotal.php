@@ -1,7 +1,7 @@
 <?php
 /**
-*	模块：knowtraim.考试培训统计
-*	来源：http://www.rockoa.com/
+*	模塊：knowtraim.考試培訓統計
+*	來源：http://www.rockoa.com/
 */
 defined('HOST') or die ('not access');
 ?>
@@ -18,15 +18,15 @@ $(document).ready(function(){
 		url:publicmodeurl('knowtraim'),storebeforeaction:'knowtraimuserbefore',storeafteraction:'knowtraimuserafter',
 		params:{atype:'all',mid:mid},
 		columns:[{
-			text:"部门",dataIndex:"deptname"
+			text:"部門",dataIndex:"deptname"
 		},{
 			text:"姓名",dataIndex:"name"
 		},{
-			text:"考试时间",dataIndex:"kssdt",sortable:true
+			text:"考試時間",dataIndex:"kssdt",sortable:true
 		},{
-			text:"考试状态",dataIndex:"isks",sortable:true
+			text:"考試狀態",dataIndex:"isks",sortable:true
 		},{
-			text:"分数",dataIndex:"fenshu",sortable:true
+			text:"分數",dataIndex:"fenshu",sortable:true
 		}],
 		load:function(d){
 			
@@ -36,9 +36,9 @@ $(document).ready(function(){
 	darr[1] = $('#view1_{rand}').bootstable({
 		url:publicmodeurl('knowtraim','tongji'),params:{mid:mid},
 		columns:[{
-			text:"名称",dataIndex:"name"
+			text:"名稱",dataIndex:"name"
 		},{
-			text:"人数",dataIndex:"value"
+			text:"人數",dataIndex:"value"
 		},{
 			text:"比例",dataIndex:"bili"
 		}],
@@ -58,7 +58,7 @@ $(document).ready(function(){
 			var rows = darr[oi].getData('rows'),i,len=rows.length,v;
 			var xAxis=[],data=[];
 			for(i=0;i<len;i++){
-				if(rows[i].name!='合计'){
+				if(rows[i].name!='合計'){
 					xAxis.push(rows[i].name);
 					v = rows[i].value;if(v=='')v=0;
 					data.push({value:parseFloat(v),name:rows[i].name});
@@ -76,7 +76,7 @@ $(document).ready(function(){
 					formatter: "{b} : {c}人 ({d}%)"
 				},
 				series: [{
-					name: '人数',
+					name: '人數',
 					type: tlx,
 					data: data
 				}]
@@ -96,12 +96,12 @@ $(document).ready(function(){
 <div>
 	<table width="100%">
 	<tr>
-	<td nowrap>考试培训主题&nbsp;</td>
+	<td nowrap>考試培訓主題&nbsp;</td>
 	<td>
 		<select style="width:150px" class="form-control " id="dt1_{rand}" ></select>
 	</td>
 	<td  style="padding-left:10px">
-		<button class="btn btn-default" click="search" type="button">查看统计</button>
+		<button class="btn btn-default" click="search" type="button">查看統計</button>
 	</td>
 	<td width="90%">
 		
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		<td width="50%">
 			<div align="left" style="min-width:300px" class="list-group">
 			<div class="list-group-item  list-group-item-info">
-				<i class="icon-search"></i> 按考试人员查询</span>
+				<i class="icon-search"></i> 按考試人員查詢</span>
 				<span style="float:right" ><a click="reload,0"><i class="icon-refresh"></i></a></span>
 			</div>
 			<div id="view0_{rand}"></div>
@@ -132,7 +132,7 @@ $(document).ready(function(){
 		<td style="padding-left:10px;">
 			<div align="left" class="list-group">
 			<div class="list-group-item  list-group-item-success">
-				<i class="icon-bar-chart"></i> 按考试合格率统计</span>
+				<i class="icon-bar-chart"></i> 按考試合格率統計</span>
 				<span style="float:right" ><a click="reload,1"><i class="icon-refresh"></i></a></span>
 			</div>
 			<div id="view1_{rand}"></div>

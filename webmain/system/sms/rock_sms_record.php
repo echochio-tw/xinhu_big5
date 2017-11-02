@@ -5,15 +5,15 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'chargems',url:js.getajaxurl('getrecord','{mode}','{dir}'),
 		columns:[{
-			text:'短信内容',dataIndex:'cont',align:'left'
+			text:'短信內容',dataIndex:'cont',align:'left'
 		},{
-			text:'发给手机号',dataIndex:'tomobile',align:'left',renderstyle:function(v,d){
+			text:'發給手機號',dataIndex:'tomobile',align:'left',renderstyle:function(v,d){
 				return 'word-wrap:break-word;word-break:break-all;white-space:normal;';
 			}
 		},{
-			text:'发送条数',dataIndex:'count'
+			text:'發送條數',dataIndex:'count'
 		},{
-			text:'发送时间',dataIndex:'adddt'
+			text:'發送時間',dataIndex:'adddt'
 		}]
 	});
 	
@@ -45,4 +45,4 @@ $(document).ready(function(){
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">默认值显示最近20条记录。</div>
+<div class="tishi">默認值顯示最近20條記錄。</div>

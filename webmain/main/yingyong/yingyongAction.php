@@ -35,7 +35,7 @@ class yingyongClassAction extends Action
 	{
 		$msg = '';
 		$num = $cans['num'];
-		if(m($table)->rows("`num`='$num' and `id`<>$id")>0)$msg='编号['.$num.']已存在';
+		if(m($table)->rows("`num`='$num' and `id`<>$id")>0)$msg='編號['.$num.']已存在';
 		return array('msg'=>$msg);
 	}
 	
@@ -49,7 +49,7 @@ class yingyongClassAction extends Action
 		$this->getmenu(0, 1, $where);
 		$modeid 	= (int)m('flow_set')->getmou('id',"`num`='$agentnum'");
 		$wherearr	= m('flow_where')->getrows("setid='$modeid' and `num` is not null and `status`=1",'`name`,`num`','`pnum`,`sort`');
-		$barr[]		= array('num'=>'','name'=>'-选择-');
+		$barr[]		= array('num'=>'','name'=>'-選擇-');
 		foreach($wherearr as $k=>$rs){
 			$wherearr[$k]['name'] = ''.$rs['num'].'.'.$rs['name'].'';
 			$barr[] = $wherearr[$k];

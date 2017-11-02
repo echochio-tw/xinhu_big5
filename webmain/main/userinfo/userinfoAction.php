@@ -54,7 +54,7 @@ class userinfoClassAction extends Action
 		return ' and id='.$this->adminid.'';
 	}
 	
-	//人员分析
+	//人員分析
 	public function useranaybefore()
 	{
 		return 'and 1=2';
@@ -72,11 +72,11 @@ class userinfoClassAction extends Action
 		$rows	= $db->getall("id>0 $where",'deptname,sex,xueli,state,birthday,workdate,quitdt,ranking');
 		
 		$nianls	= array(
-			array(0,'16-20岁',16,20),
-			array(0,'21-25岁',21,25),
-			array(0,'26-30岁',26,30),
-			array(0,'31-40岁',31,40),
-			array(0,'41岁以上',41,9999),
+			array(0,'16-20歲',16,20),
+			array(0,'21-25歲',21,25),
+			array(0,'26-30歲',26,30),
+			array(0,'31-40歲',31,40),
+			array(0,'41歲以上',41,9999),
 			array(0,'其他',-555,15),
 		);
 		
@@ -88,7 +88,7 @@ class userinfoClassAction extends Action
 			array(0,'10年以上',10,9999)
 		);
 		
-		$atatea = explode(',', '试用期,正式,实习生,兼职,临时工,离职');
+		$atatea = explode(',', '試用期,正式,實習生,兼職,臨時工,離職');
 		foreach($rows as $k=>$rs){
 			$year = '';
 			if(!$this->isempt($rs['workdate'])) $year = substr($rs['workdate'],0,4);
@@ -105,7 +105,7 @@ class userinfoClassAction extends Action
 			$state = (int)$rs['state'];
 			$rows[$k]['state'] = $atatea[$state];
 			
-			//入职连
+			//入職連
 			$nan = $this->worknx($rs['workdate']);
 			foreach($yearls as $n=>$nsa){
 				if( $nan >= $nsa[2]  && $nan < $nsa[3]){
@@ -151,7 +151,7 @@ class userinfoClassAction extends Action
 		return $lx	;
 	}
 	
-	//计算工作年限的
+	//計算工作年限的
 	private function worknx($dt)
 	{
 		$w = 0;

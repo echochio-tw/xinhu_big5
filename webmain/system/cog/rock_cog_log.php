@@ -7,26 +7,26 @@ $(document).ready(function(){
 		tablename:'log',celleditor:true,sort:'id',dir:'desc',modedir:'{mode}:{dir}',params:{'atype':atype},checked:true,fanye:true,
 		storebeforeaction:'logbefore',
 		columns:[{
-			text:'类型',dataIndex:'type'
+			text:'類型',dataIndex:'type'
 		},{
 			text:'操作人',dataIndex:'optname',sortable:true
 		},{
-			text:'备注',dataIndex:'remark',align:'left',renderer:function(v,d){
+			text:'備注',dataIndex:'remark',align:'left',renderer:function(v,d){
 				if(d.url && d.level==2)v+='<br>'+d.url+'';
 				return v;
 			},renderstyle:function(){
 				return 'word-wrap:break-word;word-break:break-all;white-space:normal;';
 			}
 		},{
-			text:'操作时间',dataIndex:'optdt',sortable:true
+			text:'操作時間',dataIndex:'optdt',sortable:true
 		},{
 			text:'IP',dataIndex:'ip'
 		},{
-			text:'浏览器',dataIndex:'web'
+			text:'瀏覽器',dataIndex:'web'
 		},{
 			text:'Device',dataIndex:'device'
 		},{
-			text:'级别',dataIndex:'level'
+			text:'級別',dataIndex:'level'
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		}],
@@ -60,11 +60,11 @@ $(document).ready(function(){
 
 <table width="100%"><tr>
 	<td>
-		<input class="form-control" style="width:300px" id="key_{rand}"   placeholder="类型/操作人/浏览器/IP/备注">
+		<input class="form-control" style="width:300px" id="key_{rand}"   placeholder="類型/操作人/瀏覽器/IP/備注">
 	</td>
 	<td nowrap style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>&nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button>
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button>
 	</td>
 	
 	
@@ -72,7 +72,7 @@ $(document).ready(function(){
 	<td width="80%"></td>
 	<td align="right" nowrap>
 	
-		<button class="btn btn-danger" id="del_{rand}" click="delss" type="button"><i class="icon-trash"></i> 删除</button>
+		<button class="btn btn-danger" id="del_{rand}" click="delss" type="button"><i class="icon-trash"></i> 刪除</button>
 	</td>
 </tr>
 </table>

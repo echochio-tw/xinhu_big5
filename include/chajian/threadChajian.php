@@ -1,7 +1,7 @@
 <?php
 /**
-*	pThread 多线程插件，php.ini需要开启php_pthreads.dll扩展
-*	来自：信呼开发团队
+*	pThread 多線程插件，php.ini需要開啟php_pthreads.dll擴展
+*	來自：信呼開發團隊
 *	使用方法 c('thread')->startrun('http://127.0.0.1/');
 */
 class threadChajian extends Thread{
@@ -10,8 +10,8 @@ class threadChajian extends Thread{
 	private $result 	= '';
 	
 	/**
-	*	执行的地址
-	*	isback 是否等待返回内容
+	*	執行的地址
+	*	isback 是否等待返回內容
 	*/
 	public function startrun($url, $isback=false){
 		$this->urlstr 	= $url;

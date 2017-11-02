@@ -56,14 +56,14 @@ function serversend(a){
 			?>
 			</div>
 			<?php if($arr['type']=='group' && $arr['innei']>0 && isempt($arr['deptid'])){?>
-			<div title="退出会话" onclick="im.exitgroup()" class="div03">
+			<div title="退出會話" onclick="im.exitgroup()" class="div03">
 				&nbsp;<i class="icon-signout"></i>&nbsp;
 			</div>
-			<div title="邀请" onclick="im.yaoqing()" class="div03">
+			<div title="邀請" onclick="im.yaoqing()" class="div03">
 				&nbsp;<i class="icon-plus"></i>&nbsp;
 			</div>
 			<?php }?>
-			<div title="人员" onclick="im.showuser()" class="div03">
+			<div title="人員" onclick="im.showuser()" class="div03">
 				&nbsp;<i class="icon-<?=$arr['type']?>"></i>&nbsp;
 			</div>
 			
@@ -77,7 +77,7 @@ function serversend(a){
 		<tr>
 			<td height="100%">
 				<div id="showview" oncontextmenu="return false" style="height:100%;width:100%;overflow:auto">
-					<div align="center" id="showviewload" style="padding:10px;"><img src="images/mloading.gif" align="absmiddle">&nbsp;加载历史记录...</div>
+					<div align="center" id="showviewload" style="padding:10px;"><img src="images/mloading.gif" align="absmiddle">&nbsp;加載歷史記錄...</div>
 				</div>
 			</td>
 		</tr>
@@ -87,9 +87,9 @@ function serversend(a){
 					<div class="toolsliao">
 						<a tools="emts" title="添加表情"><img src="web/images/im/emts.png"></a>
 						
-						<a tools="file" title="发送图片/文件"><img src="web/images/im/files.png"></a>
+						<a tools="file" title="發送圖片/文件"><img src="web/images/im/files.png"></a>
 						<a tools="crop" title="截屏"><img src="web/images/im/crop.png"></a>
-						<a tools="cropput" title="粘贴截屏图片"><img src="web/images/im/crop1.png"></a>
+						<a tools="cropput" title="粘貼截屏圖片"><img src="web/images/im/crop1.png"></a>
 						<a tools="clear" title="清屏"><img src="web/images/im/clear.png"></a>
 					</div>
 				</div>
@@ -104,8 +104,8 @@ function serversend(a){
 			<td>
 				<div  oncontextmenu="return false" style="height:40px; background-color:#eeeeee;overflow:hidden">
 					<div align="right" style="padding:9px">
-						<a class="webbtn" title="快捷键：Alt+C/Esc" tools="close">关闭(C)</a>&nbsp; &nbsp; 
-						<a class="webbtn" title="快捷键：Alt+S" tools="send">发送(S)</a><a class="webbtn" style="padding-left:5px;padding-right:5px;border-left:1px #0572AD solid" tools="change">↓</a>
+						<a class="webbtn" title="快捷鍵：Alt+C/Esc" tools="close">關閉(C)</a>&nbsp; &nbsp; 
+						<a class="webbtn" title="快捷鍵：Alt+S" tools="send">發送(S)</a><a class="webbtn" style="padding-left:5px;padding-right:5px;border-left:1px #0572AD solid" tools="change">↓</a>
 					</div>
 				</div>
 			</td>

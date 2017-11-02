@@ -2,7 +2,7 @@
 
 
 
-/*边框样式*/
+/*邊框樣式*/
 .aui-border-t,
 .aui-border-b,
 .aui-border-l,
@@ -62,7 +62,7 @@
         -webkit-transform: scale(0.5);
     }
 }
-/*基础动画类*/
+/*基礎動畫類*/
 @keyframes rotate {
     0% {
         -webkit-transform: rotate(0deg) scale(1);

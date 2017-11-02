@@ -31,9 +31,9 @@ class deptClassAction extends Action
 	public function publicbeforesave($table, $cans, $id)
 	{
 		$pid 	= (int)$cans['pid'];
-		if($pid<=0 && $id != 1)return '上级ID必须大于0';
-		if($pid!=0 && $id == 1)return '顶级禁止修改上级ID';
-		if($pid!=0 && m($table)->rows('id='.$pid.'')==0)return '上级ID不存在';
+		if($pid<=0 && $id != 1)return '上級ID必須大于0';
+		if($pid!=0 && $id == 1)return '頂級禁止修改上級ID';
+		if($pid!=0 && m($table)->rows('id='.$pid.'')==0)return '上級ID不存在';
 		return '';
 	}
 	

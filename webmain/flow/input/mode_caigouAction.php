@@ -4,7 +4,7 @@ class mode_caigouClassAction extends inputAction{
 
 	protected function savebefore($table, $arr, $id, $addbo){
 		$data = $this->getsubtabledata(0);
-		if(count($data)==0)return '至少要有一行记录';
+		if(count($data)==0)return '至少要有一行記錄';
 		$this->sssaid = '0';
 		foreach($data as $k=>$rs){
 			$this->sssaid.=','.$rs['aid'].'';

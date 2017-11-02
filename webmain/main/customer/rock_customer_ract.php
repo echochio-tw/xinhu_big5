@@ -9,29 +9,29 @@ $(document).ready(function(){
 		columns:[{
 			text:'',dataIndex:'caozuo'
 		},{
-			text:'合同编号',dataIndex:'num'
+			text:'合同編號',dataIndex:'num'
 		},{
-			text:'客户',dataIndex:'custname',align:'left'
+			text:'客戶',dataIndex:'custname',align:'left'
 		},{
-			text:'拥有者',dataIndex:'optname'
+			text:'擁有者',dataIndex:'optname'
 		},{
-			text:'签约日期',dataIndex:'signdt',sortable:true
+			text:'簽約日期',dataIndex:'signdt',sortable:true
 		},{
 			text:'生效日期',dataIndex:'startdt'
 		},{
 			text:'截止日期',dataIndex:'enddt'
 		},{
-			text:'类型',dataIndex:'type',sortable:true
+			text:'類型',dataIndex:'type',sortable:true
 		},{
-			text:'合同金额',dataIndex:'money',sortable:true
+			text:'合同金額',dataIndex:'money',sortable:true
 		},{
 			text:'待收付款',dataIndex:'moneys',sortable:true
 		},{
-			text:'状态',dataIndex:'statetext'
+			text:'狀態',dataIndex:'statetext'
 		},{
-			text:'操作时间',dataIndex:'optdt'
+			text:'操作時間',dataIndex:'optdt'
 		},{
-			text:'创建人',dataIndex:'createname'
+			text:'創建人',dataIndex:'createname'
 		}],
 		itemclick:function(){
 			btn(false);
@@ -88,14 +88,14 @@ $(document).ready(function(){
 	</td>
 	<td style="padding-right:10px">
 		<div style="width:120px" class="input-group">
-			<input readonly placeholder="签约月份" class="form-control" id="month_{rand}" >
+			<input readonly placeholder="簽約月份" class="form-control" id="month_{rand}" >
 			<span class="input-group-btn">
 				<button onclick="return js.selectdate(this,'month_{rand}','month')" class="btn btn-default" type="button"><i class="icon-calendar"></i></button>
 			</span>
 		</div>
 	</td>
 	<td >
-		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="合同编号/客户/操作人">
+		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="合同編號/客戶/操作人">
 	</td>
 	<td style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -103,16 +103,16 @@ $(document).ready(function(){
 	<td  width="90%" style="padding-left:10px">
 		
 		<div id="stewwews{rand}" class="btn-group">
-		<button class="btn btn-default active" id="state{rand}_0" click="changlx,0" type="button">全部状态</button>
-		<button class="btn btn-default" id="state{rand}_1" click="changlx,1" type="button">已过期</button>
+		<button class="btn btn-default active" id="state{rand}_0" click="changlx,0" type="button">全部狀態</button>
+		<button class="btn btn-default" id="state{rand}_1" click="changlx,1" type="button">已過期</button>
 		<button class="btn btn-default" id="state{rand}_4" click="changlx,4" type="button">待收/付款</button>
 		<button class="btn btn-default" id="state{rand}_2" click="changlx,2" type="button">已全部收/付款</button>
 		<button class="btn btn-default" id="state{rand}_3" click="changlx,3" type="button">部分收/付款</button>
 		</div>	
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 	</tr>
 	</table>

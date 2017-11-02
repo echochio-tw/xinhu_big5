@@ -1,15 +1,15 @@
 <?php
 /**
-*	模块：custsale.销售机会，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.销售机会]→生成列表页
+*	模塊：custsale.銷售機會，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.銷售機會]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
 <script>
 $(document).ready(function(){
 	{params}
-	var modenum = 'custsale',modename='销售机会',isflow=0,modeid='8',atype = params.atype,pnum=params.pnum;
+	var modenum = 'custsale',modename='銷售機會',isflow=0,modeid='8',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
 	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"custid","name":"\u5ba2\u6237","fieldstype":"hidden","ispx":"0","isalign":"0","islb":"0"},{"fields":"custname","name":"\u5ba2\u6237","fieldstype":"selectdatafalse","ispx":"0","isalign":"0","islb":"1"},{"fields":"applydt","name":"\u7533\u8bf7\u65e5\u671f","fieldstype":"date","ispx":"1","isalign":"0","islb":"1"},{"fields":"laiyuan","name":"\u6765\u6e90","fieldstype":"rockcombo","ispx":"0","isalign":"0","islb":"1"},{"fields":"money","name":"\u91d1\u989d","fieldstype":"number","ispx":"1","isalign":"0","islb":"1"},{"fields":"adddt","name":"\u6dfb\u52a0\u65f6\u95f4","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"1"},{"fields":"createname","name":"\u521b\u5efa\u4eba","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"optname","name":"\u9500\u552e\u4eba\u5458","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"state","name":"\u72b6\u6001","fieldstype":"rockcombo","ispx":"1","isalign":"0","islb":"1"},{"fields":"explain","name":"\u8bf4\u660e","fieldstype":"textarea","ispx":"0","isalign":"0","islb":"1"}],fieldsselarr= [];
 	
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -49,7 +49,7 @@ $(document).ready(function(){
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -57,7 +57,7 @@ $(document).ready(function(){
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -69,9 +69,9 @@ $(document).ready(function(){
 		},
 		subscribelist:function(){
 			js.subscribe({
-				title:'销售机会('+nowtabs.name+')',
-				cont:'销售机会('+nowtabs.name+')的列表的',
-				explain:'订阅[销售机会]的列表',
+				title:'銷售機會('+nowtabs.name+')',
+				cont:'銷售機會('+nowtabs.name+')的列表的',
+				explain:'訂閱[銷售機會]的列表',
 				objtable:a
 			});
 		},
@@ -121,15 +121,15 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			window.managelistcustsale = a;
-			addtabs({num:'daorucustsale',url:'flow,input,daoru,modenum=custsale',icons:'plus',name:'导入销售机会'});
+			addtabs({num:'daorucustsale',url:'flow,input,daoru,modenum=custsale',icons:'plus',name:'導入銷售機會'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -147,7 +147,7 @@ $(document).ready(function(){
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -189,12 +189,12 @@ $(document).ready(function(){
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('Y3VzdHNhbGU:'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"客户",dataIndex:"custname"},{text:"申请日期",dataIndex:"applydt",sortable:true},{text:"来源",dataIndex:"laiyuan"},{text:"金额",dataIndex:"money",sortable:true},{text:"添加时间",dataIndex:"adddt"},{text:"创建人",dataIndex:"createname"},{text:"销售人员",dataIndex:"optname",sortable:true},{text:"状态",dataIndex:"state",sortable:true},{text:"说明",dataIndex:"explain"},{
+		columns:[{text:"客戶",dataIndex:"custname"},{text:"申請日期",dataIndex:"applydt",sortable:true},{text:"來源",dataIndex:"laiyuan"},{text:"金額",dataIndex:"money",sortable:true},{text:"添加時間",dataIndex:"adddt"},{text:"創建人",dataIndex:"createname"},{text:"銷售人員",dataIndex:"optname",sortable:true},{text:"狀態",dataIndex:"state",sortable:true},{text:"說明",dataIndex:"explain"},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -209,17 +209,17 @@ $(document).ready(function(){
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewcustsale_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -241,7 +241,7 @@ $(document).ready(function(){
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
 		
 		<td style="padding-left:10px">
@@ -252,7 +252,7 @@ $(document).ready(function(){
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

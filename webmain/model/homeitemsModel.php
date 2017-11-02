@@ -1,6 +1,6 @@
 <?php
 /**
-*	桌面项目
+*	桌面項目
 */
 class homeitemsClassModel extends Model
 {
@@ -12,7 +12,7 @@ class homeitemsClassModel extends Model
 	}
 	
 	/**
-	*	桌面项目数据读取
+	*	桌面項目數據讀取
 	*/
 	public function getitemsdata($nums='')
 	{
@@ -25,11 +25,11 @@ class homeitemsClassModel extends Model
 				$barr[''.$num.'arr'] = $this->$act();
 			}
 		}
-		if(in_array('kjrk', $numarr))$barr['total'] = $this->gettotals($this->adminid); //有快捷方式才显示
+		if(in_array('kjrk', $numarr))$barr['total'] = $this->gettotals($this->adminid); //有快捷方式才顯示
 		return $barr;
 	}
 	
-	//快捷入口红数字的统计的(根据菜单编号来的)
+	//快捷入口紅數字的統計的(根據菜單編號來的)
 	public function gettotals($uid)
 	{
 		$optdt 	= $this->rock->now;
@@ -47,25 +47,25 @@ class homeitemsClassModel extends Model
 		return $arr;
 	}
 	
-	//我的申请
+	//我的申請
 	public function get_apply_arr()
 	{
 		return m('flowbill')->homelistshow();
 	}
 	
-	//通知公告读取
+	//通知公告讀取
 	public function get_gong_arr()
 	{
 		return m('flow')->initflow('gong')->getflowrows($this->adminid,'my');
 	}
 	
-	//会议
+	//會議
 	public function get_meet_arr()
 	{
 		return m('meet')->getmeethome($this->rock->date, $this->adminid);
 	}
 	
-	//系统日志
+	//系統日志
 	public function get_syslog_arr()
 	{
 		return m('log')->getrows('1=1','type,remark,optdt,level','id desc limit 5');

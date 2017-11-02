@@ -43,7 +43,7 @@ class scheduleClassAction extends Action
 			$str 	= '';
 			if(isset($rows[$dt]))foreach($rows[$dt] as $k=>$rs){
 				$str.=''.($k+1).'.['.$rs['timea'].']'.$rs['title'].'';
-				if($rs['optname']!=$this->adminname)$str.=' &nbsp;——'.$rs['optname'].'创建';
+				if($rs['optname']!=$this->adminname)$str.=' &nbsp;'.$rs['optname'].'創建';
 				$str.='<br>';
 			}
 			$sbarr	= array(

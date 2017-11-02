@@ -22,14 +22,14 @@ class modeClassAction extends ActionNot
 		$this->displayfile = $path;
 	}
 	
-	//移动端页面详情
+	//移動端頁面詳情
 	public function xAction()
 	{
 		$num = $this->get('modenum');
 		if($num=='')$num=$this->get('num');
 		
 		$mid 	 = (int)$this->get('mid');
-		if($num=='' || $mid==0)exit('无效请求');
+		if($num=='' || $mid==0)exit('無效請求');
 		
 		
 		$arr 	 = m('flow')->getdatalog($num, $mid, 1);
@@ -56,14 +56,14 @@ class modeClassAction extends ActionNot
 		$this->smartydata['inputjspath']	= $inputjspath;
 	}
 	
-	//pc端页面详情
+	//pc端頁面詳情
 	public function pAction()
 	{
 		$num = $this->get('modenum');
 		if($num=='')$num=$this->get('num');
 		
 		$mid 	 = (int)$this->get('mid');
-		if($num=='' || $mid==0)exit('无效请求');
+		if($num=='' || $mid==0)exit('無效請求');
 		$stype 			= $this->get('stype');
 		
 		$arr 	 		= m('flow')->getdatalog($num, $mid, 0);
@@ -93,7 +93,7 @@ class modeClassAction extends ActionNot
 		$this->smartydata['inputjspath']	= $inputjspath;
 	}
 	
-	//下载
+	//下載
 	public function downAction()
 	{
 		$this->display = false;
@@ -109,7 +109,7 @@ class modeClassAction extends ActionNot
 	
 	
 	
-	//导出页面
+	//導出頁面
 	public function eAction()
 	{
 		$num	= $this->get('num');
@@ -129,7 +129,7 @@ class modeClassAction extends ActionNot
 		}
 	}
 	
-	//邮件上打开详情
+	//郵件上打開詳情
 	public function aAction()
 	{
 		$num = $this->get('num');

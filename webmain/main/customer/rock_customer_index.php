@@ -3,17 +3,17 @@
 $(document).ready(function(){
 	var obj=[];
 	obj[0] = $('#view0_{rand}').bootstable({
-		tablename:'custsale',params:{'atype':'mygx'},fanye:false,modenum:'custsale',modename:'销售机会',limit:5,moreurl:'flow,page,custsale,atype=mygx',morenum:'num110',
+		tablename:'custsale',params:{'atype':'mygx'},fanye:false,modenum:'custsale',modename:'銷售機會',limit:5,moreurl:'flow,page,custsale,atype=mygx',morenum:'num110',
 		columns:[{
-			text:'客户',dataIndex:'custname',align:'left'
+			text:'客戶',dataIndex:'custname',align:'left'
 		},{
-			text:'来源',dataIndex:'laiyuan'
+			text:'來源',dataIndex:'laiyuan'
 		},{
-			text:'状态',dataIndex:'state'
+			text:'狀態',dataIndex:'state'
 		},{
-			text:'金额',dataIndex:'money'
+			text:'金額',dataIndex:'money'
 		},{
-			text:'说明',dataIndex:'explain',align:'left'
+			text:'說明',dataIndex:'explain',align:'left'
 		}],
 		itemdblclick:function(d){
 			openxiangs(this.modename,this.modenum,d.id);
@@ -23,17 +23,17 @@ $(document).ready(function(){
 	obj[1] = $('#view1_{rand}').bootstable({
 		tablename:'custract',params:{'atype':'my_all'},fanye:false,modenum:'custract',modename:'合同',limit:5,moreurl:'main,customer,ract,atype=my',morenum:'num108',
 		columns:[{
-			text:'合同编号',dataIndex:'num'
+			text:'合同編號',dataIndex:'num'
 		},{
-			text:'客户',dataIndex:'custname',align:'left'
+			text:'客戶',dataIndex:'custname',align:'left'
 		},{
-			text:'签约日期',dataIndex:'signdt',sortable:true
+			text:'簽約日期',dataIndex:'signdt',sortable:true
 		},{
-			text:'合同金额',dataIndex:'money',sortable:true
+			text:'合同金額',dataIndex:'money',sortable:true
 		},{
 			text:'待收付款',dataIndex:'moneys',sortable:true
 		},{
-			text:'状态',dataIndex:'statetext'
+			text:'狀態',dataIndex:'statetext'
 		}],
 		itemdblclick:function(d){
 			openxiangs(this.modename,this.modenum,d.id);
@@ -41,17 +41,17 @@ $(document).ready(function(){
 	});
 	
 	obj[2] = $('#view2_{rand}').bootstable({
-		tablename:'custfina',params:{'atype':'myskd_wei'},modenum:'custfina',modename:'收款单',limit:5,moreurl:'main,customer,fina,atype=myskd',morenum:'num106',
+		tablename:'custfina',params:{'atype':'myskd_wei'},modenum:'custfina',modename:'收款單',limit:5,moreurl:'main,customer,fina,atype=myskd',morenum:'num106',
 		columns:[{
-			text:'所属日期',dataIndex:'dt'
+			text:'所屬日期',dataIndex:'dt'
 		},{
-			text:'合同编号',dataIndex:'htnum'
+			text:'合同編號',dataIndex:'htnum'
 		},{
-			text:'客户',dataIndex:'custname',align:'left'
+			text:'客戶',dataIndex:'custname',align:'left'
 		},{
-			text:'金额',dataIndex:'money',sortable:true
+			text:'金額',dataIndex:'money',sortable:true
 		},{
-			text:'状态',dataIndex:'ispay'
+			text:'狀態',dataIndex:'ispay'
 		}],
 		itemdblclick:function(d){
 			openxiangs(this.modename,this.modenum,d.id);
@@ -59,17 +59,17 @@ $(document).ready(function(){
 	});
 	
 	obj[3] = $('#view3_{rand}').bootstable({
-		tablename:'custfina',params:{'atype':'myfkd_wei'},modenum:'custfina',modename:'付款单',limit:5,moreurl:'main,customer,fina,atype=myfkd',morenum:'num107',
+		tablename:'custfina',params:{'atype':'myfkd_wei'},modenum:'custfina',modename:'付款單',limit:5,moreurl:'main,customer,fina,atype=myfkd',morenum:'num107',
 		columns:[{
-			text:'所属日期',dataIndex:'dt'
+			text:'所屬日期',dataIndex:'dt'
 		},{
-			text:'合同编号',dataIndex:'htnum'
+			text:'合同編號',dataIndex:'htnum'
 		},{
-			text:'客户',dataIndex:'custname',align:'left'
+			text:'客戶',dataIndex:'custname',align:'left'
 		},{
-			text:'金额',dataIndex:'money',sortable:true
+			text:'金額',dataIndex:'money',sortable:true
 		},{
-			text:'状态',dataIndex:'ispay'
+			text:'狀態',dataIndex:'ispay'
 		}],
 		itemdblclick:function(d){
 			openxiangs(this.modename,this.modenum,d.id);
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		<td width="50%">
 			<div align="left" style="min-width:300px" class="list-group">
 			<div class="list-group-item  list-group-item-info">
-				<i class="icon-flag"></i> 需跟踪销售机会
+				<i class="icon-flag"></i> 需跟蹤銷售機會
 				<span style="float:right" ><a click="reload,0"><i class="icon-refresh"></i></a>&nbsp;<a click="more,0">更多&gt;&gt;</a></span>
 			</div>
 			<div id="view0_{rand}"></div>
@@ -118,7 +118,7 @@ $(document).ready(function(){
 		<td style="padding-left:20px;">
 			<div align="left" class="list-group">
 			<div class="list-group-item  list-group-item-success">
-				<i class="icon-money"></i> 待收款单
+				<i class="icon-money"></i> 待收款單
 				<span style="float:right" ><a click="reload,2"><i class="icon-refresh"></i></a>&nbsp;<a click="more,2">更多&gt;&gt;</a></span>
 			</div>
 			<div id="view2_{rand}"></div>
@@ -126,7 +126,7 @@ $(document).ready(function(){
 			
 			<div align="left" class="list-group">
 			<div class="list-group-item  list-group-item-danger">
-				<i class="icon-money"></i> 待付款单
+				<i class="icon-money"></i> 待付款單
 				<span style="float:right" ><a click="reload,3"><i class="icon-refresh"></i></a>&nbsp;<a click="more,3">更多&gt;&gt;</a></span>
 			</div>
 			<div id="view3_{rand}"></div>
@@ -138,5 +138,5 @@ $(document).ready(function(){
 		
 	</tr>
 	</table>
-	<div class="tishi">双击对应记录可查看详情！</div>
+	<div class="tishi">雙擊對應記錄可查看詳情！</div>
 </div>

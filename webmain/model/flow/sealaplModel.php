@@ -1,10 +1,10 @@
 <?php
 /**
-*	模块.印章申请
+*	模塊.印章申請
 */
 class flow_sealaplClassModel extends flowModel
 {
-	//读取印章保管人来审批
+	//讀取印章保管人來審批
 	protected function flowcheckname($num)
 	{
 		if($num=='bgque'){
@@ -13,7 +13,7 @@ class flow_sealaplClassModel extends flowModel
 		}
 	}
 	
-	//展示是替换一下
+	//展示是替換一下
 	public function flowrsreplace($rs)
 	{
 		$str= '<font color=#888888>否</font>';

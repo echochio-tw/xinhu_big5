@@ -15,7 +15,7 @@ class flow_vcardClassModel extends flowModel
 		);
 	}
 	
-	//替换
+	//替換
 	public function flowrsreplace($rs, $lx=0)
 	{
 		if($lx==2 && $this->rock->ismobile()){
@@ -28,14 +28,14 @@ class flow_vcardClassModel extends flowModel
 	public function flowdaorutestdata()
 	{
 		return array(
-			'name' 		=> '关羽',
+			'name' 		=> '關羽',
 			'sex' 		=> '男',
 			'mobile' 	=> '15812345678',
 			'tel' 	=> '0592-123456',
-			'unitname' 	=> '蜀国荆州守将',
+			'unitname' 	=> '蜀國荊州守將',
 			'email' 	=> 'guanyu@rockoa.com',
 			'gname' 	=> '同事',
-			'address' 	=> '荆州市',
+			'address' 	=> '荊州市',
 		);
 	}
 }

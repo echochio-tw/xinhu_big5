@@ -13,10 +13,10 @@ class flow_knowtikuClassModel extends flowModel
 	public function flowrsreplace($rs,$isv=0)
 	{
 		if(isset($rs['typeid']))$rs['typeid'] 	= $this->db->getmou('[Q]option','name',"`id`='".$rs['typeid']."'");
-		$rs['type'] = ($rs['type']==1)?'多选':'单选';
+		$rs['type'] = ($rs['type']==1)?'多選':'單選';
 		if($isv==1){
 			$ss = '<font color=#888888>停用</font>';
-			if($rs['status']==1)$ss = '<font color=green>启用</font>';
+			if($rs['status']==1)$ss = '<font color=green>啟用</font>';
 			$rs['status'] = $ss;
 		}
 		
@@ -51,46 +51,46 @@ class flow_knowtikuClassModel extends flowModel
 		);
 	}
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		$barr = array(
 			'title' 		=> '信呼要求PHP最低版本',
-			'typeid' 		=> '官网知识',
-			'type' 		=> '单选',
+			'typeid' 		=> '官網知識',
+			'type' 		=> '單選',
 			'ana' 		=> '5.2',
 			'anb' 		=> '5.3',
 			'anc' 		=> '5.4',
 			'and' 		=> '5.5',
 			'answer' 		=> 'B',
-			'explain' 		=> '详见官网说明使用',
+			'explain' 		=> '詳見官網說明使用',
 		);
 		$barr1 = array(
 			'title' 		=> '信呼要求MySql最低版本',
-			'typeid' 		=> '官网知识',
-			'type' 		=> '单选',
+			'typeid' 		=> '官網知識',
+			'type' 		=> '單選',
 			'ana' 		=> '5.0',
 			'anb' 		=> '5.3',
 			'anc' 		=> '5.4',
 			'and' 		=> '5.5',
 			'answer' 		=> 'D',
-			'explain' 		=> '详见官网说明使用',
+			'explain' 		=> '詳見官網說明使用',
 		);
 		$barr2 = array(
-			'title' 	=> 'PHP如何连接数据库方式',
-			'typeid' 	=> '技术姿势/PHP知识',
-			'type' 		=> '多选',
+			'title' 	=> 'PHP如何連接數據庫方式',
+			'typeid' 	=> '技術姿勢/PHP知識',
+			'type' 		=> '多選',
 			'ana' 		=> 'mysql',
 			'anb' 		=> 'mysqli',
 			'anc' 		=> 'pdo',
 			'and' 		=> 'mssql',
 			'answer' 	=> 'ABC',
-			'explain' 	=> 'D选项为别的数据库',
+			'explain' 	=> 'D選項為別的數據庫',
 		);
 		return array($barr,$barr1,$barr2);
 	}
 	
-	//导入之前
+	//導入之前
 	public function flowdaorubefore($rows)
 	{
 		$inarr = array();

@@ -25,16 +25,16 @@ class xinhuClassAction extends Action
 	public function testsendAjax()
 	{
 		$barr  = m('reim')->sendpush($this->adminid, $this->adminid,array(
-			'cont' 	=> $this->jm->base64encode('测试内容:'.$this->now.''),
+			'cont' 	=> $this->jm->base64encode('測試內容:'.$this->now.''),
 			'type' 	=> 'user',
 			'optdt' => $this->now,
 			'messid' => 0
 		));
 		$msg 	= '';
 		if($barr['code']==0){
-			$msg='服务端推送地址可以使用';
+			$msg='服務端推送地址可以使用';
 		}else{
-			$msg='<font color=red>服务端推送地址不能使用：'.$barr['msg'].'</font>';
+			$msg='<font color=red>服務端推送地址不能使用：'.$barr['msg'].'</font>';
 		}
 		echo $msg;
 	}
@@ -44,11 +44,11 @@ class xinhuClassAction extends Action
 		$obj = m('reim');
 		$url = $obj->serverhosturl;
 		$msg = '';
-		if(isempt($url))$msg = '请先设置地址后保存在测试';
+		if(isempt($url))$msg = '請先設置地址後保存在測試';
 		if($msg==''){
 			$url = str_replace('ws:','http:', $url);
 			$cont = c('curl')->getcurl($url);
-			if(!contain($cont,'400 Bad Request'))$msg = '通信地址不能用，请看当前页面提示';
+			if(!contain($cont,'400 Bad Request'))$msg = '通信地址不能用，請看當前頁面提示';
 		}
 		if($msg=='')$msg = '通信地址可以用';
 		echo $msg;

@@ -1,5 +1,5 @@
 <?php
-//订阅的
+//訂閱的
 class flow_subscribeClassModel extends flowModel
 {
 	public  $uidfields = 'optid';
@@ -12,7 +12,7 @@ class flow_subscribeClassModel extends flowModel
 	public function getstatusarr()
 	{
 		$barr[]	 = array('停用','#888888');
-		$barr[]	 = array('启用','green');
+		$barr[]	 = array('啟用','green');
 		return $barr;
 	}
 
@@ -38,7 +38,7 @@ class flow_subscribeClassModel extends flowModel
 			
 			unset($rs['suburl']);
 			unset($rs['suburlpost']);
-			if(!isempt($rs['dinguser']))$rs['optname'] = $rs['dinguser']; //订阅人
+			if(!isempt($rs['dinguser']))$rs['optname'] = $rs['dinguser']; //訂閱人
 		}
 		if(isset($rs['suburl'])){
 			$rs['suburl'] = '<div class="wrap" style="">'.$this->rock->jm->base64decode($rs['suburl']).'</div>';

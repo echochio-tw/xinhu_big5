@@ -2,7 +2,7 @@
 class reimClassAction extends apiAction
 {
 	/**
-	*	获取聊天记录
+	*	獲取聊天記錄
 	*/
 	public function getrecordAction()
 	{
@@ -18,7 +18,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	获取会话的信息
+	*	獲取會話的信息
 	*/
 	public function getreceinforAction()
 	{
@@ -32,7 +32,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	发消息
+	*	發消息
 	*/
 	public function sendinforAction()
 	{
@@ -43,7 +43,7 @@ class reimClassAction extends apiAction
 		if($this->cfrom=='reim')$lx=1;
 		if($type=='group'){
 			$tos = m('im_groupuser')->rows("`gid`='$gid' and `uid`='$uid'");
-			if($tos==0)$this->showreturn('','您不在此会话中，不允许发送', 201);
+			if($tos==0)$this->showreturn('','您不在此會話中，不允許發送', 201);
 		}
 		$arr 		= m('reim')->sendinfor($type, $uid, $gid, array(
 			'optdt' => $this->now,
@@ -54,7 +54,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	标识已读
+	*	標識已讀
 	*/
 	public function yiduAction()
 	{
@@ -63,7 +63,7 @@ class reimClassAction extends apiAction
 		$this->showreturn($id);
 	}
 	
-	//将会话标识已读
+	//將會話標識已讀
 	public function yiduallAction()
 	{
 		$type 		= $this->post('type');
@@ -73,7 +73,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	创建讨论组
+	*	創建討論組
 	*/
 	public function createtaolunAction()
 	{
@@ -86,7 +86,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	获取会话上人员
+	*	獲取會話上人員
 	*/
 	public function getgroupuserAction()
 	{
@@ -97,7 +97,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	下载聊天记录
+	*	下載聊天記錄
 	*/
 	public function downrecordAction()
 	{
@@ -108,7 +108,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	删除历史会话
+	*	刪除歷史會話
 	*/
 	public function delhistoryAction()
 	{
@@ -118,7 +118,7 @@ class reimClassAction extends apiAction
 		$this->showreturn('');
 	}
 	
-	//邀请人员
+	//邀請人員
 	public function yaoqinguidAction()
 	{
 		$gid	= (int)$this->post('gid');
@@ -128,7 +128,7 @@ class reimClassAction extends apiAction
 		$this->showreturn($msg);
 	}
 	
-	//退出讨论组
+	//退出討論組
 	public function exitgroupAction()
 	{
 		$aid	= $this->adminid;
@@ -144,7 +144,7 @@ class reimClassAction extends apiAction
 		$this->showreturn('success');
 	}
 	
-	//清除历史记录
+	//清除歷史記錄
 	public function clearrecordAction()
 	{
 		$gid 	= (int)$this->post('gid');
@@ -155,7 +155,7 @@ class reimClassAction extends apiAction
 		$this->showreturn('');
 	}
 	
-	//上传头像
+	//上傳頭像
 	public function changefaceAction()
 	{
 		$fid 	= (int)$this->post('id');
@@ -165,7 +165,7 @@ class reimClassAction extends apiAction
 		$this->showreturn($face);
 	}
 	
-	//下载文件
+	//下載文件
 	public function downfileAction()
 	{
 		$id 	= (int)$this->post('id');
@@ -173,7 +173,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	文件转发发送给对应人员
+	*	文件轉發發送給對應人員
 	*/
 	public function forwardAction()
 	{
@@ -185,7 +185,7 @@ class reimClassAction extends apiAction
 	}
 	
 	/**
-	*	信息转发
+	*	信息轉發
 	*/
 	
 }

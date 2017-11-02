@@ -56,11 +56,11 @@ class JPush {
 
 
     /**
-     * 发送HTTP请求
-     * @param $url string 请求的URL
-     * @param $method int 请求的方法
-     * @param null $body String POST请求的Body
-     * @param int $times 当前重试的册数
+     * 發送HTTP請求
+     * @param $url string 請求的URL
+     * @param $method int 請求的方法
+     * @param null $body String POST請求的Body
+     * @param int $times 當前重試的冊數
      * @return array
      * @throws APIConnectionException
      */
@@ -70,21 +70,21 @@ class JPush {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
-        // 设置User-Agent
+        // 設置User-Agent
         curl_setopt($ch, CURLOPT_USERAGENT, self::USER_AGENT);
-        // 连接建立最长耗时
+        // 連接建立最長耗時
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, self::CONNECT_TIMEOUT);
-        // 请求最长耗时
+        // 請求最長耗時
         curl_setopt($ch, CURLOPT_TIMEOUT, self::READ_TIMEOUT);
-        // 设置SSL版本 1=CURL_SSLVERSION_TLSv1, 不指定使用默认值,curl会自动获取需要使用的CURL版本
+        // 設置SSL版本 1=CURL_SSLVERSION_TLSv1, 不指定使用默認值,curl會自動獲取需要使用的CURL版本
         // curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // 如果报证书相关失败,可以考虑取消注释掉该行,强制指定证书版本
+        // 如果報證書相關失敗,可以考慮取消注釋掉該行,強制指定證書版本
         //curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'TLSv1');
-        // 设置Basic认证
+        // 設置Basic認證
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, $this->appKey . ":" . $this->masterSecret);
-        // 设置Post参数
+        // 設置Post參數
         if ($method === self::HTTP_POST) {
             curl_setopt($ch, CURLOPT_POST, true);
         } else if ($method === self::HTTP_DELETE || $method === self::HTTP_PUT) {
@@ -94,13 +94,13 @@ class JPush {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         }
 
-        // 设置headers
+        // 設置headers
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Connection: Keep-Alive'
         ));
 
-        // 执行请求
+        // 執行請求
         $output = curl_exec($ch);
         // 解析Response
         $response = array();

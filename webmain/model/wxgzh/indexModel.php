@@ -2,7 +2,7 @@
 class wxgzh_indexClassModel extends wxgzhModel
 {
 	/**
-	*	发模版消息
+	*	發模版消息
 	*/
 	public function sendtpl($toid=0)
 	{
@@ -12,7 +12,7 @@ class wxgzh_indexClassModel extends wxgzhModel
            "url":"http://weixin.qq.com/download",           
            "data":{
                    "first": {
-                       "value":"恭喜你购买成功！",
+                       "value":"恭喜你購買成功！",
                        "color":"#173177"
                    },
                    "modename":{
@@ -20,7 +20,7 @@ class wxgzh_indexClassModel extends wxgzhModel
                        "color":"#173177"
                    },
                    "remark":{
-                       "value":"请尽快处理查看！",
+                       "value":"請盡快處理查看！",
                        "color":"#173177"
                    }
            }

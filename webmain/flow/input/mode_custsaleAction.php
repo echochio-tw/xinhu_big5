@@ -1,6 +1,6 @@
 <?php
 /**
-*	客户.销售机会
+*	客戶.銷售機會
 */
 class mode_custsaleClassAction extends inputAction{
 	

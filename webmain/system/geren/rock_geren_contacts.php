@@ -6,9 +6,9 @@ $(document).ready(function(){
 		columns:[{
 			text:'姓名',dataIndex:'uname'
 		},{
-			text:'用户id',dataIndex:'uid'
+			text:'用戶id',dataIndex:'uid'
 		},{
-			text:'排序号',dataIndex:'sort',editor:true
+			text:'排序號',dataIndex:'sort',editor:true
 		}],
 		itemclick:function(){
 			btn(false);
@@ -21,17 +21,17 @@ $(document).ready(function(){
 		},
 		clickwin:function(o1,lx){
 			var h = $.bootsform({
-				title:'常联系人',height:400,width:400,
+				title:'常聯系人',height:400,width:400,
 				tablename:'contacts',isedit:lx,url:publicsave(),params:{int_filestype:'sort',otherfields:'optdt={now},optid={adminid},optname={admin}'},
 				submitfields:'uname,sort,uid',
 				items:[{
 					name:'uid',type:'hidden'
 				},{
-					labelText:'常联系人',type:'changeuser',changeuser:{
-						type:'user',idname:'uid',title:'选择人员'
+					labelText:'常聯系人',type:'changeuser',changeuser:{
+						type:'user',idname:'uid',title:'選擇人員'
 					},name:'uname',clearbool:true,required:true
 				},{
-					labelText:'排序号',name:'sort',type:'number',value:'0'
+					labelText:'排序號',name:'sort',type:'number',value:'0'
 				}],
 				success:function(){
 					a.reload();
@@ -61,8 +61,8 @@ $(document).ready(function(){
 		<button class="btn btn-success" click="refresh" type="button"><i class="icon-refresh"></i> 刷新</button>
 	</li>
 	<li style="text-align:right" class="floats50">
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button> &nbsp; 
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button> &nbsp; 
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</li>
 </ul>
 </div>	

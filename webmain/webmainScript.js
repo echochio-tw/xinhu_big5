@@ -40,7 +40,7 @@ js.initedit = function(id,can){
 js.setwhere	= function(mid,call){
 	if(!call)call='';
 	var url =js.getajaxurl('@setwhere','where','flow',{modeid:mid,callback:call});
-	js.tanbody('setwherewin','设置条件',500,330,{
+	js.tanbody('setwherewin','設置條件',500,330,{
 		html:'<div style="height:320px;overflow:hidden"><iframe src="" name="winiframese" width="100%" height="100%" frameborder="0"></iframe></div>',
 		bbar:'none'
 	});

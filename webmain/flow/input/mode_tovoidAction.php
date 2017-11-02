@@ -4,7 +4,7 @@ class mode_tovoidClassAction extends inputAction{
 	
 	protected function savebefore($table, $arr, $id, $addbo){
 		$tonum = $arr['tonum'];
-		if(m($table)->rows("`id`<>$id and `tonum`='$tonum'")>0)return '此单据已申请过了';
+		if(m($table)->rows("`id`<>$id and `tonum`='$tonum'")>0)return '此單據已申請過了';
 	}
 	
 		
@@ -12,7 +12,7 @@ class mode_tovoidClassAction extends inputAction{
 		
 	}
 	
-	//读取可作废的单据是，申请日期只能是30天内的单据
+	//讀取可作廢的單據是，申請日期只能是30天內的單據
 	public function modebill()
 	{
 		$dts  = date('Y-m-d', time()-30*24*3600);
@@ -27,7 +27,7 @@ class mode_tovoidClassAction extends inputAction{
 		return $row;
 	}
 	
-	//获取作废单据
+	//獲取作廢單據
 	public function gettonum()
 	{
 		$row  = array();
@@ -41,7 +41,7 @@ class mode_tovoidClassAction extends inputAction{
 	}
 	
 	/**
-	*	联动获取
+	*	聯動獲取
 	*/
 	public function gettonumAjax()
 	{

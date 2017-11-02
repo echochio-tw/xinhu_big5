@@ -197,7 +197,7 @@ class PushPayload {
                 $ios['sound'] = $sound;
             }
         } else {
-            // 默认sound为''
+            // 默認sound為''
             $ios['sound'] = '';
         }
 
@@ -211,7 +211,7 @@ class PushPayload {
                 $ios['badge'] = $badge;
             }
         } else {
-            // 默认badge为'+1'
+            // 默認badge為'+1'
             $ios['badge'] = '+1';
         }
 

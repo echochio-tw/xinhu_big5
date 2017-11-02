@@ -1,5 +1,5 @@
 /**
-*	图片查看
+*	圖片查看
 *	createname：雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (xh829.com)
@@ -34,10 +34,10 @@
 			s+='	<div id="imgview_spanmask"  style="position:absolute;z-index:1;left:0px;top:0px;background-color:rgba(0,0,0,0);width:100%;height:100%;cursor:move;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;"></div>';
 			s+='	<img style="position:absolute;z-index:0;left:0px;top:0px" id="imgview_spanimg" width="100%" height="100%" src="images/mloading.gif" >';
 			s+='</div>';
-			s+='<div style="position:fixed;z-index:2;left:0px;bottom:0px;text-align:center;color:white;width:100%;font-size:20px;background-color:rgba(0,0,0,0.2);height:40px;line-height:40px;overflow:hidden"><i style="cursor:pointer" id="imgview_zoom-out" class="icon-zoom-out" title="缩小"></i> &nbsp; <span id="imgview_nowbili" style="font-size:14px">100%</span> &nbsp; <i style="cursor:pointer" class="icon-zoom-in" title="放大" id="imgview_zoom-in"></i>';
+			s+='<div style="position:fixed;z-index:2;left:0px;bottom:0px;text-align:center;color:white;width:100%;font-size:20px;background-color:rgba(0,0,0,0.2);height:40px;line-height:40px;overflow:hidden"><i style="cursor:pointer" id="imgview_zoom-out" class="icon-zoom-out" title="縮小"></i> &nbsp; <span id="imgview_nowbili" style="font-size:14px">100%</span> &nbsp; <i style="cursor:pointer" class="icon-zoom-in" title="放大" id="imgview_zoom-in"></i>';
 			s+='  &nbsp; <i style="cursor:pointer" class="icon-move" title="原始大小" id="imgview_zoom-move"></i>';
-			if(!this.ismobile && this.downbool)s+='  &nbsp; <a target="_blank" download="" style="color:white" href="'+this.url+'"><i style="cursor:pointer" class="icon-download-alt" title="下载"></i></a>';
-			s+='  &nbsp; <i style="cursor:pointer" class="icon-refresh" title="旋转90度" id="imgview_zoom-refresh"></i>';
+			if(!this.ismobile && this.downbool)s+='  &nbsp; <a target="_blank" download="" style="color:white" href="'+this.url+'"><i style="cursor:pointer" class="icon-download-alt" title="下載"></i></a>';
+			s+='  &nbsp; <i style="cursor:pointer" class="icon-refresh" title="旋轉90度" id="imgview_zoom-refresh"></i>';
 			s+='</div>';
 			s+='</div>';
 			$('body').append(s);
@@ -57,7 +57,7 @@
 				me.initmove();
 			}
 			img.onerror=function(e){
-				$('#imgview_span').html('无图');
+				$('#imgview_span').html('無圖');
 			}
 			$('#imgview_zoom-out').click(function(){
 				me.bilixxx(-0.1);

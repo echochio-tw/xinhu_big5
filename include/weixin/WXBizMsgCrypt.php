@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 对公众平台发送给公众账号的消息加解密示例代码.
+ * 對公眾平台發送給公眾賬號的消息加解密示例代碼.
  *
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
@@ -13,8 +13,8 @@ include_once "pkcs7Encoder.php";
 include_once "errorCode.php";
 
 /**
- * 1.第三方回复加密消息给公众平台；
- * 2.第三方收到公众平台发送的消息，验证消息的安全性，并对消息进行解密。
+ * 1.第三方回復加密消息給公眾平台；
+ * 2.第三方收到公眾平台發送的消息，驗證消息的安全性，並對消息進行解密。
  */
 class WXBizMsgCrypt
 {
@@ -23,10 +23,10 @@ class WXBizMsgCrypt
 	private $m_sCorpid;
 
 	/**
-	 * 构造函数
-	 * @param $token string 公众平台上，开发者设置的token
-	 * @param $encodingAesKey string 公众平台上，开发者设置的EncodingAESKey
-	 * @param $Corpid string 公众平台的Corpid
+	 * 構造函數
+	 * @param $token string 公眾平台上，開發者設置的token
+	 * @param $encodingAesKey string 公眾平台上，開發者設置的EncodingAESKey
+	 * @param $Corpid string 公眾平台的Corpid
 	 */
 	public function WXBizMsgCrypt($token, $encodingAesKey, $Corpid)
 	{
@@ -36,13 +36,13 @@ class WXBizMsgCrypt
 	}
 	
     /*
-	*验证URL
-    *@param sMsgSignature: 签名串，对应URL参数的msg_signature
-    *@param sTimeStamp: 时间戳，对应URL参数的timestamp
-    *@param sNonce: 随机串，对应URL参数的nonce
-    *@param sEchoStr: 随机串，对应URL参数的echostr
-    *@param sReplyEchoStr: 解密之后的echostr，当return返回0时有效
-    *@return：成功0，失败返回对应的错误码
+	*驗證URL
+    *@param sMsgSignature: 簽名串，對應URL參數的msg_signature
+    *@param sTimeStamp: 時間戳，對應URL參數的timestamp
+    *@param sNonce: 隨機串，對應URL參數的nonce
+    *@param sEchoStr: 隨機串，對應URL參數的echostr
+    *@param sReplyEchoStr: 解密之後的echostr，當return返回0時有效
+    *@return：成功0，失敗返回對應的錯誤碼
 	*/
 	public function VerifyURL($sMsgSignature, $sTimeStamp, $sNonce, $sEchoStr, &$sReplyEchoStr)
 	{
@@ -74,20 +74,20 @@ class WXBizMsgCrypt
 		return ErrorCode::$OK;
 	}
 	/**
-	 * 将公众平台回复用户的消息加密打包.
+	 * 將公眾平台回復用戶的消息加密打包.
 	 * <ol>
-	 *    <li>对要发送的消息进行AES-CBC加密</li>
-	 *    <li>生成安全签名</li>
-	 *    <li>将消息密文和安全签名打包成xml格式</li>
+	 *    <li>對要發送的消息進行AES-CBC加密</li>
+	 *    <li>生成安全簽名</li>
+	 *    <li>將消息密文和安全簽名打包成xml格式</li>
 	 * </ol>
 	 *
-	 * @param $replyMsg string 公众平台待回复用户的消息，xml格式的字符串
-	 * @param $timeStamp string 时间戳，可以自己生成，也可以用URL参数的timestamp
-	 * @param $nonce string 随机串，可以自己生成，也可以用URL参数的nonce
-	 * @param &$encryptMsg string 加密后的可以直接回复用户的密文，包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串,
-	 *                      当return返回0时有效
+	 * @param $replyMsg string 公眾平台待回復用戶的消息，xml格式的字符串
+	 * @param $timeStamp string 時間戳，可以自己生成，也可以用URL參數的timestamp
+	 * @param $nonce string 隨機串，可以自己生成，也可以用URL參數的nonce
+	 * @param &$encryptMsg string 加密後的可以直接回復用戶的密文，包括msg_signature, timestamp, nonce, encrypt的xml格式的字符串,
+	 *                      當return返回0時有效
 	 *
-	 * @return int 成功0，失败返回对应的错误码
+	 * @return int 成功0，失敗返回對應的錯誤碼
 	 */
 	public function EncryptMsg($sReplyMsg, $sTimeStamp, $sNonce, &$sEncryptMsg)
 	{
@@ -105,7 +105,7 @@ class WXBizMsgCrypt
 		}
 		$encrypt = $array[1];
 
-		//生成安全签名
+		//生成安全簽名
 		$sha1 = new SHA1;
 		$array = $sha1->getSHA1($this->m_sToken, $sTimeStamp, $sNonce, $encrypt);
 		$ret = $array[0];
@@ -114,7 +114,7 @@ class WXBizMsgCrypt
 		}
 		$signature = $array[1];
 
-		//生成发送的xml
+		//生成發送的xml
 		$xmlparse = new XMLParse;
 		$sEncryptMsg = $xmlparse->generate($encrypt, $signature, $sTimeStamp, $sNonce);
 		return ErrorCode::$OK;
@@ -122,20 +122,20 @@ class WXBizMsgCrypt
 
 
 	/**
-	 * 检验消息的真实性，并且获取解密后的明文.
+	 * 檢驗消息的真實性，並且獲取解密後的明文.
 	 * <ol>
-	 *    <li>利用收到的密文生成安全签名，进行签名验证</li>
-	 *    <li>若验证通过，则提取xml中的加密消息</li>
-	 *    <li>对消息进行解密</li>
+	 *    <li>利用收到的密文生成安全簽名，進行簽名驗證</li>
+	 *    <li>若驗證通過，則提取xml中的加密消息</li>
+	 *    <li>對消息進行解密</li>
 	 * </ol>
 	 *
-	 * @param $msgSignature string 签名串，对应URL参数的msg_signature
-	 * @param $timestamp string 时间戳 对应URL参数的timestamp
-	 * @param $nonce string 随机串，对应URL参数的nonce
-	 * @param $postData string 密文，对应POST请求的数据
-	 * @param &$msg string 解密后的原文，当return返回0时有效
+	 * @param $msgSignature string 簽名串，對應URL參數的msg_signature
+	 * @param $timestamp string 時間戳 對應URL參數的timestamp
+	 * @param $nonce string 隨機串，對應URL參數的nonce
+	 * @param $postData string 密文，對應POST請求的數據
+	 * @param &$msg string 解密後的原文，當return返回0時有效
 	 *
-	 * @return int 成功0，失败返回对应的错误码
+	 * @return int 成功0，失敗返回對應的錯誤碼
 	 */
 	public function DecryptMsg($sMsgSignature, $sTimeStamp = null, $sNonce, $sPostData, &$sMsg)
 	{
@@ -161,7 +161,7 @@ class WXBizMsgCrypt
 		$encrypt = $array[1];
 		$touser_name = $array[2];
 
-		//验证安全签名
+		//驗證安全簽名
 		$sha1 = new SHA1;
 		$array = $sha1->getSHA1($this->m_sToken, $sTimeStamp, $sNonce, $encrypt);
 		$ret = $array[0];

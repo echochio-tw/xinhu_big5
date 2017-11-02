@@ -8,7 +8,7 @@ class flowClassAction extends ActionNot{
 	
 	public function applyAction()
 	{
-		$this->title = '申请流程';
+		$this->title = '申請流程';
 		
 		$viewobj 	= m('view');
 		$applyarr	= m('mode')->getmoderows($this->adminid,'and islu=1');

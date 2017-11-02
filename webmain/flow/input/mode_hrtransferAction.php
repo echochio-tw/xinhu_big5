@@ -1,11 +1,11 @@
 <?php
-//人事调动
+//人事調動
 class mode_hrtransferClassAction extends inputAction{
 	
 
 	protected function savebefore($table, $arr, $id, $addbo){
 		$tranuid = $arr['tranuid'];
-		if(m($table)->rows("`tranuid`='$tranuid' and `id`<>'$id' and `status` not in(1,5)")>0)return '该人员已申请过了';
+		if(m($table)->rows("`tranuid`='$tranuid' and `id`<>'$id' and `status` not in(1,5)")>0)return '該人員已申請過了';
 	}
 	
 	protected function saveafter($table, $arr, $id, $addbo){

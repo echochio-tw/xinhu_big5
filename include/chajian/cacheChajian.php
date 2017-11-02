@@ -1,14 +1,14 @@
 <?php 
 /**
-*	缓存，目前是使用磁盘文件存储
+*	緩存，目前是使用磁盤文件存儲
 */
 class cacheChajian extends Chajian{
 	
 	private $dirvie = 'file'; //redis,file
 	
 	/**
-	*	设置缓存
-	* 	$time 缓存时间(秒)
+	*	設置緩存
+	* 	$time 緩存時間(秒)
 	*/
 	public function set($key, $data, $time=0)
 	{
@@ -37,7 +37,7 @@ class cacheChajian extends Chajian{
 	}
 	
 	/**
-	*	获取缓存
+	*	獲取緩存
 	*/
 	public function get($key, $dev='')
 	{
@@ -51,7 +51,7 @@ class cacheChajian extends Chajian{
 				if($time==0 || $time>=time()){
 					$data = arrvalue($sarr, 'data');
 				}else{
-					$this->del($key); //已经过期了
+					$this->del($key); //已經過期了
 				}
 			}
 		}
@@ -59,7 +59,7 @@ class cacheChajian extends Chajian{
 	}
 	
 	/**
-	*	删除缓存
+	*	刪除緩存
 	*/
 	public function del($key)
 	{

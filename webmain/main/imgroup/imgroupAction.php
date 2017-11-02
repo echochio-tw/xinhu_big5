@@ -6,7 +6,7 @@ class imgroupClassAction extends Action
 		$s 		= 'and 1=2';
 		$gid 	= $this->post('gid','0');
 		if($gid>0){
-			$s = " and id in(select uid from [Q]im_groupuser where `gid`='$gid')";
+			$s = " and id in(select `uid` from `[Q]im_groupuser` where `gid`='$gid')";
 		}
 		return array(
 			'where' => $s,
@@ -41,7 +41,7 @@ class imgroupClassAction extends Action
 		echo 'success';
 	}
 	
-	//保存组织结构
+	//保存組織結構
 	public function savegroupafter($table, $arr, $id)
 	{
 		m('imgroup')->updateguser($id, $arr['deptid']);

@@ -3,7 +3,7 @@ function initbodys(){
 		var val = this.value,txt='';
 		if(val!=''){
 			txt = c.getseltext('carid');
-			if(form('kmstart'))form('kmstart').value=c.getselattr('carid','kmstart'); //设置起始公里数
+			if(form('kmstart'))form('kmstart').value=c.getselattr('carid','kmstart'); //設置起始公裡數
 		}
 		if(form('carnum'))form('carnum').value=txt;
 	});
@@ -15,5 +15,5 @@ function initbodys(){
 
 
 function changesubmit(d){
-	if(d.enddt<=d.startdt)return '结束时间必须大于开始时间';
+	if(d.enddt<=d.startdt)return '結束時間必須大于開始時間';
 }

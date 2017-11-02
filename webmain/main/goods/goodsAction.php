@@ -68,7 +68,7 @@ class goodsClassAction extends Action
 			$tyeparr = array();
 			foreach($typearr0 as $k=>$rs)$tyeparr['a0_'.$rs['value'].''] = $rs['name'];
 			foreach($typearr1 as $k=>$rs)$tyeparr['a1_'.$rs['value'].''] = $rs['name'];
-			$statusar= array('<font color=blue>待审核</font>','<font color=green>已审核</font>','<font color=red>审核未通过</font>');
+			$statusar= array('<font color=blue>待審核</font>','<font color=green>已審核</font>','<font color=red>審核未通過</font>');
 			$typearr = array();
 			
 			foreach($rows as $k=>$rs){
@@ -86,14 +86,14 @@ class goodsClassAction extends Action
 				if(isset($tyeparr[$skey]))$kind = $tyeparr[$skey];
 				$rows[$k]['kind']	= $kind;
 				$rows[$k]['status']	= $statusar[$rs['status']];
-				if($rs['mid']>0)$rows[$k]['checkdisabled'] = true;//有主表ID，不能删除
+				if($rs['mid']>0)$rows[$k]['checkdisabled'] = true;//有主表ID，不能刪除
 			}
 		}
 		return array('rows' => $rows);
 	}
 	
 	/**
-	*	删除出入库详情
+	*	刪除出入庫詳情
 	*/
 	public function delxiangAjax()
 	{
@@ -139,7 +139,7 @@ class goodsClassAction extends Action
 	
 	
 	
-	//2017-08-20 后弃用了
+	//2017-08-20 後棄用了
 	public function addplgoodsAjax()
 	{
 		$rows  	= c('html')->importdata('name,typeid,price,unit,guige,xinghao,stockcs','name,typeid');
@@ -148,12 +148,12 @@ class goodsClassAction extends Action
 		foreach($rows as $k=>$rs){
 			$rs['typeid'] 	= $this->option->gettypeid('goodstype',$rs['typeid']);
 			
-			//判断是否存在
+			//判斷是否存在
 			$odi 			= $db->existsgoods($rs);
 			if($odi)continue;
 			
-			$rs['price']	= floatval($this->rock->repempt($rs['price'],'0')); //金额
-			$rs['stockcs']	= (int)$this->rock->repempt($rs['stockcs'],'0'); //初始库存
+			$rs['price']	= floatval($this->rock->repempt($rs['price'],'0')); //金額
+			$rs['stockcs']	= (int)$this->rock->repempt($rs['stockcs'],'0'); //初始庫存
 			$rows[$k]		= $rs;
 			$rs['adddt']	= $this->now;
 			$rs['optdt']	= $this->now;
@@ -163,10 +163,10 @@ class goodsClassAction extends Action
 			$oi++;
 		}
 		$this->reloadkcAjax();
-		backmsg('','成功导入'.$oi.'条数据');
+		backmsg('','成功導入'.$oi.'條數據');
 	}
 	
-	//刷新库存
+	//刷新庫存
 	public function reloadkcAjax()
 	{
 		m('goods')->setstock();

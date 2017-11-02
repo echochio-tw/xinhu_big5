@@ -5,7 +5,7 @@
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (www.rockoa.com)
 *	Date:2016-01-01
-*	explain：返回200为正常
+*	explain：返回200為正常
 */
 class apiAction extends ActionNot
 {
@@ -26,7 +26,7 @@ class apiAction extends ActionNot
 		if(!$boss){
 			if($this->isempt($this->token))$this->showreturn('','token invalid', 299);
 			$to = m('logintoken')->rows("`token`='$this->token' and `uid`='$this->adminid' and `online`=1");
-			if($to==0)$this->showreturn('','登录失效，请重新登录', 199);
+			if($to==0)$this->showreturn('','登錄失效，請重新登錄', 199);
 		}
 		$this->userrs = m('admin')->getone("`id`='$this->adminid' and `status`=1", '`name`,`user`,`id`,`ranking`,`deptname`,`deptid`');
 		if(!$this->userrs && !$boss){

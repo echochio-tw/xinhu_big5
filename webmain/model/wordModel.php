@@ -9,23 +9,23 @@ class wordClassModel extends Model
 	}
 	
 	/**
-	*	读取对应顶级ＩＤ
+	*	讀取對應頂級ＩＤ
 	*/
 	public function getfolderid($uid, $isdept=false)
 	{
 		$num = "folder".$uid."";
-		$name= ''.$this->adminname.'文件夹目录';
+		$name= ''.$this->adminname.'文件夾目錄';
 		if($isdept){
 			$drs = m('dept')->getudept($uid);
 			$num = 'deptfolder'.$drs['nums'].'';
-			$name= ''.$drs['name'].'文件夹目录';
+			$name= ''.$drs['name'].'文件夾目錄';
 		}
 		$id  = $this->optionobj->getnumtoid($num, $name, false);
 		return $id;
 	}
 	
 	/**
-	*	对应对应文件目录
+	*	對應對應文件目錄
 	*/
 	public function getfoldrows($uid, $isdept=false)
 	{
@@ -35,7 +35,7 @@ class wordClassModel extends Model
 	}
 	
 	/**
-	*	读取所有目录
+	*	讀取所有目錄
 	*/
 	private $allfolder = array();
 	public function getallfolder($idss='',$level=0)
@@ -56,7 +56,7 @@ class wordClassModel extends Model
 	}
 	
 	/**
-	*	获取分享给我的目录(太复杂了，无法进行了)
+	*	獲取分享給我的目錄(太復雜了，無法進行了)
 	*/
 	public function getshatefolder($uid)
 	{

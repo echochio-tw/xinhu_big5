@@ -1,6 +1,6 @@
 <?php
 /**
-*	此文件是流程模块【subscribe.订阅】对应控制器接口文件。
+*	此文件是流程模塊【subscribe.訂閱】對應控制器接口文件。
 */ 
 class mode_subscribeClassAction extends inputAction{
 	
@@ -11,10 +11,10 @@ class mode_subscribeClassAction extends inputAction{
 		$suburlpost = $cans['suburlpost'];
 		$optid		= $cans['optid'];
 		$to  = m('subscribe')->rows("`id`<>'$id' and `optid`='$optid' and `suburlpost`='$suburlpost'");
-		if($to>0)return '已订阅过，请到我的订阅管理下操作';
+		if($to>0)return '已訂閱過，請到我的訂閱管理下操作';
 	}
 	
-	//运行订阅
+	//運行訂閱
 	public function yunsubscribeAjax()
 	{
 		$id = (int)$this->get('id');

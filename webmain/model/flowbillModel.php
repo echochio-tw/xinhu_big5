@@ -7,12 +7,12 @@ class flowbillClassModel extends Model
 	public function initModel()
 	{
 		$this->settable('flow_bill');
-		$this->statustext	= explode(',','待处理,已审核,处理不通过,,,已作废');
+		$this->statustext	= explode(',','待處理,已審核,處理不通過,,,已作廢');
 		$this->statuscolor	= explode(',','blue,green,red,,,gray');
 	}
 	
 	/**
-	*	获取状态
+	*	獲取狀態
 	*/
 	public function getstatus($zt, $lx=0)
 	{
@@ -27,15 +27,15 @@ class flowbillClassModel extends Model
 	}
 	
 	/**
-	*	读取单据数据
-	*	$glx 0是应用上读取，1后台读取
+	*	讀取單據數據
+	*	$glx 0是應用上讀取，1後台讀取
 	*/
 	public function getrecord($uid, $lx, $page, $limit, $glx=0)
 	{
 		$srows	= array();
 		$where	= 'uid='.$uid.'';
 		$isdb	= 0;
-		//未通过
+		//未通過
 		if($lx=='flow_wtg'){
 			$where .= ' and `status`=2';
 		}
@@ -49,28 +49,28 @@ class flowbillClassModel extends Model
 			$where .= ' and `status`=1';
 		}
 		
-		//异常
+		//異常
 		if($lx=='flow_error'){
 			$where .= ' and '.$this->errorwhere().'';
 		}
 		
-		//待办
+		//待辦
 		if($lx=='daiban_daib' || $lx=='daiban_def'){
 			$where	= '`status` not in(1,2) and '.$this->rock->dbinstr('nowcheckid', $uid);
 			$isdb	= 1;
 		}
 		
-		//经我处理
+		//經我處理
 		if($lx=='daiban_jwcl'){
 			$where	= $this->rock->dbinstr('allcheckid', $uid);
 		}
 		
-		//我全部下级申请
+		//我全部下級申請
 		if($lx=='daiban_myxia'){
 			$where 	= m('admin')->getdownwheres('uid', $uid, 0);
 		}
 		
-		//我直属下级申请
+		//我直屬下級申請
 		if($lx=='daiban_mydown'){
 			$where 	= m('admin')->getdownwheres('uid', $uid, 1);
 		}
@@ -92,7 +92,7 @@ class flowbillClassModel extends Model
 			$modename	= $rs['modename'];
 			$summary	= '';
 			$modenum 	= '';
-			$statustext	= '记录不存在';
+			$statustext	= '記錄不存在';
 			$statuscolor= '#888888';
 			$ishui		= 0;
 			if(isset($modearr[$rs['modeid']])){
@@ -120,11 +120,11 @@ class flowbillClassModel extends Model
 			}
 			
 			$title 		= '['.$rs['optname'].']'.$modename.'';
-			$cont 		= '申请人：'.$rs['optname'].'<br>单号：'.$rs['sericnum'].'';
-			$cont.='<br>申请日期：'.$rs['applydt'].'';
+			$cont 		= '申請人：'.$rs['optname'].'<br>單號：'.$rs['sericnum'].'';
+			$cont.='<br>申請日期：'.$rs['applydt'].'';
 			if(!isempt($summary))$cont.='<br>摘要：'.$summary.'';
-			if(!isempt($rs['nstatustext']))$cont.='<br>状态：'.$rs['nstatustext'].'';
-			if(!isempt($rs['checksm']))$cont.='<br>处理说明：'.$rs['checksm'].'';
+			if(!isempt($rs['nstatustext']))$cont.='<br>狀態：'.$rs['nstatustext'].'';
+			if(!isempt($rs['checksm']))$cont.='<br>處理說明：'.$rs['checksm'].'';
 			
 			$srows[]= array(
 				'title' => $title,
@@ -146,7 +146,7 @@ class flowbillClassModel extends Model
 		return $arr;
 	}
 	
-	//获取待办处理数字
+	//獲取待辦處理數字
 	public function daibanshu($uid)
 	{
 		$where	= '`status` not in(1,2) and isdel=0 and '.$this->rock->dbinstr('nowcheckid', $uid);
@@ -154,7 +154,7 @@ class flowbillClassModel extends Model
 		return $to;
 	}
 	
-	//未通过的
+	//未通過的
 	public function applymywgt($uid)
 	{
 		$where	= '`status`=2 and isdel=0 and `uid`='.$uid.'';
@@ -162,14 +162,14 @@ class flowbillClassModel extends Model
 		return $to;
 	}
 	
-	//异常单据条件，审核人中有停用的帐号
+	//異常單據條件，審核人中有停用的帳號
 	public function errorwhere($qz='')
 	{
 		$where	= ''.$qz.'`status` not in(1,5) and '.$qz.'`isdel`=0 and '.$qz.'`isturn`=1 and (('.$qz.'`nowcheckid` is null) or ('.$qz.'`nowcheckid` not in(select `id` from `[Q]admin` where `status`=1)))';
 		return $where;
 	}
 	
-	//异常数
+	//異常數
 	public function errortotal()
 	{
 		$where	= $this->errorwhere();
@@ -177,7 +177,7 @@ class flowbillClassModel extends Model
 		return $to;
 	}
 	
-	//单据数据
+	//單據數據
 	public function getbilldata($rows)
 	{
 		$srows	= array();
@@ -193,7 +193,7 @@ class flowbillClassModel extends Model
 			$modename	= $rs['modename'];
 			$summary	= '';
 			$modenum 	= '';
-			$statustext	= '记录不存在';
+			$statustext	= '記錄不存在';
 			$statuscolor= '#888888';
 			$wdst 		= 0;
 			$ishui 		= 0;
@@ -214,7 +214,7 @@ class flowbillClassModel extends Model
 					$statuscolor = $ztarr[1];
 					if($rers['status']==5)$ishui = 1;
 				}else{
-					$this->update('isdel=1', $rs['id']); //记录已经不存在了
+					$this->update('isdel=1', $rs['id']); //記錄已經不存在了
 				}
 			}
 			
@@ -229,7 +229,7 @@ class flowbillClassModel extends Model
 				'deptname' 	=> $rs['deptname'],
 				'sericnum' 	=> $rs['sericnum'],
 				'nowcheckid'=> $rs['nowcheckid'],
-				'nowcourseid'=> $rs['nowcourseid'], //当前步骤
+				'nowcourseid'=> $rs['nowcourseid'], //當前步驟
 				'ishui' 	=> $ishui,
 				'modename' 	=> $modename,
 				'modenum' 	=> $modenum,
@@ -241,7 +241,7 @@ class flowbillClassModel extends Model
 	}
 	
 	/**
-	* 首页上显示我的申请
+	* 首頁上顯示我的申請
 	*/
 	public function homelistshow()
 	{
@@ -249,7 +249,7 @@ class flowbillClassModel extends Model
 		$rows  	= $arr['rows'];
 		$arows 	= array();
 		foreach($rows as $k=>$rs){
-			$cont = '【'.$rs['modename'].'】单号:'.$rs['sericnum'].',日期:'.$rs['applydt'].'，';
+			$cont = '【'.$rs['modename'].'】單號:'.$rs['sericnum'].',日期:'.$rs['applydt'].'，';
 			if(!contain($rs['statustext'],'<font')){
 				$cont.= '<font color="'.$rs['statuscolor'].'">'.$rs['statustext'].'</font>';
 			}else{
@@ -267,7 +267,7 @@ class flowbillClassModel extends Model
 	}
 	
 	/*
-	*	更新记录
+	*	更新記錄
 	*/
 	public function updatebill()
 	{

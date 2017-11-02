@@ -6,37 +6,37 @@ $(document).ready(function(){
 	if(!uid)uid=adminid+'';
 	
 	var columns=[{
-		text:'部门',dataIndex:'deptname'
+		text:'部門',dataIndex:'deptname'
 	},{
 		text:'姓名',dataIndex:'name'
 	},{
 		text:'月份',dataIndex:'month'
 	},{
-		text:'待收金额',dataIndex:'shou_moneyd'
+		text:'待收金額',dataIndex:'shou_moneyd'
 	},{
-		text:'已收金额',dataIndex:'shou_moneys'
+		text:'已收金額',dataIndex:'shou_moneys'
 	},{
-		text:'应收金额',dataIndex:'shou_moneyz'
+		text:'應收金額',dataIndex:'shou_moneyz'
 	},{
-		text:'当月已收金额',dataIndex:'shou_moneyn'
+		text:'當月已收金額',dataIndex:'shou_moneyn'
 	},{
-		text:'收款单数',dataIndex:'shou_shu'
+		text:'收款單數',dataIndex:'shou_shu'
 	},{
-		text:'待付金额',dataIndex:'fu_moneyd'
+		text:'待付金額',dataIndex:'fu_moneyd'
 	},{
-		text:'已付金额',dataIndex:'fu_moneys'
+		text:'已付金額',dataIndex:'fu_moneys'
 	},{
-		text:'应付金额',dataIndex:'fu_moneyz'
+		text:'應付金額',dataIndex:'fu_moneyz'
 	},{
-		text:'当月已付金额',dataIndex:'fu_moneyn'
+		text:'當月已付金額',dataIndex:'fu_moneyn'
 	},{
-		text:'付款单数',dataIndex:'fu_shu'
+		text:'付款單數',dataIndex:'fu_shu'
 	}];
 	var a = $('#view_{rand}').bootstable({
 		tablename:'custfina',params:{'uid':uid},modedir:'{mode}:{dir}',storeafteraction:'custtotalgeafter',storebeforeaction:'custtotalgebefore',
 		columns:columns,
 		load:function(a){
-			c.loadcharts('shou_moneys','已收金额');
+			c.loadcharts('shou_moneys','已收金額');
 		}
 	});
 	
@@ -70,7 +70,7 @@ $(document).ready(function(){
 			}
 			var option = {
 				title: {
-					text: ''+nas+'图表',
+					text: ''+nas+'圖表',
 					left: 'center'
 				},
 				tooltip: {},
@@ -120,7 +120,7 @@ $(document).ready(function(){
 	</td>
 	<td style="padding-right:10px">
 		<div style="width:120px" class="input-group">
-			<input readonly placeholder="月份从" class="form-control" id="start_{rand}" >
+			<input readonly placeholder="月份從" class="form-control" id="start_{rand}" >
 			<span class="input-group-btn">
 				<button onclick="return js.selectdate(this,'start_{rand}','month')" class="btn btn-default" type="button"><i class="icon-calendar"></i></button>
 			</span>
@@ -142,7 +142,7 @@ $(document).ready(function(){
 		
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 	</tr>
 	</table>
@@ -151,4 +151,4 @@ $(document).ready(function(){
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
 <div class="blank10"></div>
-<div id="ssssv_{rand}"><select id="selectsss_{rand}" style="width:250px" class="form-control"><option value="">--选择图表字段--</option></select></div>
+<div id="ssssv_{rand}"><select id="selectsss_{rand}" style="width:250px" class="form-control"><option value="">--選擇圖表字段--</option></select></div>

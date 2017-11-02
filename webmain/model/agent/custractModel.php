@@ -1,10 +1,10 @@
 <?php
-//客户合同的应用
+//客戶合同的應用
 class agent_custractClassModel extends agentModel
 {
 	
 	
-	//状态显示替换
+	//狀態顯示替換
 	protected function agentrows($rows, $rowd, $uid)
 	{
 		$statea = $this->flow->statearr;

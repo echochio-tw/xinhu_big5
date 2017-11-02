@@ -1,12 +1,12 @@
 <?php
 /**
 	*****************************************************************
-	* 联系QQ： 290802026											*
+	* 聯系QQ： 290802026											*
 	* 版  本： V2.0													*
-	* 开发者：雨中磐石工作室										*
-	* 网  址： http://www.rockoa.com/								*
-	* 说  明: 数据库核心类											*
-	* 备  注: 未经允许不得商业出售，代码欢迎参考纠正				*
+	* 開發者：雨中磐石工作室										*
+	* 網  址： http://www.rockoa.com/								*
+	* 說  明: 數據庫核心類											*
+	* 備  注: 未經允許不得商業出售，代碼歡迎參考糾正				*
 	*****************************************************************
 */ 
 if(!defined('HOST'))exit('not access');
@@ -68,12 +68,12 @@ abstract class mysql{
 			$this->tranend();
 			$this->close();
 		}
-		//记录访问sql日志
+		//記錄訪問sql日志
 		if(getconfig('sqllog')){
 			$sql = '';
 			$filstr = 'sqllog_'.date('Y.m.d.H.i.s').'_'.$this->rock->adminid.'_'.str_shuffle('abcdefg').'.log';
 			foreach($this->sqlarr as $sql1)$sql.="\n\n$sql1;";
-			if($sql!='')$this->rock->createtxt(''.UPDIR.'/sqllog/'.date('Y-m-d').'/'.$filstr.'', "时间[".$this->rock->now."],用户[".$this->rock->adminid.".".$this->rock->adminname."],IP[".$this->rock->ip."],WEB[".$this->rock->web."],URL[".$this->rock->nowurl()."]".$sql);
+			if($sql!='')$this->rock->createtxt(''.UPDIR.'/sqllog/'.date('Y-m-d').'/'.$filstr.'', "時間[".$this->rock->now."],用戶[".$this->rock->adminid.".".$this->rock->adminname."],IP[".$this->rock->ip."],WEB[".$this->rock->web."],URL[".$this->rock->nowurl()."]".$sql);
 		}
 	}
 
@@ -113,7 +113,7 @@ abstract class mysql{
 	public function query($sql, $ebo=true)
 	{
 		if($this->conn == null)$this->connect();
-		if($this->conn == null)exit('数据库的帐号/密码有错误!');
+		if($this->conn == null)exit('數據庫的帳號/密碼有錯誤!');
 		$sql	= trim($sql);
 		$sql	= str_replace(array('[Q]','[q]'), array($this->perfix, $this->perfix), $sql);
 		$this->countsql++;
@@ -129,13 +129,13 @@ abstract class mysql{
 		$this->nowerror	= false;
 		if(!$rsbool)$this->nowerror = true;
 		if(!$rsbool && (DEBUG || $this->rock->adminid==1) && $ebo){
-			$txt	= '【错误SQL】'.chr(10).''.$sql.''.chr(10).''.chr(10).'【原因】'.chr(10).''.$this->error().''.chr(10).'';
+			$txt	= '【錯誤SQL】'.chr(10).''.$sql.''.chr(10).''.chr(10).'【原因】'.chr(10).''.$this->error().''.chr(10).'';
 			$this->rock->debug($txt,'mysql_sqlerr');
 		}
 		if(!$rsbool && $ebo){
 			$stabs  = ''.$this->perfix.'log';
 			$errmsg = str_replace("'",'&#39;', $this->error());
-			if(!contain($sql, $stabs))m('log')->addlogs('错误SQL',''.$errmsg.'', 2); //写入日志中方便查看
+			if(!contain($sql, $stabs))m('log')->addlogs('錯誤SQL',''.$errmsg.'', 2); //寫入日志中方便查看
 		}
 		return $rsbool;
 	}
@@ -163,7 +163,7 @@ abstract class mysql{
 	}
 	
 	/**
-	*	返回使用SQL_CALC_FOUND_ROWS，统计总记录数
+	*	返回使用SQL_CALC_FOUND_ROWS，統計總記錄數
 	*/
 	public function found_rows()
 	{
@@ -171,7 +171,7 @@ abstract class mysql{
 	}
 	
 	/**
-	*	返回update,insert,delete上所影响的条数
+	*	返回update,insert,delete上所影響的條數
 	*/
 	public function row_count()
 	{
@@ -179,7 +179,7 @@ abstract class mysql{
 	}
 	
 	/**
-	*	获取select的sql
+	*	獲取select的sql
 	*/
 	public function getsql($arr=array())
 	{
@@ -204,7 +204,7 @@ abstract class mysql{
 		return $sql;
 	}
 	
-	//弃用过滤
+	//棄用過濾
 	public function filterstr($str)
 	{
 		$str = strtolower($str);
@@ -274,7 +274,7 @@ abstract class mysql{
 	}
 	
 	/**
-		条件的
+		條件的
 		$arrs = array(
 			'id|eqi|a' => '0',
 			'name|like' => '我',
@@ -340,7 +340,7 @@ abstract class mysql{
 	}
 
 	/**
-	*	以$kfied作为主键返回数组
+	*	以$kfied作為主鍵返回數組
 	*/
 	public function getarr($table, $where='', $fields='*', $kfied='id')
 	{
@@ -361,7 +361,7 @@ abstract class mysql{
 	}	
 
 	/**
-		读取全部同时将第一个字段作为主键(读取的数据存在数组里)
+		讀取全部同時將第一個字段作為主鍵(讀取的數據存在數組裡)
 	*/	
 	public function getkeyall($table,$fields,$where='')
 	{
@@ -382,7 +382,7 @@ abstract class mysql{
 	}
 	
 	/**
-		读取一条sql语句用规定字符连接起来
+		讀取一條sql語句用規定字符連接起來
 	*/	
 	public function getjoinval($table,$fields,$where='',$join=',')
 	{
@@ -403,7 +403,7 @@ abstract class mysql{
 	}	
 	
 	/**
-		读取某行某字段的
+		讀取某行某字段的
 	*/	
 	public function getmou($table,$fields,$where,$order='')
 	{
@@ -424,7 +424,7 @@ abstract class mysql{
 	}	
 
 	/**
-	*	启用事务
+	*	啟用事務
 	*/	
 	private function tranbegin($sql)
 	{
@@ -442,7 +442,7 @@ abstract class mysql{
 	}
 	
 	/**
-		事务结束
+		事務結束
 	*/	
 	private function tranend()
 	{
@@ -453,7 +453,7 @@ abstract class mysql{
 	}
 	
 	/**
-		判断插入更新删除sql语句是否有错
+		判斷插入更新刪除sql語句是否有錯
 	*/	
 	public function backsql()
 	{
@@ -493,7 +493,7 @@ abstract class mysql{
 	}
 	
 	/**
-		记录添加修改
+		記錄添加修改
 	*/	
 	public function record($table,$array,$where='')
 	{
@@ -518,14 +518,14 @@ abstract class mysql{
 	}
 	
 	/**
-		返回总条数
+		返回總條數
 	*/	
 	public function rows($table,$where,$rowtype='count(1)'){
 		return (int)$this->getmou($table,$rowtype,$where);
 	}
 
 	/**
-		返回所有数据库的表
+		返回所有數據庫的表
 	*/	
 	public function getalltable($base='')
 	{	
@@ -564,7 +564,7 @@ abstract class mysql{
 	}
 	
 	/**
-		读取表结构
+		讀取表結構
 	*/
 	public function gettablecolumn($table, $fields='')
 	{
@@ -593,7 +593,7 @@ abstract class mysql{
 	}
 
 	/**
-		判断变量是否为空
+		判斷變量是否為空
 	*/	
 	public function isempt($str)
 	{
@@ -613,7 +613,7 @@ abstract class mysql{
 	}
 	
 	/**
-		转换数据库可插入的对象
+		轉換數據庫可插入的對象
 	*/	
 	public function toaddval($str)
 	{
@@ -625,7 +625,7 @@ abstract class mysql{
 	}
 	
 	/**
-	*	替换特殊符合'
+	*	替換特殊符合'
 	*/
 	public function tocovexec($str, $lx=0)
 	{
@@ -637,20 +637,20 @@ abstract class mysql{
 	}
 	
 	/**
-		创建随机编号
+		創建隨機編號
 	*/		
 	public function ranknum($table,$field='num',$n=6, $dx=0)
 	{
 		$arr	= array('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
 		$num	= '';
 		for($i=1;$i<=$n;$i++)$num.=$arr[rand(0,count($arr)-1)];
-		if($dx==1)$num	= strtoupper($num);//转换成大写
+		if($dx==1)$num	= strtoupper($num);//轉換成大寫
 		$rsnum	= $this->getmou($table,$field,"`$field`='$num'");
 		return ($rsnum)?$this->ranknum($table,$field,$n, $dx):$num;		
 	}
 	
 	/**
-		流水编号
+		流水編號
 	*/		
 	public function sericnum($num, $table,$fields='sericnum', $ws=4, $whe='')
 	{
@@ -674,9 +674,9 @@ abstract class mysql{
 	}	
 	
 	/**
-	*	获取所有顶级信息连接起来
+	*	獲取所有頂級信息連接起來
 	*	@param $table	表名
-	*	@param $pfields	上级字段 $jfield 要连接的字段名 $afid = 值
+	*	@param $pfields	上級字段 $jfield 要連接的字段名 $afid = 值
 	*/
 	private $joinarr=array();
 	public function getpval($table,$pfields,$jfield,$afid,$plit='/',$afield='id',$maxlen=5)

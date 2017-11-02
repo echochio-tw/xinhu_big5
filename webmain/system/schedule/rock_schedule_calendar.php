@@ -52,16 +52,16 @@ $(document).ready(function(){
 	<table width="100%">
 	<tr>
 		<td align="left" width="30%">
-			<button type="button" click="change,-1" class="btn btn-default"><i class="icon-caret-left"></i> 上个月</button>&nbsp; 
-			<button type="button" click="nowchange" class="btn btn-default"><i class="icon-calendar"></i> 当月</button>&nbsp; 
+			<button type="button" click="change,-1" class="btn btn-default"><i class="icon-caret-left"></i> 上個月</button>&nbsp; 
+			<button type="button" click="nowchange" class="btn btn-default"><i class="icon-calendar"></i> 當月</button>&nbsp; 
 			<button type="button" click="guanli" class="btn btn-default"><i class="icon-cog"></i> 管理</button>&nbsp; 
 		</td>
 		<td align="center" width="40%">
 			<div id="nowmonth_{rand}" style="font-size:16px">2015年06月</div>
 		</td>
 		<td align="right" width="30%">
-			<button type="button"  click="plusadd" class="btn btn-success"><i class="icon-plus"></i> 新增记录</button>&nbsp; 
-			<button type="button"  click="change,1" class="btn btn-default">下个月 <i class="icon-caret-right"></i></button>
+			<button type="button"  click="plusadd" class="btn btn-success"><i class="icon-plus"></i> 新增記錄</button>&nbsp; 
+			<button type="button"  click="change,1" class="btn btn-default">下個月 <i class="icon-caret-right"></i></button>
 			</td>
 	</tr>
 	</table>

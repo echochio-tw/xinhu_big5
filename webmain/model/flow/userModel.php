@@ -3,22 +3,22 @@ class flow_userClassModel extends flowModel
 {
 	public function getstatusarr()
 	{
-		$barr[1] = array('启用','green');
+		$barr[1] = array('啟用','green');
 		$barr[0] = array('停用','#888888');
 		return $barr;
 	}
 	
 	
 	/**
-	*	用户显示展示
+	*	用戶顯示展示
 	*/
 	protected function flowbillwhere($uid, $lx)
 	{
 		$where 	= '';
 		$pnum	= $this->rock->get('pnum');
-		//其他地方来的，需要权限
+		//其他地方來的，需要權限
 		if($pnum != 'all' ){
-			$where 	= 'and `status`=1 '.$this->viewmodel->viewwhere($this->moders, $uid, 'id');//权限控制
+			$where 	= 'and `status`=1 '.$this->viewmodel->viewwhere($this->moders, $uid, 'id');//權限控制
 		}
 		$detpid = (int)$this->rock->post('deptid','0');
 		if($detpid>0){
@@ -31,7 +31,7 @@ class flow_userClassModel extends flowModel
 		);
 	}
 	
-	//替换
+	//替換
 	public function flowrsreplace($rs, $lx=0)
 	{
 		if($this->rock->ismobile()){
@@ -43,13 +43,13 @@ class flow_userClassModel extends flowModel
 		if($type=='1')$rs['type']='<font color=green>是</font>';
 		if(isset($rs['companyid']) && $lx==1)$rs['companyid'] = m('company')->getmou('name',"`id`='".$rs['companyid']."'");
 		
-		//判断当前用户状态
+		//判斷當前用戶狀態
 		$online 	= arrvalue($rs,'online','0');
 		$lastonline = arrvalue($rs,'lastonline');
 		if($online=='1'){
 			$jgtime = time()- strtotime($lastonline);
 			if($jgtime>210){
-				$online = '0'; //超过200
+				$online = '0'; //超過200
 				$this->adminmodel->update('online=0', $rs['id']);
 			}
 		}
@@ -57,7 +57,7 @@ class flow_userClassModel extends flowModel
 		return $rs;
 	}
 	
-	//编辑时候替换
+	//編輯時候替換
 	protected function flowrsreplaceedit($rs)
 	{
 		$rs['groupname'] = m('sjoin')->getgroupid($rs['id']);
@@ -66,7 +66,7 @@ class flow_userClassModel extends flowModel
 		return $rs;
 	}
 	
-	//删除用户时
+	//刪除用戶時
 	protected function flowdeletebill($sm)
 	{
 		$id 	= $this->id;
@@ -75,30 +75,30 @@ class flow_userClassModel extends flowModel
 		m('im_history')->delete('`uid`='.$id.'');
 	}
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		return array(
 			'user' 		=> 'zhangsan',
-			'name' 		=> '张三',
+			'name' 		=> '張三',
 			'sex' 		=> '男',
 			'mobile' 	=> '15812345678',
-			'ranking' 	=> '程序员',
+			'ranking' 	=> '程序員',
 			'superman' 	=> '磐石',
-			'deptname' 	=> '信呼开发团队/开发部',
+			'deptname' 	=> '信呼開發團隊/開發部',
 			'tel' 		=> '0592-1234567-005',
 			'email' 	=> 'zhangsan@rockoa.com',
 			'workdate' 	=> '2017-01-17',
 		);
 	}
 	
-	//导入之后
+	//導入之後
 	public function flowdaoruafter()
 	{
 		m('admin')->updateinfo();
 	}
 	
-	//导入之前判断
+	//導入之前判斷
 	public function flowdaorubefore($rows)
 	{
 		$inarr	= array();
@@ -116,7 +116,7 @@ class flow_userClassModel extends flowModel
 			if($this->rows("`name`='$name'")>0)$name = $name.'1';
 			if(isempt($user))$user = $arr['pingyin'];
 			
-			if($this->rows("`user`='$user'")>0)$user = $user.'1'; //相同用户名?
+			if($this->rows("`user`='$user'")>0)$user = $user.'1'; //相同用戶名?
 
 			$arr['user'] = strtolower($user);
 			$arr['name'] = $name;
@@ -125,17 +125,17 @@ class flow_userClassModel extends flowModel
 			$arr['sort']  		= $sort+$k+1;
 			$arr['workdate']  	= arrvalue($rs,'workdate', $this->rock->date);
 			$arr['adddt']  		= $this->rock->now;
-			$arr['companyid']  	= 1; //默认公司Id为1
+			$arr['companyid']  	= 1; //默認公司Id為1
 			
-			//读取上级主管Id
+			//讀取上級主管Id
 			$superid			= (int)$this->getmou('id', "`name`='".$arr['superman']."'");
 			if($superid==0)$arr['superman'] = '';
 			$arr['superid'] = $superid;
 			
-			//读取部门Id
+			//讀取部門Id
 			$deptarr 	= $this->getdeptid($rs['deptname'], $dbs);
 			
-			if($deptarr['deptid']==0)return '行'.($k+1).'找不到对应顶级部门['.$rs['deptname'].']';
+			if($deptarr['deptid']==0)return '行'.($k+1).'找不到對應頂級部門['.$rs['deptname'].']';
 			
 			foreach($deptarr as $k1=>$v1)$arr[$k1]=$v1;
 			
@@ -174,13 +174,13 @@ class flow_userClassModel extends flowModel
 	{
 		$stra	= explode('/', $str);
 		$pid 	= 0;
-		$id 	= 1;//默认顶级ID
+		$id 	= 1;//默認頂級ID
 		$deptname = '';
 		for($i=0;$i<count($stra);$i++){
 			$name = $stra[$i];
 			$deptname = $name;
 			$id   = (int)$dobj->getmou('id',"`pid`='$pid' and `name`='$name'");
-			//不存在就创建部门
+			//不存在就創建部門
 			if($id==0){
 				if($pid==0)return array(0, $deptname);
 				$cjbm['name'] = $deptname;

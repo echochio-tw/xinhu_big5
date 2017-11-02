@@ -1,8 +1,8 @@
 <?php
 /**
-*	模块：schedule.日程，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.日程]→生成列表页
+*	模塊：schedule.日程，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.日程]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -49,7 +49,7 @@ $(document).ready(function(){
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -57,7 +57,7 @@ $(document).ready(function(){
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			js.subscribe({
 				title:'日程('+nowtabs.name+')',
 				cont:'日程('+nowtabs.name+')的列表的',
-				explain:'订阅[日程]的列表',
+				explain:'訂閱[日程]的列表',
 				objtable:a
 			});
 		},
@@ -121,15 +121,15 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			window.managelistschedule = a;
-			addtabs({num:'daoruschedule',url:'flow,input,daoru,modenum=schedule',icons:'plus',name:'导入日程'});
+			addtabs({num:'daoruschedule',url:'flow,input,daoru,modenum=schedule',icons:'plus',name:'導入日程'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -147,7 +147,7 @@ $(document).ready(function(){
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -189,12 +189,12 @@ $(document).ready(function(){
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('c2NoZWR1bGU:'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"标题",dataIndex:"title",align:"left"},{text:"提醒时间",dataIndex:"startdt",sortable:true},{text:"重复",dataIndex:"rate"},{text:"说明",dataIndex:"explain"},{text:"记事人",dataIndex:"optname",sortable:true},{text:"截止时间",dataIndex:"enddt"},{text:"提醒",dataIndex:"txsj",sortable:true},{text:"提醒给",dataIndex:"recename"},{text:"状态",dataIndex:"status",sortable:true},{
+		columns:[{text:"標題",dataIndex:"title",align:"left"},{text:"提醒時間",dataIndex:"startdt",sortable:true},{text:"重復",dataIndex:"rate"},{text:"說明",dataIndex:"explain"},{text:"記事人",dataIndex:"optname",sortable:true},{text:"截止時間",dataIndex:"enddt"},{text:"提醒",dataIndex:"txsj",sortable:true},{text:"提醒給",dataIndex:"recename"},{text:"狀態",dataIndex:"status",sortable:true},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -209,7 +209,7 @@ $(document).ready(function(){
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 c.initpage=function(){
 	$('#key_{rand}').parent().before('<td style="padding-right:10px;"><input onclick="js.datechange(this,\'date\')" style="width:110px" placeholder="日期" readonly class="form-control datesss" id="dt_{rand}" ></td>');
@@ -218,7 +218,7 @@ c.searchbtn=function(){
 	var dt = get('dt_{rand}').value;
 	this.search({dt:dt});
 }
-//让状态列可以编辑
+//讓狀態列可以編輯
 bootparams.celleditor = true;
 c.setcolumns('status',{
 	editor:true,
@@ -228,13 +228,13 @@ c.setcolumns('status',{
 	}
 });
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewschedule_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -256,9 +256,9 @@ c.setcolumns('status',{
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
-		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部状态-</option><option style="color:green" value="1">启用</option><option style="color:#888888" value="0">停用</option></select></td>
+		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部狀態-</option><option style="color:green" value="1">啟用</option><option style="color:#888888" value="0">停用</option></select></td>
 		<td style="padding-left:10px">
 			<div style="width:85px" class="btn-group">
 			<button class="btn btn-default" click="searchbtn" type="button">搜索</button><button class="btn btn-default" id="downbtn_{rand}" type="button" style="padding-left:8px;padding-right:8px"><i class="icon-angle-down"></i></button> 
@@ -267,7 +267,7 @@ c.setcolumns('status',{
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

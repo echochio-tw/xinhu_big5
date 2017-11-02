@@ -1,5 +1,5 @@
 <?php
-//公司单位
+//公司單位
 class companyClassModel extends Model
 {
 	public function getselectdata($lx=0)
@@ -8,7 +8,7 @@ class companyClassModel extends Model
 		$barr = array();
 		if($lx==0)$barr[] = array(
 			'value' => '0',
-			'name'  => '最顶级',
+			'name'  => '最頂級',
 		);
 		$this->getselectdatas($rows, $barr, '0', 0);
 		return $barr;
@@ -30,7 +30,7 @@ class companyClassModel extends Model
 		}
 	}
 	
-	//树形结构
+	//樹形結構
 	public function gettreedata($rows, &$barr, $pid='0', $level=1)
 	{
 		foreach($rows as $k=>$rs){
@@ -54,9 +54,9 @@ class companyClassModel extends Model
 		return $stotal;
 	}
 	
-	//公司名称修改了，对应数据更新
+	//公司名稱修改了，對應數據更新
 	public function updatecompany($id, $name)
 	{
-		m('userract')->update("`company`='$name'","`companyid`='$id'");//员工合同
+		m('userract')->update("`company`='$name'","`companyid`='$id'");//員工合同
 	}
 }

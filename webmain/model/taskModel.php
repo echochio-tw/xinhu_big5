@@ -2,7 +2,7 @@
 class taskClassModel extends Model
 {
 	/**
-	*	读取计划任务运行列表
+	*	讀取計劃任務運行列表
 	*/
 	public function getrunlist($dt='', $lx=0, $ntime=0)
 	{
@@ -13,7 +13,8 @@ class taskClassModel extends Model
 		$runa	= array();
 		$sdts	= strtotime($dt);
 		$edts	= strtotime($dt.' 23:59:59');
-		if($ntime==0)$ntime 	= time();
+		if($ntime==0)$ntime = time();
+		$ntime	= $ntime-20;//稍微減一下防止出現跳過的
 		$brows	= array();
 		$dtobj 	= c('date');
 		$w 		= (int)date('w', $sdts);if($w==0)$w=7;//星期7
@@ -48,7 +49,7 @@ class taskClassModel extends Model
 				$rs['runtime'] = strtotime($time);
 				$runa[] = $rs;
 			}
-			//分钟
+			//分鐘
 			if($type=='i'){
 				$ges = $jg*60;
 				for($i=$sdts;$i<=$edts;$i=$i+$ges){
@@ -57,7 +58,7 @@ class taskClassModel extends Model
 					$runa[] = $rs;
 				}
 			}
-			//小时
+			//小時
 			if($type=='h'){
 				for($i=0;$i<=23;$i=$i+$jg){
 					$time 			= date('Y-m-d H:'.$atime.'', $sdts+$i*3600);
@@ -73,7 +74,7 @@ class taskClassModel extends Model
 				$rs['runtime'] 	= strtotime($time);
 				$runa[] = $rs;
 			}
-			//周
+			//週
 			if($type=='w' && $jg==$w){
 				$time 			= date('Y-m-d '.$atime.'');
 				$rs['runtimes'] = $time;
@@ -97,7 +98,7 @@ class taskClassModel extends Model
 		return $brun;
 	}
 	
-	//$lx=2必须使用本地地址
+	//$lx=2必須使用本地地址
 	private function gettaskurl($lx=0)
 	{
 		$turl	= getconfig('taskurl');
@@ -113,7 +114,7 @@ class taskClassModel extends Model
 		return $url;
 	}*/
 	
-	//获取运行url,$lx=2必须使用本地地址
+	//獲取運行url,$lx=2必須使用本地地址
 	private function showgeurl($url, $id, $lx=0)
 	{
 		if(contain($url, 'http://') || contain($url, 'https://')){
@@ -127,7 +128,7 @@ class taskClassModel extends Model
 		return $url;
 	}
 	
-	//基本运行 弃用
+	//基本運行 棄用
 	public function baserun($mid=0,$gtimes='')
 	{
 		$where  = '';
@@ -197,7 +198,7 @@ class taskClassModel extends Model
 	
 	private function tasklistpath()
 	{
-		return ''.UPDIR.'/'.date('Y-m').'/tasklist.json';
+		return ''.ROOT_PATH.'/'.UPDIR.'/'.date('Y-m').'/tasklist.json';
 	}
 	
 	/**
@@ -209,7 +210,7 @@ class taskClassModel extends Model
 	}
 	
 	/**
-	*	开启计划任务(自己服务端)
+	*	開啟計劃任務(自己服務端)
 	*/
 	public function starttask()
 	{
@@ -222,26 +223,31 @@ class taskClassModel extends Model
 		return $barr;
 	}
 	
-	//创建json数组
+	//創建json數組
 	public function createjson($time)
 	{
 		$barr 	= $this->getrunlist($this->rock->date, 2, $time);
-		$this->rock->createtxt($this->tasklistpath(), json_encode($barr));
+		@file_put_contents($this->tasklistpath(), json_encode($barr));
 		return $barr;
 	}
 	
 	/**
-	*	cli 运行每5分钟运行的，运行curl的
+	*	cli 運行每5分鐘運行的，運行curl的
 	*/
 	public function runjsonlist($time)
 	{
 		$barr	= array();
-		$fstr	= @file_get_contents($this->tasklistpath());
-		$time1 	= strtotime(date('Y-m-d'));
-		if($time-$time1<180)$fstr = '';//每天自动重启生成json
+		$fstr	= '';
+		$fpath	= $this->tasklistpath();
+		$dt 	= date('Y-m-d', $time);
+		if(file_exists($fpath)){
+			$lastdt = date('Y-m-d H:i:s',filemtime($fpath));//最後修改的時間
+			$editdt = date('Y-m-d H:i:s',filectime($fpath));//上次修改時間
+			if(contain($lastdt, $dt) && contain($editdt, $dt))$fstr	= @file_get_contents($fpath);
+		}
 		if(isempt($fstr)){
 			$barr = $this->createjson($time);
-			m('option')->setval('systaskrun', $this->rock->now);//记录运行时间
+			m('option')->setval('systaskrun', $this->rock->now);//記錄運行時間
 		}else{
 			$barr = json_decode($fstr, true);
 		}
@@ -262,7 +268,7 @@ class taskClassModel extends Model
 		return 'runtask('.$oi.'),success('.$cg.'),fail('.$sb.')';
 	}
 	
-	//获取运行列表
+	//獲取運行列表
 	public function getlistrun($dt)
 	{
 		$brun = $this->getrunlist($dt);

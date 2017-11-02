@@ -4,12 +4,12 @@ $(document).ready(function(){
 	var arr=[];
 	var c={
 		loadlist:function(){
-			js.setmsg('加载中...','','showlistyingyong');
+			js.setmsg('加載中...','','showlistyingyong');
 			js.ajax(js.getajaxurl('getdata','{mode}','{dir}'),{}, function(a){
 				js.setmsg('nont');
 				arr = a;
 				arr.push({
-					'name':'添加应用',
+					'name':'添加應用',
 					'face':'images/jia.png',
 					'num' :'add',
 					'id'  : 0
@@ -28,7 +28,7 @@ $(document).ready(function(){
 				s+='<li style="opacity:'+hd+'" onclick="yingyongedit('+i+',0)">';
 				s+='<div><img width="50" height="50" src="'+arr[i].face+'"></div>';
 				s+='<div>'+arr[i].name+'</div>';
-				if(arr[i].id>0)s+='<div style="font-size:10px"><a href="javascript:;" onclick="yingyongedit('+i+',1)">编辑</a> &nbsp; <a href="javascript:;" onclick="yingyongmenu('+i+')">菜单</a></div>';
+				if(arr[i].id>0)s+='<div style="font-size:10px"><a href="javascript:;" onclick="yingyongedit('+i+',1)">編輯</a> &nbsp; <a href="javascript:;" onclick="yingyongmenu('+i+')">菜單</a></div>';
 				s+='</li>';
 				if(arr[i].valid==0){
 					$('#showlistyingyongtt').append(s);
@@ -48,11 +48,11 @@ $(document).ready(function(){
 		var a=arr[i];
 		if(lx==0&&a.id>0)return;
 		listyingyongobj = c;
-		addtabs({num:'yingyongedit'+a.id+'',url:'main,yingyong,edit,id='+a.id+'',name:'应用['+a.name+']'});
+		addtabs({num:'yingyongedit'+a.id+'',url:'main,yingyong,edit,id='+a.id+'',name:'應用['+a.name+']'});
 	}
 	yingyongmenu=function(i){
 		var a=arr[i];
-		addtabs({num:'yingyongmenu'+a.id+'',url:'main,yingyong,menu,mid='+a.id+'',name:'应用['+a.name+']菜单'});
+		addtabs({num:'yingyongmenu'+a.id+'',url:'main,yingyong,menu,mid='+a.id+'',name:'應用['+a.name+']菜單'});
 	}
 	
 	c.loadlist();
@@ -64,7 +64,7 @@ $(document).ready(function(){
 .divlisssa ul,.divlisssa{display:inline-block;width:100%}
 </style>
 <div style="padding:0px 10px">
-	<h3>已有应用</h3>
+	<h3>已有應用</h3>
 	<div class="blank1"></div>
 	<div class="divlisssa" style="padding:10px"><ul id="showlistyingyong"></ul></div>
 	

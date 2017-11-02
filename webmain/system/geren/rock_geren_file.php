@@ -7,28 +7,28 @@ $(document).ready(function(){
 		tablename:'file',celleditor:true,sort:'id',dir:'desc',modedir:'{mode}:{dir}',params:{'atype':atype},fanye:true,
 		storebeforeaction:'filebefore',
 		columns:[{
-			text:'类型',dataIndex:'fileext',renderer:function(v){
+			text:'類型',dataIndex:'fileext',renderer:function(v){
 				var lxs = js.filelxext(v);
 				return '<img src="web/images/fileicons/'+lxs+'.gif">';
 			}
 		},{
-			text:'名称',dataIndex:'filename',align:'left'
+			text:'名稱',dataIndex:'filename',align:'left'
 		},{
 			text:'大小',dataIndex:'filesizecn',sortable:true
 		},{
-			text:'上传时间',dataIndex:'adddt',sortable:true
+			text:'上傳時間',dataIndex:'adddt',sortable:true
 		},{
-			text:'创建人',dataIndex:'optname',sortable:true
+			text:'創建人',dataIndex:'optname',sortable:true
 		},{
 			text:'IP',dataIndex:'ip'
 		},{
-			text:'浏览器',dataIndex:'web'
+			text:'瀏覽器',dataIndex:'web'
 		},{
-			text:'下载次数',dataIndex:'downci',sortable:true
+			text:'下載次數',dataIndex:'downci',sortable:true
 		},{
-			text:'关联表',dataIndex:'mtype'
+			text:'關聯表',dataIndex:'mtype'
 		},{
-			text:'关联表ID',dataIndex:'mid'
+			text:'關聯表ID',dataIndex:'mid'
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		},{
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 <table width="100%"><tr>
 	<td>
-		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="文件名/创建人/关联表">
+		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="文件名/創建人/關聯表">
 	</td>
 	<td style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -84,11 +84,11 @@ $(document).ready(function(){
 	<td width="80%"></td>
 	<td align="right" nowrap>
 	
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button>
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button>
 	</td>
 </tr>
 </table>
 </div>
 <div class="blank10"></div>
 <div id="veiw_{rand}"></div>
-<div class="tishi">提示：上传的文件可能会在某些单据上，删除请谨慎。</div>
+<div class="tishi">提示：上傳的文件可能會在某些單據上，刪除請謹慎。</div>

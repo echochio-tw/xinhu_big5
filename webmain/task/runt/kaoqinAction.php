@@ -2,7 +2,7 @@
 class kaoqinClassAction extends runtAction
 {
 	/**
-	*	定时任务发送昨天考勤异常的啊
+	*	定時任務發送昨天考勤異常的啊
 	*/
 	public function todoAction()
 	{
@@ -15,7 +15,7 @@ class kaoqinClassAction extends runtAction
 		}
 		if($ids!=''){
 			$flow 	= m('flow')->initflow('leavehr');
-			$flow->push(substr($ids, 1),'考勤','昨天['.$dt.']的你考勤存在异常，此消息仅供参考！','考勤异常提醒');
+			$flow->push(substr($ids, 1),'考勤','昨天['.$dt.']的你考勤存在異常，此消息僅供參考！','考勤異常提醒');
 		}
 		echo 'success';
 	}
@@ -35,13 +35,19 @@ class kaoqinClassAction extends runtAction
 		echo 'success';
 	}
 	
-	//分析工作日报统计
+	//分析工作日報統計
 	public function dailyfxAction()
 	{
 		$dt 	= c('date')->adddate($this->rock->date, 'd', -1);
 		$flow 	= m('flow')->initflow('daily');
 		$flow->dailyanay(0, $dt);
-		$flow->dailytodo($dt); 	//未写日报通知
+		$flow->dailytodo($dt); 	//未寫日報通知
+		echo 'success';
+	}
+
+	public function dayAction()
+	{
+		m('flow:leave')->autoaddleave(); //年假自動添加
 		echo 'success';
 	}
 }

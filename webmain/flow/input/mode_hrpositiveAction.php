@@ -1,12 +1,12 @@
 <?php
-//转正
+//轉正
 class mode_hrpositiveClassAction extends inputAction{
 	
 
 	protected function savebefore($table, $arr, $id, $addbo)
 	{
 		$uid = $arr['uid'];
-		if(m($table)->rows('id<>'.$id.' and `uid`='.$uid.' and `status` not in(5)')>0)return '您已申请过了';
+		if(m($table)->rows('id<>'.$id.' and `uid`='.$uid.' and `status` not in(5)')>0)return '您已申請過了';
 	}
 	
 		

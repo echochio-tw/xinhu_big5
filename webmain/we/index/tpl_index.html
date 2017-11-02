@@ -102,7 +102,7 @@ var im={
 		$('#'+sid+'').show();
 		$('.weui_tabbar a').removeClass('weui_bar_item_on');
 		$('.weui_tabbar a:eq('+lx+')').addClass('weui_bar_item_on');
-		var tass=['<?=$da['title']?>','应用','联系人',adminame];
+		var tass=['<?=$da['title']?>','應用','聯系人',adminame];
 		$('.r-header-text').html(tass[lx]);
 		this.index = lx;
 		try{sessionStorage.setItem('nowtabs', lx);}catch(e){}
@@ -261,7 +261,7 @@ var im={
 	clickitems:function(ty,id, o){
 		var o1=$(o);
 		js.showmenu({
-			data:[{name:'打开',lx:0},{name:'删除此记录',lx:1}],
+			data:[{name:'打開',lx:0},{name:'刪除此記錄',lx:1}],
 			onclick:function(a){
 				var lx=a.lx;
 				if(lx==0){
@@ -289,7 +289,7 @@ var im={
 		}
 	},
 	loginout:function(){
-		js.wx.confirm('确定要退出系统吗？',function(lx){
+		js.wx.confirm('確定要退出系統嗎？',function(lx){
 			if(lx=='yes')im.loginouts();
 		});
 	},
@@ -305,11 +305,11 @@ var im={
 			data:[{
 				name:'<img src="'+adminface+'" align="absmiddle" height="30" width="30"> '+adminame+'',lx:0
 			},{
-				name:'刷新数据',lx:1
+				name:'刷新數據',lx:1
 			},{
 				name:'修改密碼',lx:2
 			},{
-				name:'退出登录',lx:3
+				name:'退出登錄',lx:3
 			}],
 			onclick:function(a){
 				var lx=a.lx;
@@ -388,7 +388,7 @@ var im={
 		$('#userdao').append('<span onclick="im.showuserlists('+id+',0, this)">'+dn.name+'</span>');
 		len=userarr.length;
 		
-		//人员放在前面
+		//人員放在前面
 		var noi = 0;
 		for(i=0;i<len;i++){
 			d = userarr[i];
@@ -399,7 +399,7 @@ var im={
 		}
 		
 		if(noi==0 && $('#deptlist').html()==''){
-			$('#list').append('<div style="font-size:14px;text-align:center;padding:30px 10px;color:#cccccc">'+dn.name+' 下无联系人</div>');
+			$('#list').append('<div style="font-size:14px;text-align:center;padding:30px 10px;color:#cccccc">'+dn.name+' 下無聯系人</div>');
 		}
 	},
 	showdeptlsit:function(a, level){
@@ -541,11 +541,11 @@ var im={
 	},
 	bangdwex:function(){
 		if(!js.iswxbo()){
-			js.wx.alert('请使用微信客户端访问才可以绑定');
+			js.wx.alert('請使用微信客戶端訪問才可以綁定');
 			return;
 		}
-		if(this.isgzh==0){js.wx.alert('当前无法绑定');return;}
-		js.wx.load('处理中...');
+		if(this.isgzh==0){js.wx.alert('當前無法綁定');return;}
+		js.wx.load('處理中...');
 		js.location('?m=login&d=we&a=oauthto&state=bang');
 	}
 };
@@ -569,7 +569,7 @@ var im={
 
 	<div index="main" id="main_index0">
 		<div  class="weui_panel"><div id="historylist"></div></div>
-		<div id="historylist_tems" style="padding-top:50px;text-align:center;color:#cccccc"><span style="font-size:40px"><i class="icon-comment-alt"></i></span><br>暂无消息</div>
+		<div id="historylist_tems" style="padding-top:50px;text-align:center;color:#cccccc"><span style="font-size:40px"><i class="icon-comment-alt"></i></span><br>暫無消息</div>
 	</div>
 	
 	<div index="main" style="display:none" id="main_index1"></div>
@@ -579,20 +579,20 @@ var im={
 			<form onclick="im.searchuser()" class="weui_search_outer" onsubmit="im.sousousou();return false;">
 				<div class="weui_search_inner">
 					<i class="weui_icon_search"></i>
-					<input type="search" onblur="im.blursou()" class="weui_search_input" id="search_input" placeholder="搜索联系人" >
+					<input type="search" onblur="im.blursou()" class="weui_search_input" id="search_input" placeholder="搜索聯系人" >
 					<a onclick="im.souclear()" class="weui_icon_clear"></a>
 				</div>
 				<label for="search_input" class="weui_search_text" id="search_text">
 					<i class="weui_icon_search"></i>
-					<span>搜索联系人</span>
+					<span>搜索聯系人</span>
 				</label>
 			</form>
 			<a onclick="im.searchcancel()" style="color:#1389D3" class="weui_search_cancel">取消</a>
 		</div>
 		
 		<div id="userlx" class="r-tab">
-			<div id="userlx_0" onclick="im.changeuser(0)" class="r-tab-item active">联系人<span id="userstotal">(0)</span></div>
-			<div id="userlx_1" onclick="im.changeuser(1)" class="r-tab-item">会话<span id="groupstotal">(0)</span></div>
+			<div id="userlx_0" onclick="im.changeuser(0)" class="r-tab-item active">聯系人<span id="userstotal">(0)</span></div>
+			<div id="userlx_1" onclick="im.changeuser(1)" class="r-tab-item">會話<span id="groupstotal">(0)</span></div>
 			
 		</div>
 		
@@ -625,7 +625,7 @@ var im={
 					</div>
 					<div class="weui_media_bd">
 						<h4 class="weui_media_title" id="myshow_name"></h4>
-						<p class="weui_media_desc">部门：<label id="myshow_deptname"></label></p>
+						<p class="weui_media_desc">部門：<label id="myshow_deptname"></label></p>
 					</div>
 				</a>
 			</div>
@@ -636,19 +636,19 @@ var im={
 		<div class="weui_cells weui_cells_access">
 			<div class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
-					<p style="color:#888888">职位</p>
+					<p style="color:#888888">職位</p>
 				</div>
 				<span id="myshow_ranking" class="weui_cell_right"></span>
 			</div>
 			<div class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
-					<p style="color:#888888">用户Id</p>
+					<p style="color:#888888">用戶Id</p>
 				</div>
 				<span id="myshow_id" class="weui_cell_right"></span>
 			</div>
 			<div class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
-					<p style="color:#888888">我手机号</p>
+					<p style="color:#888888">我手機號</p>
 				</div>
 				<span id="myshow_mobile" class="weui_cell_right">15800000000</span>
 			</div>
@@ -659,14 +659,14 @@ var im={
 			<!--
 			<div onclick="im.bangdwex()" class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
-					绑定微信
+					綁定微信
 				</div>
-				<span class="weui_cell_ft">未绑定,点击绑定</span>
+				<span class="weui_cell_ft">未綁定,點擊綁定</span>
 			</div>-->
 			
 			<div onclick="im.tongbuface()" class="weui_cell">
 				<div class="weui_cell_bd weui_cell_primary">
-					同步微信头像
+					同步微信頭像
 				</div>
 				<span class="weui_cell_ft"></span>
 			</div>
@@ -686,7 +686,7 @@ var im={
 
 		
 		<div class="weui_btn_area">
-			<input class="weui_btn weui_btn_warn" type="button" onclick="im.loginout()" value="退出登录">
+			<input class="weui_btn weui_btn_warn" type="button" onclick="im.loginout()" value="退出登錄">
 		</div>
 		<div style="height:10px"></div>
 	</div>
@@ -702,20 +702,20 @@ var im={
 		<div class="weui_tabbar_icon">
 			<i class="icon-comment-alt"></i>
 		</div>
-		<p class="weui_tabbar_label">会话</p>
+		<p class="weui_tabbar_label">會話</p>
 	</a>
 	<a href="javascript:;" onclick="im.changetab(1)" class="weui_tabbar_item">
 		<span id="stotal_ss1" class="badge"></span>
 		<div class="weui_tabbar_icon">
 			<i class="icon-th-large"></i>
 		</div>
-		<p class="weui_tabbar_label">应用</p>
+		<p class="weui_tabbar_label">應用</p>
 	</a>
 	<a href="javascript:;" onclick="im.changetab(2)" class="weui_tabbar_item">
 		<div class="weui_tabbar_icon">
 			<i class="icon-group"></i>
 		</div>
-		<p class="weui_tabbar_label">联系人</p>
+		<p class="weui_tabbar_label">聯系人</p>
 	</a>
 	<a href="javascript:;" onclick="im.showmenu()" class="weui_tabbar_item">
 		<div class="weui_tabbar_icon">

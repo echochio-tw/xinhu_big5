@@ -1,5 +1,5 @@
 <?php
-//读取多行对应子表数据
+//讀取多行對應子表數據
 class itemsClassModel extends Model
 {
 	public function getitemsdata($modeid, $table, $mid)

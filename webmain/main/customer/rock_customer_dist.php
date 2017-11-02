@@ -8,25 +8,25 @@ $(document).ready(function(){
 		columns:[{
 			text:'',dataIndex:'caozuo'
 		},{
-			text:'类型',dataIndex:'type'
+			text:'類型',dataIndex:'type'
 		},{
-			text:'名称',dataIndex:'name'
+			text:'名稱',dataIndex:'name'
 		},{
-			text:'单位名称',dataIndex:'unitname'
+			text:'單位名稱',dataIndex:'unitname'
 		},{
-			text:'来源',dataIndex:'laiyuan'
+			text:'來源',dataIndex:'laiyuan'
 		},{
-			text:'拥有者',dataIndex:'optname'
+			text:'擁有者',dataIndex:'optname'
 		},{
-			text:'电话',dataIndex:'tel'
+			text:'電話',dataIndex:'tel'
 		},{
-			text:'状态',dataIndex:'status',sortable:true
+			text:'狀態',dataIndex:'status',sortable:true
 		},{
-			text:'供应商',dataIndex:'isgys',type:'checkbox',editor:true,sortable:true
+			text:'供應商',dataIndex:'isgys',type:'checkbox',editor:true,sortable:true
 		},{
-			text:'共享给',dataIndex:'shate'
+			text:'共享給',dataIndex:'shate'
 		},{
-			text:'创建人',dataIndex:'createname'
+			text:'創建人',dataIndex:'createname'
 		}],
 		itemclick:function(){
 			btn(false);
@@ -49,7 +49,7 @@ $(document).ready(function(){
 		},
 		view:function(){
 			var d=a.changedata;
-			openxiangs('客户','customer',d.id);
+			openxiangs('客戶','customer',d.id);
 		},
 		changlx:function(o1,lx){
 			$("button[id^='state{rand}']").removeClass('active');
@@ -63,24 +63,24 @@ $(document).ready(function(){
 		clickwin:function(o1,lx){
 			var id=0;
 			if(lx==1)id=a.changeid;
-			openinput('客户', 'customer',id);
+			openinput('客戶', 'customer',id);
 		},
 		distss:function(o1,lx){
 			var s = a.getchecked();
-			if(s==''){js.msg('msg','没有选中行');return;}
+			if(s==''){js.msg('msg','沒有選中行');return;}
 			if(lx==0){
-				js.confirm('确定要将选中标为未分配吗？',function(jg){
+				js.confirm('確定要將選中標為未分配嗎？',function(jg){
 					if(jg=='yes')c.distssok(s, '','', 0);
 				});
 				return;
 			}
 			var cans = {
 				type:'user',
-				title:'选中分配给...',
+				title:'選中分配給...',
 				callback:function(sna,sid){
 					if(sna=='')return;
 					setTimeout(function(){
-						js.confirm('确定要将选中记录分配给：['+sna+']吗？',function(jg){
+						js.confirm('確定要將選中記錄分配給：['+sna+']嗎？',function(jg){
 							if(jg=='yes')c.distssok(s, sna,sid,1);
 						});
 					},10);
@@ -91,7 +91,7 @@ $(document).ready(function(){
 		distssok:function(s, sna,sid, lx){
 			js.ajax(js.getajaxurl('distcust','{mode}','{dir}'),{sid:s,sname:sna,snid:sid,lx:lx},function(s){
 				a.reload();
-			},'post','','处理中...,处理成功');
+			},'post','','處理中...,處理成功');
 		}
 	};
 	js.initbtn(c);
@@ -106,7 +106,7 @@ $(document).ready(function(){
 		<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增</button>
 	</td>
 	<td>
-		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="名称/拥有者">
+		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="名稱/擁有者">
 	</td>
 	<td style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -114,7 +114,7 @@ $(document).ready(function(){
 	<td  width="90%" style="padding-left:10px">
 		
 		<div id="stewwews{rand}" class="btn-group">
-		<button class="btn btn-default" id="state{rand}_0" click="changlx,0" type="button">全部状态</button>
+		<button class="btn btn-default" id="state{rand}_0" click="changlx,0" type="button">全部狀態</button>
 		<button class="btn btn-default" id="state{rand}_1" click="changlx,1" type="button">已分配</button>
 		<button class="btn btn-default active" id="state{rand}_2" click="changlx,2" type="button">未分配</button>
 		</div>	
@@ -122,10 +122,10 @@ $(document).ready(function(){
 	
 	
 	<td align="right" nowrap>
-		<button class="btn btn-default" click="distss,1" type="button">选中分配给</button> &nbsp; 
-		<button class="btn btn-default" click="distss,0" type="button">标为未分配</button> &nbsp; 
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" click="distss,1" type="button">選中分配給</button> &nbsp; 
+		<button class="btn btn-default" click="distss,0" type="button">標為未分配</button> &nbsp; 
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 	</tr>
 	</table>
@@ -133,4 +133,4 @@ $(document).ready(function(){
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">客户分配：客户负责人是我/我下属创建/我下属客户/我创建/属于我客户，可重新分配对应人员。</div>
+<div class="tishi">客戶分配：客戶負責人是我/我下屬創建/我下屬客戶/我創建/屬于我客戶，可重新分配對應人員。</div>

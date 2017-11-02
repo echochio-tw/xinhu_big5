@@ -14,25 +14,25 @@ class smsClassAction extends Action
 		return $barr;
 	}
 	
-	//保存设置
+	//保存設置
 	public function cogsaveAjax()
 	{
 		$this->option->setval('sms_iscb', $this->get('sms_iscb','0'));
 		$this->option->setval('sms_cbnum', $this->get('sms_cbnum'));
 	}
 	
-	//测试
+	//測試
 	public function testsendAjax()
 	{
 		$mobile = $this->get('mobile');
 		$barr 	= $this->smsobj->send($mobile,'','defurls', array(
-			'modename' 	=> '测试短信',
+			'modename' 	=> '測試短信',
 			'sericnum' 	=> 'AB-20170117-0001',
 		),''.URL.'?d=we', false);
 		return $barr;
 	}
 	
-	//获取签名
+	//獲取簽名
 	public function getqianAjax()
 	{
 		$barr = $this->smsobj->getdata('sms','getqian');
@@ -45,7 +45,7 @@ class smsClassAction extends Action
 		);
 	}
 	
-	//获取发送记录
+	//獲取發送記錄
 	public function getrecordAjax()
 	{
 		$barr = $this->smsobj->getdata('sms','getrecord');
@@ -57,7 +57,7 @@ class smsClassAction extends Action
 			'rows' => $rows
 		);
 	}
-	//保存签名
+	//保存簽名
 	public function saveqianAjax()
 	{
 		if(getconfig('systype')=='demo')return returnerror('demo演示上禁止操作');
@@ -72,7 +72,7 @@ class smsClassAction extends Action
 		return $barr;
 	}
 	
-	//获取模版
+	//獲取模版
 	public function gettplAjax()
 	{
 		$barr = $this->smsobj->getdata('sms','gettpl');
@@ -99,7 +99,7 @@ class smsClassAction extends Action
 		return $barr;
 	}
 	
-	//删除模版
+	//刪除模版
 	public function deltplAjax()
 	{
 		if(getconfig('systype')=='demo')return returnerror('demo演示上禁止操作');
@@ -110,7 +110,7 @@ class smsClassAction extends Action
 		return $barr;
 	}
 	
-	//刷新模版状态
+	//刷新模版狀態
 	public function relaodtplAjax()
 	{
 		$num  = $this->post('num');
@@ -120,7 +120,7 @@ class smsClassAction extends Action
 		return $barr;
 	}
 	
-	//刷新状态
+	//刷新狀態
 	public function reloadsignAjax()
 	{
 		$barr = $this->smsobj->getdata('sms','reloadsign');

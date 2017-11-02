@@ -3,7 +3,7 @@ class tableClassAction extends Action
 {
 	public function initAction()
 	{
-		if($this->getsession('isadmin')!='1')backmsg('别乱来');
+		if($this->getsession('isadmin')!='1')backmsg('別亂來');
 		if(getconfig('systype')=='demo')backmsg('演示的不要改');
 	}
 	
@@ -19,13 +19,14 @@ class tableClassAction extends Action
 		);
 	}
 	
-	//保存表备注
+	//保存表備注
 	public function tablesmAjax()
 	{
 		$id 	= $this->post('id');
 		$value 	= $this->post('value');
 		$sql 	= "ALTER TABLE `$id` COMMENT '$value';";
 		$this->db->query($sql);
+		return 'success';
 	}
 	
 	public function tablefieldsAjax()
@@ -74,7 +75,7 @@ class tableClassAction extends Action
 		$sql.=" COMMENT '$sm'";
 		$bo = $this->db->query($sql);
 		$msg = '';
-		if(!$bo)$msg='错误《'.$sql.'》';
+		if(!$bo)$msg='錯誤《'.$sql.'》';
 		backmsg($msg);
 	}
 	
@@ -85,7 +86,7 @@ class tableClassAction extends Action
 		$sql 	= "ALTER table `$table` DROP COLUMN `$id`;";
 		$msg = '';
 		$bo = $this->db->query($sql);
-		if(!$bo)$msg='错误《'.$sql.'》';
+		if(!$bo)$msg='錯誤《'.$sql.'》';
 		backmsg($msg);
 	}
 }

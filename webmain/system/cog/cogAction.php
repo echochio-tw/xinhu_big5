@@ -4,21 +4,21 @@ class cogClassAction extends Action
 	public function sysinfoAjax()
 	{
 		$fields = array(
-			'title'	=> '系统名称',
-			'url'	=> '系统URL地址',
-			'localurl'	=> '系统本地地址',
-			'taskurl'	=> '任务地址',
-			'db_drive'	=> '操作数据库驱动',
+			'title'	=> '系統名稱',
+			'url'	=> '系統URL地址',
+			'localurl'	=> '系統本地地址',
+			'taskurl'	=> '任務地址',
+			'db_drive'	=> '操作數據庫驅動',
 			'version'	=> '版本',
-			'phpos'		=> '服务器',
+			'phpos'		=> '服務器',
 			'phpver'	=> 'PHP版本',
 			'mysqlver'	=> 'mysql版本',
-			'SERVER_SOFTWARE'	=> 'web服务器',
-			'upload_max_filesize'	=> '最大上传大小',
+			'SERVER_SOFTWARE'	=> 'web服務器',
+			'upload_max_filesize'	=> '最大上傳大小',
 			'post_max_size'	=> 'POST最大',
-			'memory_limit'	=> '使用最大内存',
+			'memory_limit'	=> '使用最大內存',
 			'curl'			=> '是否支持CURL',
-			'max_execution_time'			=> 'PHP执行超时时间',
+			'max_execution_time'			=> 'PHP執行超時時間',
 			
 		);
 		
@@ -75,8 +75,8 @@ class cogClassAction extends Action
 	
 	public function savecongAjax()
 	{
-		if(getconfig('systype')=='demo')exit('演示上禁止设置');
-		if($this->getsession('isadmin')!='1')exit('非管理员不能操作');
+		if(getconfig('systype')=='demo')exit('演示上禁止設置');
+		if($this->getsession('isadmin')!='1')exit('非管理員不能操作');
 		
 		$puurl 			= $this->option->getval('reimpushurlsystem',1);
 		
@@ -97,9 +97,9 @@ class cogClassAction extends Action
 		
 		$db_drive 			= $this->post('db_drive');
 		if(!isempt($db_drive)){
-			if($db_drive=='mysql' && !function_exists('mysql_connect'))exit('未开启mysql扩展模块');
-			if($db_drive=='mysqli' && !class_exists('mysqli'))exit('未开启mysqli扩展模块');
-			if($db_drive=='pdo' && !class_exists('PDO'))exit('未开启pdo扩展模块');
+			if($db_drive=='mysql' && !function_exists('mysql_connect'))exit('未開啟mysql擴展模塊');
+			if($db_drive=='mysqli' && !class_exists('mysqli'))exit('未開啟mysqli擴展模塊');
+			if($db_drive=='pdo' && !class_exists('PDO'))exit('未開啟pdo擴展模塊');
 			$arr['db_drive'] = $db_drive;
 		}
 		
@@ -111,40 +111,40 @@ class cogClassAction extends Action
 		$asynsend 		 	= $this->post('asynsend');
 		$arr['asynsend'] 	= $asynsend;
 		
-		//if($arr['asynsend'] && !m('reim')->asynurlbo())exit('没有开启服务端不能使用异步');
+		//if($arr['asynsend'] && !m('reim')->asynurlbo())exit('沒有開啟服務端不能使用異步');
 		
 		$arr['sqllog'] 	 = $this->post('sqllog')=='1';
 		$arr['debug'] 	 = $this->post('debug')=='1';
 		$arr['reim_show'] 	 = $this->post('reim_show')=='1';
 		$arr['mobile_show']  = $this->post('mobile_show')=='1';
 		
-		if($asynsend == '1' && isempt($puurl))exit('未安装或开启服务端不能使用异步发送消息');
+		if($asynsend == '1' && isempt($puurl))exit('未安裝或開啟服務端不能使用異步發送消息');
 		
-		$smarr['url']			= '系统URL';
-		$smarr['localurl']		= '本地系统URL，用于服务器上浏览地址';
-		$smarr['title']			= '系统默认标题';
-		$smarr['apptitle']		= 'APP上或PC客户端上的标题';
-		$smarr['reimtitle']		= 'REIM即时通信上标题';
-		$smarr['weblogo']		= 'PC客户端上的logo图片';
-		$smarr['db_host']		= '数据库地址';
-		$smarr['db_user']		= '数据库用户名';
-		$smarr['db_pass']		= '数据库密码';
-		$smarr['db_base']		= '数据库名称';
-		$smarr['perfix']		= '数据库表名前缀';
-		$smarr['qom']			= 'session、cookie前缀';
-		$smarr['highpass']		= '超级管理员密码，可用于登录任何帐号';
-		$smarr['db_drive']		= '操作数据库驱动有mysql,mysqli,pdo三种';
-		$smarr['randkey']		= '系统随机字符串密钥';
-		$smarr['asynkey']		= '这是异步任务key';
-		$smarr['openkey']		= '对外接口openkey';
-		$smarr['sqllog']		= '是否记录sql日志保存'.UPDIR.'/sqllog下';
-		$smarr['asynsend']		= '是否异步发送提醒消息，0同步，1自己服务端异步，2官网VIP用户异步';
-		$smarr['install']		= '已安装，不要去掉啊';
-		$smarr['xinhukey']		= '信呼官网key，用于在线升级使用';
-		$smarr['bcolorxiang']	= '单据详情页面上默认展示线条的颜色';
-		$smarr['debug']			= '为true调试开发模式,false上线模式';
-		$smarr['reim_show']		= '首页是否显示REIM';
-		$smarr['mobile_show']	= '首页是否显示手机版';
+		$smarr['url']			= '系統URL';
+		$smarr['localurl']		= '本地系統URL，用于服務器上瀏覽地址';
+		$smarr['title']			= '系統默認標題';
+		$smarr['apptitle']		= 'APP上或PC客戶端上的標題';
+		$smarr['reimtitle']		= 'REIM即時通信上標題';
+		$smarr['weblogo']		= 'PC客戶端上的logo圖片';
+		$smarr['db_host']		= '數據庫地址';
+		$smarr['db_user']		= '數據庫用戶名';
+		$smarr['db_pass']		= '數據庫密碼';
+		$smarr['db_base']		= '數據庫名稱';
+		$smarr['perfix']		= '數據庫表名前綴';
+		$smarr['qom']			= 'session、cookie前綴';
+		$smarr['highpass']		= '超級管理員密碼，可用于登錄任何帳號';
+		$smarr['db_drive']		= '操作數據庫驅動有mysql,mysqli,pdo三種';
+		$smarr['randkey']		= '系統隨機字符串密鑰';
+		$smarr['asynkey']		= '這是異步任務key';
+		$smarr['openkey']		= '對外接口openkey';
+		$smarr['sqllog']		= '是否記錄sql日志保存'.UPDIR.'/sqllog下';
+		$smarr['asynsend']		= '是否異步發送提醒消息，0同步，1自己服務端異步，2官網VIP用戶異步';
+		$smarr['install']		= '已安裝，不要去掉啊';
+		$smarr['xinhukey']		= '信呼官網key，用于在線升級使用';
+		$smarr['bcolorxiang']	= '單據詳情頁面上默認展示線條的顏色';
+		$smarr['debug']			= '為true調試開發模式,false上線模式';
+		$smarr['reim_show']		= '首頁是否顯示REIM';
+		$smarr['mobile_show']	= '首頁是否顯示手機版';
 		
 		$str1 = '';
 		foreach($arr as $k=>$v){
@@ -160,7 +160,7 @@ class cogClassAction extends Action
 		
 		$str = '<?php
 if(!defined(\'HOST\'))die(\'not access\');
-//['.$this->adminname.']在'.$this->now.'通过[系统→系统工具→系统设置]，保存修改了配置文件
+//['.$this->adminname.']在'.$this->now.'通過[系統→系統工具→系統設置]，保存修改了配置文件
 return array(
 '.$str1.'
 );';
@@ -168,7 +168,7 @@ return array(
 		if($bo){
 			echo 'ok';
 		}else{
-			echo '保存失败无法写入：'.$_confpath.'';
+			echo '保存失敗無法寫入：'.$_confpath.'';
 		}
 	}
 	

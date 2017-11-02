@@ -1,5 +1,5 @@
 /**
-	rockbase 基础信息
+	rockbase 基礎信息
 */	
 
 
@@ -24,7 +24,7 @@ var backautocloseupload = {};
 		this._upload= function(){
 			if(!can.addbool)return;
 			
-			js.tanbody('uploadaction','上传文件',550,250,{
+			js.tanbody('uploadaction','上傳文件',550,250,{
 				html:'<iframe src="" name="uploadiframea" width="100%" height="250px" frameborder="0"></iframe>',bbar:'none'
 			});
 			var cans=can.uploadparams;
@@ -39,7 +39,7 @@ var backautocloseupload = {};
 			if(!mtype || !mid || mid==0)return;
 			var url = js.getajaxurl('getfile','upload','public',{mtype:mtype,mid:mid});
 			var o = $('#view_'+rand+'');
-			o.html('<div style="padding:10px"><img src="images/loading.gif" align="absmiddle">&nbsp;加载中...</div>');
+			o.html('<div style="padding:10px"><img src="images/loading.gif" align="absmiddle">&nbsp;加載中...</div>');
 			$.get(url, function(da){
 				o.html('');
 				var a = js.decode(da);
@@ -65,7 +65,7 @@ var backautocloseupload = {};
 	};
 	
 	
-	//搜索工具条
+	//搜索工具條
 	function rocksearch(element, options){
 		var obj = element;
 		var can = options;
@@ -102,12 +102,12 @@ var backautocloseupload = {};
 				'	<a type="button" id="fields_'+rand+'" class="btn btn-default">字段 <span class="caret"></span></a>'+
 				'	<a type="button" id="luoji_'+rand+'" class="btn btn-default">包含 <span class="caret"></span></a>'+
 				'</span>'+
-				'<input  class="form-control" id="key_'+rand+'" placeholder="关键词">'+
+				'<input  class="form-control" id="key_'+rand+'" placeholder="關鍵詞">'+
 				'<input  class="form-control" style="display:none" readonly id="date_'+rand+'">'+
 				'<span style="display:none" id="selectdivshoa_'+rand+'"></span>'+
 				'<span class="input-group-btn">'+
 				'	<button class="btn btn-default" style="display:none" id="datebtn_'+rand+'" type="button"><i class="icon-calendar"></i></button>'+
-				'	<button class="btn btn-default" id="soubtn_'+rand+'" type="button"><i class="icon-search"></i> 查询 </button>';
+				'	<button class="btn btn-default" id="soubtn_'+rand+'" type="button"><i class="icon-search"></i> 查詢 </button>';
 				
 			s+='	<button class="btn btn-default" id="soubtndown_'+rand+'" type="button"><i class="icon-caret-down"></i></button>';
 			s+='	</span>';
@@ -131,9 +131,9 @@ var backautocloseupload = {};
 				}
 			});
 			
-			var ds = [{name:'结果中查询',oi:0},{name:'高级查询...',oi:1}];
+			var ds = [{name:'結果中查詢',oi:0},{name:'高級查詢...',oi:1}];
 			if(!can.highsearch){
-				ds = [{name:'(',val:'('},{name:')',val:')'},{name:'并且',val:'and'},{name:'或者',val:'or'}];
+				ds = [{name:'(',val:'('},{name:')',val:')'},{name:'並且',val:'and'},{name:'或者',val:'or'}];
 				$('#soubtn_'+rand+'').html('<i class="icon-plus"></i>');
 			}
 			$('#soubtndown_'+rand+'').rockmenu({
@@ -189,7 +189,7 @@ var backautocloseupload = {};
 		this._highsearchstr	 = '';
 		this._highsearch = function(){
 			var s = '<div><div id="highsearch_list_tools"></div><div id="highsearch_list" style="height:180px;overflow:auto;">'+this._highsearchstr+'</div></div>';
-			js.tanbody('highsearch','高级查询',450, 250,{html:s,btn:[{text:'查询',icons:'search'}]});
+			js.tanbody('highsearch','高級查詢',450, 250,{html:s,btn:[{text:'查詢',icons:'search'}]});
 			var soutools=$('#highsearch_list_tools').rocksearch({
 				columns:can.columns,width:448,highsearch:false,
 				backcall:function(s, s1){
@@ -220,7 +220,7 @@ var backautocloseupload = {};
 				var las = o.find('font:last').html(),
 					lass= ',(,),and,or,';
 				if(lass.indexOf(','+las+',')<0){
-					this._showhighsearch('and','并且',0);
+					this._showhighsearch('and','並且',0);
 				}
 			}
 			o.append(h);

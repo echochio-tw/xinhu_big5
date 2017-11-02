@@ -1,18 +1,18 @@
 <?php
 class socketChajian extends Chajian
 {
-	//UDP服务器主机，不需要修改
+	//UDP服務器主機，不需要修改
 	private $serverhost = '127.0.0.1';
 	
-	//UDP服务端口，数字类型
+	//UDP服務端口，數字類型
 	private $serverport = 780;			
 	
 	/**
-	*	UDP发送文本
+	*	UDP發送文本
 	*/
 	public function udpsend($str)
 	{
-		if(!function_exists('socket_create'))return '没有开启Socket组件';
+		if(!function_exists('socket_create'))return '沒有開啟Socket組件';
 		$sock 	= socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
 		$len 	= strlen($str);
 		$bo 	= socket_sendto($sock, $str, $len, 0, $this->serverhost, $this->serverport);
@@ -21,7 +21,7 @@ class socketChajian extends Chajian
 	}
 	
 	/**
-	*	转pdf发送命令
+	*	轉pdf發送命令
 	*/
 	public function topdf($path, $fid, $type)
 	{
@@ -29,7 +29,7 @@ class socketChajian extends Chajian
 		if($type=='xls' || $type=='xlsx')$flx='xls';
 		if($type=='ppt' || $type=='pptx')$flx='ppt';
 		$topah 	= ''.ROOT_PATH.'/mode/pdfjs/topdf/'.$flx.'.js';
-		if(!file_exists($topah))return '没有安装转化插件';
+		if(!file_exists($topah))return '沒有安裝轉化插件';
 		$url  	= m('base')->getasynurl('asynrun', 'topdfok', array('id'=>$fid));;
 		$path 	= ''.ROOT_PATH.'/mode/pdfjs/topdf/start.bat "'.$topah.'" "'.ROOT_PATH.'/'.$path.'" "'.$url.'"';
 		$bo 	= $this->udpsend($path);
@@ -42,7 +42,7 @@ class socketChajian extends Chajian
 	public function udppush($str, $host='', $port=0)
 	{
 		$msg 	= '';
-		if(!function_exists('stream_socket_client'))$msg= '没有开启Socket组件';
+		if(!function_exists('stream_socket_client'))$msg= '沒有開啟Socket組件';
 		if($msg==''){
 			$handle = stream_socket_client("udp://{$host}:{$port}", $errno, $errstr);
 			if(!$handle){  

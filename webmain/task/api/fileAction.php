@@ -1,12 +1,12 @@
 <?php 
 /**
-*	文件下载相关接口
+*	文件下載相關接口
 */
 class fileClassAction extends apiAction
 {
 	
 	/**
-	*	获取文件信息
+	*	獲取文件信息
 	*/
 	public function getfileAction()
 	{
@@ -20,7 +20,7 @@ class fileClassAction extends apiAction
 	}
 	
 	/**
-	*	下载文件
+	*	下載文件
 	*/
 	public function downAction()
 	{

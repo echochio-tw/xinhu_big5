@@ -1,6 +1,6 @@
 <?php
 /**
-*	此文件是流程模块【officic.公文查阅】对应控制器接口文件。
+*	此文件是流程模塊【officic.公文查閱】對應控制器接口文件。
 */ 
 class mode_officicClassAction extends inputAction{
 	

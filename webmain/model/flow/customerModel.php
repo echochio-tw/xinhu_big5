@@ -3,7 +3,7 @@ class flow_customerClassModel extends flowModel
 {
 	public function initModel()
 	{
-		$this->statearr		 = c('array')->strtoarray('停用|#888888,启用|green');
+		$this->statearr		 = c('array')->strtoarray('停用|#888888,啟用|green');
 		$this->statarr		 = c('array')->strtoarray('否|#888888,是|#ff6600');
 	}
 	
@@ -40,7 +40,7 @@ class flow_customerClassModel extends flowModel
 	
 	
 	
-	//是否有查看权限
+	//是否有查看權限
 	protected function flowisreadqx()
 	{
 		$bo = false;
@@ -53,10 +53,10 @@ class flow_customerClassModel extends flowModel
 	{
 		$arr = array();
 		if($this->uid==$this->adminid){
-			$arr['mobile'] 		= '手机号';
-			$arr['tel'] 		= '电话';
-			$arr['email'] 		= '邮箱';
-			$arr['routeline'] 	= '交通路线';
+			$arr['mobile'] 		= '手機號';
+			$arr['tel'] 		= '電話';
+			$arr['email'] 		= '郵箱';
+			$arr['routeline'] 	= '交通路線';
 		}
 		return $arr;
 	}
@@ -78,7 +78,7 @@ class flow_customerClassModel extends flowModel
 				'shateid' 	=> $cnameid,
 				'shate' 	=> $cname,
 			), $this->id);
-			$this->push($cnameid, '客户管理', ''.$this->adminname.'将一个客户【{name}】共享给你');
+			$this->push($cnameid, '客戶管理', ''.$this->adminname.'將一個客戶【{name}】共享給你');
 		}
 		
 		//取消共享
@@ -101,40 +101,40 @@ class flow_customerClassModel extends flowModel
 	}
 	
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		$barr = array(
 			'name' 		=> '信呼',
-			'type' 		=> '软件',
-			'laiyuan' 		=> '网上开拓',
-			'unitname' 		=> '厦门信呼科技有限公司',
+			'type' 		=> '軟件',
+			'laiyuan' 		=> '網上開拓',
+			'unitname' 		=> '廈門信呼科技有限公司',
 			'tel' 		=> '0592-123456',
 			'mobile' 		=> '15800000000',
 			'email' 		=> 'admin@rockoa.com',
-			'address' 		=> '福建厦门思明区软件园',
+			'address' 		=> '福建廈門思明區軟件園',
 			'linkname' 		=> '磐石',
 		);
 		$barr1 = array(
 			'name' 		=> '百度',
-			'type' 		=> '搜索计算',
-			'laiyuan' 		=> '电话联系',
-			'unitname' 		=> '百度在线网络技术(北京)有限公司',
+			'type' 		=> '搜索計算',
+			'laiyuan' 		=> '電話聯系',
+			'unitname' 		=> '百度在線網絡技術(北京)有限公司',
 			'tel' 		=> '010-123456',
 			'mobile' 		=> '15800000001',
 			'email' 		=> 'admin@baidu.com',
-			'address' 		=> '北京软件园百度大厦',
-			'linkname' 		=> '李彦宏',
+			'address' 		=> '北京軟件園百度大廈',
+			'linkname' 		=> '李彥宏',
 		);
 		$barr2 = array(
-			'name' 		=> '陈先生',
-			'type' 		=> '个人',
-			'laiyuan' 		=> '电话联系',
+			'name' 		=> '陳先生',
+			'type' 		=> '個人',
+			'laiyuan' 		=> '電話聯系',
 			'unitname' 		=> '',
 			'tel' 		=> '010-123456',
 			'mobile' 		=> '15800000002',
 			'email' 		=> '1111@qq.com',
-			'address' 		=> '福建厦门火车站',
+			'address' 		=> '福建廈門火車站',
 			'linkname' 		=> '',
 		);
 		return array($barr,$barr1,$barr2);

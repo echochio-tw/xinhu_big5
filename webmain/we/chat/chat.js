@@ -41,7 +41,7 @@ var im={
 		var iref = (!iref)?false:true;
 		var minid= 0;
 		if(iref)minid=this.minid;
-		if(o1)$(o1).html('<img src="images/loadings.gif" height="14" width="15" align="absmiddle"> 加载中...');
+		if(o1)$(o1).html('<img src="images/loadings.gif" height="14" width="15" align="absmiddle"> 加載中...');
 		this.boolload 	= true;
 		this.isshangla 	= false;
 		js.ajax('reim','getrecord',{type:this.type,gid:this.gid,minid:minid,lastdt:''},function(ret){
@@ -66,7 +66,7 @@ var im={
 		var i,len 	= a.length,cont,lex,nas,fase,nr,d,na=[],rnd,sid;
 		$('#loadmored').remove();
 		if(isbf){
-			if(len>0)this.showobj.prepend('<div class="showblanks">---------↑以上是新加载---------</div>');
+			if(len>0)this.showobj.prepend('<div class="showblanks">---------↑以上是新加載---------</div>');
 			na = a;
 		}else{
 			for(i= len-1; i>=0; i--)na.push(a[i]);
@@ -96,13 +96,13 @@ var im={
 		if(len>0 && !isls){
 			var s = '<div id="histordiv" class="showblanks" >';
 			if(ret.wdtotal==0){
-				s+='---------↑以上是历史记录---------';
+				s+='---------↑以上是歷史記錄---------';
 				if(len>=5){
-					//this.showobj.prepend('<div id="loadmored" class="showblanks" ><a href="javascript:;" onclick="im.loadmoreda(this)">点击加载更多...</a></div>');
+					//this.showobj.prepend('<div id="loadmored" class="showblanks" ><a href="javascript:;" onclick="im.loadmoreda(this)">點擊加載更多...</a></div>');
 					this.isshangla = true;
 				}
 			}else{
-				s+='---↑以上是历史,还有未读信息'+ret.wdtotal+'条,<a href="javascript:;" onclick="im.loaddata(this)">点击加载</a>---';
+				s+='---↑以上是歷史,還有未讀信息'+ret.wdtotal+'條,<a href="javascript:;" onclick="im.loaddata(this)">點擊加載</a>---';
 			}
 			s+='</div>';
 			if(!isbf)this.addcont(s);
@@ -155,7 +155,7 @@ var im={
 		if(isempt(nr))return false;
 		var conss = jm.base64encode(nr);
 		if(conss.length>500){
-			js.msg('msg','发送内容太多了');
+			js.msg('msg','發送內容太多了');
 			return;
 		}
 		var nuid= js.now('time'),optdt = js.serverdt();
@@ -176,7 +176,7 @@ var im={
 	senderror:function(nuid){
 		js.ajaxbool = false;
 		get(nuid).src='images/error.png';
-		get(nuid).title='发送失败';
+		get(nuid).title='發送失敗';
 	},
 	sendsuccess:function(d,nuid){
 		this.bool = false;
@@ -238,7 +238,7 @@ var im={
 		a.isimg = f.isimg;
 		strformat.upsuccess(a);
 		if(f.isimg){
-			conss = '[图片 '+a.filesizecn+']';
+			conss = '[圖片 '+a.filesizecn+']';
 		}else{
 			conss = '['+f.filename+' '+f.filesizecn+']'
 		}

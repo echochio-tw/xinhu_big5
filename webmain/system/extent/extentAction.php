@@ -48,14 +48,14 @@ class extentClassAction extends Action
 		echo $msg;
 	}
 	
-	//清空用户权限
+	//清空用戶權限
 	private function extentclear($uid)
 	{
 		$this->db->delete($this->T('sjoin'), "( (`type` in ('um','uu','ut') and `mid`='$uid') or (`type`='mu' and `sid`='$uid') )");
 	}
 	
 	/**
-		获取权限信息
+		獲取權限信息
 	*/
 	function getextentAjax()
 	{
@@ -64,7 +64,7 @@ class extentClassAction extends Action
 		$ntable		= '';
 		$s			= '[0]';
 		
-		//权限查看的
+		//權限查看的
 		if($type == 'view'){
 			$s		= m('sjoin')->getuserext($mid);
 		}else{

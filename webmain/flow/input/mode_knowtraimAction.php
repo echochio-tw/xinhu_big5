@@ -1,7 +1,7 @@
 <?php
 /**
-*	此文件是流程模块【knowtraim.考试培训】对应接口文件。
-*	可在页面上创建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_knowtraim|input','flow')调用到对应方法
+*	此文件是流程模塊【knowtraim.考試培訓】對應接口文件。
+*	可在頁面上創建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_knowtraim|input','flow')調用到對應方法
 */ 
 class mode_knowtraimClassAction extends inputAction{
 	
@@ -10,14 +10,14 @@ class mode_knowtraimClassAction extends inputAction{
 		$dsshu	= abs((int)$arr['dsshu']);
 		$dxshu	= abs((int)$arr['dxshu']);
 		$state	= 0;
-		if($arr['startdt']>=$arr['enddt'])return '开始时间不能大于截止时间';
+		if($arr['startdt']>=$arr['enddt'])return '開始時間不能大于截止時間';
 		
 		$where  = $this->flow->gettikuwhere($arr['tikuid']);
 		$darr 	= $this->db->getall('SELECT `type`,count(1)stotal FROM `[Q]knowtiku` where `status`=1 '.$where.' group by `type`');
 		$darrs 	= array(0,0);
 		foreach($darr as $k=>$rs)$darrs[$rs['type']] = (int)$rs['stotal'];
-		if($dsshu>$darrs[0])return '单选数量太多，题库里只有'.$darrs[0].'题';
-		if($dxshu>$darrs[1])return '多选数量太多，题库里只有'.$darrs[1].'题';
+		if($dsshu>$darrs[0])return '單選數量太多，題庫裡只有'.$darrs[0].'題';
+		if($dxshu>$darrs[1])return '多選數量太多，題庫裡只有'.$darrs[1].'題';
 		$now 	= $this->rock->now;
 		if($arr['enddt']<$now){
 			$state = 2;
@@ -67,7 +67,7 @@ class mode_knowtraimClassAction extends inputAction{
 		foreach($arrs as $sj){
 			$rows[] = array(
 				'value' => $sj,
-				'name' => $sj.'分钟',
+				'name' => $sj.'分鐘',
 			);
 		}
 		return $rows;
@@ -98,8 +98,8 @@ class mode_knowtraimClassAction extends inputAction{
 			$rows[$k]['startdt'] = ''.substr($rs['startdt'],5,11).'至'.substr($rs['enddt'],5,11).'('.$zt.')';
 			if($rs['fenshu']=='0' && $rs['isks']==0)$rows[$k]['fenshu']='';
 			if(!isempt($rs['ksedt']))$rows[$k]['ksedt'] = ''.substr($rs['kssdt'],5,11).'至'.substr($rs['ksedt'],5,11).'';
-			$strs 				= ($rs['isks']=='1') ? '<font color=green>已考试</font>' : '<font color=red>未考试</font>';
-			if($rs['state']=='0')$strs='<font color="#888888">未开始</font>';
+			$strs 				= ($rs['isks']=='1') ? '<font color=green>已考試</font>' : '<font color=red>未考試</font>';
+			if($rs['state']=='0')$strs='<font color="#888888">未開始</font>';
 			$rows[$k]['isks']   = $strs;
 			$rows[$k]['iskszt'] = $rs['isks'];
 		}
@@ -109,25 +109,25 @@ class mode_knowtraimClassAction extends inputAction{
 		);
 	}
 	
-	//初始化考试
+	//初始化考試
 	public function initkaoshiAjax()
 	{
 		$sid = (int)$this->get('sid');
 		$uid = $this->adminid;
 		$dbs = m('knowtrais');
 		$ors = $dbs->getone("`id`='$sid' and `uid`='$uid'");
-		if(!$ors)return '记录不存在';
-		if($ors['isks']=='1')return '你已经考试过了';
+		if(!$ors)return '記錄不存在';
+		if($ors['isks']=='1')return '你已經考試過了';
 		
 		$dbss	= m('flow:knowtraim');
-		$dbss->reloadstate($ors['mid']);//更新状态
+		$dbss->reloadstate($ors['mid']);//更新狀態
 		
 		$mrs = m('knowtraim')->getone($ors['mid']);
-		if(!$mrs)return '记录不存在';
-		if($mrs['state']!='1')return '培训考试题目可能还未开始或已结束了';
+		if(!$mrs)return '記錄不存在';
+		if($mrs['state']!='1')return '培訓考試題目可能還未開始或已結束了';
 		
-		$dxshu	= (int)$mrs['dxshu'];//多选
-		$dsshu	= (int)$mrs['dsshu']; //单选
+		$dxshu	= (int)$mrs['dxshu'];//多選
+		$dsshu	= (int)$mrs['dsshu']; //單選
 		$ids 	= '';
 		
 		$wheress= $dbss->gettikuwhere($mrs['tikuid']);
@@ -142,7 +142,7 @@ class mode_knowtraimClassAction extends inputAction{
 			$idarr = $this->getrandts($dsarr);
 			$dsarr = $idarr['rows'];
 			$idss  = $idarr['id'];
-			if($idss=='0')return '单选的题库不够';
+			if($idss=='0')return '單選的題庫不夠';
 			$ids  .= ','.$idss.'';
 		}
 		
@@ -150,7 +150,7 @@ class mode_knowtraimClassAction extends inputAction{
 			$idarr = $this->getrandts($dxarr);
 			$dxarr = $idarr['rows'];
 			$idss  = $idarr['id'];
-			if($idss=='0')return '多选的题库不够';
+			if($idss=='0')return '多選的題庫不夠';
 			$ids  .= ','.$idss.'';
 		}
 		
@@ -164,7 +164,7 @@ class mode_knowtraimClassAction extends inputAction{
 		
 		return 'ok';
 	}
-	//随机获取题目
+	//隨機獲取題目
 	private function getrandts($arr)
 	{
 		$id 	= '0';
@@ -191,7 +191,7 @@ class mode_knowtraimClassAction extends inputAction{
 		$uid = $this->adminid;
 		$dbs = m('knowtrais');
 		$ors = $dbs->getone("`id`='$sid' and `uid`='$uid'");
-		if(!$ors)return '记录不存在';
+		if(!$ors)return '記錄不存在';
 		
 		$trs = m('knowtiku')->getone($tid);
 		$answer	= strtoupper($trs['answer']);
@@ -205,10 +205,10 @@ class mode_knowtraimClassAction extends inputAction{
 		$dyjgsa= explode(',', $ors['dyjgs']);
 		$danva =  $jgarr = array();
 		
-		$zfenshu = floatval($mrs['zfenshu']); //总分
-		$hgfen   = floatval($mrs['hgfen']); //合格的分数
+		$zfenshu = floatval($mrs['zfenshu']); //總分
+		$hgfen   = floatval($mrs['hgfen']); //合格的分數
 		
-		$tmshu	= count($tkidsa);//题目数
+		$tmshu	= count($tkidsa);//題目數
 		$dfen 	= 0;
 		$meifen = $zfenshu/$tmshu;
 		$jg		= '0';
@@ -245,7 +245,7 @@ class mode_knowtraimClassAction extends inputAction{
 		
 		if($oi==0)m('flow:knowtraim')->reloadstate($mid);
 		
-		if($jg=='2')return '错了，正确是：'.$answer.'';
+		if($jg=='2')return '錯了，正確是：'.$answer.'';
 		
 		return 'ok';
 	}
@@ -264,7 +264,7 @@ class mode_knowtraimClassAction extends inputAction{
 		return $dbs->getmou('fenshu', $sid);
 	}
 	
-	//标识可重新考试
+	//標識可重新考試
 	public function biaoshiAjax()
 	{
 		$fid = $this->post('fid','0');
@@ -286,7 +286,7 @@ class mode_knowtraimClassAction extends inputAction{
 		$mid 	= (int)$this->post('mid');
 		$arows 	= m('knowtrais')->getall('`mid`='.$mid.'');
 		$mrs 	= m('knowtraim')->getone($mid);
-		$hgfen  = floatval($mrs['hgfen']); //合格的分数
+		$hgfen  = floatval($mrs['hgfen']); //合格的分數
 		$hgshu 	= $wks = $bhg =0;
 		$zshu 	= 0;
 		foreach($arows as $k=>$rs){
@@ -312,7 +312,7 @@ class mode_knowtraimClassAction extends inputAction{
 			'value'=> $bhg
 		);
 		$rows[]	= array(
-			'name' => '未考试',
+			'name' => '未考試',
 			'value'=> $wks
 		);
 		foreach($rows as $k=>$rs){
@@ -320,7 +320,7 @@ class mode_knowtraimClassAction extends inputAction{
 			$rows[$k]['bili'] = ''.$bili.'%';
 		}
 		$rows[]	= array(
-			'name' => '合计',
+			'name' => '合計',
 			'value'=> $zshu
 		);
 		return array(
@@ -329,7 +329,7 @@ class mode_knowtraimClassAction extends inputAction{
 	}
 	
 	
-	//读取对应题库
+	//讀取對應題庫
 	public function tikunamedata()
 	{
 		$rows = $this->option->getselectdata('knowtikutype', true);

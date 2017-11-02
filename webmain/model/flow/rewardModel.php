@@ -3,7 +3,7 @@ class flow_rewardClassModel extends flowModel
 {
 	
 	public function initModel(){
-		$this->typearr		= array('<font color=green>奖励</font>','<font color=red>处罚</font>');
+		$this->typearr		= array('<font color=green>獎勵</font>','<font color=red>處罰</font>');
 	}
 	
 	protected function flowcheckname($num)

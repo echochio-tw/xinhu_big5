@@ -1,6 +1,6 @@
 <?php
 /**
-	通讯录显示用户模块的
+	通訊錄顯示用戶模塊的
 */
 class agent_userClassModel extends agentModel
 {

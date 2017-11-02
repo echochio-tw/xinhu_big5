@@ -75,7 +75,7 @@ class customerClassAction extends Action
 		return $barr;
 	}
 	
-	//客户转移
+	//客戶轉移
 	public function movecustAjax()
 	{
 		$sid 	= $this->post('sid');
@@ -90,7 +90,7 @@ class customerClassAction extends Action
 	}
 	
 	
-	//批量添加客户
+	//批量添加客戶
 	public function addplcustAjax()
 	{
 		$rows  	= c('html')->importdata('type,name,unitname,laiyuan,linkname,tel,mobile,email,address','type,name');
@@ -107,10 +107,10 @@ class customerClassAction extends Action
 			$db->insert($rs);
 			$oi++;
 		}
-		backmsg('','成功导入'.$oi.'条数据');
+		backmsg('','成功導入'.$oi.'條數據');
 	}
 	
-	//分配客户
+	//分配客戶
 	public function distcustAjax()
 	{
 		$sid 	= $this->post('sid','0');

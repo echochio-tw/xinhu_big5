@@ -2,7 +2,7 @@
 class uploadClassAction extends Action{
 	
 	/**
-	*	上传文件页面
+	*	上傳文件頁面
 	*/
 	public function defaultAction()
 	{
@@ -15,7 +15,7 @@ class uploadClassAction extends Action{
 		$params['uptype'] 		= $this->get('uptype','*');
 		$params['thumbtype'] 	= $this->get('thumbtype','0');
 		$params['maxsize'] 		= (int)$this->get('maxsize', c('upfile')->getmaxzhao());
-		$this->title 			= $this->get('title','上傳文件');
+		$this->title 			= $this->get('title','文件上傳');
 		$this->assign('params', $params);
 		$this->assign('callback', $params['callback']);
 	}
@@ -57,7 +57,7 @@ class uploadClassAction extends Action{
 	}
 	
 	/**
-	*	编辑器上传文件
+	*	編輯器上傳文件
 	*/
 	public function upimgAction()
 	{

@@ -1,8 +1,8 @@
 <?php
 /**
-*	api的入口地址请求访问，访问方法：http://我的域名/api.php?m=index&a=方法
-*	主页：http://www.rockoa.com/
-*	软件：信呼
+*	api的入口地址請求訪問，訪問方法：http://我的域名/api.php?m=index&a=方法
+*	主頁：http://www.rockoa.com/
+*	軟件：信呼
 *	作者：雨中磐石(rainrock)
 */
 define('ENTRANCE', 'api');

@@ -164,7 +164,7 @@
 					if(isempt(this.getValue(a[i].name))){
 						bo  = true;
 						s	= a[i].tipText;
-						if(!s)s=''+a[i].labelText+'不能为空';
+						if(!s)s=''+a[i].labelText+'不能為空';
 						break;
 					}
 				}
@@ -220,7 +220,7 @@
 				}
 			}
 			if(!ebo && lx == 0 && can.pdedit){
-				//this.setmsg('数据没修改，不用保存','#F92FB6');
+				//this.setmsg('數據沒修改，不用保存','#F92FB6');
 				//return;
 			};
 			s	= can.submitcheck(data, me);
@@ -228,7 +228,7 @@
 				this.setmsg(s);
 				return;
 			}
-			this.setmsg('处理中...','#ff6600');
+			this.setmsg('處理中...','#ff6600');
 			for(ac in can.params)data[ac]=can.params[ac];
 			if(typeof(s)=='object'){
 				for(ac in s)data[ac]=s[ac];
@@ -355,7 +355,7 @@
 		};
 		
 		this.load = function(url){
-			this.setmsg('加载中...');
+			this.setmsg('加載中...');
 			$.get(url, function(da){
 				var a = js.decode(da);
 				me._loadback(a);
@@ -394,18 +394,18 @@
 		var defaultVal = {
 			items:[],labelWidth:90,width:500,height:400,
 			labelAlign:'right',saveCls:'primary',
-			tablename:'', //对应表名
-			modenum:'',  //对应模块编号
+			tablename:'', //對應表名
+			modenum:'',  //對應模塊編號
 			url:js.getajaxurl('publicsave','index'),
 			submitfields:'',autoclose:true,cancelbtn:true,
 			params:{},bodywidth:'90%',addCls:'primary',editCls:'info',bodyheight:0,isedit:0,
-			render:'',saveText:'确定',window:true,windowid:'',
-			editrecord:'false', //是否保存修改记录
+			render:'',saveText:'確定',window:true,windowid:'',
+			editrecord:'false', //是否保存修改記錄
 			defaultfields:{type:'text',blankText:'',labelText:'',required:false,readOnly:false,labelBox:'',attr:'',value:''},
 			success:function(){},loadafter:function(){},
 			load:function(){},
-			aftersaveaction:'', //保存后处理方法
-			beforesaveaction:'', //保存前处理方法
+			aftersaveaction:'', //保存後處理方法
+			beforesaveaction:'', //保存前處理方法
 			requiredfields:'',
 			error:function(){},saveid:'',msgviewid:'',rand:'',
 			pdedit:true,
@@ -418,7 +418,7 @@
 		}
 		if(can.isedit==1){
 			can.saveCls = can.editCls;
-			can.title	= '<i class="icon-edit"></i> 编辑 '+can.title+'';
+			can.title	= '<i class="icon-edit"></i> 編輯 '+can.title+'';
 		}
 		var clsa = new bootsform(false, can);
 		clsa.init();

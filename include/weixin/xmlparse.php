@@ -4,13 +4,13 @@ include_once "errorCode.php";
 /**
  * XMLParse class
  *
- * 提供提取消息格式中的密文及生成回复消息格式的接口.
+ * 提供提取消息格式中的密文及生成回復消息格式的接口.
  */
 class XMLParse
 {
 
 	/**
-	 * 提取出xml数据包中的加密消息
+	 * 提取出xml數據包中的加密消息
 	 * @param string $xmltext 待提取的xml字符串
 	 * @return string 提取出的加密消息字符串
 	 */
@@ -32,10 +32,10 @@ class XMLParse
 
 	/**
 	 * 生成xml消息
-	 * @param string $encrypt 加密后的消息密文
-	 * @param string $signature 安全签名
-	 * @param string $timestamp 时间戳
-	 * @param string $nonce 随机字符串
+	 * @param string $encrypt 加密後的消息密文
+	 * @param string $signature 安全簽名
+	 * @param string $timestamp 時間戳
+	 * @param string $nonce 隨機字符串
 	 */
 	public function generate($encrypt, $signature, $timestamp, $nonce)
 	{

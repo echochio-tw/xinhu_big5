@@ -5,23 +5,23 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'userinfo',modenum:modenum,params:{atype:'my'},
 		columns:[{
-			text:'部门',dataIndex:'deptname',align:'left',sortable:true
+			text:'部門',dataIndex:'deptname',align:'left',sortable:true
 		},{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
-			text:'性别',dataIndex:'sex'
+			text:'性別',dataIndex:'sex'
 		},{
-			text:'职位',dataIndex:'ranking'
+			text:'職位',dataIndex:'ranking'
 		},{
-			text:'状态',dataIndex:'state',sortable:true
+			text:'狀態',dataIndex:'state',sortable:true
 		},{
-			text:'入职日期',dataIndex:'workdate',sortable:true
+			text:'入職日期',dataIndex:'workdate',sortable:true
 		},{
-			text:'转正日期',dataIndex:'positivedt',sortable:true
+			text:'轉正日期',dataIndex:'positivedt',sortable:true
 		},{
-			text:'电话',dataIndex:'tel'
+			text:'電話',dataIndex:'tel'
 		},{
-			text:'手机号',dataIndex:'mobile'
+			text:'手機號',dataIndex:'mobile'
 		},{
 			text:'ID',dataIndex:'id'
 		}],
@@ -41,10 +41,10 @@ $(document).ready(function(){
 	var c = {
 		view:function(){
 			var d=a.changedata;
-			openxiangs('个人资料',modenum,d.id);
+			openxiangs('個人資料',modenum,d.id);
 		},
 		edit:function(){
-			openinput('个人资料',modenum,a.changeid+'&optlx=my');
+			openinput('個人資料',modenum,a.changeid+'&optlx=my');
 		}
 	};
 	js.initbtn(c);
@@ -62,12 +62,12 @@ $(document).ready(function(){
 
 	<td width="90%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp;  
-		<button class="btn btn-default" id="edit_{rand}" click="edit" disabled type="button">编辑</button>
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp;  
+		<button class="btn btn-default" id="edit_{rand}" click="edit" disabled type="button">編輯</button>
 	</td>
 </tr>
 </table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">个人资料请认真填写！</div>
+<div class="tishi">個人資料請認真填寫！</div>

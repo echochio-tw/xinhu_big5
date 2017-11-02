@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
 
-<title><?=$mrs['title']?>_培训考试</title>
+<title><?=$mrs['title']?>_培訓考試</title>
 <link rel="stylesheet" type="text/css" href="mode/bootstrap3.3/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="web/res/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="webmain/css/webmain.css"/>
@@ -17,7 +17,7 @@
 <script type="text/javascript">
 var sid = <?=$ors['id']?>;
 var tkrows = <?=$tkrows?>;
-var kstime = <?=$mrs['kstime']?>;//分钟
+var kstime = <?=$mrs['kstime']?>;//分鐘
 var c = {
 	start:function(o){
 		js.msg('wait','初始化中...');
@@ -46,7 +46,7 @@ var c = {
 	showtimes:function(){
 		var sj = this.shijian+1;
 		if(sj>kstime*60){
-			this.finifss();//时间到了
+			this.finifss();//時間到了
 			return;
 		}
 		var fz = Math.floor(sj/60);
@@ -64,15 +64,15 @@ var c = {
 		js.setmsg();
 		var oi  = this.tims+1;
 		if(len==oi){
-			get('btnssn').value='提交完成答题';
+			get('btnssn').value='提交完成答題';
 		}
 		$('#showtotal').html(''+len+'/'+oi+'');
 		var d = tkrows[this.tims];
-		var ty1 = 'radio',ty2='单选';
+		var ty1 = 'radio',ty2='單選';
 		if(d.type=='1'){
-			ty1 = 'checkbox';ty2='多选';
+			ty1 = 'checkbox';ty2='多選';
 		}
-		$('#titletm').html('题目'+oi+'、'+d.title+'<font style="font-size:12px" color="#888888">('+ty2+')</font>');
+		$('#titletm').html('題目'+oi+'、'+d.title+'<font style="font-size:12px" color="#888888">('+ty2+')</font>');
 		var arrs = ['ana','anb','anc','and'],arrs1 = ['A','B','C','D'];
 		var s = '',v1;
 		for(var i=0;i<4;i++){
@@ -98,11 +98,11 @@ var c = {
 			return;
 		}
 		if(dy==''){
-			js.msg('msg','还没选答案呢');
+			js.msg('msg','還沒選答案呢');
 			return;
 		}
 		o.disabled=true;
-		js.setmsg('处理中...');
+		js.setmsg('處理中...');
 		dy=dy.replace(/\,/g,'');
 		this.nextbo=false;
 		var isover  = (this.tims+1>=len);
@@ -127,7 +127,7 @@ var c = {
 		js.setmsg('提交中...');
 		js.ajax(this.geturl('finfish'),{sid:sid,sj:this.shijian},function(s){
 			js.setmsg();
-			js.alert('答题结束得分：'+s+'');
+			js.alert('答題結束得分：'+s+'');
 		},'get');
 	}
 };
@@ -136,7 +136,7 @@ function initbody(){
 }
 
 window.onbeforeunload=function(){
-	if(!c.isover)return '考试还没结束，不要离开本页面？';
+	if(!c.isover)return '考試還沒結束，不要離開本頁面？';
 }
 </script>
 
@@ -156,13 +156,13 @@ if(!$rock->ismobile()){
 	<div style="padding:20px;font-size:18px"><?=$mrs['title']?></div>
 <?php if($ors['isks']=='0' && isempt($ors['tkids'])){?>
 	<div class="mborder">
-		<div>状态：你还未开始答题考试</div><div class="blank5"></div>
+		<div>狀態：你還未開始答題考試</div><div class="blank5"></div>
 		<div>姓名：<?=$da['adminname']?></div><div class="blank5"></div>
-		<div>考试时间：<?=$mrs['kstime']?>分钟</div><div class="blank5"></div>
-		<div>单选题目：<?=$mrs['dsshu']?>题</div><div class="blank5"></div>
-		<div>多选题目：<?=$mrs['dxshu']?>题</div><div class="blank5"></div>
-		<div>总分：<?=$mrs['zfenshu']?>分</div><div class="blank10"></div>
-		<div align="center"><input type="button" onclick="c.start(this)" class="btn btn-success" value="开始考试"></div>
+		<div>考試時間：<?=$mrs['kstime']?>分鐘</div><div class="blank5"></div>
+		<div>單選題目：<?=$mrs['dsshu']?>題</div><div class="blank5"></div>
+		<div>多選題目：<?=$mrs['dxshu']?>題</div><div class="blank5"></div>
+		<div>總分：<?=$mrs['zfenshu']?>分</div><div class="blank10"></div>
+		<div align="center"><input type="button" onclick="c.start(this)" class="btn btn-success" value="開始考試"></div>
 	</div>
 <?php 
 }
@@ -170,16 +170,16 @@ if(!isempt($ors['tkids'])){
 ?>
 	<div id="kaoshidiv">
 		<div class="mborder">
-			<div align="center">培训考试中(<span id="showtotal">5/1</span>)，已过：<span id="shijian">0分0秒</span></div>
+			<div align="center">培訓考試中(<span id="showtotal">5/1</span>)，已過：<span id="shijian">0分0秒</span></div>
 			<div class="blank10"></div>
 			
-			<div align="center" style="background-color:#f1f1f1;padding:5px">考试时间：<?=$mrs['kstime']?>分钟，总分：<?=$mrs['zfenshu']?>分</div>
+			<div align="center" style="background-color:#f1f1f1;padding:5px">考試時間：<?=$mrs['kstime']?>分鐘，總分：<?=$mrs['zfenshu']?>分</div>
 			<div class="blank10"></div>
 			
-			<div id="titletm">题目1、呵呵额和</div>
+			<div id="titletm">題目1、呵呵額和</div>
 			<form name="myform"><div id="titletcont"></div></form>
 			<div class="blank10"></div>
-			<div align="center"><input type="button" id="btnssn" onclick="c.next(this)" class="btn btn-success" value="下一题">&nbsp;<span id="msgview"></span></div>
+			<div align="center"><input type="button" id="btnssn" onclick="c.next(this)" class="btn btn-success" value="下一題">&nbsp;<span id="msgview"></span></div>
 		</div>
 	</div>
 <?php

@@ -4,7 +4,7 @@ function initbodys(){
 }
 
 
-//触发事件
+//觸發事件
 function oninputblur(na,zb,obj){
 	if(zb==0)return;
 	if(na=='temp_aid')changeaidtssk(obj);

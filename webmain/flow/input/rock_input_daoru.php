@@ -55,10 +55,10 @@ $(document).ready(function(){
 			var val = mobjs.val();
 			var vis = 'msgview_{rand}';
 			if(isempt(val)){
-				js.setmsg('没有输入任何东西','', vis);
+				js.setmsg('沒有輸入任何東西','', vis);
 				return;
 			}
-			js.setmsg('处理中...','', vis);
+			js.setmsg('處理中...','', vis);
 			o1.disabled=true;
 			js.ajax(js.getajaxurl('daorudata','{mode}','{dir}'),{importcont:val,'modenum':modenum},function(ds){
 				if(ds.success){
@@ -90,9 +90,9 @@ $(document).ready(function(){
 </script>
 
 <div align="left">
-<div>请下面表格格式在Excel中添加数据，并复制到下面文本框中，也可以手动输入，<a click="downxz" href="javascript:;">[下载Excel模版]</a>。<br>多行代表多记录，整行字段用	分开，<a click="insrtss" href="javascript:;">插入间隔符</a></div>
+<div>請下面表格格式在Excel中添加數據，並復制到下面文本框中，也可以手動輸入，<a click="downxz" href="javascript:;">[下載Excel模版]</a>。<br>多行代表多記錄，整行字段用	分開，<a click="insrtss" href="javascript:;">插入間隔符</a></div>
 <div><textarea style="height:250px;" id="maincont_{rand}" class="form-control"></textarea></div>
 <div id="showview_{rand}"></div>
-<div style="padding:10px 0px"><a click="yulan" href="javascript:;">[预览]</a>&nbsp; &nbsp; <button class="btn btn-success" click="saveadd" type="button">确定导入</button>&nbsp; <span id="msgview_{rand}"></span></div>
-<div class="tishi">请严格按照规定格式添加，否则数据将错乱哦，导入的字段可到[流程模块→表单元素管理]下设置，更多可查看<a href="<?=URLY?>view_daoru.html" target="_blank">[帮助]</a>。</div>
+<div style="padding:10px 0px"><a click="yulan" href="javascript:;">[預覽]</a>&nbsp; &nbsp; <button class="btn btn-success" click="saveadd" type="button">確定導入</button>&nbsp; <span id="msgview_{rand}"></span></div>
+<div class="tishi">請嚴格按照規定格式添加，否則數據將錯亂哦，導入的字段可到[流程模塊→表單元素管理]下設置，更多可查看<a href="<?=URLY?>view_daoru.html" target="_blank">[幫助]</a>。</div>
 </div>

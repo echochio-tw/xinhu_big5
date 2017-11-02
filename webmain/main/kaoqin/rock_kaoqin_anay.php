@@ -5,7 +5,7 @@ $(document).ready(function(){
 		tablename:'kqanay',fanye:true,
 		url:publicstore('{mode}','{dir}'),storeafteraction:'kqanayaftershow',storebeforeaction:'kqanaybeforeshow',pageSize:16,
 		columns:[{
-			text:'部门',dataIndex:'deptname',align:'left'
+			text:'部門',dataIndex:'deptname',align:'left'
 		},{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
@@ -15,9 +15,9 @@ $(document).ready(function(){
 		},{
 			text:'是否工作日',dataIndex:'iswork',sortable:true
 		},{
-			text:'状态名称',dataIndex:'ztname'
+			text:'狀態名稱',dataIndex:'ztname'
 		},{
-			text:'状态值',dataIndex:'state',align:'left'
+			text:'狀態值',dataIndex:'state',align:'left'
 		}],
 		itemclick:function(){
 			get('xqkaoqb_{rand}').disabled=false;
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		anaynow:function(){
 			var dt = get('dt1_{rand}').value;
 			if(dt==''){
-				js.msg('msg','请选择月份');
+				js.msg('msg','請選擇月份');
 				return;
 			}
 			js.msg('wait','['+dt+']月份的考勤分析中...');
@@ -61,7 +61,7 @@ $(document).ready(function(){
 </script>
 <div>
 <table width="100%"><tr>
-	<td nowrap>日期从&nbsp;</td>
+	<td nowrap>日期從&nbsp;</td>
 	<td nowrap>
 		<input style="width:110px" onclick="js.changedate(this)" readonly class="form-control datesss" id="dt1_{rand}" >
 	</td>
@@ -70,7 +70,7 @@ $(document).ready(function(){
 		<input style="width:110px" onclick="js.changedate(this)" readonly class="form-control datesss" id="dt2_{rand}" >
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td nowrap style="padding-left:10px">
 		<label><input id="iswork_{rand}" checked type="checkbox">只看工作日</label>
@@ -86,9 +86,9 @@ $(document).ready(function(){
 	</td>
 	<td width="80%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-info" click="xqkaoqb" disabled id="xqkaoqb_{rand}" type="button">详情考勤表</button>&nbsp;&nbsp;
+		<button class="btn btn-info" click="xqkaoqb" disabled id="xqkaoqb_{rand}" type="button">詳情考勤表</button>&nbsp;&nbsp;
 		<button class="btn btn-default" click="anaynow" type="button">全部重新分析</button>&nbsp;&nbsp;
-		<button class="btn btn-default" click="daochu" type="button">导出</button>
+		<button class="btn btn-default" click="daochu" type="button">導出</button>
 	</td>
 </tr></table>
 </div>

@@ -17,7 +17,7 @@ class scheduleClassModel extends Model
 	}
 	
 	/**
-	*	读取个人日程
+	*	讀取個人日程
 	*/
 	public function getlistdata($uid, $startdt, $enddt, $whe='')
 	{
@@ -88,7 +88,7 @@ class scheduleClassModel extends Model
 	}
 	
 	/**
-	*	日程提醒发送
+	*	日程提醒發送
 	*/
 	public function gettododata($dt='')
 	{

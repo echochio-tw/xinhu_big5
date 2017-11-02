@@ -21,7 +21,7 @@ var nwjs={
 		var tray = new nwjsgui.Tray({ title:tls, icon: icon});
 		tray.tooltip = tls;
 		var menu = new nwjsgui.Menu();
-		menu.append(new nwjsgui.MenuItem({label: '打开窗口',click:function(){
+		menu.append(new nwjsgui.MenuItem({label: '打開窗口',click:function(){
 			nwjs.winshow();
 		}}));
 		this.closebool = false;

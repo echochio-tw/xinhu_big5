@@ -45,7 +45,7 @@ class indexClassAction extends Action{
 	}
 	
 	/**
-	*	搜索菜单
+	*	搜索菜單
 	*/
 	public function getmenusouAjax()
 	{
@@ -57,7 +57,7 @@ class indexClassAction extends Action{
 	}
 	
 	/**
-	*	获取菜单
+	*	獲取菜單
 	*/
 	public function getmenuAjax()
 	{
@@ -101,17 +101,17 @@ class indexClassAction extends Action{
 	}
 	
 	/**
-	*	单页显示
+	*	單頁顯示
 	*/
 	public function showAction()
 	{
 		$url 	= $this->get('url');
-		if($url=='')exit('无效请求');
+		if($url=='')exit('無效請求');
 		$this->defaultAction();
 	}
 	
 	/**
-	*	获取模版文件
+	*	獲取模版文件
 	*/
 	public function getshtmlAction()
 	{
@@ -120,14 +120,14 @@ class indexClassAction extends Action{
 		$file = ''.P.'/'.$surl.'.php';
 		if(!file_exists($file))$file = ''.P.'/'.$surl.'.shtml';
 		if(!file_exists($file))exit('404 not found '.$surl.'');
-		if(contain($surl,'home/index/rock_index'))$this->showhomeitems();//首页的显示
+		if(contain($surl,'home/index/rock_index'))$this->showhomeitems();//首頁的顯示
 		$this->displayfile = $file;
 	}
-	//显示桌面项目
+	//顯示桌面項目
 	private function showhomeitems()
 	{
 		$rows = m('homeitems')->getmyshow();
-		if(!$rows)$rows = json_decode('[{"num":"kjrk","row":"0","name":"快捷入口","sort":"0"},{"num":"gong","row":"0","name":"通知公告","sort":"1"},{"num":"kqdk","row":"0","name":"考勤打卡","sort":"2"},{"num":"gwwx","row":"0","receid":"u1","recename":"管理员","name":"微信办公","sort":"10"},{"num":"apply","row":"1","name":"我的申请","sort":"0"},{"num":"meet","row":"1","name":"今日会议","sort":"2"},{"num":"syslog","receid":"u1","recename":"管理员","row":"1","name":"系统日志","sort":"3"},{"num":"about","row":"1","receid":"u1","recename":"管理员","name":"关于信呼","sort":"10"}]', true);
+		if(!$rows)$rows = json_decode('[{"num":"kjrk","row":"0","name":"快捷入口","sort":"0"},{"num":"gong","row":"0","name":"通知公告","sort":"1"},{"num":"kqdk","row":"0","name":"考勤打卡","sort":"2"},{"num":"gwwx","row":"0","receid":"u1","recename":"管理員","name":"微信辦公","sort":"10"},{"num":"apply","row":"1","name":"我的申請","sort":"0"},{"num":"meet","row":"1","name":"今日會議","sort":"2"},{"num":"syslog","receid":"u1","recename":"管理員","row":"1","name":"系統日志","sort":"3"},{"num":"about","row":"1","receid":"u1","recename":"管理員","name":"關于信呼","sort":"10"}]', true);
 		$homeitems  = $homearrs = array(); 
 		foreach($rows as $k=>$rs){
 			$homeitems[$rs['row']][] = $rs['num'];
@@ -137,7 +137,7 @@ class indexClassAction extends Action{
 		$this->assign('homearrs', $homearrs);
 	}
 	
-	//开发时快速打开文件
+	//開發時快速打開文件
 	public function openfileAjax()
 	{
 		$file = $this->rock->jm->base64decode($this->get('file'));

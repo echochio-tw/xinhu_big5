@@ -1,11 +1,11 @@
-﻿/**
-*	REIM即时通信主js
+/**
+*	REIM即時通信主js
 *	caratename：雨中磐石(rainrock)
 *	caratetime：2017-07-20 21:40:00
 *	homepage:www.rockoa.com
 */
 
-//打开聊天会话
+//打開聊天會話
 function openchat(id, lx,face){
 	if(!lx)lx=0;var types=['user','group'];
 	var sle = (types[lx]) ? types[lx] : lx;
@@ -42,14 +42,14 @@ var reim = {
 		
 		this.date = js.now();
 		notifyobj=new notifyClass({
-			title:'系统提醒',
+			title:'系統提醒',
 			sound:'web/res/sound/todo.ogg',
 			sounderr:'',
 			soundbo:true,
 			showbool:false
 		});
 		
-		this.mainshow();//显示主界面
+		this.mainshow();//顯示主界面
 		this.righthistroboj = $.rockmenu({
 			data:[],
 			itemsclick:function(d){
@@ -59,7 +59,7 @@ var reim = {
 		$(window).resize(this.resize);
 		$(window).focus(function(){windowfocus=true});
 		$(window).blur(function(){windowfocus=false});
-		//数秒
+		//數秒
 		setInterval('reim.timeload()', 1000);
 	},
 	openrecord:function(){
@@ -74,13 +74,13 @@ var reim = {
 			this.reload();
 		}
 		
-		//如果服务端断开，用ajax连接
+		//如果服務端斷開，用ajax連接
 		if(this.timeloads % 10==0){
 			this.loadredata();
 		}
 	},
 	
-	//内部服务处理
+	//內部服務處理
 	serverdata:function(a){
 		var lx = a.atype;
 		if(lx=='cropfinish' && !this.cropScreenbo && a.filepath){
@@ -94,7 +94,7 @@ var reim = {
 		if(lx=='getipmac')return nwjs.getipmac();
 	},
 	shownotify:function(d1){
-		var d = js.apply({icon:'images/logo.png','title':'系统提醒',url:''}, d1);
+		var d = js.apply({icon:'images/logo.png','title':'系統提醒',url:''}, d1);
 		if(d.msg)notifyobj.showpopup(d.msg,{icon:d.icon,title:d.title,url:d.url,click:function(b){
 			if(b.url)nwjs.openurl(b.url);
 			return true;
@@ -110,7 +110,7 @@ var reim = {
 		nw.Shell.openItem(''+oatg+'/images/reimcaptScreen.exe');
 	},
 	
-	//显示聊天主界面
+	//顯示聊天主界面
 	mainshow:function(bo){
 		if(get('reim_main')){
 			this.connectservers();
@@ -122,28 +122,28 @@ var reim = {
 		s+='<div class="gradienth" style="height:70px;overflow:hidden">';
 		s+='	<table style="top:0px;left:0px" cellspacing="0" cellpadding="0" width="100%"><tr><td height="70" style="padding:0px 10px"><div style="height:40px;overflow:hidden"><img onclick="reim.openuserzl('+adminid+')" style="border-radius:50%;cursor:pointer" src="'+adminface+'" id="myface" width="40" height="40"></div></td><td width="100%"><div>'+adminname+'<span style="font-size:12px;color:#999999">('+adminranking+')</span></div><div style="font-size:12px;color:#999999" class="blank20">'+deptallname+'</div></tr></table>';
 		s+='</div>';
-		s+='	<div style="border-bottom:1px #dedede solid"><input placeholder="搜索联系人/会话/应用" id="reim_keysou" style="width:100%;padding:0px 5px;height:40px;line-height:30px;border:none;background:none url(web/images/im/sousuo.png) 200px 5px no-repeat;"></div>';
+		s+='	<div style="border-bottom:1px #dedede solid"><input placeholder="搜索聯系人/會話/應用" id="reim_keysou" style="width:100%;padding:0px 5px;height:40px;line-height:30px;border:none;background:none url(web/images/im/sousuo.png) 200px 5px no-repeat;"></div>';
 		s+='	<span class="badge red" style="position:absolute;top:100px;left:10%;display:none" id="chat_alltotal">0</span>';
 		s+='	<span class="badge red" style="position:absolute;top:100px;left:35%;display:none" id="agent_alltotal">0</span>';
-		s+='	<div class="headertab"><div style="width:25%" class="active" title="消息会话" onclick="reim.tabchagne(0, this)"><i class="icon-comment-alt"></i></div><div style="width:25%" title="应用" onclick="reim.tabchagne(3,this)"><i class="icon-th-large"></i></div><div style="width:25%" title="组织结构" onclick="reim.tabchagne(1,this)"><i class="icon-sitemap"></i></div><div style="width:25%" title="会话/群" onclick="reim.tabchagne(2,this)"><i class="icon-group"></i></div></div>';
+		s+='	<div class="headertab"><div style="width:25%" class="active" title="消息會話" onclick="reim.tabchagne(0, this)"><i class="icon-comment-alt"></i></div><div style="width:25%" title="應用" onclick="reim.tabchagne(3,this)"><i class="icon-th-large"></i></div><div style="width:25%" title="組織結構" onclick="reim.tabchagne(1,this)"><i class="icon-sitemap"></i></div><div style="width:25%" title="會話/群" onclick="reim.tabchagne(2,this)"><i class="icon-group"></i></div></div>';
 		
 		s+='	<div id="reim_mainview" style="height:'+h+'px;overflow:auto">';
 		s+='		<div id="reim_headercenter" style="position:relative">';
-		s+='			<div tabdiv="0"><div id="historylist_tems" style="padding-top:50px;text-align:center;color:#cccccc"><span style="font-size:40px"><i class="icon-comment-alt"></i></span><br>暂无消息</div><div class="listviewt" id="historylist"></div>	</div>';
+		s+='			<div tabdiv="0"><div id="historylist_tems" style="padding-top:50px;text-align:center;color:#cccccc"><span style="font-size:40px"><i class="icon-comment-alt"></i></span><br>暫無消息</div><div class="listviewt" id="historylist"></div>	</div>';
 		s+='			<div tabdiv="1" class="usersslist" style="display:none"><span id="showdept_0"></span></div>';
 		s+='			<div tabdiv="2" id="reim_showgroupdiv" class="usersslist" style="display:none;"></div>';
 		s+='			<div tabdiv="3" id="reim_showagetdiv" style="display:none;"></div>';
 		s+='		</div>';
 		s+='	</div>';
 		
-		s+='<div style="height:30px;overflow:hidden;border-top:1px #dddddd solid; background-color:#eeeeee"><div class="toolsliao"><span onclick="reim.indexsyscog()" title="设置"><i class="icon-cog"></i></span><span onclick="reim.creategroup()" title="创建会话"><i class="icon-plus"></i></span><span onclick="location.reload()" title="刷新"><i class="icon-refresh"></i></span><span onclick="reim.openrecord()" title="会话记录"><i class="icon-file-alt"></i></span><span onclick="reim.loginexit()" style="float:right" title="退出"><i class="icon-signout"></i></span>&nbsp;<font id="reim_statusserver" style="font-size:12px"></font></div></div>';
+		s+='<div style="height:30px;overflow:hidden;border-top:1px #dddddd solid; background-color:#eeeeee"><div class="toolsliao"><span onclick="reim.indexsyscog()" title="設置"><i class="icon-cog"></i></span><span onclick="reim.creategroup()" title="創建會話"><i class="icon-plus"></i></span><span onclick="location.reload()" title="刷新"><i class="icon-refresh"></i></span><span onclick="reim.openrecord()" title="會話記錄"><i class="icon-file-alt"></i></span><span onclick="reim.loginexit()" style="float:right" title="退出"><i class="icon-signout"></i></span>&nbsp;<font id="reim_statusserver" style="font-size:12px"></font></div></div>';
 		
 		s+='</div>';
 		$('#reim_viewshow').html(s);
 		this.resize();
 		$('#reim_keysou').keyup(function(){reim.searchss();});
 		$('#reim_keysou').click(function(){reim.searchss();});
-		this.initdata(); //初始化数据
+		this.initdata(); //初始化數據
 	},
 	ajax:function(url,da,fun,type,efun){
 		if(!da)da={};if(!type)type='get';
@@ -168,13 +168,13 @@ var reim = {
 					errshow(ret.msg);
 				}
 			},error:function(e){
-				errshow('处理出错:'+e.responseText+'');
+				errshow('處理出錯:'+e.responseText+'');
 			}
 		};
 		ajaxcan.dataType='json';
 		$.ajax(ajaxcan);
 	},
-	//连接到服务端
+	//連接到服務端
 	connectserver:function(){
 		this.loaddata('config');
 	},
@@ -184,7 +184,7 @@ var reim = {
 			return;
 		}
 		var bo = this.showconfig(this.showconfigarr);
-		if(bo)js.msg('wait','连接中...');
+		if(bo)js.msg('wait','連接中...');
 	},
 	showconfig:function(a){
 		if(this.connectbool){
@@ -210,7 +210,7 @@ var reim = {
 			onerror:function(o,ws){
 				reim.connectbool=false;
 				reim.serverstatus(0);
-				js.msg('msg','REIM无法连接服务器1<br><span id="lianmiaoshoetime"></span><a href="javascript:;" onclick="reim.connectservers()">[重连]</a>',0);
+				js.msg('msg','REIM無法連接服務器1<br><span id="lianmiaoshoetime"></span><a href="javascript:;" onclick="reim.connectservers()">[重連]</a>',0);
 				reim.relianshotime(30);
 			},
 			onmessage:function(str){
@@ -230,7 +230,7 @@ var reim = {
 				reim.connectbool=false;
 				if(reim.otherlogin)return;
 				reim.serverstatus(0);
-				js.msg('msg','REIM连接已经断开了<br><span id="lianmiaoshoetime"></span><a href="javascript:;" onclick="reim.connectservers()">[重连]</a>',0);
+				js.msg('msg','REIM連接已經斷開了<br><span id="lianmiaoshoetime"></span><a href="javascript:;" onclick="reim.connectservers()">[重連]</a>',0);
 				reim.relianshotime(30);
 			}
 		});
@@ -238,7 +238,7 @@ var reim = {
 	},
 	
 	loginexit:function(){
-		js.confirm('确定要退出'+systitle+'吗？',function(lx){
+		js.confirm('確定要退出'+systitle+'嗎？',function(lx){
 			if(lx=='yes')reim.loginexits();
 		});
 	},
@@ -254,15 +254,15 @@ var reim = {
 	},
 	
 	serverstatus:function(lx){
-		var s = '<font color="green">已连接</font>';s='';
-		if(lx==0)s='<font color="red">未连接</font>'
-		if(lx==2)s='<font color="#ff6600">在别处连接</font>'
-		if(lx==3)s='<font color="blue">没服务端</font>'
+		var s = '<font color="green">已連接</font>';s='';
+		if(lx==0)s='<font color="red">未連接</font>'
+		if(lx==2)s='<font color="#ff6600">在別處連接</font>'
+		if(lx==3)s='<font color="blue">沒服務端</font>'
 		$('#reim_statusserver').html(s);
 	},
 	relianshotime:function(oi){
 		clearTimeout(this.relianshotime_time);
-		$('#lianmiaoshoetime').html('('+oi+'秒后重连)');
+		$('#lianmiaoshoetime').html('('+oi+'秒後重連)');
 		if(oi<=0){
 			this.connectservers();
 		}else{
@@ -270,13 +270,13 @@ var reim = {
 		}
 	},
 	
-	//服务端发消息调用opener.reim.serversend(a);
+	//服務端發消息調用opener.reim.serversend(a);
 	serversend:function(a){
 		if(!this.connectbool)return false;
 		websocketobj.send(a);
 		return true;
 	},
-	//加载数据
+	//加載數據
 	loadhistory:function(){
 		this.loaddata('history');
 	},
@@ -287,7 +287,7 @@ var reim = {
 		this.initbackd(this.bdats);
 	},
 	
-	//没有服务端定时去ajax读取。
+	//沒有服務端定時去ajax讀取。
 	loadredata:function(){
 		if(this.connectbool)return;
 		this.ajax(this.apiurl('indexreim','ldata'),{type:'history','loaddt':jm.base64encode(this.lastloaddt)}, function(ret){
@@ -339,7 +339,7 @@ var reim = {
 			reim['show'+ret.type+''](hist);
 		});
 	},
-	//显示历史聊天列表
+	//顯示歷史聊天列表
 	showhistory:function(a){
 		var i,len=a.length;
 		$('#historylist_tems').show();
@@ -388,12 +388,12 @@ var reim = {
 		var rt = $(o1).attr('rtype');
 		if(isempt(rt))return false;
 		this.rightdivobj = o1;
-		var d=[{name:'打开',lx:0}];
+		var d=[{name:'打開',lx:0}];
 		if(rt.indexOf('agent')>-1){
-			d.push({name:'打开窗口',lx:1});
+			d.push({name:'打開窗口',lx:1});
 		}
 		if(rt.indexOf('hist')>-1){
-			d.push({name:'删除此记录',lx:2});
+			d.push({name:'刪除此記錄',lx:2});
 		}
 		this.righthistroboj.setData(d);
 		this.righthistroboj.showAt(e.clientX-3,e.clientY-3);
@@ -414,7 +414,7 @@ var reim = {
 		}		
 	},
 	
-	//打开聊天界面
+	//打開聊天界面
 	openchat:function(id,type){
 		this.showbadge('chat',''+type+'_'+id+'', 0);
 		if(type=='agent'){
@@ -431,29 +431,29 @@ var reim = {
 		this.openchat(id, 'user');
 	},
 	
-	//会话标识已读
+	//會話標識已讀
 	setyd:function(type,id){
 		this.ajax(this.apiurl('reim','yiduall'),{type:type,gid:id},false);
 	},
 	
-	//切换聊天主界面隐藏显示
+	//切換聊天主界面隱藏顯示
 	mainclose:function(){
 		$('#reim_main').toggle();
 		this.showzhu();
 	},
-	//隐藏主界面
+	//隱藏主界面
 	hidezhu:function(){
 		$('#topheaderid').hide();
 		$('.topcenter').hide();
 		$('#zhutable').hide();
 	},
-	//显示主界面
+	//顯示主界面
 	showzhu:function(){
 		$('#topheaderid').show();
 		$('.topcenter').show();
 		$('#zhutable').show();
 	},
-	//选择卡切换
+	//選擇卡切換
 	tabchagne:function(oi,o1){
 		$('.headertab div').removeClass();
 		o1.className = 'active';
@@ -461,7 +461,7 @@ var reim = {
 		$('#reim_headercenter').find("div[tabdiv='"+oi+"']").show();
 		if(oi=='1')this.showdept(0,0);
 	},
-	//加载群会话列表
+	//加載群會話列表
 	loadgroup:function(){
 		this.loaddata('group');
 	},
@@ -480,7 +480,7 @@ var reim = {
 		}
 	},
 	
-	//显示组织结构
+	//顯示組織結構
 	showdept:function(pid, xu){
 		var i=0,len,s='',a,wfj,cls;
 		var o = $('#showdept_'+pid+'');
@@ -516,7 +516,7 @@ var reim = {
 		
 	},
 	
-	//显示用户
+	//顯示用戶
 	showuser:function(a){
 		var i=0,len=a.length,d;
 		for(i=0;i<len;i++){
@@ -526,7 +526,7 @@ var reim = {
 		}
 	},
 	
-	//显示用户信息
+	//顯示用戶信息
 	openuserzl:function(id){
 		var d=this.userarr[id];
 		if(!d)return;
@@ -534,13 +534,13 @@ var reim = {
 		if(isempt(d.sex))d.sex='?';
 		var s = '<div>';
 		s+='<div align="center" style="padding:10px;"><img id="myfacess" onclick="$(this).imgview()" src="'+d.face+'" height="80" width="80" style="border-radius:40px;border:1px #eeeeee solid">';
-		if(id==adminid)s+='<br><a href="javascript:;" id="fupbgonet" onclick="reim.upfaceobj.click()" style="font-size:12px">修改头像</a>';
+		if(id==adminid)s+='<br><a href="javascript:;" id="fupbgonet" onclick="reim.upfaceobj.click()" style="font-size:12px">修改頭像</a>';
 		s+='</div>';
-		s+='<div style="line-height:25px;padding:10px;padding-left:20px;"><font color=#888888>姓名：</font>'+d.name+'<br><font color=#888888>部门：</font>'+d.deptallname+'<br><font color=#888888>职位：</font>'+d.ranking+'<br><font color=#888888>性别：</font>'+d.sex+'<br><font color=#888888>电话：</font>'+d.tel+'<br><font color=#888888>手机：</font>'+d.mobile+'<br><font color=#888888>邮箱：</font>'+d.email+'</div>';
+		s+='<div style="line-height:25px;padding:10px;padding-left:20px;"><font color=#888888>姓名：</font>'+d.name+'<br><font color=#888888>部門：</font>'+d.deptallname+'<br><font color=#888888>職位：</font>'+d.ranking+'<br><font color=#888888>性別：</font>'+d.sex+'<br><font color=#888888>電話：</font>'+d.tel+'<br><font color=#888888>手機：</font>'+d.mobile+'<br><font color=#888888>郵箱：</font>'+d.email+'</div>';
 		s+='</div>';
 		js.tanbody('userziliao',''+d.name+'', 240,350,{
 			html:s,
-			btn:[{text:'发消息'}]
+			btn:[{text:'發消息'}]
 		});
 		$('#userziliao_btn0').click(function(){
 			reim.openuser(id);
@@ -553,7 +553,7 @@ var reim = {
 					reim.saveface(a.id);
 				},
 				onchange:function(){
-					$('#fupbgonet').html('上传中...');
+					$('#fupbgonet').html('上傳中...');
 				}
 			});
 		};
@@ -568,7 +568,7 @@ var reim = {
 		});
 	},
 	
-	//显示应用
+	//顯示應用
 	showagent:function(a){
 		var i=0,len=a.length,d,types,ty,o=$('#reim_showagetdiv'),s='',oi,atr;
 		o.html('');
@@ -630,10 +630,10 @@ var reim = {
 		o1.text(''+to+'');
 		if(to==0){o1.hide();}else{o1.show();}
 		var oi = parseFloat($('#agent_alltotal').text()) + parseFloat($('#chat_alltotal').text());
-		nwjs.changeicon(oi); //托盘图标
+		nwjs.changeicon(oi); //託盤圖標
 	},
 	
-	//打开应用
+	//打開應用
 	openagent:function(id){
 		var d = this.agentarr[id];
 		this.showbadge('agent',d.num,0);
@@ -641,7 +641,7 @@ var reim = {
 		if(isempt(url)){
 			url = d.urlm;
 			if(isempt(url)){
-				url = '?d=we&m=ying&num='+d.num+''; //先默认用移动端
+				url = '?d=we&m=ying&num='+d.num+''; //先默認用移動端
 			}
 			w = 320;
 		}
@@ -660,7 +660,7 @@ var reim = {
 		js.open(url, w,h,'agentkqdaka',{},{icon:'images/adddk.png'});
 	},
 	
-	//显示到会话列表上
+	//顯示到會話列表上
 	addhistory:function(lx,id,sot,cont,opt,sne,name,face){
 		if(!sne)sne='';
 		if(sne)sne=jm.base64encode(sne+':');
@@ -671,15 +671,15 @@ var reim = {
 		this.showhistorys(d, true);
 	},
 	
-	//别的地方登录
+	//別的地方登錄
 	otherlogins:function(){
 		this.otherlogin = true;
-		var msg='已在别的地方连接了';
+		var msg='已在別的地方連接了';
 		js.msg('success', msg, -1);
 		this.serverstatus(2);
 	},
 	
-	//服务端接收到推送消息
+	//服務端接收到推送消息
 	receivemesb:function(d){
 		var lx=d.type,sendid=d.adminid,num,face,ops=false,msg='',ot,ots,garr,tits,gid;
 		if(!sendid)sendid = d.sendid;
@@ -711,7 +711,7 @@ var reim = {
 				ops.focus();
 			}else{
 				if(lx == 'user'){
-					msg = '人员['+d.sendname+']，发来一条信息';
+					msg = '人員['+d.sendname+']，發來一條信息';
 					notifyobj.showpopup(msg,{icon:d.face,sendid:sendid,title:'REIM消息',rand:num,click:function(b){
 						reim.openuser(b.sendid);
 						return true;
@@ -719,7 +719,7 @@ var reim = {
 				}
 				if(lx == 'group'){
 					if(!d.gname)d.gname = d.name;
-					msg = '人员['+d.sendname+']，发来一条信息，来自['+d.gname+']';
+					msg = '人員['+d.sendname+']，發來一條信息，來自['+d.gname+']';
 					if(d.form=='ajax')d.sendname='';
 					notifyobj.showpopup(msg,{icon:garr.face,gid:gid,title:'REIM消息',rand:num,click:function(b){
 						reim.opengroup(b.gid);
@@ -736,7 +736,7 @@ var reim = {
 			if(lx=='group')this.addhistory(lx,gid,ots,d.cont,d.optdt,d.sendname);
 		}
 
-		//应用的通知提醒
+		//應用的通知提醒
 		if(lx == 'agent'){
 			garr = this.agentarr[gid];
 			num	 = 'agent_'+gid+'';
@@ -767,11 +767,11 @@ var reim = {
 		}
 	},
 	
-	//通知设置
+	//通知設置
 	initnotify:function(){
 		var lx=notifyobj.getaccess();
 		if(lx!='ok'){
-			js.msg('msg','为了可及时收到信息通知 <br>请开启提醒,<span class="zhu cursor" onclick="reim.indexsyscog()">[开启]</span>',-1);
+			js.msg('msg','為了可及時收到信息通知 <br>請開啟提醒,<span class="zhu cursor" onclick="reim.indexsyscog()">[開啟]</span>',-1);
 		}
 	},
 	indexsyscogs:function(){
@@ -798,11 +798,11 @@ var reim = {
 		var chs= (this.getsound())?'checked':'';
 		var s='<div style="height:160px;overflow:auto;padding:5px 10px">';
 		s+='<div style="padding:5px 0px;" id="indexsyscog_msg">'+this.indexsyscogs()+'</div>';
-		s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid"><label><input '+chs+' onclick="reim.setsound(this)" type="checkbox">新信息声音提示</label></div>';
+		s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid"><label><input '+chs+' onclick="reim.setsound(this)" type="checkbox">新信息聲音提示</label></div>';
 		if(nwjsgui){
 			var ksj=js.getoption('kuaijj','Q');
 			var strw='ABCEDFGHIJKLMNOPQRSTUVWYZ',s1,cls1='';
-			s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">主窗口快捷键：Ctrl+Alt+<select onchange="nwjs.changekuai(this)">';
+			s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">主窗口快捷鍵：Ctrl+Alt+<select onchange="nwjs.changekuai(this)">';
 			for(var i=0;i<strw.length;i++){
 				s1= strw.substr(i,1);
 				cls1='';if(ksj==s1){cls1='selected';}
@@ -810,17 +810,17 @@ var reim = {
 			}
 			s+='</select></div>';
 			var ips = nwjs.getipmac();
-			s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">我局域网IP：'+ips.ip+'</div>';
+			s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">我局域網IP：'+ips.ip+'</div>';
 			s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">我的MAC地址：'+ips.mac+'</div>';
 		}else{
 			
 		}
-		s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">网络IP：'+this.myip+'</div>';
+		s+='<div style="padding:5px 0px;border-top:1px #eeeeee solid">網絡IP：'+this.myip+'</div>';
 		s+='</div>';
-		js.tanbody('syscogshow','REIM设置',240,100,{html:s});
+		js.tanbody('syscogshow','REIM設置',240,100,{html:s});
 	},
 	
-	//搜索联系人/会话/应用
+	//搜索聯系人/會話/應用
 	searchss:function(){
 		clearTimeout(this.searchsstime);
 		this.searchsstime=setTimeout('reim.searchssss()',500);
@@ -855,14 +855,14 @@ var reim = {
 		for(sid in this.grouparr){
 			a=this.grouparr[sid];
 			if(a.name.indexOf(val)>-1){
-				s1=''+a.name+'<font color=#888888>(会话)</font>';
+				s1=''+a.name+'<font color=#888888>(會話)</font>';
 				d.push({name:s1,id:a.id,icons:a.face,type:'group'});
 			}
 		}
 		for(sid in this.agentarr){
 			a=this.agentarr[sid];
 			if(a.name.indexOf(val)>-1){
-				s1=''+a.name+'<font color=#888888>(应用)</font>';
+				s1=''+a.name+'<font color=#888888>(應用)</font>';
 				d.push({name:s1,id:a.id,icons:a.face,type:'agent'});
 			}
 		}
@@ -874,14 +874,14 @@ var reim = {
 		this.searchright.showAt(off.left+1,off.top+40,$('#reim_headercenter').width()-2);
 	},
 	
-	//创建会话
+	//創建會話
 	creategroup:function(){
-		js.prompt('创建会话','请输入会话名称：',function(lx,v){
+		js.prompt('創建會話','請輸入會話名稱：',function(lx,v){
 			if(lx=='yes'){
-				if(!v){js.msg('msg','没有输入会话名称');return false;}
-				js.msg('wait','创建中...');
+				if(!v){js.msg('msg','沒有輸入會話名稱');return false;}
+				js.msg('wait','創建中...');
 				reim.ajax(reim.apiurl('reim','createlun'),{val:jm.base64encode(v)}, function(da){
-					js.msg('success','创建成功，请打开会话窗口邀请人员加入');
+					js.msg('success','創建成功，請打開會話窗口邀請人員加入');
 					reim.loadgroup();
 				});
 			}
@@ -889,7 +889,7 @@ var reim = {
 		return false;
 	},
 	
-	//退出会话
+	//退出會話
 	exitgroup:function(gid){
 		this.loadgroup();
 		//$('#history_group_'+gid+'').remove();

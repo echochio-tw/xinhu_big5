@@ -2,13 +2,13 @@
 class zipChajian extends Chajian{
 
 	/**
-	*	解压zip文件
+	*	解壓zip文件
 	*/
 	public function unzip($filename, $path){
-		if(!function_exists('zip_open'))return 'php未开启zip模块';
+		if(!function_exists('zip_open'))return 'php未開啟zip模塊';
 		if(!file_exists($filename))return '文件不存在';
 		@$resource = zip_open($filename);
-		if(!$resource)return '无法打开文件';
+		if(!$resource)return '無法打開文件';
 		while ($dir_resource = zip_read($resource)){
 			if(zip_entry_open($resource,$dir_resource)){
 				$file_name = $path.zip_entry_name($dir_resource);
@@ -18,7 +18,7 @@ class zipChajian extends Chajian{
 					$file_size 		= zip_entry_filesize($dir_resource);
 					$file_content 	= zip_entry_read($dir_resource, $file_size);
 					$bos 			= $this->writefile($file_name, $file_content);
-					if(!$bos)return '无权限写入文件:'.$file_name.'';
+					if(!$bos)return '無權限寫入文件:'.$file_name.'';
 				}
 				zip_entry_close($dir_resource);
 			}

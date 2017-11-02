@@ -1,17 +1,17 @@
 <?php
 /**
-*	模块：project.簽呈，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.簽呈]→生成列表页
+*	模塊：project.項目，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.項目]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
 <script>
 $(document).ready(function(){
 	{params}
-	var modenum = 'project',modename='簽呈',isflow=0,modeid='22',atype = params.atype,pnum=params.pnum;
+	var modenum = 'project',modename='項目',isflow=0,modeid='22',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
-	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"title","name":"\u540d\u7a31","fieldstype":"text","ispx":"0","isalign":"1","islb":"1"},{"fields":"num","name":"\u7de8\u865f","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"type","name":"\u985e\u578b","fieldstype":"rockcombo","ispx":"1","isalign":"0","islb":"1"},{"fields":"startdt","name":"\u958b\u59cb\u6642\u9593","fieldstype":"datetime","ispx":"1","isalign":"0","islb":"1"},{"fields":"enddt","name":"\u9810\u8a08\u7d50\u675f\u6642\u9593","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"1"},{"fields":"fuze","name":"\u8ca0\u8cac\u4eba","fieldstype":"changeuser","ispx":"1","isalign":"0","islb":"1"},{"fields":"runuser","name":"\u57f7\u884c\u4eba","fieldstype":"changedeptusercheck","ispx":"0","isalign":"0","islb":"1"},{"fields":"content","name":"\u5167\u5bb9","fieldstype":"htmlediter","ispx":"0","isalign":"0","islb":"0"},{"fields":"status","name":"\u72c0\u614b","fieldstype":"select","ispx":"1","isalign":"0","islb":"1"}],fieldsselarr= [];
+	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"title","name":"\u540d\u79f0","fieldstype":"text","ispx":"0","isalign":"1","islb":"1"},{"fields":"num","name":"\u7f16\u53f7","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"type","name":"\u9879\u76ee\u7c7b\u578b","fieldstype":"rockcombo","ispx":"1","isalign":"0","islb":"1"},{"fields":"startdt","name":"\u5f00\u59cb\u65f6\u95f4","fieldstype":"datetime","ispx":"1","isalign":"0","islb":"1"},{"fields":"enddt","name":"\u9884\u8ba1\u7ed3\u675f\u65f6\u95f4","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"1"},{"fields":"fuze","name":"\u8d1f\u8d23\u4eba","fieldstype":"changeuser","ispx":"1","isalign":"0","islb":"1"},{"fields":"runuser","name":"\u6267\u884c\u4eba","fieldstype":"changedeptusercheck","ispx":"0","isalign":"0","islb":"1"},{"fields":"progress","name":"\u8fdb\u5ea6(%)","fieldstype":"select","ispx":"0","isalign":"0","islb":"1"},{"fields":"content","name":"\u5185\u5bb9","fieldstype":"htmlediter","ispx":"0","isalign":"0","islb":"0"},{"fields":"workshu","name":"\u4efb\u52a1\u6570","fieldstype":"number","ispx":"0","isalign":"0","islb":"1"},{"fields":"status","name":"\u72b6\u6001","fieldstype":"select","ispx":"1","isalign":"0","islb":"1"}],fieldsselarr= [];
 	
 	var c = {
 		reload:function(){
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -49,7 +49,7 @@ $(document).ready(function(){
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -57,7 +57,7 @@ $(document).ready(function(){
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -69,9 +69,9 @@ $(document).ready(function(){
 		},
 		subscribelist:function(){
 			js.subscribe({
-				title:'簽呈('+nowtabs.name+')',
-				cont:'簽呈('+nowtabs.name+')的列表的',
-				explain:'订阅[簽呈]的列表',
+				title:'項目('+nowtabs.name+')',
+				cont:'項目('+nowtabs.name+')的列表的',
+				explain:'訂閱[項目]的列表',
 				objtable:a
 			});
 		},
@@ -121,15 +121,15 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			window.managelistproject = a;
-			addtabs({num:'daoruproject',url:'flow,input,daoru,modenum=project',icons:'plus',name:'导入簽呈'});
+			addtabs({num:'daoruproject',url:'flow,input,daoru,modenum=project',icons:'plus',name:'導入項目'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -147,7 +147,7 @@ $(document).ready(function(){
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -189,12 +189,12 @@ $(document).ready(function(){
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('cHJvamVjdA::'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"名稱",dataIndex:"title",align:"left"},{text:"編號",dataIndex:"num",sortable:true},{text:"類型",dataIndex:"type",sortable:true},{text:"開始時間",dataIndex:"startdt",sortable:true},{text:"預計結束時間",dataIndex:"enddt"},{text:"負責人",dataIndex:"fuze",sortable:true},{text:"執行人",dataIndex:"runuser"},{text:"狀態",dataIndex:"status",sortable:true},{
+		columns:[{text:"名稱",dataIndex:"title",align:"left"},{text:"編號",dataIndex:"num",sortable:true},{text:"項目類型",dataIndex:"type",sortable:true},{text:"開始時間",dataIndex:"startdt",sortable:true},{text:"預計結束時間",dataIndex:"enddt"},{text:"負責人",dataIndex:"fuze",sortable:true},{text:"執行人",dataIndex:"runuser"},{text:"進度(%)",dataIndex:"progress"},{text:"任務數",dataIndex:"workshu"},{text:"狀態",dataIndex:"status",sortable:true},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -209,13 +209,13 @@ $(document).ready(function(){
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 c.setcolumns('progress',{
 	renderer:function(v){
 		return '<div class="progress" style="margin:0;width:120px;"><div class="progress-bar progress-bar-success" style="width:'+v+'%;color:#000000;">'+v+'%</div></div>';
 	},
-	text:'进度'
+	text:'進度'
 });
 c.setcolumns('workshu',{
 	renderer:function(v,d,i){
@@ -224,16 +224,16 @@ c.setcolumns('workshu',{
 });
 viespere{rand}=function(id){
 	var d 	= a.getData(id);
-	var bo 	= addtabs({name:'项目['+d.title+']的任务',url:'flow,page,work,pnum=allall,atype=all,projcetid='+d.id+'',num:'projcetidwork'+d.id+''});
+	var bo 	= addtabs({name:'項目['+d.title+']的任務',url:'flow,page,work,pnum=allall,atype=all,projcetid='+d.id+'',num:'projcetidwork'+d.id+''});
 }
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewproject_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -255,9 +255,9 @@ viespere{rand}=function(id){
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
-		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部状态-</option><option style="color:blue" value="0">待執行</option><option style="color:green" value="1">已完成</option><option style="color:#888888" value="2">結束</option><option style="color:#ff6600" value="3">執行中</option><option style="color:#888888" value="5">已作废</option></select></td>
+		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部狀態-</option><option style="color:blue" value="0">待執行</option><option style="color:green" value="1">已完成</option><option style="color:#888888" value="2">結束</option><option style="color:#ff6600" value="3">執行中</option><option style="color:#888888" value="5">已作廢</option></select></td>
 		<td style="padding-left:10px">
 			<div style="width:85px" class="btn-group">
 			<button class="btn btn-default" click="searchbtn" type="button">搜索</button><button class="btn btn-default" id="downbtn_{rand}" type="button" style="padding-left:8px;padding-right:8px"><i class="icon-angle-down"></i></button> 
@@ -266,7 +266,7 @@ viespere{rand}=function(id){
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

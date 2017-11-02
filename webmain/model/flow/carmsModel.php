@@ -1,5 +1,5 @@
 <?php
-//车辆信息登记
+//車輛信息登記
 class flow_carmsClassModel extends flowModel
 {
 	
@@ -14,7 +14,7 @@ class flow_carmsClassModel extends flowModel
 				$rs['ishui'] = 1;
 			}
 			if($jg==0)$ztname='<font color="blue">今日到期</font>';
-			if($jg>0 && $jg<30)$ztname='<font color="#ff6600">'.$jg.'天后到期</font>';
+			if($jg>0 && $jg<30)$ztname='<font color="#ff6600">'.$jg.'天後到期</font>';
 			if($jg>=30)$ztname='<font color="green">生效中</font>';
 		}
 		if(isset($rs['carnum'])){
@@ -41,7 +41,7 @@ class flow_carmsClassModel extends flowModel
 	//每天信息提醒
 	public function todocarms($toid)
 	{
-		if(isempt($toid))return '没设置提醒人员';
+		if(isempt($toid))return '沒設置提醒人員';
 		$dt 	= $this->rock->date;
 		$dt30	= c('date')->adddate($dt,'d', 30);
 		$rows 	= $this->db->getall('select a.`enddt`,a.`otype`,b.`carnum` from `[Q]carms` a left join `[Q]carm` b on a.carid=b.id where b.id is not null and a.`enddt` is not null and  a.`enddt`>=\''.$dt.'\'');
@@ -53,27 +53,27 @@ class flow_carmsClassModel extends flowModel
 		foreach($rows as $k=>$rs){
 			$jg = $dtobj->datediff('d', $dt, $rs['enddt']);
 			if(in_array($jg, $txarr)){
-				$strs = ''.$jg.'天后('.$rs['enddt'].')';
+				$strs = ''.$jg.'天後('.$rs['enddt'].')';
 				if($jg==1)$strs='明天';
 				if($jg==0)$strs='今天';
-				$str .= ''.$rs['carnum'].'的['.$rs['otype'].']将在'.$strs.'到期;';
+				$str .= ''.$rs['carnum'].'的['.$rs['otype'].']將在'.$strs.'到期;';
 			}
 		}
 		
-		//下次保养提醒
+		//下次保養提醒
 		$rows 	= $this->db->getall('select a.`nextdt`,b.`carnum`,a.`jiaid`,a.`uid` from `[Q]carmang` a left join `[Q]carm` b on a.carid=b.id where b.id is not null and a.`type`=1 and a.`status`=1 and a.`nextdt` is not null and  a.`nextdt`>=\''.$dt.'\'');
 		
 		foreach($rows as $k=>$rs){
 			$jg = $dtobj->datediff('d', $dt, $rs['nextdt']);
 			if(in_array($jg, $txarr)){
-				$strs = ''.$jg.'后('.$rs['nextdt'].')';
+				$strs = ''.$jg.'後('.$rs['nextdt'].')';
 				if($jg==1)$strs='明天';
 				if($jg==0)$strs='今天';
-				$str .= ''.$rs['carnum'].'在'.$strs.'后需保养了;';
+				$str .= ''.$rs['carnum'].'在'.$strs.'後需保養了;';
 			}
 		}
 		if($str!=''){
-			$this->push($toid, '车辆', $str, '车辆信息提醒');
+			$this->push($toid, '車輛', $str, '車輛信息提醒');
 		}
 		return 'success';
 	}

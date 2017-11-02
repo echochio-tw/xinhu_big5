@@ -1,7 +1,7 @@
 var isedit = 1,qmimgstr='',isxiang=1;
 function othercheck(){}
 
-//函数触发
+//函數觸發
 function oninputblur(name,zb,obj){};
 
 function initbody(){
@@ -27,14 +27,14 @@ function initbody(){
 				}
 			});
 		}else{
-			$('#filedivview').parent().html('<font color="#888888">当前浏览器不支持上传</font>');
+			$('#filedivview').parent().html('<font color="#888888">當前瀏覽器不支持上傳</font>');
 		}
 	}
 	js.tanstyle=1;
 	if(document.myform && typeof(initbodys)=='function')initbodys();
 }
 function showchayue(opt, st){
-	alert('总查阅:'+st+'次\n最后查阅：'+opt+'');
+	alert('總查閱:'+st+'次\n最後查閱：'+opt+'');
 }
 function geturlact(act,cns){
 	var url=js.getajaxurl(act,'mode_'+modenum+'|input','flow',cns);
@@ -48,19 +48,19 @@ var f={
 };
 
 
-//提交处理
+//提交處理
 function check(lx){
 	var da = {'sm':form('check_explain').value,'tuiid':'0','fileid':'','mid':mid,'modenum':modenum,'zt':_getaolvw('check_status'),'qmimgstr':qmimgstr};
 	if(form('fileid'))da.fileid=form('fileid').value;
 	if(form('check_tuiid'))da.tuiid=form('check_tuiid').value;
-	if(da.zt==''){js.setmsg('请选择处理动作');return;}if(da.zt=='2'&&isempt(da.sm)){js.setmsg('此动作必须填写说明');return;}
+	if(da.zt==''){js.setmsg('請選擇處理動作');return;}if(da.zt=='2'&&isempt(da.sm)){js.setmsg('此動作必須填寫說明');return;}
 	var isqm = form('isqianming').value;
 	var qbp  = true;
-	//手写签名判断
+	//手寫簽名判斷
 	if(isqm=='1' && qmimgstr=='')qbp=false;
 	if(isqm=='2' && da.zt=='1' && qmimgstr=='')qbp=false;
 	if(isqm=='3' && da.zt=='2' && qmimgstr=='')qbp=false;
-	if(!qbp){js.setmsg('此动作必须手写签名');return;}
+	if(!qbp){js.setmsg('此動作必須手寫簽名');return;}
 	
 	if(form('zhuanbanname')){
 		da.zyname 	= form('zhuanbanname').value;
@@ -70,7 +70,7 @@ function check(lx){
 		da.nextname 	= form('nextname').value;
 		da.nextnameid 	= form('nextnameid').value;
 		if(da.nextnameid==''){
-			js.setmsg('请选择下一步处理人');return;
+			js.setmsg('請選擇下一步處理人');return;
 		}
 	}
 	if(!da.zynameid && da.zt!='2'){
@@ -79,16 +79,16 @@ function check(lx){
 			fiad = $(fobj[i]);
 			fid	 = fiad.attr('fieidscheck');
 			da['cfields_'+fid]=form(fid).value;
-			if(da['cfields_'+fid]==''){js.setmsg(''+fiad.text()+'不能为空');return;}
+			if(da['cfields_'+fid]==''){js.setmsg(''+fiad.text()+'不能為空');return;}
 		}
 	}
 	var ostr=othercheck(da);
 	if(typeof(ostr)=='string'&&ostr!=''){js.setmsg(ostr);return;}
 	if(typeof(ostr)=='object')for(var csa in ostr)da[csa]=ostr[csa];
-	js.setmsg('处理中...');
+	js.setmsg('處理中...');
 	var o1 = get('check_btn');
 	o1.disabled = true;
-	if(lx==0 && f.fileobj && f.fileobj.start())return js.setmsg('上传相关文件中...');//有上传相关文件
+	if(lx==0 && f.fileobj && f.fileobj.start())return js.setmsg('上傳相關文件中...');//有上傳相關文件
 	var url = c.gurl('check');
 	js.ajax(url,da,function(a){
 		if(a.success){
@@ -100,7 +100,7 @@ function check(lx){
 			o1.disabled = false;
 		}
 	},'post,json',function(estr){
-		js.setmsg('处理失败:'+estr+'');o1.disabled = false;
+		js.setmsg('處理失敗:'+estr+'');o1.disabled = false;
 	});
 }
 function _getaolvw(na){
@@ -110,25 +110,25 @@ function _getaolvw(na){
 }
 
 /**
-*	nae记录名称 
-*	zt状态名称 
-*	ztid 状态id 
-*	ztcol 状态颜色 
-*	ocan 其他参数
-*	las 说明字段Id默认other_explain
+*	nae記錄名稱 
+*	zt狀態名稱 
+*	ztid 狀態id 
+*	ztcol 狀態顏色 
+*	ocan 其他參數
+*	las 說明字段Id默認other_explain
 */
 function _submitother(nae,zt,ztid,ztcol,ocan,las){
 	if(!las)las='other_explain';
-	if(!nae||!get(las)){js.setmsg('sorry;不允许操作','','msgview_spage');return;}
+	if(!nae||!get(las)){js.setmsg('sorry;不允許操作','','msgview_spage');return;}
 	var sm=$('#'+las+'').val();
 	if(!ztcol)ztcol='';
 	if(!zt)zt='';if(!ocan)ocan={};
-	if(!ztid){js.setmsg('没有选择状态','','msgview_spage');return;}
-	if(!sm){js.setmsg('没有输入备注/说明','','msgview_spage');return;}
+	if(!ztid){js.setmsg('沒有選擇狀態','','msgview_spage');return;}
+	if(!sm){js.setmsg('沒有輸入備注/說明','','msgview_spage');return;}
 	var da = js.apply({'name':nae,'mid':mid,'modenum':modenum,'ztcolor':ztcol,'zt':zt,'ztid':ztid,'sm':sm},ocan);
-	js.setmsg('处理中...','','msgview_spage');
+	js.setmsg('處理中...','','msgview_spage');
 	js.ajax(c.gurl('addlog'),da,function(s){
-		js.setmsg('处理成功','green', 'msgview_spage');
+		js.setmsg('處理成功','green', 'msgview_spage');
 		$('#spage_btn').hide();
 	},'post',function(s){
 		js.setmsg(s,'','msgview_spage');
@@ -198,14 +198,14 @@ var c={
 		$('a[temp]').remove();
 	},
 	delss:function(){
-		js.confirm('删除将不能恢复，确定要<font color=red>删除</font>吗？',function(lx){
+		js.confirm('刪除將不能恢復，確定要<font color=red>刪除</font>嗎？',function(lx){
 			if(lx=='yes')c.delsss();
 		});
 	},
 	delsss:function(){
 		var da = {'mid':mid,'modenum':modenum,'sm':''};
 		js.ajax(c.gurl('delflow'),da,function(a){
-			js.msg('success','单据已删除,3秒后自动关闭页面,<a href="javascript:;" onclick="c.close()">[关闭]</a>');
+			js.msg('success','單據已刪除,3秒後自動關閉頁面,<a href="javascript:;" onclick="c.close()">[關閉]</a>');
 			c.callback();
 			setTimeout('c.close()',3000);
 		},'post');
@@ -237,7 +237,7 @@ var c={
 			this.loacdis= true;
 		}
 	},
-	//初始上传框
+	//初始上傳框
 	initinput:function(){
 		var o,o1,sna,i,tsye,tdata,uptp,far;
 		var o = $('div[id^="filed_"]');
@@ -275,7 +275,7 @@ var c={
 	},
 	//撤回操作
 	chehui:function(){
-		js.prompt('确定撤回吗？','要撤回上一步处理结果说明(选填)',function(jg,txt){
+		js.prompt('確定撤回嗎？','要撤回上一步處理結果說明(選填)',function(jg,txt){
 			if(jg=='yes')c.chehuito(txt);
 		});
 	},
@@ -289,11 +289,11 @@ var c={
 				js.msg('msg', a.msg);
 			}
 		},'post,json',function(s){
-			js.msg('msg','操作失败');
+			js.msg('msg','操作失敗');
 		});
 	},
 	
-	//预览文件
+	//預覽文件
 	downshow:function(id, ext,pts){
 		var url = 'index.php?m=public&a=fileviewer&id='+id+'&wintype=max';
 		if(pts!=''&&js.isimg(ext)){
@@ -305,7 +305,7 @@ var c={
 			if(appobj1('openfile', id))return;
 			js.location(url);
 		}else{
-			js.winiframe('文件预览',url);
+			js.winiframe('文件預覽',url);
 		}
 		return false;
 	},
@@ -322,12 +322,12 @@ var c={
 			$('#zhuangdiv').hide();
 		}
 	},
-	//手写签名
+	//手寫簽名
 	qianming:function(o1){
 		this.qianmingbo=false;
-		js.tanbody('qianming','请在空白区域写上你的姓名',300,200,{
+		js.tanbody('qianming','請在空白區域寫上你的姓名',300,200,{
 			html:'<div data-width="280" data-height="120" data-border="1px dashed #cccccc" data-line-color="#000000" data-auto-fit="true" id="qianmingdiv" style="margin:10px;height:120px;cursor:default"></div>',
-			btn:[{text:'确定签名'},{text:'重写'}]
+			btn:[{text:'確定簽名'},{text:'重寫'}]
 		});
 		$('#qianmingdiv').jqSignature().on('jq.signature.changed', function() {
 			c.qianmingbo=true;
@@ -354,12 +354,12 @@ var c={
 	optmenu:function(o1){
 		var o = $(o1);
 		var issm = o.attr('issm'),optmenuid = o.attr('optmenuid');
-		var smts = (issm=='1') ? '(必填)' : '(选填)';
+		var smts = (issm=='1') ? '(必填)' : '(選填)';
 		var d  = {'modenum':modenum,'mid':mid,'name':o1.value,'issm':issm,'optmenuid':optmenuid};
-		js.prompt(d.name,'请输入['+d.name+']说明'+smts+'：',function(jg,text){
+		js.prompt(d.name,'請輸入['+d.name+']說明'+smts+'：',function(jg,text){
 			if(jg=='yes'){
 				if(!text && d.issm==1){
-					js.msg('msg','没有输入['+d.name+']说明');
+					js.msg('msg','沒有輸入['+d.name+']說明');
 					return true;
 				}else{
 					o1.disabled=true;
@@ -371,10 +371,10 @@ var c={
 	},
 	optmenusubmit:function(d,sm){
 		d.sm = sm;
-		js.msg('wait','处理中...');
+		js.msg('wait','處理中...');
 		js.ajax(js.getajaxurl('yyoptmenu','flowopt','flow'),d,function(ret){
 			if(ret.code==200){
-				js.msg('success','处理成功');
+				js.msg('success','處理成功');
 			}else{
 				js.msg('msg',ret.msg);
 			}
@@ -406,7 +406,7 @@ var c={
 	onselectdata:{},
 	selectdata:function(s1,ced,fid,tit,zbis){
 		if(isedit==0)return;
-		if(!tit)tit='请选择...';
+		if(!tit)tit='請選擇...';
 		var a1 = s1.split(','),idobj=false;
 		var fids = a1[1];
 		if(fids){

@@ -8,13 +8,13 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'knowledge',celleditor:true,autoLoad:false,modenum:'knowledge',
 		columns:[{
-			text:'标题',dataIndex:'title',editor:false,align:'left'
+			text:'標題',dataIndex:'title',editor:false,align:'left'
 		},{
-			text:'分类',dataIndex:'typename'
+			text:'分類',dataIndex:'typename'
 		},{
-			text:'添加时间',dataIndex:'adddt',sortable:true
+			text:'添加時間',dataIndex:'adddt',sortable:true
 		},{
-			text:'操作时间',dataIndex:'optdt',sortable:true
+			text:'操作時間',dataIndex:'optdt',sortable:true
 		},{
 			text:'操作人',dataIndex:'optname'
 		},{
@@ -23,7 +23,7 @@ $(document).ready(function(){
 			text:'ID',dataIndex:'id'
 		},{
 			text:'',dataIndex:'opt',renderer:function(v,d,oi){
-				return '<a href="javascript:;" onclick="openxiangs(\'知识\',\'knowledge\','+d.id+')">查看</a>';
+				return '<a href="javascript:;" onclick="openxiangs(\'知識\',\'knowledge\','+d.id+')">查看</a>';
 			}
 		}],
 		itemclick:function(){
@@ -40,7 +40,7 @@ $(document).ready(function(){
 			a.del();
 		},
 		adds:function(){
-			openinput('知识','knowledge');
+			openinput('知識','knowledge');
 		},
 		search:function(){
 			var s=get('key_{rand}').value;
@@ -48,7 +48,7 @@ $(document).ready(function(){
 		},
 		
 		mobj:a,
-		title:'知识分类',
+		title:'知識分類',
 		stable:'knowledge',
 		optionview:'optionview_{rand}',
 		optionnum:'knowledgetype',
@@ -75,12 +75,12 @@ $(document).ready(function(){
 	<table width="100%"><tr>
 		<td align="left" nowrap>
 			<button class="btn btn-primary" click="adds"  type="button"><i class="icon-plus"></i> 新增</button>&nbsp; 
-			<button class="btn btn-default" click="allshow"  type="button">所有知识</button>&nbsp; 
+			<button class="btn btn-default" click="allshow"  type="button">所有知識</button>&nbsp; 
 			
 		</td>
 		
 		<td style="padding-left:10px">
-		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="标题/分类">
+		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="標題/分類">
 		</td>
 		<td style="padding-left:10px">
 			<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -89,7 +89,7 @@ $(document).ready(function(){
 			&nbsp;&nbsp;<span id="megss{rand}"></span>
 		</td>
 		<td align="right">
-			<button class="btn btn-danger" id="del_{rand}" disabled click="del" type="button"><i class="icon-trash"></i> 删除</button>
+			<button class="btn btn-danger" id="del_{rand}" disabled click="del" type="button"><i class="icon-trash"></i> 刪除</button>
 		</td>
 	</tr></table>
 	</div>

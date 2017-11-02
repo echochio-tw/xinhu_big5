@@ -1,5 +1,5 @@
 <?php
-//车辆维修
+//車輛維修
 class flow_carmwxClassModel extends flowModel
 {
 	
@@ -16,7 +16,7 @@ class flow_carmwxClassModel extends flowModel
 		return $rs;
 	}
 
-	//多个连表查询
+	//多個連表查詢
 	public function flowbillwhere($uid, $lx)
 	{
 		return array(

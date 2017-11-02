@@ -1,5 +1,5 @@
 /**
-	双击编辑格
+	雙擊編輯格
 */
 
 (function ($) {
@@ -26,7 +26,7 @@
 		var defaultVal = {
 			trigger:'click',
 			fields:'',
-			data:[],//当前数据
+			data:[],//當前數據
 			title:''
 		};
 	

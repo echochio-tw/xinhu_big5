@@ -7,25 +7,25 @@ $(document).ready(function(){
 		tablename:'kqdkjl',celleditor:true,fanye:true,modenum:'kqdkjl',sort:'id',dir:'desc',
 		modedir:'{mode}:{dir}',params:{'atype':atype},storebeforeaction:'kqdkjlbeforeshow',
 		columns:[{
-			text:'部门',dataIndex:'deptname',align:'left'
+			text:'部門',dataIndex:'deptname',align:'left'
 		},{
 			text:'姓名',dataIndex:'name'
 		},{
-			text:'打卡时间',dataIndex:'dkdt',sortable:true
+			text:'打卡時間',dataIndex:'dkdt',sortable:true
 		},{
 			text:'星期',dataIndex:'week'
 		},{
-			text:'类型',dataIndex:'type',sortable:true
+			text:'類型',dataIndex:'type',sortable:true
 		},{
-			text:'添加时间',dataIndex:'optdt',sortable:true
+			text:'添加時間',dataIndex:'optdt',sortable:true
 		},{
 			text:'IP',dataIndex:'ip'
 		},{
 			text:'MAC地址',dataIndex:'mac'
 		},{
-			text:'说明',dataIndex:'explain',align:'left'
+			text:'說明',dataIndex:'explain',align:'left'
 		},{
-			text:'图片',dataIndex:'imgpath',renderer:function(v){
+			text:'圖片',dataIndex:'imgpath',renderer:function(v){
 				var s='&nbsp;';
 				if(!isempt(v))s='<img height="60" onclick="$.imgview({url:this.src})" src="'+v+'">';
 				return s;
@@ -62,19 +62,19 @@ $(document).ready(function(){
 		},
 		adddaka:function(){
 			var h = $.bootsform({
-				title:'打卡记录',height:240,width:380,
+				title:'打卡記錄',height:240,width:380,
 				tablename:'kqdkjl',isedit:0,submitfields:'dkdt,uid,explain',
 				params:{otherfields:'type=3,optdt={now}'},
 				items:[{
-					labelText:'人员',name:'recename',required:true,type:'changeuser',changeuser:{
-						type:'user',idname:'uid',title:'选择人员'
+					labelText:'人員',name:'recename',required:true,type:'changeuser',changeuser:{
+						type:'user',idname:'uid',title:'選擇人員'
 					},clearbool:true
 				},{
 					name:'uid',type:'hidden'
 				},{
-					labelText:'打卡时间',name:'dkdt',type:'date',view:'datetime',required:true
+					labelText:'打卡時間',name:'dkdt',type:'date',view:'datetime',required:true
 				},{
-					labelText:'说明',name:'explain',type:'textarea',height:60
+					labelText:'說明',name:'explain',type:'textarea',height:60
 				}],
 				success:function(){
 					a.reload();
@@ -83,9 +83,9 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			//dkjlmanagesss = a;
-			//addtabs({num:'admindkjlpl',url:'main,kaoqin,dkjlpl',name:'导入打卡记录'});
+			//addtabs({num:'admindkjlpl',url:'main,kaoqin,dkjlpl',name:'導入打卡記錄'});
 			managelistkqdkjl = a;
-			addtabs({num:'daorukqdkjl',url:'flow,input,daoru,modenum=kqdkjl',icons:'plus',name:'导入打卡记录'});
+			addtabs({num:'daorukqdkjl',url:'flow,input,daoru,modenum=kqdkjl',icons:'plus',name:'導入打卡記錄'});
 		}
 	};
 	if(atype=='all')$('#btnss{rand}').show();
@@ -114,19 +114,19 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td  style="padding-left:5px">
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button>
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button>
 	</td>
 	<td width="80%"></td>
 	<td align="right" id="btnss{rand}" style="display:none" nowrap>
-		<button class="btn btn-default" click="daoru" type="button">导入</button>&nbsp;
+		<button class="btn btn-default" click="daoru" type="button">導入</button>&nbsp;
 		<button class="btn btn-default" click="adddaka" type="button"><i class="icon-plus"></i> 新增</button>&nbsp;
-		<button class="btn btn-danger" id="del_{rand}" disabled click="delss" type="button"><i class="icon-trash"></i> 删除</button>
+		<button class="btn btn-danger" id="del_{rand}" disabled click="delss" type="button"><i class="icon-trash"></i> 刪除</button>
 	</td>
 </tr></table>
 </div>

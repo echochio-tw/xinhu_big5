@@ -1,13 +1,13 @@
 <?php
 class sysClassAction extends runtAction
 {
-	//数据备份
+	//數據備份
 	public function beifenAction()
 	{
 		m('beifen')->start();
 		$this->todoarr	= array(
-			'title' 	=> '数据库备份',
-			'cont' 		=> '数据库在['.$this->now.']备份了。',
+			'title' 	=> '數據庫備份',
+			'cont' 		=> '數據庫在['.$this->now.']備份了。',
 		);
 		echo 'success';
 	}
@@ -28,20 +28,20 @@ class sysClassAction extends runtAction
 				$state = 1;
 				if($rs['updatedt']>$ors['updatedt'])$state=2;
 			}
-			if($state==0)$str.='模块['.$na.']可安装;';
-			if($state==2)$str.='模块['.$na.']可<font color=red>升级</font>;';
+			if($state==0)$str.='模塊['.$na.']可安裝;';
+			if($state==2)$str.='模塊['.$na.']可<font color=red>升級</font>;';
 		}
 		if($str!=''){
 			$this->todoarr	= array(
-				'title' 	=> '安装升级',
-				'cont' 		=> $str.'请到[系统→系统工具→系统升级]下处理',
+				'title' 	=> '安裝升級',
+				'cont' 		=> $str.'請到[系統→系統工具→系統升級]下處理',
 			);
 		}
 		echo 'success';
 	}
 	
 	
-	//数据更新,更新用户的
+	//數據更新,更新用戶的
 	public function dataupAction()
 	{
 		m('admin')->updateinfo();

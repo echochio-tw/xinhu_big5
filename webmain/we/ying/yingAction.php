@@ -11,7 +11,7 @@ class yingClassAction extends ActionNot{
 		$num = $this->get('num');
 		$reim= m('reim');
 		$arr = $reim->getagent(0, "and `num`='$num'");
-		if(!$arr)exit('应用['.$num.']不存在');
+		if(!$arr)exit('應用['.$num.']不存在');
 		$rs  = $arr[0];
 		$this->title = $rs['name'];
 		$yyurl 	= ''.P.'/we/ying/yingyong/'.$num.'.html';
@@ -25,7 +25,7 @@ class yingClassAction extends ActionNot{
 		$gid 	= $rs['id'];
 		$reim->setallyd('agent', $this->adminid, $gid);
 		
-		//以下是新版应用页面，不想用可以删掉
+		//以下是新版應用頁面，不想用可以刪掉
 		//if($rs['url']=='auto' || $yyurl=='')$this->displayfile = ''.P.'/we/agent/tpl_agent.html';
 	}
 	

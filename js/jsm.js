@@ -213,7 +213,7 @@ js.ajax=function(m,a,d,fun1,mod,checs,errf){
 	if(typeof(bs)=='object')d=js.apply(d,bs);
 	if(!mod)mod='wait';
 	js.ajaxbool=true;
-	var tsnr = '努力处理中...';
+	var tsnr = '努力處理中...';
 	if(mod=='wait'){
 		js.msg(mod, tsnr);
 	}
@@ -237,13 +237,13 @@ js.ajax=function(m,a,d,fun1,mod,checs,errf){
 			}
 		},
 		error:function(){
-			js.msg('msg','内部错误：'+e.responseText);
+			js.msg('msg','內部錯誤：'+e.responseText);
 			errf();
 		}
 	});
 	js.ajaxrequestime=setTimeout(function(){
 		js.ajaxbool=false;
-		js.msg('msg', 'err:请求超时');
+		js.msg('msg', 'err:請求超時');
 		errf();
 	},1000*30);
 }

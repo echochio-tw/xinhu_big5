@@ -1,7 +1,7 @@
 <?php
 class carmClassAction extends runtAction
 {
-	//车辆提醒，每天运行
+	//車輛提醒，每天運行
 	public function runAction()
 	{
 		echo m('flow')->initflow('carms')->todocarms($this->runrs['todoid']);

@@ -5,12 +5,12 @@ class flow_kqdkjlClassModel extends flowModel
 	{
 		$this->dateobj = c('date');
 		
-		$this->typearr = explode(',','在线打卡,考勤机,手机定位,手动添加,异常添加,数据导入,接口导入,企业微信打卡,钉钉打卡');//0-8
+		$this->typearr = explode(',','在線打卡,考勤機,手機定位,手動添加,異常添加,數據導入,接口導入,企業微信打卡,釘釘打卡');//0-8
 	
 	}
 	
 	/**
-	*	显示条件过滤
+	*	顯示條件過濾
 	*/
 	protected function flowbillwhere($uid, $lx)
 	{
@@ -21,7 +21,7 @@ class flow_kqdkjlClassModel extends flowModel
 		$s 		= '';
 		$s		= ' and b.id='.$this->adminid.'';
 		
-		//全部下属打卡
+		//全部下屬打卡
 		if($lx=='down' || $lx=='dwdown'){
 			$s  = 'and '.m('admin')->getdownwheres('b.id', $uid, 0);
 		}
@@ -41,7 +41,7 @@ class flow_kqdkjlClassModel extends flowModel
 		);
 	}
 	
-	//替换
+	//替換
 	public function flowrsreplace($rs)
 	{
 		$week 		= $this->dateobj->cnweek($rs['dkdt']);
@@ -55,17 +55,17 @@ class flow_kqdkjlClassModel extends flowModel
 	public function flowdaorutestdata()
 	{
 		$barr[] = array(
-			'base_name' => '管理员',
+			'base_name' => '管理員',
 			'dkdt' 		=> '2016-08-08 12:00:01',
 		);
 		$barr[] = array(
-			'base_name' => '大乔',
+			'base_name' => '大喬',
 			'dkdt' 		=> '2017-08-22 08:55:01',
 		);
 		return $barr;
 	}
 	
-	//导入之前判断
+	//導入之前判斷
 	public function flowdaorubefore($rows)
 	{
 		$inarr	= array();

@@ -318,7 +318,7 @@ js.tanbody=function(act,title,w,h,can1){
 	s+='		<table border="0"  width="100%" cellspacing="0" cellpadding="0"><tr>';
 	s+='			<td height="34" style="font-size:14px; font-weight:bold;color:white; padding-left:8px" width="100%" onmousedown="js.move(\''+mid+'\')" id="'+act+'_title">'+title+'</td>';
 	if(can.minbtn)s+='			<td><div onclick="$(\'#'+mid+'\').hide();" id="'+act+'_minbtn" title="最小化" class="tantbtn">一</div></td>';
-	s+='			<td><div title="关闭" id="'+act+'_spancancel" class="tantbtn" ><div style="height:16px;overflow:hidden;width:16px;background:url(images/wclose.png);margin-top:12px"></div></div></td>';
+	s+='			<td><div title="關閉" id="'+act+'_spancancel" class="tantbtn" ><div style="height:16px;overflow:hidden;width:16px;background:url(images/wclose.png);margin-top:12px"></div></div></td>';
 	s+='		</tr></table>';
 	s+='	</div>';
 	s+='	<div id="'+act+'_body" style="'+can.bodystyle+'">';
@@ -386,7 +386,7 @@ js.number=function(obj){
 		return false;
 	}
 	if(isNaN(val)){
-		js.msg('msg','输入的不是数字');
+		js.msg('msg','輸入的不是數字');
 		obj.value=js.focusval;
 		obj.focus();
 	}else{
@@ -523,7 +523,7 @@ js.ajax 	 = function(m,a,d,funs, mod,checs, erfs){
 	if(typeof(bs)=='object')d=js.apply(d,bs);
 	if(d)for(var i in d)url+='&'+i+'='+d[i]+'';
 	url+='&callback=?';
-	var tsnr = '努力处理中...';
+	var tsnr = '努力處理中...';
 	if(mod=='wait')js.msg(mod, tsnr);
 	$.getJSON(url,function(ret){
 		try{modeltabs('none');}catch(e){}
@@ -542,7 +542,7 @@ js.ajax 	 = function(m,a,d,funs, mod,checs, erfs){
 	js.ajax_time = setTimeout(function(){
 		try{modeltabs('none');}catch(e){}
 		if(js.ajaxbool){
-			var str = 'Error:请求超时?';
+			var str = 'Error:請求超時?';
 			$('#listmenutishi').remove();
 			js.setmsg(str);
 			js.msg('msg',str);
@@ -593,7 +593,7 @@ js.changeusers=function(tit,lx, oncls){
 }
 js.changeuser=function(lx, ots, ots1,tit, ocans){
 	var h = winHb()-70;if(!ocans)ocans={};
-	if(!ots)ots='';if(!ots1)ots1='';if(!tit)tit='请选择...';
+	if(!ots)ots='';if(!ots1)ots1='';if(!tit)tit='請選擇...';
 	if(h>400)h=400;
 	js.tanbody('changeaction',tit,300,h,{
 		html:'<div id="showuserssvie" style="height:'+h+'px"></div>',
@@ -645,12 +645,12 @@ js.confirm	= function(txt,fun, tcls, tis, lx,ostr,bstr){
 	}
 	h+='</div>';
 	h+='<div style="padding:10px" align="center">';
-	h+='	<button id="confirm_btn1" style="padding:5px 10px"  class="webbtn" sattr="yes" type="button"><i class="icon-ok"></i>&nbsp;确定</button>';
+	h+='	<button id="confirm_btn1" style="padding:5px 10px"  class="webbtn" sattr="yes" type="button"><i class="icon-ok"></i>&nbsp;確定</button>';
 	if(lx<2)h+=' &nbsp;  &nbsp;  &nbsp;  &nbsp; <button sattr="no" style="padding:5px 10px; background-color:#888888" class="webbtn" id="confirm_btn" type="button"><i class="icon-remove"></i>&nbsp;取消</button>';
 	h+='</div>';
 	h+='<div class="blank10"></div>';
 	if(!tcls)tcls='danger';if(lx==1)tcls='info';
-	if(!tis)tis='<i class="icon-question-sign"></i>&nbsp;系统提示';
+	if(!tis)tis='<i class="icon-question-sign"></i>&nbsp;系統提示';
 	js.tanbody('confirm', tis, w, 200,{closed:'none',bbar:'none',html:h,titlecls:tcls});
 	function backl(e){
 		var jg	= $(this).attr('sattr'),val=$('#confirm_input').val();

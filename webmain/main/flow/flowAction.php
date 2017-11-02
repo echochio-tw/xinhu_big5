@@ -62,9 +62,9 @@ class flowClassAction extends Action
 		$name= $this->rock->xssrepstr($cans['name']);
 		$num = strtolower($cans['num']);
 		$cobj= c('check');
-		if(!$cobj->iszgen($tab))return '表名格式不对';
-		if($cobj->isnumber($num))return '编号不能为数字';
-		if($cans['isflow']==1 && isempt($cans['sericnum'])) return '有流程必须有写编号规则，请参考其他模块填写';
+		if(!$cobj->iszgen($tab))return '表名格式不對';
+		if($cobj->isnumber($num))return '編號不能為數字';
+		if($cans['isflow']==1 && isempt($cans['sericnum'])) return '有流程必須有寫編號規則，請參考其他模塊填寫';
 		$rows['num']= $this->rock->xssrepstr($num); 
 		$rows['name']= $name; 
 		return array(
@@ -78,16 +78,16 @@ class flowClassAction extends Action
 		if(!in_array(''.PREFIX.''.$tabs.'', $alltabls)){
 			$sql = "CREATE TABLE `[Q]".$tabs."` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
-`mid` smallint(6) DEFAULT '0' COMMENT '对应主表".$tab.".id',
-`sort` smallint(6) DEFAULT '0' COMMENT '排序号',
+`mid` smallint(6) DEFAULT '0' COMMENT '對應主表".$tab.".id',
+`sort` smallint(6) DEFAULT '0' COMMENT '排序號',
 PRIMARY KEY (`id`),KEY `mid` (`mid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 			$bo = $this->db->query($sql);
 		}else{
 			$fields = $this->db->getallfields(''.PREFIX.''.$tabs.'');
 			$str 	= '';
-			if(!in_array('mid', $fields))$str.=",add `mid` smallint(6) DEFAULT '0' COMMENT '对应主表".$tab.".id'";
-			if(!in_array('sort', $fields))$str.=",add `sort` smallint(6) DEFAULT '0' COMMENT '排序号'";
+			if(!in_array('mid', $fields))$str.=",add `mid` smallint(6) DEFAULT '0' COMMENT '對應主表".$tab.".id'";
+			if(!in_array('sort', $fields))$str.=",add `sort` smallint(6) DEFAULT '0' COMMENT '排序號'";
 			if($slxbo && !in_array('sslx', $fields)){
 				$ssma = explode(',', $ssm);
 				$ss1  = '';
@@ -108,7 +108,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		$tab  	= $cans['table'];
 		$tabs  	= $cans['tables'];
 		$alltabls = array();
-		//创建保存多行子表
+		//創建保存多行子表
 		if(!isempt($tabs)){
 			$alltabls 	= $this->db->getalltable();
 			$tabsa 		= explode(',', $tabs);
@@ -134,12 +134,12 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 			$sql = "CREATE TABLE `[Q]".$tab."` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` smallint(6) DEFAULT '0',
-  `optdt` datetime DEFAULT NULL COMMENT '操作时间',
+  `optdt` datetime DEFAULT NULL COMMENT '操作時間',
   `optid`  smallint(6) DEFAULT '0',
   `optname` varchar(20) DEFAULT NULL COMMENT '操作人',
-  `applydt` date DEFAULT NULL COMMENT '申请日期',
-  `explain` varchar(500) DEFAULT NULL COMMENT '说明',
-  `status` tinyint(1) DEFAULT '1' COMMENT '状态',
+  `applydt` date DEFAULT NULL COMMENT '申請日期',
+  `explain` varchar(500) DEFAULT NULL COMMENT '說明',
+  `status` tinyint(1) DEFAULT '1' COMMENT '狀態',
   `isturn` tinyint(1) DEFAULT '1' COMMENT '是否提交',
   PRIMARY KEY (`id`)
 ) ENGINE=".getconfig('db_engine','MyISAM')." AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
@@ -148,12 +148,12 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 			$fields = $this->db->getallfields(''.PREFIX.''.$tab.'');
 			$str 	= '';
 			if(!in_array('uid', $fields))$str.=",add `uid` smallint(6) DEFAULT '0'";
-			if(!in_array('optdt', $fields))$str.=",add `optdt` datetime DEFAULT NULL COMMENT '操作时间'";
+			if(!in_array('optdt', $fields))$str.=",add `optdt` datetime DEFAULT NULL COMMENT '操作時間'";
 			if(!in_array('optid', $fields))$str.=",add `optid` smallint(6) DEFAULT '0'";
 			if(!in_array('optname', $fields))$str.=",add `optname` varchar(20) DEFAULT NULL COMMENT '操作人'";
-			if(!in_array('applydt', $fields))$str.=",add `applydt` date DEFAULT NULL COMMENT '申请日期'";
-			if(!in_array('explain', $fields))$str.=",add `explain` varchar(500) DEFAULT NULL COMMENT '说明'";
-			if(!in_array('status', $fields))$str.=",add `status` tinyint(1) DEFAULT '1' COMMENT '状态'";
+			if(!in_array('applydt', $fields))$str.=",add `applydt` date DEFAULT NULL COMMENT '申請日期'";
+			if(!in_array('explain', $fields))$str.=",add `explain` varchar(500) DEFAULT NULL COMMENT '說明'";
+			if(!in_array('status', $fields))$str.=",add `status` tinyint(1) DEFAULT '1' COMMENT '狀態'";
 			if(!in_array('isturn', $fields))$str.=",add `isturn` tinyint(1) DEFAULT '1' COMMENT '是否提交'";
 			if($str!=''){
 				$sql = 'alter table `'.PREFIX.''.$tab.'` '.substr($str,1).'';
@@ -171,7 +171,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		
 		$farr	= $this->db->gettablefields('[Q]'.$tass.'');
 		
-		$farrs[]= array('id'=>'','name'=>'————↓以下主表('.$tass.')的字段————');
+		$farrs[]= array('id'=>'','name'=>'↓以下主表('.$tass.')的字段');
 		foreach($farr as $k=>$rs){
 			$farrs[]= array('id'=>$rs['name'],'name'=>'['.$rs['name'].']'.$rs['explain'].'');
 		}
@@ -179,7 +179,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 			$tasssa = explode(',', $tasss);
 			foreach($tasssa as $k=>$tasss){
 				$farr	= $this->db->gettablefields('[Q]'.$tasss.'');
-				$farrs[]= array('id'=>'','name'=>'————↓以下第'.($k+1).'个多行子表('.$tasss.')的字段————');
+				$farrs[]= array('id'=>'','name'=>'↓以下第'.($k+1).'個多行子表('.$tasss.')的字段');
 				foreach($farr as $k=>$rs){
 					$farrs[]= array('id'=>$rs['name'],'name'=>'['.$rs['name'].']'.$rs['explain'].'');
 				}
@@ -205,7 +205,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 	}
 	
 	
-	//单据操作菜单
+	//單據操作菜單
 	public function flowmenubefore($table)
 	{
 		$mid = (int)$this->post('mid');
@@ -221,7 +221,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		);
 	}
 	
-	//条件where
+	//條件where
 	public function flowwhereafter($table, $rows)
 	{
 		return array(
@@ -236,7 +236,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		);
 	}
 	
-	//单据通知设置
+	//單據通知設置
 	public function flowtodobefore($table)
 	{
 		$mid = (int)$this->post('mid');
@@ -297,14 +297,14 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		$rs 	= m('flow_set')->getone("`id`='$setid'");
 		if(!$rs)exit('sorry!');
 		$this->smartydata['rs'] = $rs;
-		$atypea = array('PC端','手机端');
-		$this->title  = $rs['name'].'_'.$atypea[$atype].'展示页面设置';
+		$atypea = array('PC端','手機端');
+		$this->title  = $rs['name'].'_'.$atypea[$atype].'展示頁面設置';
 		$fleftarr 	= m('flow_element')->getrows("`mid`='$setid' and `iszb`=0",'`fields`,`name`','`iszb`,`sort`');
 		$modenum	= $rs['num'];
-		$fleft[]= array('base_name', '申请人',0);
-		$fleft[]= array('base_deptname', '申请部门',0);
-		$fleft[]= array('base_sericnum', '单号',0);
-		$fleft[] = array('file_content', '相关文件',0);
+		$fleft[]= array('base_name', '申請人',0);
+		$fleft[]= array('base_deptname', '申請部門',0);
+		$fleft[]= array('base_sericnum', '單號',0);
+		$fleft[] = array('file_content', '相關文件',0);
 		$iszb 	= 0;
 		foreach($fleftarr as $k=>$brs){
 			$fleft[]= array($brs['fields'], $brs['name'], $iszb);
@@ -318,13 +318,13 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 			}
 		}
 		if($rs['isflow']==1){
-			$fleft[]= array('', '<font color=#ff6600>↓流程审核步骤</font>', 0);
+			$fleft[]= array('', '<font color=#ff6600>↓流程審核步驟</font>', 0);
 			$rows 	= m('flow_course')->getrows('setid='.$setid.' and `status`=1','id,name','pid,sort');
 			foreach($rows as $k=>$rs){
-				$fleft[]= array('course'.$rs['id'].'_name', ''.$rs['name'].'处理人', 0);
-				$fleft[]= array('course'.$rs['id'].'_zt', ''.$rs['name'].'处理状态', 0);
-				$fleft[]= array('course'.$rs['id'].'_dt', ''.$rs['name'].'处理时间', 0);
-				$fleft[]= array('course'.$rs['id'].'_sm', ''.$rs['name'].'处理说明', 0);
+				$fleft[]= array('course'.$rs['id'].'_name', ''.$rs['name'].'處理人', 0);
+				$fleft[]= array('course'.$rs['id'].'_zt', ''.$rs['name'].'處理狀態', 0);
+				$fleft[]= array('course'.$rs['id'].'_dt', ''.$rs['name'].'處理時間', 0);
+				$fleft[]= array('course'.$rs['id'].'_sm', ''.$rs['name'].'處理說明', 0);
 			}
 		}
 
@@ -350,21 +350,21 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		$rs 	= m('flow_set')->getone("`id`='$setid'");
 		if(!$rs)exit('sorry!');
 		$this->smartydata['rs'] = $rs;
-		$this->title  = $rs['name'].'_录入页面设置';
+		$this->title  = $rs['name'].'_錄入頁面設置';
 		$fleftarr 	= m('flow_element')->getrows("`mid`='$setid'",'*','`iszb`,`sort`');
 		$modenum	= $rs['num'];
-		$fleft[]= array('base_name', '申请人',0);
-		$fleft[]= array('base_deptname', '申请部门',0);
-		$fleft[]= array('base_sericnum', '单号',0);
-		$fleft[] = array('file_content', '相关文件',0);
+		$fleft[]= array('base_name', '申請人',0);
+		$fleft[]= array('base_deptname', '申請部門',0);
+		$fleft[]= array('base_sericnum', '單號',0);
+		$fleft[] = array('file_content', '相關文件',0);
 		$iszb 	= 0;
 		foreach($fleftarr as $k=>$brs){
 			$bt='';
 			if($brs['isbt']==1)$bt='*';
 			$iszbs = $brs['iszb'];
 			if($iszbs>0&&$iszb != $iszbs){
-				$fleft[]= array('', '<font color=#ff6600>—第'.$iszbs.'个多行子表—</font>', $iszbs);
-				$fleft[]= array('xuhao', '序号', $iszbs);
+				$fleft[]= array('', '<font color=#ff6600>第'.$iszbs.'個多行子表</font>', $iszbs);
+				$fleft[]= array('xuhao', '序號', $iszbs);
 			}
 			$iszb	= $iszbs;
 			$fleft[]= array($brs['fields'], $bt.$brs['name'], $iszb);
@@ -381,7 +381,7 @@ PRIMARY KEY (`id`),KEY `mid` (`mid`)
 		$this->smartydata['content'] = $content;
 		$apaths		= ''.P.'/flow/input/inputjs/mode_'.$modenum.'.js';
 		if(!file_exists($apaths)){
-			$stra='//流程模块【'.$modenum.'.'.$rs['name'].'】下录入页面自定义js页面,初始函数
+			$stra='//流程模塊【'.$modenum.'.'.$rs['name'].'】下錄入頁面自定義js頁面,初始函數
 function initbodys(){
 	
 }';
@@ -393,28 +393,28 @@ function initbodys(){
 		if(!file_exists($apath)){
 			$stra = '<?php
 /**
-*	此文件是流程模块【'.$modenum.'.'.$rs['name'].'】对应控制器接口文件。
+*	此文件是流程模塊【'.$modenum.'.'.$rs['name'].'】對應控制器接口文件。
 */ 
 class mode_'.$modenum.'ClassAction extends inputAction{
 	
 	/**
-	*	重写函数：保存前处理，主要用于判断是否可以保存
-	*	$table String 对应表名
-	*	$arr Array 表单参数
-	*	$id Int 对应表上记录Id 0添加时，大于0修改时
-	*	$addbo Boolean 是否添加时
-	*	return array(\'msg\'=>\'错误提示内容\',\'rows\'=> array()) 可返回空字符串，或者数组 rows 是可同时保存到数据库上数组
+	*	重寫函數：保存前處理，主要用于判斷是否可以保存
+	*	$table String 對應表名
+	*	$arr Array 表單參數
+	*	$id Int 對應表上記錄Id 0添加時，大于0修改時
+	*	$addbo Boolean 是否添加時
+	*	return array(\'msg\'=>\'錯誤提示內容\',\'rows\'=> array()) 可返回空字符串，或者數組 rows 是可同時保存到數據庫上數組
 	*/
 	protected function savebefore($table, $arr, $id, $addbo){
 		
 	}
 	
 	/**
-	*	重写函数：保存后处理，主要保存其他表数据
-	*	$table String 对应表名
-	*	$arr Array 表单参数
-	*	$id Int 对应表上记录Id
-	*	$addbo Boolean 是否添加时
+	*	重寫函數：保存後處理，主要保存其他表數據
+	*	$table String 對應表名
+	*	$arr Array 表單參數
+	*	$id Int 對應表上記錄Id
+	*	$addbo Boolean 是否添加時
 	*/	
 	protected function saveafter($table, $arr, $id, $addbo){
 		
@@ -432,7 +432,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$path 	 = ''.P.'/flow/page/input_'.$num.'.html';
 		$bo 	 = $this->rock->createtxt($path, $content);
 		if(!$bo){
-			echo '无法写入文件:'.$path.'';
+			echo '無法寫入文件:'.$path.'';
 		}else{
 			echo 'success';
 		}
@@ -446,7 +446,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$path 	 = ''.P.'/flow/page/view_'.$num.'_'.$atype.'.html';
 		$bo 	 = $this->rock->createtxt($path, $content);
 		if(!$bo){
-			echo '无法写入文件:'.$path.'';
+			echo '無法寫入文件:'.$path.'';
 		}else{
 			echo 'success';
 		}
@@ -472,7 +472,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$hang 	= (int)$this->post('hang');
 		$modeid = (int)$this->post('modeid');
 		$str 	= m('input')->getsubtable($modeid, $iszb, $hang);
-		if($str=='')$this->backmsg('没有设置第'.$iszb.'个多行子表');
+		if($str=='')$this->backmsg('沒有設置第'.$iszb.'個多行子表');
 		$this->backmsg('','ok', $str);
 	}
 	
@@ -550,7 +550,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		backmsg($msg);
 	}
 	
-	//元素保存之前判断
+	//元素保存之前判斷
 	public function elemensavefieldsbefore($table, $cans, $id)
 	{
 		$iszb 	= (int)$cans['iszb'];
@@ -560,14 +560,14 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$tablessa = explode(',', $this->mmoders['tables']);
 		if($iszb>0){
 			$tabsss = $this->rock->arrvalue($tablessa, $iszb-1);
-			if(isempt($tabsss))return '模块没有设置第'.$iszb.'个多行子表';
+			if(isempt($tabsss))return '模塊沒有設置第'.$iszb.'個多行子表';
 		}
 		if(m($table)->rows("`mid`='$mid' and `iszb`='$iszb' and `fields`='$fields' and `id`<>'$id'")>0){
 			return '字段['.$fields.']已存在了';
 		}
 	}
 	
-	//保存字段判断
+	//保存字段判斷
 	public function elemensavefields($table, $cans)
 	{
 		$fields = $cans['fields'];
@@ -642,7 +642,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 	}
 	
 	
-	//删除模块
+	//刪除模塊
 	public function delmodeAjax()
 	{
 		$id = (int)$this->post('id','0');
@@ -651,11 +651,11 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 	
 	private function delmode($id, $dm=false)
 	{
-		if($this->getsession('isadmin')!='1')return '非管理员不能操作';
+		if($this->getsession('isadmin')!='1')return '非管理員不能操作';
 		$mrs = m('flow_set')->getone($id);
-		if(!$mrs)return '模块不存在';
+		if(!$mrs)return '模塊不存在';
 		$num 	= $mrs['num'];
-		if($mrs['type']=='系统')return '系统模块不能删除清空';
+		if($mrs['type']=='系統')return '系統模塊不能刪除清空';
 	
 		$table 	= $mrs['table'];
 		m('flow_bill')->delete("`modeid`='$id'");
@@ -675,7 +675,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 			m('file')->delfiles($table, $ssid);
 		}
 		
-		//删除子表
+		//刪除子表
 		$tables = $mrs['tables'];
 		if(!isempt($tables)){
 			$tablesa = explode(',', $tables);
@@ -704,23 +704,23 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 			m('flow_todo')->delete("`setid`='$id'");
 			m('flow_todos')->delete("`modenum`='$num'");
 			
-			m('log')->addlog('模块','删除模块['.$name.']');
+			m('log')->addlog('模塊','刪除模塊['.$name.']');
 		}else{
-			m('log')->addlog('模块','清空模块['.$name.']的数据');
+			m('log')->addlog('模塊','清空模塊['.$name.']的數據');
 		}
 		
 		$this->db->query("alter table `[Q]$table` AUTO_INCREMENT=1");
 		return 'ok';
 	}
 	
-	//清空模块上数据
+	//清空模塊上數據
 	public function clearallmodeAjax()
 	{
 		$id = (int)$this->post('id','0');
 		return $this->delmode($id, false);
 	}
 	
-	//刷新序号
+	//刷新序號
 	public function rexuhaoAjax()
 	{
 		$mid 	= (int)$this->get('modeid');
@@ -744,16 +744,16 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		return array('order'=>'pid,sort');
 	}
 	
-	//流程步骤显示
+	//流程步驟顯示
 	public function flowcourselistafter($table, $rows)
 	{
 		$arr = array();$pid = -1;$maxpid = -1;
 		foreach($rows as $k=>$rs){
 			if($rs['pid'] != $pid){
 				$recename 	= $this->rock->arrvalue($rs, 'recename');
-				if(isempt($recename))$recename = '全体人员';
+				if(isempt($recename))$recename = '全體人員';
 				$arr[] 		= array(
-					'name' 	=> '流程'.($rs['pid']+1).'，适用：'.$recename.'',
+					'name' 	=> '流程'.($rs['pid']+1).'，適用：'.$recename.'',
 					'level'	=> 1,
 					'stotal'=> 1,
 					'status'=> 1,
@@ -782,12 +782,12 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 
 	
 	
-	//生成列表页面
+	//生成列表頁面
 	public function changeliebAjax()
 	{
 		$modeid = (int)$this->post('modeid');
 		$path 	= m('mode')->createlistpage($modeid);
-		if($path=='')$path	= '无法生成，可能没权限写入'.P.'/flow/page目录';
+		if($path=='')$path	= '無法生成，可能沒權限寫入'.P.'/flow/page目錄';
 		echo $path;
 	}
 	
@@ -802,13 +802,13 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 			$path 	= $dbs->createlistpage($rs,1);
 			if($path=='none')continue;
 			if($path==''){
-				if($path=='')$msg	= '无法生成，可能没权限写入'.P.'/flow/page目录';
+				if($path=='')$msg	= '無法生成，可能沒權限寫入'.P.'/flow/page目錄';
 				break;
 			}else{
 				$oi++;
 			}
 		}
-		if($msg=='')$msg='已生成'.$oi.'个模块，可到'.P.'/flow/page下查看';
+		if($msg=='')$msg='已生成'.$oi.'個模塊，可到'.P.'/flow/page下查看';
 		echo $msg;
 	}
 	
@@ -817,15 +817,15 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$num 	= $this->post('num');
 		$modeid = (int)$this->post('modeid');
 		$str 	= $this->post('str');
-		$this->option->setval($num.'@'.(-1*$modeid-1000), $str,'模块列定义');
+		$this->option->setval($num.'@'.(-1*$modeid-1000), $str,'模塊列定義');
 		$path 	= m('mode')->createlistpage($modeid);
 		$msg 	= 'ok';
-		if($path=='')$msg='已保存,但无法从新生成列表页,自定义列将不能生效';
+		if($path=='')$msg='已保存,但無法從新生成列表頁,自定義列將不能生效';
 		echo $msg;
 	}
 	
 	
-	//选择人员组
+	//選擇人員組
 	public function getcnameAjax()
 	{
 		$arr = array();
@@ -851,7 +851,7 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 	
 	
 	
-	//图形的流程管理
+	//圖形的流程管理
 	public function courseflowinitAjax()
 	{
 		$setid = (int)$this->get('setid','0');
@@ -870,8 +870,8 @@ class mode_'.$modenum.'ClassAction extends inputAction{
 		$mid 	= (int)arrvalue($arr,'mid','0');
 		$setid 	= (int)arrvalue($arr,'setid','0');
 		$nid 	= (int)arrvalue($arr,'nid','0');
-		if($mid>0 && m($table)->rows("`setid`='$setid' and `id`='$mid'")==0)return '上级步骤ID['.$mid.']不存在';
-		if($nid>0 && m($table)->rows("`setid`='$setid' and `id`='$nid'")==0)return '下级步骤ID['.$nid.']不存在';
+		if($mid>0 && m($table)->rows("`setid`='$setid' and `id`='$mid'")==0)return '上級步驟ID['.$mid.']不存在';
+		if($nid>0 && m($table)->rows("`setid`='$setid' and `id`='$nid'")==0)return '下級步驟ID['.$nid.']不存在';
 		
 		
 	}

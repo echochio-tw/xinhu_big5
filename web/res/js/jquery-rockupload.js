@@ -1,5 +1,5 @@
 /**
-*	无刷新上传
+*	無刷新上傳
 *	createname：雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (xh829.com)
@@ -17,7 +17,7 @@
 		},opts);
 		this._init=function(){
 			for(var a in opts)this[a]=opts[a];
-			//加载最大可上传大小
+			//加載最大可上傳大小
 			if(maxupgloble==0)$.getJSON(js.apiurl('login','getmaxup'),function(res){
 				try{
 				if(res.code==200){
@@ -58,7 +58,7 @@
 		};
 		this.change=function(o1){
 			if(!o1.files){
-				js.msg('msg','当前浏览器不支持上传1');
+				js.msg('msg','當前瀏覽器不支持上傳1');
 				return;
 			}
 			
@@ -72,7 +72,7 @@
 			if(this.isfields(a))return;
 			if(f.size>this.maxsize*1024*1024){
 				this.reset();
-				js.msg('msg','文件不能超过'+this.maxsize+'MB,当前文件'+a.filesizecn+'');
+				js.msg('msg','文件不能超過'+this.maxsize+'MB,當前文件'+a.filesizecn+'');
 				return;
 			}
 			var filename = f.name;
@@ -82,7 +82,7 @@
 			if(this.uptype!='*'){
 				var upss=','+this.uptype+',';
 				if(upss.indexOf(','+fileext+',')<0){
-					js.msg('msg','禁止文件类型,请选择'+this.uptype+'');
+					js.msg('msg','禁止文件類型,請選擇'+this.uptype+'');
 					return;
 				}
 			}
@@ -120,7 +120,7 @@
 			return bo;
 		};
 		this.sendbase64=function(nr,ocs){
-			this.filearr=js.apply({filename:'截图.png',filesize:0,filesizecn:'',isimg:true,fileext:'png'}, ocs);
+			this.filearr=js.apply({filename:'截圖.png',filesize:0,filesizecn:'',isimg:true,fileext:'png'}, ocs);
 			this._startup(false, nr);
 		};
 		this.start=function(){
@@ -149,7 +149,7 @@
 					this.fileallarr[this.nowoi].filepath=dst.filepath;
 				}else{
 					js.msg('msg', str);
-					this.fileviewxu(this.nowoi, '<font color=red>失败1</font>');
+					this.fileviewxu(this.nowoi, '<font color=red>失敗1</font>');
 				}
 				this.startss(this.nowoi+1);
 			}
@@ -157,7 +157,7 @@
 				this.fileviewxu(this.nowoi, ''+bil+'%');
 			}
 			this.onerror=function(){
-				this.fileviewxu(this.nowoi, '<font color=red>失败0</font>');
+				this.fileviewxu(this.nowoi, '<font color=red>失敗0</font>');
 				this.startss(this.nowoi+1);
 			}
 			this._startup(f.f);
@@ -167,7 +167,7 @@
 			if(typeof(st)=='string')$('#'+this.fileview+'_'+oi+'').html(st);
 			return get(''+this.fileview+'_'+oi+'');
 		};
-		//初始化文件防止重复上传
+		//初始化文件防止重復上傳
 		this._initfile=function(f){
 			var a 	= this.filearr,d={'filesize':a.filesize,'fileext':a.fileext};
 			if(!a.isimg)d.filename=jm.base64encode(a.filename);
@@ -185,7 +185,7 @@
 		this._startup=function(fs, nr, bos){
 			this.upbool = true;
 			if(this.initpdbool && fs && !bos){this._initfile(fs);return;}
-			try{var xhr = new XMLHttpRequest();}catch(e){js.msg('msg','当前浏览器不支持2');return;}
+			try{var xhr = new XMLHttpRequest();}catch(e){js.msg('msg','當前瀏覽器不支持2');return;}
 			var url = js.apiurl('upload','upfile', {'maxsize':this.maxsize});
 			if(nr)url = js.apiurl('upload','upcont');
 			xhr.open('POST', url, true); 
@@ -223,7 +223,7 @@
 		};
 		this._error=function(ts,xr){
 			this.upbool = false;
-			if(!ts)ts='上传内部错误';
+			if(!ts)ts='上傳內部錯誤';
 			this.onerror(ts);
 		};
 		this._statechange=function(o){

@@ -1,1 +1,1 @@
-<div style="font-size:30px;padding:100px">信呼的钉钉办公模块，需要购买，去<a href="http://www.rockoa.com/view_ding.html"  target="_blank" style="font-size:30px">【看看】</a></div>
+<div style="font-size:30px;padding:100px">信呼的釘釘辦公模塊，需要購買，去<a href="http://www.rockoa.com/view_ding.html"  target="_blank" style="font-size:30px">【看看】</a></div>

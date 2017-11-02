@@ -16,7 +16,7 @@ class dateChajian extends Chajian
 	}
 	
 	/**
-		获取上月
+		獲取上月
 	*/
 	public function lastmonth($dt, $type='Y-m')
 	{
@@ -24,7 +24,7 @@ class dateChajian extends Chajian
 	}
 
 	/**
-		计算时间间隔
+		計算時間間隔
 	*/	
 	public function datediff($type,$start,$end)
 	{
@@ -59,11 +59,11 @@ class dateChajian extends Chajian
 				$time=$dt2-$dt1;
 				$val = $time/3600/24;
 			break;
-			case 'H'://小时
+			case 'H'://小時
 				$time = $time2 - $time1;
 				$val = floor($time/3600);
 			break;
-			case 'i'://分钟
+			case 'i'://分鐘
 				$time = $time2 - $time1;
 				$val = floor($time/60);
 			break;
@@ -75,7 +75,7 @@ class dateChajian extends Chajian
 	}
 	
 	/**
-		时间计算添加
+		時間計算添加
 	*/
 	public function adddate($dt,$lx,$v=0,$type='')
 	{
@@ -106,7 +106,7 @@ class dateChajian extends Chajian
 			case 'd'://日期
 				$time	= mktime($H, $i, $s, $m, $d+$v, $Y);
 			break;
-			case 'H'://时
+			case 'H'://時
 				$time	= mktime($H+$v, $i, $s, $m, $d, $Y);
 			break;
 			case 'i'://分
@@ -126,7 +126,7 @@ class dateChajian extends Chajian
 		return $this->rock->contain($str,$a);
 	}
 	
-	//判断是否为空
+	//判斷是否為空
 	public function isempt($str)
 	{
 		return $this->rock->isempt($str);
@@ -201,7 +201,7 @@ class dateChajian extends Chajian
 		return $arr[date('w', strtotime($date))];
 	}
 	
-	//读取本周日期
+	//讀取本週日期
 	public function getweekarr($dt)
 	{
 		$w = date('w', strtotime($dt));
@@ -227,7 +227,7 @@ class dateChajian extends Chajian
 	}
 	
 	/**
-		计算返回当前间隔分析：今天 10:20
+		計算返回當前間隔分析：今天 10:20
 	*/
 	public function stringdt($dttime, $type='G H:i')
 	{
@@ -241,7 +241,7 @@ class dateChajian extends Chajian
 		if($jg==1)$G='昨天';
 		if($jg==2)$G='前天';
 		if($jg==-1)$G='明天';
-		if($jg==-2)$G='后天';
+		if($jg==-2)$G='後天';
 		$A = $G;
 		if($G=='')$G=substr($dts[0], 5);
 		if($A=='')$A=$dts[0];

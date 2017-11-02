@@ -1,17 +1,17 @@
 <?php 
 /**
-	修改记录插件
+	修改記錄插件
 */
 class editChajian extends Chajian{
 	
 	public $editarr = array();
 	
 	/**
-		获取修改记录
+		獲取修改記錄
 		$table 表
 		$id id值
-		$oners 旧数组
-		$newrs 新数组
+		$oners 舊數組
+		$newrs 新數組
 		return string
 	*/
 	public function record($table, $id, $oners, $newrs, $glx=1)
@@ -80,9 +80,9 @@ class editChajian extends Chajian{
 	}
 	
 	/**
-		获取对应表上字段信息
+		獲取對應表上字段信息
 		$glx 0基本字段，1流程上
-		return {字段名:对应信息}
+		return {字段名:對應信息}
 	*/
 	public function getfield($table, $glx=0)
 	{

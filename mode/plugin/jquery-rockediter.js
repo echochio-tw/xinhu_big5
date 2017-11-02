@@ -1,5 +1,5 @@
 /**
-	编辑器
+	編輯器
 	caratename：chenxihu
 	caratetime：214-09-01 21:40:00
 	email:qqqq2900@126.com
@@ -17,37 +17,37 @@ var rockediterarray	= [];
 		this.oi			= rockediterarray.length;
 		
 		this.formatarray={
-			'font':['字体样式','FontName', 'down'],
-			'fontsize':['字体大小','FontSize', 'down'],
-			'forecolor':['字体颜色','ForeColor', 'down'],
-			'marks':['插入特殊符号','Marks'],
-			'images':['上传图片','Images'],
-			'imageslink':['插入图片链接','Imageslink'],
-			'backcolor':['字体背景色','BackColor', 'down'],
-			'html':['查看源码','HTML'],
+			'font':['字體樣式','FontName', 'down'],
+			'fontsize':['字體大小','FontSize', 'down'],
+			'forecolor':['字體顏色','ForeColor', 'down'],
+			'marks':['插入特殊符號','Marks'],
+			'images':['上傳圖片','Images'],
+			'imageslink':['插入圖片鏈接','Imageslink'],
+			'backcolor':['字體背景色','BackColor', 'down'],
+			'html':['查看源碼','HTML'],
 			'arrow_out':['全屏',''],
 			'emot':['插入表情',''],
 			'cut':['剪切','Cut'],
-			'paste':['粘贴','Paste'],
-			'copy':['复制','Copy'],
-			'selectall':['全选','SelectAll'],
-			'hr':['添加水平线','InsertHorizontalRule'],
-			'link_add':['添加链接','CreateLink'],
-			'link_del':['删除链接','UnLink'],
+			'paste':['粘貼','Paste'],
+			'copy':['復制','Copy'],
+			'selectall':['全選','SelectAll'],
+			'hr':['添加水平線','InsertHorizontalRule'],
+			'link_add':['添加鏈接','CreateLink'],
+			'link_del':['刪除鏈接','UnLink'],
 			'bold':['加粗','Bold'],
-			'italic':['斜体','Italic'],
-			'underline':['下划线','Underline'],
-			'strikethrough':['删除线','StrikeThrough'],
-			'align_center':['居中对齐','JustifyCenter'],
-			'align_justify':['两端对齐','JustifyFull'],
-			'align_left':['左对齐','JustifyLeft'],
-			'align_right':['右对齐','JustifyRight'],
-			'list_bullets':['项目符号','insertunorderedlist'],
-			'list_numbers':['数字编号','insertorderedlist'],
-			'indent':['增加缩进量','Indent'],
-			'indent_remove':['减小缩进量','Outdent'],
+			'italic':['斜體','Italic'],
+			'underline':['下劃線','Underline'],
+			'strikethrough':['刪除線','StrikeThrough'],
+			'align_center':['居中對齊','JustifyCenter'],
+			'align_justify':['兩端對齊','JustifyFull'],
+			'align_left':['左對齊','JustifyLeft'],
+			'align_right':['右對齊','JustifyRight'],
+			'list_bullets':['項目符號','insertunorderedlist'],
+			'list_numbers':['數字編號','insertorderedlist'],
+			'indent':['增加縮進量','Indent'],
+			'indent_remove':['減小縮進量','Outdent'],
 			'undo':['返回上一步','Undo'],
-			'removeformat':['删除格式','RemoveFormat']
+			'removeformat':['刪除格式','RemoveFormat']
 		}
 		
 		//初始化
@@ -104,10 +104,10 @@ var rockediterarray	= [];
 		
 		this.createlink	= function(){
 			var h	= '<div style="padding:10px;line-height:30px">';
-			h+='<div style="padding:5px 0px"><font color="#888888">连接文字</font> <input id="createlinkwindow_text" style="width:50%" class="input" value="'+this.selecttext+'"></div>';
-			h+='<div style="padding:5px 0px"><font color="#888888">连接地址</font> <input id="createlinkwindow_texturl" value="http://" class="input" style="width:78%"></div>';
+			h+='<div style="padding:5px 0px"><font color="#888888">連接文字</font> <input id="createlinkwindow_text" style="width:50%" class="input" value="'+this.selecttext+'"></div>';
+			h+='<div style="padding:5px 0px"><font color="#888888">連接地址</font> <input id="createlinkwindow_texturl" value="http://" class="input" style="width:78%"></div>';
 			h+='</div>';
-			js.tanbody('createlinkwindow', '添加连接', 400, 200, {html:h,btn:[{text:'确定'}]});	
+			js.tanbody('createlinkwindow', '添加連接', 400, 200, {html:h,btn:[{text:'確定'}]});	
 			get('createlinkwindow_texturl').focus();
 			$('#createlinkwindow_btn0').click(function(){
 				me.quedingadd();
@@ -161,23 +161,23 @@ var rockediterarray	= [];
 			return txt;
 		};
 		
-		//删除图片
+		//刪除圖片
 		this.uploadImages= function(){
 			var h	= '<div style="padding:10px;line-height:30px">';
 			h+='<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 			h+='<tr>';
 			h+=' 	<td width="110" height="110" align="center"><img id="createlinkwindow_imagesview" src="images/noface.jpg" width="100" height="100"></td>';
 			h+='	<td style="padding:5px 10px;line-height:30px">';
-			h+='		<div style="padding:5px 0px"><font color="#888888">图片地址：</font> &nbsp; <a href="javascript:" onclick="return rockediteruploadimage()">↑从本地上传</a></div>';
+			h+='		<div style="padding:5px 0px"><font color="#888888">圖片地址：</font> &nbsp; <a href="javascript:" onclick="return rockediteruploadimage()">↑從本地上傳</a></div>';
 			h+='		<div style="padding:0px 0px"><input  id="createlinkwindow_images" class="input" style="width:250px"></div>';
 			//h+='		<div style="height:20px;overflow:hidden"></div>';
-			//h+='		<div style="padding:5px 0px">宽：<input class="inputs" id="createlinkwindow_width" readonly style="width:60px"> &nbsp; 高：<input id="createlinkwindow_height" class="inputs"  readonly style="width:60px"></div>';
+			//h+='		<div style="padding:5px 0px">寬：<input class="inputs" id="createlinkwindow_width" readonly style="width:60px"> &nbsp; 高：<input id="createlinkwindow_height" class="inputs"  readonly style="width:60px"></div>';
 			h+='	</td>';
 			h+='</tr>';
 			h+='</table>';
 			h+='</div>';
-			js.tanbody('createlinkwindow', '插入图片', 400, 200, {
-				html:h,btn:[{text:'确定'}]
+			js.tanbody('createlinkwindow', '插入圖片', 400, 200, {
+				html:h,btn:[{text:'確定'}]
 			});	
 			$('#createlinkwindow_btn0').click(function(){
 				me.uploadImagesback();
@@ -206,7 +206,7 @@ var rockediterarray	= [];
 })(jQuery);
 
 function rockediteruploadimage(){
-	js.upload('rockediteruploadimageautoclose',{title:escape('本地上传图片'),maxup:1,uptype:'image',maxwidth:600});
+	js.upload('rockediteruploadimageautoclose',{title:escape('本地上傳圖片'),maxup:1,uptype:'image',maxwidth:600});
 	return false;
 }
 function rockediteruploadimageautoclose(a){

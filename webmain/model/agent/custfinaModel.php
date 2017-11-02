@@ -1,10 +1,10 @@
 <?php
-//客户.收款单的应用
+//客戶.收款單的應用
 class agent_custfinaClassModel extends agentModel
 {
 	
 	
-	//状态显示替换
+	//狀態顯示替換
 	protected function agentrows($rows, $rowd, $uid)
 	{
 		$statea = $this->flow->statearrs;

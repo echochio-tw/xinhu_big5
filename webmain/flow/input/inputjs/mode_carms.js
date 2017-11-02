@@ -1,4 +1,4 @@
-//流程模块【carms.车辆信息登记】下录入页面自定义js页面,初始函数
+//流程模塊【carms.車輛信息登記】下錄入頁面自定義js頁面,初始函數
 function initbodys(){
 	//c.fieldshide('money');
 	$(form('otype')).change(function(){
@@ -8,12 +8,12 @@ function initbodys(){
 }
 function changeotype(){
 	var val = form('otype').value;
-	if(val=='违章'||val=='事故'||val=='加油'){
-		c.setfields('address',''+val+'地点');
+	if(val=='違章'||val=='事故'||val=='加油'){
+		c.setfields('address',''+val+'地點');
 	}else{
-		c.setfields('address','地点');
+		c.setfields('address','地點');
 	}
 }
 function changesubmit(d){
-	if(d.enddt && d.enddt<=d.startdt)return '截止日期必须大于开始日期';
+	if(d.enddt && d.enddt<=d.startdt)return '截止日期必須大于開始日期';
 }

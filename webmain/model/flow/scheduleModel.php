@@ -3,10 +3,10 @@ class flow_scheduleClassModel extends flowModel
 {
 
 	protected function flowinit(){
-		$this->ratearr		 = array('d'=>'天','w'=>'周','m'=>'月');
+		$this->ratearr		 = array('d'=>'天','w'=>'週','m'=>'月');
 	}
 	
-	//是否有读权限
+	//是否有讀權限
 	public function flowisreadqx()
 	{
 		if(!isempt($this->rs['receid'])){
@@ -22,7 +22,7 @@ class flow_scheduleClassModel extends flowModel
 	
 	public function getstatusarr()
 	{
-		$barr[1] = array('启用','green');
+		$barr[1] = array('啟用','green');
 		$barr[0] = array('停用','#888888');
 		return $barr;
 	}
@@ -35,9 +35,9 @@ class flow_scheduleClassModel extends flowModel
 		$rs['txsj'] = $str;
 		$rate = $rs['rate'];
 		if(isset($this->ratearr[$rate])){
-			if($rate=='w')$rate='每周'.$rs['rateval'].'';
+			if($rate=='w')$rate='每週'.$rs['rateval'].'';
 			if($rate=='d')$rate='每天';
-			if($rate=='m')$rate='每月'.$rs['rateval'].'号';
+			if($rate=='m')$rate='每月'.$rs['rateval'].'號';
 			$rs['rate'] = $rate;
 		}
 		if($rs['status']==0)$rs['ishui']=1;

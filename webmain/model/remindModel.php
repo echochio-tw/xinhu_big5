@@ -1,5 +1,5 @@
 <?php
-//单据提醒设置
+//單據提醒設置
 class remindClassModel extends Model
 {
 	public function initModel()
@@ -13,7 +13,7 @@ class remindClassModel extends Model
 	}
 	
 	/**
-	*	获取主ID
+	*	獲取主ID
 	*/
 	public function getremindrs($table, $mid)
 	{

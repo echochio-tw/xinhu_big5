@@ -21,7 +21,7 @@ class inforClassAction extends Action
 	}
 	
 	
-	//导入题库提交
+	//導入題庫提交
 	public function tikuimportAjax()
 	{
 		$rows  	= c('html')->importdata('title,typeid,type,ana,anb,anc,and,answer,explain','title,typeid,type,ana,anb,answer');
@@ -29,7 +29,7 @@ class inforClassAction extends Action
 		$db 	= m('knowtiku');
 		foreach($rows as $k=>$rs){
 			$rs['typeid'] 	= $this->option->gettypeid('knowtikutype',$rs['typeid']);
-			$rs['type']		= contain($rs['type'],'单') ? 0 : 1;
+			$rs['type']		= contain($rs['type'],'單') ? 0 : 1;
 			$rs['adddt']	= $this->now;
 			$rs['optdt']	= $this->now;
 			$rs['optid']	= $this->adminid;
@@ -37,7 +37,7 @@ class inforClassAction extends Action
 			$db->insert($rs);
 			$oi++;
 		}
-		backmsg('','成功导入'.$oi.'条数据');
+		backmsg('','成功導入'.$oi.'條數據');
 	}
 	
 }

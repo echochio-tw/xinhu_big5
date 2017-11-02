@@ -1,5 +1,5 @@
 /**
-	rocktabs 选择卡
+	rocktabs 選擇卡
 	caratename：chenxihu
 	caratetime：214-04-06 21:40:00
 	email:qqqq2900@126.com
@@ -10,7 +10,7 @@
 			<ul>
 				<li index="1" class="li01">公告</li>
 				<li index="2">聚品茶</li>
-				<li index="3">促销信息</li>
+				<li index="3">促銷信息</li>
 			</ul>
 		</div>
 		<div class="tabscont hborder" style="height:259px; border-top:none">
@@ -45,7 +45,7 @@
 			titobj[tri](function(){
 				me.clicktitle(this);	
 			});
-			var ind	= obj.attr('tabsindex');//选中第几个选择卡
+			var ind	= obj.attr('tabsindex');//選中第幾個選擇卡
 			if(ind == null || !ind)ind='0';
 			if(ind == 'last')ind = titobj.length-1;
 			this.indexshow(parseInt(ind));

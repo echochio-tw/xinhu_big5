@@ -1,8 +1,8 @@
 <?php
 /**
-*	模块：gong.通知公告，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.通知公告]→生成列表页
+*	模塊：gong.通知公告，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.通知公告]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
@@ -11,7 +11,8 @@ $(document).ready(function(){
 	{params}
 	var modenum = 'gong',modename='通知公告',isflow=0,modeid='1',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
-var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部門","fields":"base_deptname"},{"name":"單號","fields":"sericnum"},{"fields":"title","name":"標題","fieldstype":"text","ispx ":"0","isalign":"1","islb":"1"},{"fields":"fengmian","name":"封面圖片","fieldstype":"uploadimg","ispx":"0","isalign":"1", "islb":"0"},{"fields":"typename","name":"類型名稱","fieldstype":"rockcombo","ispx":"1","isalign":"0","islb":"1"},{"fields": "content","name":"內容","fieldstype":"htmlediter","ispx":"0","isalign":"0","islb":"0"},{"fields":"recename","name":"發送給","fieldstype":"changedeptusercheck","ispx":"0","isalign":"0","islb":"1"},{"fields":"url","name":"相應地址","fieldstype": "text","ispx":"0","isalign":"0","islb":"0"},{"fields":"zuozhe","name":"來源","fieldstype":"text","ispx":"0"," isalign":"0","islb":"1"},{"fields":"indate","name":"日期","fieldstype":"date","ispx":"1","isalign":"0","islb":"1"},{"fields":"optname ","name":"操作人","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"mintou","name":"至少投票", "fieldstype":"number","ispx":"0","isalign":"0","islb":"0"},{"fields":"maxtou","name":"最多投票","fieldstype":"number","ispx":"0", "isalign":"0","islb":"0"},{"fields":"startdt","name":"開始時間","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"0"},{ "fields":"enddt","name":"截止時間","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"0"}] ,fieldsselarr= [];
+	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"title","name":"\u6807\u9898","fieldstype":"text","ispx":"0","isalign":"1","islb":"1"},{"fields":"fengmian","name":"\u5c01\u9762\u56fe\u7247","fieldstype":"uploadimg","ispx":"0","isalign":"1","islb":"0"},{"fields":"typename","name":"\u7c7b\u578b\u540d\u79f0","fieldstype":"rockcombo","ispx":"1","isalign":"0","islb":"1"},{"fields":"content","name":"\u5185\u5bb9","fieldstype":"htmlediter","ispx":"0","isalign":"0","islb":"0"},{"fields":"recename","name":"\u53d1\u9001\u7ed9","fieldstype":"changedeptusercheck","ispx":"0","isalign":"0","islb":"1"},{"fields":"url","name":"\u76f8\u5e94\u5730\u5740","fieldstype":"text","ispx":"0","isalign":"0","islb":"0"},{"fields":"zuozhe","name":"\u6765\u6e90","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"indate","name":"\u65e5\u671f","fieldstype":"date","ispx":"1","isalign":"0","islb":"1"},{"fields":"optname","name":"\u64cd\u4f5c\u4eba","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"mintou","name":"\u81f3\u5c11\u6295\u7968","fieldstype":"number","ispx":"0","isalign":"0","islb":"0"},{"fields":"maxtou","name":"\u6700\u591a\u6295\u7968","fieldstype":"number","ispx":"0","isalign":"0","islb":"0"},{"fields":"startdt","name":"\u5f00\u59cb\u65f6\u95f4","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"0"},{"fields":"enddt","name":"\u622a\u6b62\u65f6\u95f4","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"0"}],fieldsselarr= [];
+	
 	var c = {
 		reload:function(){
 			a.reload();
@@ -34,7 +35,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -48,7 +49,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -56,7 +57,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -70,7 +71,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			js.subscribe({
 				title:'通知公告('+nowtabs.name+')',
 				cont:'通知公告('+nowtabs.name+')的列表的',
-				explain:'订阅[通知公告]的列表',
+				explain:'訂閱[通知公告]的列表',
 				objtable:a
 			});
 		},
@@ -120,15 +121,15 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		},
 		daoru:function(){
 			window.managelistgong = a;
-			addtabs({num:'daorugong',url:'flow,input,daoru,modenum=gong',icons:'plus',name:'导入通知公告'});
+			addtabs({num:'daorugong',url:'flow,input,daoru,modenum=gong',icons:'plus',name:'導入通知公告'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -146,7 +147,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -163,7 +164,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -188,12 +189,12 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('aW5mb3I:'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"标题",dataIndex:"title",align:"left"},{text:"类型名称",dataIndex:"typename",sortable:true},{text:"发送给",dataIndex:"recename"},{text:"来源",dataIndex:"zuozhe"},{text:"日期",dataIndex:"indate",sortable:true},{text:"操作人",dataIndex:"optname",sortable:true},{
+		columns:[{text:"標題",dataIndex:"title",align:"left"},{text:"類型名稱",dataIndex:"typename",sortable:true},{text:"發送給",dataIndex:"recename"},{text:"來源",dataIndex:"zuozhe"},{text:"日期",dataIndex:"indate",sortable:true},{text:"操作人",dataIndex:"optname",sortable:true},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -208,17 +209,17 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewgong_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -240,7 +241,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
 		
 		<td style="padding-left:10px">
@@ -251,7 +252,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

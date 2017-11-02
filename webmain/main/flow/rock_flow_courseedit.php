@@ -8,7 +8,7 @@ $(document).ready(function(){
 		window:false,rand:'{rand}',tablename:'flow_course',
 		url:publicsave('{mode}','{dir}'),beforesaveaction:'coursesavebefore',
 		params:{otherfields:'optdt={now}'},
-		submitfields:'setid,name,num,checktype,checktypeid,checktypename,checkfields,sort,whereid,explain,status,courseact,checkshu,recename,receid,mid,iszf,isqm,nid,coursetype',
+		submitfields:'setid,name,num,checktype,checktypeid,checktypename,checkfields,sort,where,whereid,explain,status,courseact,checkshu,recename,receid,mid,iszf,isqm,nid,coursetype',
 		requiredfields:'name',
 		success:function(){
 			closenowtabs();
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		loadafter:function(a){
 			c.changetype(0);
 			if(a.data){
-				
+				h.form.where.value=jm.base64decode(a.data.where);
 			}
 		},
 		submitcheck:function(d){
@@ -29,7 +29,9 @@ $(document).ready(function(){
 			if(d.checktype=='rank'&&d.checktypename=='')return '請輸入職位';
 			if(d.checktype=='cname'&&d.checktypeid=='')return '請選擇審核人員組';
 			if(d.checktype=='field'&&d.checktypeid=='')return '請選擇主表元素';
-			return '';
+			return {
+				where:jm.base64encode(d.where)
+			};
 		}
 	});
 	h.forminit();
@@ -64,6 +66,17 @@ $(document).ready(function(){
 					nameobj:h.form.checktypename,
 					idobj:h.form.checktypeid,
 				});
+				return;
+			}
+			if(val=='change'){
+				var cans = {
+					nameobj:h.form.checktypename,
+					idobj:h.form.checktypeid,
+					value:h.form.checktypeid.value,
+					type:'deptusercheck',
+					title:'選擇指定人範圍'
+				};
+				js.getuser(cans);
 				return;
 			}
 			var cans = {
@@ -101,6 +114,10 @@ $(document).ready(function(){
 			}
 			if(v=='field'){
 				$('#checktext_{rand}').html('選擇主表上元素：');
+				$('#checkname_{rand}').show();
+			}
+			if(v=='change'){
+				$('#checktext_{rand}').html('指定人範圍：');
 				$('#checkname_{rand}').show();
 			}
 		},
@@ -210,9 +227,9 @@ $(document).ready(function(){
 		<table cellspacing="0" border="0" width="100%" align="center" cellpadding="0">
 		<tr>
 			<td  align="right"  width="15%"><font color=red>*</font> 步驟名稱：</td>
-			<td class="tdinput"  width="35%"><input name="name" class="form-control"></td>
+			<td class="tdinput"  width="35%"><input name="name" onblur="this.value=strreplace(this.value)" class="form-control"></td>
 			<td  align="right"   width="15%">編號：</td>
-			<td class="tdinput" width="35%"><input name="num" class="form-control"></td>
+			<td class="tdinput" width="35%"><input onblur="this.value=strreplace(this.value)" name="num" class="form-control"></td>
 		</tr>
 		
 		<tr>
@@ -249,11 +266,7 @@ $(document).ready(function(){
 		</tr>
 		
 		
-		<tr>
-			<td  align="right" >審核條件：</td>
-			<td class="tdinput"><select class="form-control" name="whereid"><option value="0">無條件</option></select></td>
-			<td colspan="2"><font color=#888888>在【流程模塊條件】上添加，滿足此條件才需要此步驟</font><a click="reloadhweil" href="javascript:;">[刷新]</a></td>
-		</tr>
+		
 		<tr>
 			<td  align="right" >手寫簽名設置：</td>
 			<td class="tdinput"><select class="form-control" name="isqm"><option value="0">不需要手寫簽名</option><option value="1">需要手寫簽名</option><option value="2">通過才需要手寫簽名</option><option value="3">不通過才需要手寫簽名</option></select></td>
@@ -268,6 +281,18 @@ $(document).ready(function(){
 				</table>
 			</td>
 		</tr>
+		
+		<tr>
+			<td  align="right" >審核條件：</td>
+			<td class="tdinput"><select class="form-control" name="whereid"><option value="0">無條件</option></select></td>
+			<td colspan="2"><font color=#888888>在【流程模塊條件】上添加，滿足此條件才需要此步驟</font><a click="reloadhweil" href="javascript:;">[刷新]</a></td>
+		</tr>
+		
+		<tr>
+			<td  align="right" >審核條件：</td>
+			<td colspan="3"  class="tdinput"><textarea placeholder="寫SQL條件，條件成立才需要此步驟" name="where" style="height:50px" class="form-control"></textarea></td>
+		</tr>
+		
 
 		<tr>
 			<td  align="right" >審核動作：</td>
@@ -278,9 +303,11 @@ $(document).ready(function(){
 			<td  align="right" >審核處理表單：</td>
 			<td class="tdinput" colspan="3"><input name="checkfields" class="form-control"><div style="padding-top:0px" class="tishi">需要處理表單元素必須在【表單元素管理】上，輸入字段名，多個用, 分開</div></td>
 		</tr>
+		
+		
 		<tr>
 			<td  align="right" >說明：</td>
-			<td class="tdinput" colspan="3"><textarea  name="explain" style="height:60px" class="form-control"></textarea></td>
+			<td class="tdinput" colspan="3"><textarea  name="explain" style="height:50px" class="form-control"></textarea></td>
 		</tr>
 		
 		<tr>

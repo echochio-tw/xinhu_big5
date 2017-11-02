@@ -2,13 +2,13 @@
 class hrClassAction extends runtAction
 {
 	/*
-	* 员工合同到期提醒/人事每天调动运行
+	* 員工合同到期提醒/人事每天調動運行
 	*/
 	public function httodoAction()
 	{
-		m('hr')->hrrun(); //人事每天调动/离职等运行
+		m('hr')->hrrun(); //人事每天調動/離職等運行
 	
-		//员工合同到期提醒
+		//員工合同到期提醒
 		$flow 	= m('flow')->initflow('userract');
 		$flow->updatestate();
 		$dtobj  = c('date');
@@ -19,14 +19,14 @@ class hrClassAction extends runtAction
 		foreach($rows as $k=>$rs){
 			$jg = $dtobj->datediff('d', $dt, $rs['enddt']);
 			if($jg==30 || $jg<=7){
-				$str.='人员['.$rs['uname'].']的【'.$rs['httype'].'.'.$rs['name'].'】将在'.$jg.'天后的'.$rs['enddt'].'到期;';
+				$str.='人員['.$rs['uname'].']的【'.$rs['httype'].'.'.$rs['name'].'】將在'.$jg.'天後的'.$rs['enddt'].'到期;';
 			}
 		}
 		if($str != ''){
 			$this->todoarr	= array(
 				'modenum' 	=> 'userract',
-				'agentname' => '员工合同',
-				'title' 	=> '员工合同到期提醒',
+				'agentname' => '員工合同',
+				'title' 	=> '員工合同到期提醒',
 				'cont' 		=> $str,
 			);
 		}
@@ -45,7 +45,7 @@ class hrClassAction extends runtAction
 	
 	
 	
-	//转正的
+	//轉正的
 	private function updatepositive($timess)
 	{
 		$db		= m('hrpositive');
@@ -62,7 +62,7 @@ class hrClassAction extends runtAction
 		}
 	}
 	
-	//离职的
+	//離職的
 	private function updatehrredund($timess)
 	{
 		$db		= m('hrredund');
@@ -82,7 +82,7 @@ class hrClassAction extends runtAction
 		}
 	}
 	
-	//调动的
+	//調動的
 	private function updatehrtransfer($timess)
 	{
 		$db		= m('hrtransfer');

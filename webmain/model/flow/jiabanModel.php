@@ -7,7 +7,7 @@ class flow_jiabanClassModel extends flowModel
 	{
 		$rs['modenum'] = $this->modenum;
 		$type 			= arrvalue($rs,'jiatype','0');
-		$types			= array('调休','加班费');
+		$types			= array('調休','加班費');
 		$rs['jiatype']  = $types[$type];
 		$dakatime		= '未打卡';
 		if($type=='1'){
@@ -28,7 +28,7 @@ class flow_jiabanClassModel extends flowModel
 	
 	protected function flowgetfields($lx)
 	{
-		$arr['dakatime'] 		= '此时间段打卡';
+		$arr['dakatime'] 		= '此時間段打卡';
 		return $arr;
 	}
 	

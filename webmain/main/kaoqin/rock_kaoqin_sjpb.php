@@ -4,7 +4,7 @@ $(document).ready(function(){
 	{params}
 	var atype=params.atype,columna=[],chagnedtarr={},lbob=false,pblx=0;if(atype)atype='';
 	var column = [{
-		text:'部门',dataIndex:'deptname',align:'left',sortable:true
+		text:'部門',dataIndex:'deptname',align:'left',sortable:true
 	},{
 		text:'姓名',dataIndex:'name',sortable:true
 	}];
@@ -50,22 +50,22 @@ $(document).ready(function(){
 			a.setColumns(cs);
 		},
 		load:function(d){
-			var str='提示：其中空白为休息日，0：未设置',gzrows=d.gzrows;
+			var str='提示：其中空白為休息日，0：未設置',gzrows=d.gzrows;
 			
 			var rda = [{
-				name:'设置为休息日',lx:0,id:0
+				name:'設置為休息日',lx:0,id:0
 			},{
 				name:'取消休息日',lx:1,id:0
 			},{
-				name:'设置为工作日',lx:2,id:0
+				name:'設置為工作日',lx:2,id:0
 			},{
 				name:'取消工作日',lx:3,id:0
 			}];
 			for(var i=0;i<gzrows.length;i++){
 				str+='，'+gzrows[i].id+'：'+gzrows[i].name+'';
-				rda.push({name:'设置规则为：'+gzrows[i].name+'',lx:4,id:gzrows[i].id});
+				rda.push({name:'設置規則為：'+gzrows[i].name+'',lx:4,id:gzrows[i].id});
 			}
-			rda.push({name:'取消规则',id:5,lx:5});
+			rda.push({name:'取消規則',id:5,lx:5});
 			$('#guistr_{rand}').html(str);
 			
 			if(!lbob){
@@ -91,7 +91,7 @@ $(document).ready(function(){
 			$(o1).rockdatepicker({initshow:true,view:'month',inputid:'dt'+lx+'_{rand}'});
 		},
 		daochu:function(){
-			a.exceldown('考勤时间排班('+get('dt1_{rand}').value+')');
+			a.exceldown('考勤時間排班('+get('dt1_{rand}').value+')');
 		},
 		xuanzeq:function(){
 			for(var i in chagnedtarr){
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		},
 		//保存
 		setdownss:function(d){
-			if(pblx=='0'){js.msg('msg','请先选择根据组/人员来设置');return;}
+			if(pblx=='0'){js.msg('msg','請先選擇根據組/人員來設置');return;}
 			var str='',i,j,kes,o,row,cell,kesa,da,can=[],mon=get('dt1_{rand}').value,type=d.lx;
 			for(kes in chagnedtarr){
 				o = chagnedtarr[kes];
@@ -114,14 +114,14 @@ $(document).ready(function(){
 				}
 			}
 			var cans={},len=can.length;
-			if(len==0){js.msg('msg','没有选中单元格来设置');return;}
+			if(len==0){js.msg('msg','沒有選中單元格來設置');return;}
 			for(i=0;i<len;i++){
 				for(j in can[i])cans[''+j+'_'+i+'']=can[i][j];
 			}
 			cans.len = len;
 			js.ajax(js.getajaxurl('setpaiban','{mode}','{dir}'),cans, function(s){
 				a.reload();
-			},'post',false,'标识中,标识成功');
+			},'post',false,'標識中,標識成功');
 		},
 		changeplx:function(){
 			var val = get('plx_{rand}').value;
@@ -152,13 +152,13 @@ $(document).ready(function(){
 	</td>
 	<td  style="padding-left:10px">
 		<select class="form-control" style="width:170px" id="plx_{rand}">
-		<option value="0">查看人员排班情况</option>
-		<option value="1">根据组来排班(设置)</option>
-		<option value="2">根据人员来排班(设置)</option>
+		<option value="0">查看人員排班情況</option>
+		<option value="1">根據組來排班(設置)</option>
+		<option value="2">根據人員來排班(設置)</option>
 		</select>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
@@ -171,9 +171,9 @@ $(document).ready(function(){
 	</td>
 	<td width="80%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="downbtn_{rand}" disabled  type="button">选中标识为 <i class="icon-angle-down"></i></button>&nbsp;&nbsp;
-		<button class="btn btn-default" click="xuanzeq" type="button">取消选择</button>&nbsp;&nbsp;
-		<button class="btn btn-default" click="daochu" type="button">导出</button>
+		<button class="btn btn-default" id="downbtn_{rand}" disabled  type="button">選中標識為 <i class="icon-angle-down"></i></button>&nbsp;&nbsp;
+		<button class="btn btn-default" click="xuanzeq" type="button">取消選擇</button>&nbsp;&nbsp;
+		<button class="btn btn-default" click="daochu" type="button">導出</button>
 	</td>
 </tr></table>
 </div>

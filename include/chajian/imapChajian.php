@@ -1,33 +1,33 @@
 <?php 
 /**
-*	imap 收邮件扩展
+*	imap 收郵件擴展
 
 	imap_search 使用返回Id
 	http://php.net/manual/en/function.imap-search.php
-	ALL	返回所有合乎标准的信件
-	ANSWERED	信件有配置 \\ANSWERED 标志者
-	BCC "字符串"	Bcc 栏中有指定 "字符串" 的信件
+	ALL	返回所有合乎標準的信件
+	ANSWERED	信件有配置 \\ANSWERED 標志者
+	BCC "字符串"	Bcc 欄中有指定 "字符串" 的信件
 	BEFORE "日期"	指定 "日期" 以前的信件
-	BODY "字符串"	内文字段中有指定 "字符串" 的信件
-	CC "字符串"	Cc 栏中有指定 "字符串" 的信件
-	DELETED	合乎已删除的信件
-	FLAGGED	信件有配置 \\FLAGGED 标志者
-	FROM "字符串"	From 栏中有指定 "字符串" 的信件
-	KEYWORD "字符串"	关键字为指定 "字符串" 者
+	BODY "字符串"	內文字段中有指定 "字符串" 的信件
+	CC "字符串"	Cc 欄中有指定 "字符串" 的信件
+	DELETED	合乎已刪除的信件
+	FLAGGED	信件有配置 \\FLAGGED 標志者
+	FROM "字符串"	From 欄中有指定 "字符串" 的信件
+	KEYWORD "字符串"	關鍵字為指定 "字符串" 者
 	NEW	新的信件
-	OLD	旧的信件
+	OLD	舊的信件
 	ON "日期"	指定 "日期" 的信件
-	RECENT	信件有配置 \\RECENT 标志者
-	SEEN	信件有配置 \\SEEN 标志者
-	SINCE "日期"	指定 "日期" 之后的信件
-	SUBJECT "字符串"	Subject 栏中有指定 "字符串" 的信件
-	TEXT "字符串"	Text 栏中有指定 "字符串" 的信件
-	TO "字符串"	To 栏中有指定 "字符串" 的信件
-	UNANSWERED	未回应的信件
-	UNDELETED	未删除的信件
-	UNFLAGGED	未配置标志的信件
-	UNKEYWORD "字符串"	未配置关键 "字符串" 的信件
-	UNSEEN	未读取的信件
+	RECENT	信件有配置 \\RECENT 標志者
+	SEEN	信件有配置 \\SEEN 標志者
+	SINCE "日期"	指定 "日期" 之後的信件
+	SUBJECT "字符串"	Subject 欄中有指定 "字符串" 的信件
+	TEXT "字符串"	Text 欄中有指定 "字符串" 的信件
+	TO "字符串"	To 欄中有指定 "字符串" 的信件
+	UNANSWERED	未回應的信件
+	UNDELETED	未刪除的信件
+	UNFLAGGED	未配置標志的信件
+	UNKEYWORD "字符串"	未配置關鍵 "字符串" 的信件
+	UNSEEN	未讀取的信件
 */
 
 class imapChajian extends Chajian
@@ -47,25 +47,25 @@ class imapChajian extends Chajian
 	
 	
 	/**
-	*	读取某日期后的邮件
-	*	@params $link 服务器
-	*	@params $user 邮箱
-	*	@params $pass 邮箱密码
-	*	@params $time 时间戳，默认7天前的
+	*	讀取某日期後的郵件
+	*	@params $link 服務器
+	*	@params $user 郵箱
+	*	@params $pass 郵箱密碼
+	*	@params $time 時間戳，默認7天前的
 	*/
 	public function receemail($link, $user, $pass, $time=0)
 	{
-		if(isempt($link))return '未设置收邮件imap服务器';
-		if(isempt($user))return '用户未设置邮箱';
-		if(isempt($pass))return '邮箱['.$user.']未设置密码';
+		if(isempt($link))return '未設置收郵件imap服務器';
+		if(isempt($user))return '用戶未設置郵箱';
+		if(isempt($pass))return '郵箱['.$user.']未設置密碼';
 		
-		if(!$this->supportbool)return '系统未开启imap收邮件扩展';
+		if(!$this->supportbool)return '系統未開啟imap收郵件擴展';
 		$this->marubox 			= @imap_open($link,$user,$pass);
 		$this->struck_tearr		= array();
-		if(!$this->marubox)return '不能连接到['.$link.']可能帐号密码有错';
+		if(!$this->marubox)return '不能連接到['.$link.']可能帳號密碼有錯';
 		if($time == 0)$time		= time() - 7*24*3600;
 		$ondt 					= date('j M Y', $time);
-		$searcharr 				= imap_search($this->marubox, 'SINCE "'.$ondt.'"');//指定日期之后
+		$searcharr 				= imap_search($this->marubox, 'SINCE "'.$ondt.'"');//指定日期之後
 		$rows 					= array();
 		//return $searcharr;
 		if($searcharr)foreach($searcharr as $k=>$i){
@@ -78,11 +78,11 @@ class imapChajian extends Chajian
 		}
 		imap_close($this->marubox, CL_EXPUNGE);
 		return $rows;
-		$totalrows 	= imap_num_msg($this->marubox); //取得信件数
+		$totalrows 	= imap_num_msg($this->marubox); //取得信件數
 		$rows 		= array();
 		for ($i=1;$i<=$totalrows;$i++){
-			$headers 	= $this->getheader($i); //获取某信件的标头信息
-			$body 		= $this->getBody($i); 	//获取信件正文
+			$headers 	= $this->getheader($i); //獲取某信件的標頭信息
+			$body 		= $this->getBody($i); 	//獲取信件正文
 			$headers['body']	= $body;
 			$headers['num']		= $i;
 			$headers['attach']	= $this->getattach($i);
@@ -93,7 +93,7 @@ class imapChajian extends Chajian
 	}
 	
 	/**
-	*	下载附件
+	*	下載附件
 	*/
 	public function downattach($link, $user, $pass, $num, $key)
 	{
@@ -111,7 +111,7 @@ class imapChajian extends Chajian
 	}
 	
 	/**
-	*	获取附件
+	*	獲取附件
 	*/
 	private function getattach($i)
 	{
@@ -124,7 +124,7 @@ class imapChajian extends Chajian
 					'filesize' => $val->bytes,
 					'encoding' => $val->encoding,
 					'filekey'  => $key,
-					'attachcont' => $this->getattachcont($i, $key, $val->encoding) //获取附件内容
+					'attachcont' => $this->getattachcont($i, $key, $val->encoding) //獲取附件內容
 				);
 			}
 		}
@@ -132,7 +132,7 @@ class imapChajian extends Chajian
 	}
 	
 	/**
-	*	附件内容读取，需要额外读取
+	*	附件內容讀取，需要額外讀取
 	*/
 	public function getattachcont($i, $key, $encoding)
 	{
@@ -166,20 +166,20 @@ class imapChajian extends Chajian
 	}
 	
 	/**
-	*	获取某信件的标头信息
+	*	獲取某信件的標頭信息
 	*/
 	private function getheader($i)
 	{
 		$headers 	= imap_header($this->marubox, $i);
 
-		$arr['subject'] 	= $this->_imap_utf8($this->getkevel($headers,'subject'));//标题
-		$arr['message_id'] 	= $this->getkevel($headers,'message_id');//邮件ID
-		$arr['size'] 		= $this->getkevel($headers,'Size','0');	//邮件大小
+		$arr['subject'] 	= $this->_imap_utf8($this->getkevel($headers,'subject'));//標題
+		$arr['message_id'] 	= $this->getkevel($headers,'message_id');//郵件ID
+		$arr['size'] 		= $this->getkevel($headers,'Size','0');	//郵件大小
 		$arr['date'] 		= date('Y-m-d H:i:s', strtotime($this->getkevel($headers,'date')));
 		$arr['to']			= array();
 		$arr['from']		= array();
 		
-		//发给
+		//發給
 		if(isset($headers->to)){
 			$arr['to']			= $headers->to;
 			foreach($arr['to'] as $k=>$rs){
@@ -189,7 +189,7 @@ class imapChajian extends Chajian
 		}
 		$arr['toemail']		= $this->stremail($arr['to']);
 		
-		//发件人
+		//發件人
 		if(isset($headers->from)){
 			$arr['from']			= $headers->from;
 			foreach($arr['from'] as $k=>$rs){
@@ -199,7 +199,7 @@ class imapChajian extends Chajian
 		}
 		$arr['fromemail']		= $this->stremail($arr['from']);
 		
-		//回复的邮件
+		//回復的郵件
 		if(isset($headers->reply_to)){
 			$arr['reply_to']			= $headers->reply_to;
 			foreach($arr['reply_to'] as $k=>$rs){
@@ -302,7 +302,7 @@ class imapChajian extends Chajian
     } 
 	
 	/**
-	*	获取邮件内容
+	*	獲取郵件內容
 	*/
 	private function getBody($mid) { 
         $body = $this->get_part($this->marubox, $mid, "TEXT/HTML");  

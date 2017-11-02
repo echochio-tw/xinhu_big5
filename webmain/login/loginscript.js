@@ -48,17 +48,17 @@ function loginsubmit(){
 	if(device=='')device=js.now('time');
 	js.savecookie('deviceid', device, 365);
 	if(user==''){
-		js.setmsg('用户名不能为空','red');
+		js.setmsg('用戶名不能為空','red');
 		form('adminuser').focus();
 		return false;
 	}
 	if(pass==''){
-		js.setmsg('密码不能为空','red');
+		js.setmsg('密碼不能為空','red');
 		getpassobj().focus();
 		return false;
 	}
 	try{localStorage.clear();}catch(e){}
-	js.setmsg('登录中...','blue');
+	js.setmsg('登錄中...','blue');
 	form('button').disabled=true;
 	var data	= js.getformdata();
 	var url		= js.getajaxurl('check','login');
@@ -74,7 +74,7 @@ function loginsubmit(){
 			js.setoption('loginface', a.face);
 			var burl = js.request('backurl');
 			var curl = (burl=='')?'?m=index':jm.base64decode(burl);
-			js.setmsg('登录成功,<a href="'+curl+'">跳转中</a>...','green');
+			js.setmsg('登錄成功,<a href="'+curl+'">跳轉中</a>...','green');
 			js.location(curl);
 		}else{
 			js.setmsg(a.msg,'red');

@@ -5,16 +5,16 @@
 *	Copyright (c) 2016 rainrock (xh829.com)
 *	Date:2016-01-01
 *	var notify = notifyClass({
-*		'sound':'声音文件地址','soundbo':true,'icon':'通知图标'
+*		'sound':'聲音文件地址','soundbo':true,'icon':'通知圖標'
 *	});
-*	notify.showpopup('这是个通知？');
-*	soundbo 声音提示
-*	sound 声音文件地址
+*	notify.showpopup('這是個通知？');
+*	soundbo 聲音提示
+*	sound 聲音文件地址
 */
 
 function notifyClass(opts){
 	var me 		= this;
-	this.title 	= '系统提醒';
+	this.title 	= '系統提醒';
 	this.icon  	= 'images/logo.png';
 	this.notbool =true;
 	this.lastmsg = '';
@@ -128,20 +128,20 @@ function notifyClass(opts){
 		if(can.soundbo)this.playsound(can.sound);
 	};
 	this.getnotifystr=function(ostr){
-		var slx = '<font color="green">[已开启]</font>';
+		var slx = '<font color="green">[已開啟]</font>';
 		var olx = this.getaccess();
 		if(olx=='jz'){
-			slx = '<font color="red">[已禁止]</font>,<a href="http://www.rockoa.com/view_notify.html" target="_blank">(去设置)</a>';
+			slx = '<font color="red">[已禁止]</font>,<a href="http://www.rockoa.com/view_notify.html" target="_blank">(去設置)</a>';
 		}
 		if(olx=='mr'){
-			slx = '<font color="#ff6600">[未开启]</font>，<a onclick="'+ostr+'" href="javascript:;">[开启]</a>';
+			slx = '<font color="#ff6600">[未開啟]</font>，<a onclick="'+ostr+'" href="javascript:;">[開啟]</a>';
 		}
 		return slx;
 	};
 	
 	
 	
-	//右边提示的
+	//右邊提示的
 	this.show=function(cans){
 		if(!cans)cans={};
 		var can	= {body:'',icon:'images/todo.png',type:'info',right:'30px',top:'80px',closetime:0,soundbo:this.soundbo,sound:this.sound,title:this.title,click:false,rand:js.getrand()};

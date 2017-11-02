@@ -27,7 +27,7 @@ $(document).ready(function(){
 	});
 	var openfrom = js.request('openfrom',js.getoption('openfrom','', true));
 	js.setoption('openfrom', openfrom, true);
-	//移动端添加返回
+	//移動端添加返回
 	if(ismobile==1 && history.length>1 && openfrom=='' && typeof(grouparr)=='undefined' && !get('header_title')){
 		var s = '<div onclick="js.back()" style="position:fixed;left:5px;top:40%;width:30px;height:30px; background:rgba(0,0,0,0.3);z-index:9;border-radius:50%;font-size:14px;color:white;text-align:center;line-height:30px">&lt;</div>';
 		$('body').append(s);
@@ -253,7 +253,7 @@ js.upload=function(call,can, glx){
 	var url = 'index.php?m=upload&d=public&callback='+call+'&upkey='+js.uploadrand+'';
 	for(var a in can)url+='&'+a+'='+can[a]+'';
 	if(glx=='url')return url;
-	var s='',tit=can.title;if(!tit)tit='上传文件';
+	var s='',tit=can.title;if(!tit)tit='上傳文件';
 	js.tanbody('uploadwin',tit,450,300,{
 		html:'<div style="height:260px;overflow:hidden"><iframe src="" name="winiframe" width="100%" height="100%" frameborder="0"></iframe></div>',
 		bbar:'none'
@@ -264,7 +264,7 @@ js.upload=function(call,can, glx){
 js.locationshow=function(sid){
 	var url = 'index.php?m=kaoqin&d=main&a=location&id='+sid+'';
 	if(ismobile==1){js.location(url);return;}
-	js.winiframe('地图位置查看', url);
+	js.winiframe('地圖位置查看', url);
 	return false;
 }
 js.winiframe=function(tit, url){
@@ -287,7 +287,7 @@ js.downshow=function(id){
 	return false;
 }
 js.downupdels=function(sid, said, o1){
-	js.confirm('确定要删除此文件吗？', function(lx){
+	js.confirm('確定要刪除此文件嗎？', function(lx){
 		if(lx=='yes'){
 			js.downupdel(sid, said, o1);
 		}
@@ -320,7 +320,7 @@ js.downupshow=function(a, showid, nbj){
 		o.append(s);
 	}
 	js.downupdel(0, showid, false);
-	if(nbj)o.find('[temp]').remove();//禁止编辑
+	if(nbj)o.find('[temp]').remove();//禁止編輯
 }
 js.apiurl = function(m,a,cans){
 	var url='api.php?m='+m+'&a='+a+'';
@@ -557,7 +557,7 @@ js.number=function(obj){
 		return false;
 	}
 	if(isNaN(val)){
-		js.msg('msg','输入的不是数字');
+		js.msg('msg','輸入的不是數字');
 		obj.value=js.focusval;
 		obj.focus();
 	}else{
@@ -591,7 +591,7 @@ js.setcopy	= function(txt){
 	if(!txt)txt='';
 	txt	= escape(txt);
 	js.savecookie('copy_text', txt, 1);
-	js.msg('msg','复制成功，仅限本站使用');
+	js.msg('msg','復制成功，僅限本站使用');
 	return false;
 }
 js.getcopy = function(){
@@ -602,7 +602,7 @@ js.getcopy = function(){
 js.chao=function(obj,shuzi,span,guo){
 	var cont=(guo)?strreplace(obj.value):obj.value;
     if (cont.length>shuzi){
-		alert("您输入的字符超过"+shuzi+"个字符\n\n将被截掉"+(cont.length-shuzi)+"个字符！");
+		alert("您輸入的字符超過"+shuzi+"個字符\n\n將被截掉"+(cont.length-shuzi)+"個字符！");
 		cont=cont.substring(0,shuzi);
 		obj.value=cont;
 	}
@@ -640,7 +640,7 @@ js.confirm	= function(txt,fun, tcls, tis, lx,ostr,bstr){
 	var yts = (this.tanstyle==1) ? 'webbtn' : 'btn';
 	h+='	<button id="confirm_btn1" class="'+yts+' btn-default" sattr="yes" type="button">';
 	if(this.tanstyle==0)h+='<i class="icon-ok"></i>&nbsp;';
-	h+='确定</button>';
+	h+='確定</button>';
 	if(lx<2){
 		h+=' &nbsp;  &nbsp;  &nbsp;  &nbsp; <button sattr="no" class="'+yts+' btn-danger" id="confirm_btn" type="button">';
 		if(this.tanstyle==0)h+='<i class="icon-remove"></i>&nbsp;';
@@ -649,7 +649,7 @@ js.confirm	= function(txt,fun, tcls, tis, lx,ostr,bstr){
 	h+='</div>';
 	h+='<div class="blank10"></div>';
 	if(!tcls)tcls='danger';if(lx==1)tcls='info';
-	if(!tis)tis='<i class="icon-question-sign"></i>&nbsp;系统提示';
+	if(!tis)tis='<i class="icon-question-sign"></i>&nbsp;系統提示';
 	js.tanbody('confirm', tis, w, 200,{closed:'none',bbar:'none',html:h,titlecls:tcls});
 	function backl(e){
 		var jg	= $(this).attr('sattr'),val=$('#confirm_input').val();
@@ -765,7 +765,7 @@ js.ajax = function(url,da,fun,type,efun, tsar){
 			}
 		},error:function(e){
 			js.ajaxbool=false;
-			js.msg('msg','处理出错:'+e.responseText+'');
+			js.msg('msg','處理出錯:'+e.responseText+'');
 			efun(e.responseText);
 		}
 	};
@@ -818,7 +818,7 @@ js.isimg = function(lx){
 }
 js.changeuser=function(na, lx, tits,ocans){
 	var h = winHb()-70;if(!ocans)ocans={};
-	if(h>400)h=400;if(!tits)tits='请选择...';
+	if(h>400)h=400;if(!tits)tits='請選擇...';
 	js.tanbody('changeaction',tits,350,h,{
 		html:'<div id="showuserssvie" style="height:'+h+'px"><iframe src="" name="winiframe" width="100%" height="100%" frameborder="0"></iframe></div>',
 		bbar:'none'
@@ -912,7 +912,7 @@ function appobj1(act, can1){
 	}
 	return bo;
 }
-//向PC客户端发送命令
+//向PC客戶端發送命令
 js.cliendsend=function(at, cans, fun,ferr){
 	var url = unescape('http%3A//127.0.0.1%3A2829/%3Fatype');
 	if(!cans)cans={};if(!fun)fun=function(){};if(!ferr)ferr=function(){return false;}
@@ -923,6 +923,6 @@ js.cliendsend=function(at, cans, fun,ferr){
 		if(bo=='object')v='base64'+jm.base64encode(v)+'';
 		url+='&'+i+'='+v+'';
 	}
-	var timeoout = setTimeout(function(){if(!ferr())js.msg('msg','无法使用,可能没有登录PC客户端');},500);
+	var timeoout = setTimeout(function(){if(!ferr())js.msg('msg','無法使用,可能沒有登錄PC客戶端');},500);
 	$.getJSON(url, function(ret){clearTimeout(timeoout);fun(ret);});
 }

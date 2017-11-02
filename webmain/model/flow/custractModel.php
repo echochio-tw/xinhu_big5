@@ -5,7 +5,7 @@ class flow_custractClassModel extends flowModel
 	public function initModel(){
 		$this->typearr		= array('收款合同','付款合同');
 		$this->typesarr		= array('收','付');
-		$this->statearr		= c('array')->strtoarray('待生效|blue,生效中|green,已过期|#888888');
+		$this->statearr		= c('array')->strtoarray('待生效|blue,生效中|green,已過期|#888888');
 		$this->dtobj		= c('date');
 		$this->crmobj		= m('crm');
 	}
@@ -21,11 +21,11 @@ class flow_custractClassModel extends flowModel
 			$statetext='待生效';
 		}else if($rs['startdt']<=$dt && $rs['enddt']>=$dt){
 			$jg = $this->dtobj->datediff('d', $dt, $rs['enddt']);
-			$statetext='<font color=green>生效中</font><br><font color=#888888>'.$jg.'天过期</font>';
+			$statetext='<font color=green>生效中</font><br><font color=#888888>'.$jg.'天過期</font>';
 			if($jg==0)$statetext='<font color=green>今日到期</font>';
 			$htstatus = 1;
 		}else if($rs['enddt']<$dt){
-			$statetext='<font color=#888888>已过期</font>';
+			$statetext='<font color=#888888>已過期</font>';
 			$rs['ishui'] 	= 1;
 			$htstatus = 2;
 		}
@@ -64,7 +64,7 @@ class flow_custractClassModel extends flowModel
 	
 	protected function flowoptmenu($ors, $arrs)
 	{
-		//创建待收付款单
+		//創建待收付款單
 		if($ors['num']=='cjdaishou'){
 			$moneys 		= m('crm')->getmoneys($this->rs['id']);
 			$money			= $this->rs['money'] - $moneys;
@@ -91,13 +91,13 @@ class flow_custractClassModel extends flowModel
 	
 	
 	/**
-	*	客户合同到期提醒
+	*	客戶合同到期提醒
 	*/
 	public function custractdaoqi()
 	{
 		$dt 	= $this->rock->date;
 		$rows 	= $this->getall("status=1 and `enddt` is not null and `enddt`>='$dt'",'uid,num,custname,enddt','`uid`');
-		$txlist = m('option')->getval('crmtodo','0,3,7,15,30');//提醒的时间
+		$txlist = m('option')->getval('crmtodo','0,3,7,15,30');//提醒的時間
 		$txarr 	= explode(',', $txlist);
 		$dtobj 	= c('date');
 		$txrows = array();
@@ -105,15 +105,15 @@ class flow_custractClassModel extends flowModel
 			$jg = $dtobj->datediff('d', $dt, $rs['enddt']);
 			$uid= $rs['uid'];
 			if(in_array($jg, $txarr)){
-				$strs = ''.$jg.'天后('.$rs['enddt'].')';
+				$strs = ''.$jg.'天後('.$rs['enddt'].')';
 				if($jg==1)$strs='明天';
 				if($jg==0)$strs='今天';
 				if(!isset($txrows[$uid]))$txrows[$uid]='';
-				$txrows[$uid] .= '客户['.$rs['custname'].']的[合同:'.$rs['num'].']将在'.$strs.'到期;';
+				$txrows[$uid] .= '客戶['.$rs['custname'].']的[合同:'.$rs['num'].']將在'.$strs.'到期;';
 			}
 		}
 		foreach($txrows as $uid=>$cont){
-			$this->push($uid, '客户,CRM', $cont, '客户合同到期提醒');
+			$this->push($uid, '客戶,CRM', $cont, '客戶合同到期提醒');
 		}
 	}
 }

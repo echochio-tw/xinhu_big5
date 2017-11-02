@@ -7,7 +7,7 @@ class optionClassAction extends Action
 		$name	= $this->request('name');
 		$key 	= $this->post('key');
 		$id		= $this->option->getnumtoid($num, $name, false);
-		$this->option->update("`pid`=1,`name`='行政选项'","`num`='goods'"); //行政选项移动到数据选项下
+		$this->option->update("`pid`=1,`name`='行政選項'","`num`='goods'"); //行政選項移動到數據選項下
 		if(isempt($key)){
 			$where = "a.`pid`='$id'";
 		}else{
@@ -34,7 +34,7 @@ class optionClassAction extends Action
 	{
 		$num 	= $this->get('num');
 		if($num=='')exit('error;');
-		$pid 	= $this->option->getnumtoid($num,''.$num.'选项', false);
+		$pid 	= $this->option->getnumtoid($num,''.$num.'選項', false);
 		$rows 	= $this->option->gettreedata($pid);
 		$rows	= array(
 			'rows' 	=> $rows,
@@ -49,13 +49,13 @@ class optionClassAction extends Action
 		$stable = $this->post('stable');
 		$delbo	= true;
 		if($delbo)if($this->option->rows("`pid`='$id'")>0)$delbo=false;
-		if(!$delbo)$this->showreturn('','有下级分类不允许删除',201);
+		if(!$delbo)$this->showreturn('','有下級分類不允許刪除',201);
 		$this->option->delete($id);
 		if($stable!='')m($stable)->update('`typeid`=0', "`typeid`='$id'");
 		$this->showreturn();
 	}
 	
-	//分类移动
+	//分類移動
 	public function movetypeAjax()
 	{
 		$id 	= (int)$this->post('id','0');
@@ -64,7 +64,7 @@ class optionClassAction extends Action
 		$spath 	= $this->db->getpval('[Q]option','pid','pid', $toid,'],[');
 		$spath	= '['.$spath.']';
 		if(contain($spath,'['.$id.']')){
-			echo '不能移动到自己的下级';
+			echo '不能移動到自己的下級';
 		}else{
 			$this->option->update('pid='.$toid.'', $id);
 			echo 'ok';

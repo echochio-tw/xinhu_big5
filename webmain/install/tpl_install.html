@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?=TITLE?>_安裝</title>
+<link rel="stylesheet" type="text/css" href="<?=P?>/css/css.css"/>
+<link rel="shortcut icon" href="favicon.ico" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="<?php echo P;?>/install/installscript.js"></script>
+<style>
+.input{width:210px;height:30px;line-height:20px}
+</style>
+</head>
+<body style="padding:10px">
+<center>
+	<div style="padding:10px;font-size:30px;"><b><?=TITLE?>-安裝</b></div>
+	<div style="width:500px;padding:10px;border:2px #cccccc solid">
+		<div style="text-align:left;">
+			<div id="step1" style="padding:20px;line-height:35px;font-size:16px;display:">
+				<b>安裝使用前必讀：</b><br>
+				<p>我們網站：<?=URLY?></p>
+				<p>產品名稱：信呼</p>
+				
+				<p>源碼僅供學習二次開發使用，禁止原封不動出售。</p>
+				<p style="color:red">版權來自：信呼開發團隊，二次開發請標識來自《信呼》。</p>
+				<p>合作開發：如您需要定制信呼上其他應用模塊，方便可以聯系我們看需求進行二次開發。</p>
+				<p>技術支持：<a href="<?=URLY?>" class="blue" target="_blank">信呼開發團隊</a></p>
+				<p>版本：V<?=VERSION?></p>
+				<p><a href="<?=URLY?>view_demo.html" class="blue" target="_blank"><u>在線演示</u></a>&nbsp; &nbsp; &nbsp; 已安裝？<a href="?m=login" class="blue"><u>直接登錄</u></a></p>
+				<div align="center" style="text-align:center;padding-top:15px"><a class="webbtn" onclick="nextabc()" href="javascript:">我知道了</a> &nbsp;<a target="_blank" href="<?=URLY?>view_anzz.html" class="blue" >用手動安裝?</a></div>
+			</div>
+			<div id="step2" style="display:none">
+			<form name="myform">
+			<table width="100%">
+				<tr><td  colspan="2" height="40" align="center"><font color=#888888>數據庫採用是<font color=red>mysql</font>，請先配置好本地</font></td></tr>
+				
+				<tr>
+					<td align="right"></td>
+					<td style="padding:5px;0px;line-height:30px">
+					PHP版本：<?=PHP_VERSION?><br>
+					操作系統：<?=PHP_OS?>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="right">操作數據庫方法：</td>
+					<td><select class="input" name="dbtype"><option value="mysqli">mysqli(推薦)</option><option value="mysql">mysql</option></select></td>
+				</tr>
+				
+				<tr><td height="8"></td></tr>
+				
+				<tr>
+					<td align="right">mysql數據庫引擎：</td>
+					<td><select class="input" name="engine"><option value="MyISAM">MyISAM</option><option value="MyISAM">MyISAM</option></select>&nbsp;<a href="<?=URLY?>view_dbyin.html" class="blue" target="_blank">[看區別]</a></td>
+				</tr>
+				
+				<tr><td height="8"></td></tr>
+				
+				<tr>
+					<td align="right" width="150px"><font color=red>*</font>數據庫地址：</td>
+					<td><input class="input" name="host" value="localhost"></td>
+				</tr>
+				
+				
+				
+				<tr><td height="8"></td></tr>
+				<tr>
+					<td align="right"><font color=red>*</font>用戶名：</td>
+					<td><input class="input" name="user" value="root"></td>
+				</tr>
+				
+				<tr><td height="8"></td></tr>
+				<tr>
+					<td align="right">數據庫密碼：</td>
+					<td><input name="pass" class="input" value=""> <font color=#888888>您的數據庫密碼</font></td>
+				</tr>
+				
+				<tr><td height="8"></td></tr>
+				<tr>
+					<td align="right"><font color=red>*</font>數據庫名稱：</td>
+					<td><input class="input" name="base" value="rockxinhu"></td>
+				</tr>
+				
+				<tr><td height="8"></td></tr>
+				<tr>
+					<td align="right"><font color=red>*</font>表名前綴：</td>
+					<td><input class="input" name="perfix" value="xinhu_"></td>
+				</tr>
+				
+				
+				
+				
+				
+				<tr><td height="8"></td></tr>
+				
+				<tr><td  colspan="2" height="60" align="left" style="padding-left:80px"><a href="javascript:" onclick="backabc()" class="blue" ><u>&lt;&lt;返回</u></a>&nbsp; &nbsp; 
+				<?php
+				if(version_compare(PHP_VERSION, '5.3.0','<')){
+					echo '<font color=red>您當前php版本太低了，至少需要5.3+以上版本</font>';
+				}else{
+					echo '<a class="webbtn" style="padding:10px 20px;font-size:16px" onclick="submitla()" href="javascript:">提交安裝</a>';
+				}
+				?>
+				&nbsp;<span id="msgview"></span></td></tr>
+				
+			</table>
+			</form>
+			</div>
+			
+			<div id="step3" style="display:none;padding:20px">
+				<div style="color:green;font-size:30px;padding:50px" align="center">√安裝完成</div>
+				<div style="padding:10px" align="center"><a href="?m=login" class="webbtn" >前去登錄頁面</a>&nbsp; &nbsp; 訪問<a class="blue" href="<?=URLY?>">信呼官網</a></div>
+				<div style="padding:20px;color:#333333" align="center">登錄系統管理員帳號：admin，密碼：123456</div>
+				<div style="padding:20px" align="center"><font color=#888888>記得刪除安裝目錄(<?=P?>/install)哦</font>，<a class="red" onclick="return delinstall()" href="javascript:">[馬上刪除]</a></div>
+			</div>
+		</div>
+	</div>
+	
+	<div align="center" style="line-height:40px;color:#555555">
+	Copyright &copy;<?=date('Y')?> 信呼v<?=VERSION?> <?=substr(URLY,7,-1)?> &nbsp; - &nbsp; 
+	技術支持：<a href="<?=URLY?>" class="blue" target="_blank">信呼開發團隊</a>
+	</div>
+	
+</center>
+</body>
+</html>

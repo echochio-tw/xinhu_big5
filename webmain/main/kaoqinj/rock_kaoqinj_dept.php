@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var at = $('#optionview_{rand}').bootstree({
 		url:false,autoLoad:false,
 		columns:[{
-			text:'系统上部门',dataIndex:'name',align:'left',xtype:'treecolumn'
+			text:'系統上部門',dataIndex:'name',align:'left',xtype:'treecolumn'
 		}],
 		itemdblclick:function(d){
 			a.setparams({'deptid':d.id}, true);
@@ -16,7 +16,7 @@ $(document).ready(function(){
 	var ats = $('#optionviews_{rand}').bootstree({
 		url:false,autoLoad:false,
 		columns:[{
-			text:'选中考勤机设备上部门',dataIndex:'name',align:'left',xtype:'treecolumn'
+			text:'選中考勤機設備上部門',dataIndex:'name',align:'left',xtype:'treecolumn'
 		}],
 		itemdblclick:function(d){
 			a.setparams({'deptid':d.id}, true);
@@ -28,28 +28,28 @@ $(document).ready(function(){
 		tablename:'admin',sort:'sort',dir:'asc',fanye:true,url:publicstore('{mode}','{dir}'),
 		storeafteraction:'kquserafter',checked:true,storebeforeaction:'kquserbefore',autoLoad:false,
 		columns:[{
-			text:'头像',dataIndex:'face',renderer:function(v,d){
+			text:'頭像',dataIndex:'face',renderer:function(v,d){
 				if(isempt(v))v='images/noface.png';
 				return '<img onclick="$.imgview({url:this.src})" src="'+v+'" height="24" width="24">';
 			}
 		},{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
-			text:'部门',dataIndex:'deptname',align:'left'
+			text:'部門',dataIndex:'deptname',align:'left'
 		},{
-			text:'职位',dataIndex:'ranking',sortable:true
+			text:'職位',dataIndex:'ranking',sortable:true
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		},{
-			text:'人员状态',dataIndex:'status',sortable:true,type:'checkbox'
+			text:'人員狀態',dataIndex:'status',sortable:true,type:'checkbox'
 		},{
-			text:'考勤机状态',dataIndex:'kqjzt'
+			text:'考勤機狀態',dataIndex:'kqjzt'
 		},{
-			text:'指纹1',dataIndex:'fingerprint1'
+			text:'指紋1',dataIndex:'fingerprint1'
 		},{
-			text:'指纹2',dataIndex:'fingerprint2'
+			text:'指紋2',dataIndex:'fingerprint2'
 		},{
-			text:'设备头像',dataIndex:'headpic'
+			text:'設備頭像',dataIndex:'headpic'
 		}],
 		load:function(d){
 			if(d.deptdata){
@@ -64,7 +64,7 @@ $(document).ready(function(){
 				ats.loadData(d.deptsdata);
 			}
 			var str = '';
-			if(d.nocunid)str='该考勤机设备上人员<font color=red>['+d.nocunid+']</font>在系统上可能不存在。';
+			if(d.nocunid)str='該考勤機設備上人員<font color=red>['+d.nocunid+']</font>在系統上可能不存在。';
 			$('#tishi_{rand}').html(str);
 		}
 	});
@@ -84,14 +84,14 @@ $(document).ready(function(){
 		},
 		sendcmd:function(lx, name){
 			var snid = get('snid_{rand}').value;
-			if(snid=='0'){js.msg('msg','没有选中考勤机设备');return;}
+			if(snid=='0'){js.msg('msg','沒有選中考勤機設備');return;}
 			var ids = a.getchecked();
 			
-			var nopd = ',getuser,delsuser,';//不需要判断
+			var nopd = ',getuser,delsuser,';//不需要判斷
 			if(nopd.indexOf(','+lx+',')<0){
-				if(ids==''){js.msg('msg','没用复选框选中记录');return;}
+				if(ids==''){js.msg('msg','沒用復選框選中記錄');return;}
 				var len = ids.split(',').length;
-				if(len>20){js.msg('msg','一次最多只能选择20个人员');return;}
+				if(len>20){js.msg('msg','一次最多只能選擇20個人員');return;}
 			}
 			
 			if(lx=='getclockin' || lx=='getpic' || lx=='delclockin' || lx=='delpic'){
@@ -99,8 +99,8 @@ $(document).ready(function(){
 				return;
 			}
 			
-			if(name.indexOf('删除')>=0){
-				js.confirm('确定要发送命令['+name+']吗？命令运行成功就不能恢复了，谨慎操作！', function(jg){
+			if(name.indexOf('刪除')>=0){
+				js.confirm('確定要發送命令['+name+']嗎？命令運行成功就不能恢復了，謹慎操作！', function(jg){
 					if(jg=='yes')c.sendcmds(ids, snid,lx);
 				});
 			}else{
@@ -115,7 +115,7 @@ $(document).ready(function(){
 					a.reload();
 					js.msg('success', ret.data);
 				}
-			},'get,json',false,'发送中...,已发送');
+			},'get,json',false,'發送中...,已發送');
 		},
 		getdakjil:function(name,lxs,uids, snid){
 			var h = $.bootsform({
@@ -124,9 +124,9 @@ $(document).ready(function(){
 				url:js.getajaxurl('sendusercmd','{mode}','{dir}',{'uids':uids,'type':lxs,'snid':snid}),
 				submitfields:'startdt,enddt',
 				items:[{
-					labelText:'要获取人员',name:'gtype',type:'select',valuefields:'id',displayfields:'name',store:[{name:'选中人员',id:0},{name:'设备上所有人员',id:1}],required:true,value:'0'
+					labelText:'要獲取人員',name:'gtype',type:'select',valuefields:'id',displayfields:'name',store:[{name:'選中人員',id:0},{name:'設備上所有人員',id:1}],required:true,value:'0'
 				},{
-					labelText:'日期从',name:'startdt',type:'date'
+					labelText:'日期從',name:'startdt',type:'date'
 				},{
 					labelText:'到',name:'endddt',type:'date'
 				}],
@@ -152,29 +152,29 @@ $(document).ready(function(){
 	$('#downbtn_{rand}').rockmenu({
 		width:230,top:35,donghua:false,
 		data:[{
-			name:'上传人员到设备',lx:'user'
+			name:'上傳人員到設備',lx:'user'
 		},{
-			name:'上传人员指纹到设备',lx:'fingerprint'
+			name:'上傳人員指紋到設備',lx:'fingerprint'
 		},{
-			name:'从设备上获取所有人员',lx:'getuser'
+			name:'從設備上獲取所有人員',lx:'getuser'
 		},{
-			name:'系统不存在人员在设备上删除',lx:'delsuser'
+			name:'系統不存在人員在設備上刪除',lx:'delsuser'
 		},{
-			name:'设备上人员删除...',lx:'deluser'
+			name:'設備上人員刪除...',lx:'deluser'
 		},{
-			name:'从设备上获取指纹',lx:'getfingerprint'
+			name:'從設備上獲取指紋',lx:'getfingerprint'
 		},{
-			name:'从设备上获取头像',lx:'getheadpic'
+			name:'從設備上獲取頭像',lx:'getheadpic'
 		},{
-			name:'系统头像上传到设备',lx:'headpic'
+			name:'系統頭像上傳到設備',lx:'headpic'
 		},{
-			name:'获取打卡记录...',lx:'getclockin'
+			name:'獲取打卡記錄...',lx:'getclockin'
 		},{
-			name:'获取打卡记录和现场照片...',lx:'getpic'
+			name:'獲取打卡記錄和現場照片...',lx:'getpic'
 		},{
-			name:'删除打卡记录...',lx:'delclockin'
+			name:'刪除打卡記錄...',lx:'delclockin'
 		},{
-			name:'删除现场照片...',lx:'delpic'
+			name:'刪除現場照片...',lx:'delpic'
 		}],
 		itemsclick:function(d, i){
 			c.sendcmd(d.lx, d.name);
@@ -201,13 +201,13 @@ $(document).ready(function(){
 	
 	<table width="100%"><tr>
 		<td>
-			<select class="form-control" style="width:270px" id="snid_{rand}" ><option value="0">-选择要操作的考勤机设备-</option></select>
+			<select class="form-control" style="width:270px" id="snid_{rand}" ><option value="0">-選擇要操作的考勤機設備-</option></select>
 		</td>
 		<td  style="padding-left:10px">
-			<button class="btn btn-default" disabled id="downbtn_{rand}" type="button">选中设备操作 <i class="icon-angle-down"></i></button>
+			<button class="btn btn-default" disabled id="downbtn_{rand}" type="button">選中設備操作 <i class="icon-angle-down"></i></button>
 		</td>
 		<td style="padding-left:10px">
-			<input class="form-control" style="width:160px" id="key_{rand}"   placeholder="姓名/部门/职位">
+			<input class="form-control" style="width:160px" id="key_{rand}"   placeholder="姓名/部門/職位">
 		</td>
 		<td  style="padding-left:10px">
 			<button class="btn btn-default" click="search" type="button">搜索</button>

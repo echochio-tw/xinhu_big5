@@ -1,7 +1,7 @@
 <?php
 /**
-*	模块：finfybx.费用报销报表
-*	来源：http://www.rockoa.com/
+*	模塊：finfybx.費用報銷報表
+*	來源：http://www.rockoa.com/
 */
 defined('HOST') or die ('not access');
 ?>
@@ -16,7 +16,7 @@ $(document).ready(function(){
 				columns:[{
 					text:nas,dataIndex:'name'
 				},{
-					text:'金额',dataIndex:'value'
+					text:'金額',dataIndex:'value'
 				},{
 					text:'比例',dataIndex:'bili'
 				}],
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			var rows = darr[oi].getData('rows'),i,len=rows.length,v;
 			var xAxis=[],data=[];
 			for(i=0;i<len;i++){
-				if(rows[i].name!='合计'){
+				if(rows[i].name!='合計'){
 					xAxis.push(rows[i].name);
 					v = rows[i].value;if(v=='')v=0;
 					data.push({value:parseFloat(v),name:rows[i].name});
@@ -52,7 +52,7 @@ $(document).ready(function(){
 					formatter: "{b} : {c}元 ({d}%)"
 				},
 				series: [{
-					name: '金额',
+					name: '金額',
 					type: tlx,
 					data: data
 				}]
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		}
 	};
 	
-	darr[0] = $('#view0_{rand}').bootstable(c.getparams(0,'b.`udeptname`','部门','pie'));
+	darr[0] = $('#view0_{rand}').bootstable(c.getparams(0,'b.`udeptname`','部門','pie'));
 	darr[1] = $('#view1_{rand}').bootstable(c.getparams(1,'left(a.`applydt`,7)','月份','line'));
 	
 	js.initbtn(c);
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		<input onclick="js.datechange(this,'date')" style="width:110px" readonly class="form-control datesss" id="dt2_{rand}" >
 	</td>
 	<td  style="padding-left:10px">
-		<button class="btn btn-default" click="search" type="button">统计</button>
+		<button class="btn btn-default" click="search" type="button">統計</button>
 	</td>
 	<td width="90%">
 		
@@ -112,7 +112,7 @@ $(document).ready(function(){
 		<td width="50%">
 			<div align="left" style="min-width:300px" class="list-group">
 			<div class="list-group-item  list-group-item-info">
-				<i class="icon-bar-chart"></i> 根据部门统计
+				<i class="icon-bar-chart"></i> 根據部門統計
 				<span style="float:right" ><a click="reload,0"><i class="icon-refresh"></i></a></span>
 			</div>
 			<div id="view0_{rand}"></div>
@@ -124,7 +124,7 @@ $(document).ready(function(){
 		<td style="padding-left:10px;">
 			<div align="left" class="list-group">
 			<div class="list-group-item  list-group-item-success">
-				<i class="icon-bar-chart"></i> 根据月份统计
+				<i class="icon-bar-chart"></i> 根據月份統計
 				<span style="float:right" ><a click="reload,1"><i class="icon-refresh"></i></a></span>
 			</div>
 			<div id="view1_{rand}"></div>

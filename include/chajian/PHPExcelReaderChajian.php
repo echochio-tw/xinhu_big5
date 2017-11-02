@@ -1,6 +1,6 @@
 <?php 
 /**
-	PHPExcel 读取插件类
+	PHPExcel 讀取插件類
 */
 
 include_once(ROOT_PATH.'/include/PHPExcel/Reader/Excel2007.php');
@@ -46,7 +46,7 @@ class PHPExcelReaderChajian extends Chajian{
 	}
 	
 	/**
-		导入到表
+		導入到表
 	*/
 	public function importTable($table, $rows, $fields)
 	{

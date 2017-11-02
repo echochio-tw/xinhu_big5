@@ -1,5 +1,5 @@
-﻿/**
-*	系统选项分类操作
+/**
+*	系統選項分類操作
 */
 function optionclass(cans){
 	
@@ -21,11 +21,11 @@ function optionclass(cans){
 			tablename:'option',labelWidth:50,
 			isedit:lx,submitfields:'name,sort,pid',cancelbtn:false,
 			items:[{
-				labelText:'名称',name:'name',required:true
+				labelText:'名稱',name:'name',required:true
 			},{
-				labelText:'上级id',name:'pid',value:0,type:'hidden'
+				labelText:'上級id',name:'pid',value:0,type:'hidden'
 			},{
-				labelText:'排序号',name:'sort',type:'number',value:0
+				labelText:'排序號',name:'sort',type:'number',value:0
 			}],
 			success:function(){
 				me.reloadtype();
@@ -44,16 +44,16 @@ function optionclass(cans){
 	
 	this.optionmove = function(){
 		var d = this.at.changedata;
-		if(!d || !d.id){js.msg('msg','没有选中行');return;}
+		if(!d || !d.id){js.msg('msg','沒有選中行');return;}
 		this.movedata = d;
-		js.msg('success','请在5秒内选择其他分类确认移动');
+		js.msg('success','請在5秒內選擇其他分類確認移動');
 		clearTimeout(this.cmoeefese);
 		this.cmoeefese=setTimeout(function(){me.movedata=false;},5000);
 	}
 	this.ismoveok=function(d){
 		var md = this.movedata;
 		if(md && md.id && md.id!=d.id){
-			js.confirm('确定要将['+md.name+']移动到['+d.name+']下吗？',function(jg){
+			js.confirm('確定要將['+md.name+']移動到['+d.name+']下嗎？',function(jg){
 				if(jg=='yes'){
 					me.movetoss(md.id,d.id,0);
 				}
@@ -64,7 +64,7 @@ function optionclass(cans){
 	this.optionmoveto=function(){
 		var d = this.at.changedata;
 		if(!d || !d.id || this.sspid==0)return;
-		js.confirm('确定要将['+d.name+']移动到顶级吗？',function(jg){
+		js.confirm('確定要將['+d.name+']移動到頂級嗎？',function(jg){
 			if(jg=='yes'){
 				me.movetoss(d.id,me.sspid,1);
 			}
@@ -78,7 +78,7 @@ function optionclass(cans){
 			}else{
 				me.reloadtype();
 			}
-		},'get',false, '移动中...,移动成功');
+		},'get',false, '移動中...,移動成功');
 		this.movedata=false;
 	}
 	
@@ -89,7 +89,7 @@ function optionclass(cans){
 			columns:[{
 				text:this.title,dataIndex:'name',align:'left',xtype:'treecolumn',width:'79%'
 			},{
-				text:'序号',dataIndex:'sort',width:'20%'
+				text:'序號',dataIndex:'sort',width:'20%'
 			}],
 			load:function(d){
 				if(me.sspid==0){
@@ -118,15 +118,15 @@ function optionclass(cans){
 		this.mobj.setparams({'typeid':spd}, true);
 	}
 	this.showfooter=function(){
-		var s= '<div class="panel-footer"><a href="javascript:;" title="新增" click="clicktypewin,0" onclick="return false"><i class="icon-plus"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="编辑" click="clicktypeeidt" onclick="return false"><i class="icon-edit"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="删除" click="typedel" onclick="return false"><i class="icon-trash"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="刷新" click="reloadtype" onclick="return false"><i class="icon-refresh"></i></a>&nbsp; &nbsp; <a href="javascript:;" title="移动" click="optionmove" onclick="return false"><i class="icon-move"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="移动到顶级" click="optionmoveto" onclick="return false"><i class="icon-arrow-up"></i></a>&nbsp; &nbsp; <a href="javascript:;" title="所有'+this.title+'" click="allshow" onclick="return false"><i class="icon-search"></i></a></div>';
+		var s= '<div class="panel-footer"><a href="javascript:;" title="新增" click="clicktypewin,0" onclick="return false"><i class="icon-plus"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="編輯" click="clicktypeeidt" onclick="return false"><i class="icon-edit"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="刪除" click="typedel" onclick="return false"><i class="icon-trash"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="刷新" click="reloadtype" onclick="return false"><i class="icon-refresh"></i></a>&nbsp; &nbsp; <a href="javascript:;" title="移動" click="optionmove" onclick="return false"><i class="icon-move"></i></a>&nbsp; &nbsp;<a href="javascript:;" title="移動到頂級" click="optionmoveto" onclick="return false"><i class="icon-arrow-up"></i></a>&nbsp; &nbsp; <a href="javascript:;" title="所有'+this.title+'" click="allshow" onclick="return false"><i class="icon-search"></i></a></div>';
 		$('#'+this.optionview+'').after(s);
 		return true;
 	}
 	
 	//初始化
 	this.init_option=function(){
-		this.createtable(); //创建表格
-		this.showfooter(); //显示底部
+		this.createtable(); //創建表格
+		this.showfooter(); //顯示底部
 		
 		$('#'+this.optionview+'').css('height',''+(viewheight-70)+'px');
 	}

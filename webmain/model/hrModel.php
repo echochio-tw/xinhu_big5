@@ -2,7 +2,7 @@
 class hrClassModel extends Model
 {
 	/**
-	*	每天运行
+	*	每天運行
 	*/
 	public function hrrun()
 	{
@@ -13,7 +13,7 @@ class hrClassModel extends Model
 	}
 	
 	
-	//转正的
+	//轉正的
 	private function updatepositive($timess)
 	{
 		$db		= m('hrpositive');
@@ -30,7 +30,7 @@ class hrClassModel extends Model
 		}
 	}
 	
-	//离职的
+	//離職的
 	private function updatehrredund($timess)
 	{
 		$db		= m('hrredund');
@@ -50,7 +50,7 @@ class hrClassModel extends Model
 		}
 	}
 	
-	//调动的
+	//調動的
 	private function updatehrtransfer($timess)
 	{
 		$db		= m('hrtransfer');

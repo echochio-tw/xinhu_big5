@@ -15,8 +15,8 @@ class curlChajian extends Chajian{
 	}
 	
 	/**
-	*	设置超时是手机
-	*	$ms 秒数
+	*	設置超時是手機
+	*	$ms 秒數
 	*/
 	public function setTimeout($ms)
 	{
@@ -96,14 +96,14 @@ class curlChajian extends Chajian{
 		if(substr($url,0, 5)=='https')$ishttps=1;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //要求结果为字符串且输出到屏幕上
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //要求結果為字符串且輸出到屏幕上
 		curl_setopt($ch, CURLOPT_HEADER, 0); //不返回header
 		curl_setopt($ch, CURLOPT_POST, 1);
 		@curl_setopt($ch, CURLOPT_POSTFIELDS, $cont);
 		if($ishttps==1){
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		}
-		//设置head
+		//設置head
 		if($headarr){
 			$heads = array();
 			foreach($headarr as $k=>$v)$heads[] = ''.$k.':'.$v.'';

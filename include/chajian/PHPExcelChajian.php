@@ -1,6 +1,6 @@
 <?php 
 /**
-	PHPExcel类
+	PHPExcel類
 */
 include_once(ROOT_PATH.'/include/PHPExcel.php');
 class PHPExcelChajian extends Chajian{
@@ -41,7 +41,7 @@ class PHPExcelChajian extends Chajian{
 	}
 	
 	/**
-		设置表头
+		設置表頭
 	*/
 	private function setHead($sheet=0)
 	{
@@ -51,65 +51,65 @@ class PHPExcelChajian extends Chajian{
 		$this->headWidth	 = array();
 		if($sheet>0)$this->excel->createSheet();
 
-		$this->excel->setActiveSheetIndex($sheet);//设置当前的sheet工作簿
+		$this->excel->setActiveSheetIndex($sheet);//設置當前的sheet工作簿
 		$this->sheetObj	= $this->excel->getActiveSheet();
-		$this->sheetObj->setTitle($title);//设置sheet的工作簿标题
+		$this->sheetObj->setTitle($title);//設置sheet的工作簿標題
 
 		$k	= 0;
 		if($sheet == 0){
-			$this->excel->getProperties()->setCreator('rock'); 		//创建者
-			$this->excel->getProperties()->setLastModifiedBy('rock');  //最后修改
-			$this->excel->getProperties()->setTitle('rock');  			//设置标题
-			$this->excel->getProperties()->setSubject('rock');  		//设置备注
-			$this->excel->getProperties()->setDescription('rock');  	//设置描述
-			$this->excel->getProperties()->setKeywords('rock');  		//设置关键字 | 标记
-			$this->excel->getProperties()->setCategory('rock');  		//设置类别
+			$this->excel->getProperties()->setCreator('rock'); 		//創建者
+			$this->excel->getProperties()->setLastModifiedBy('rock');  //最後修改
+			$this->excel->getProperties()->setTitle('rock');  			//設置標題
+			$this->excel->getProperties()->setSubject('rock');  		//設置備注
+			$this->excel->getProperties()->setDescription('rock');  	//設置描述
+			$this->excel->getProperties()->setKeywords('rock');  		//設置關鍵字 | 標記
+			$this->excel->getProperties()->setCategory('rock');  		//設置類別
 		}
 		
 		$this->headlen	= -1;
 		foreach($arrh as $_arrh)$this->headlen++;
 		$this->rowslen	= 0;
-		if(is_array($this->rows))$this->rowslen=count($this->rows);//长度
+		if(is_array($this->rows))$this->rowslen=count($this->rows);//長度
 		if($this->headlen==-1)return false;
 
-		//整体添加边框颜色，居中
+		//整體添加邊框顏色，居中
 		$zta		= ($this->titlebool)?2:1;
 		$getStyle	= $this->sheetObj->getStyle('A1:'.$this->A[$this->headlen].''.($this->rowslen+$zta).'');
 		$getStyle->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);//垂直居中
 		$getStyle->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::VERTICAL_CENTER);//水平居中
 		
 		if($this->borderbool){
-			$getStyle->getBorders()->getAllborders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);//边框
-			if($this->bordercolor!='000000')$getStyle->getBorders()->getAllborders()->getColor()->setARGB('FF'.$this->bordercolor.'');//边框颜色
+			$getStyle->getBorders()->getAllborders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);//邊框
+			if($this->bordercolor!='000000')$getStyle->getBorders()->getAllborders()->getColor()->setARGB('FF'.$this->bordercolor.'');//邊框顏色
 		}
 
-		//设置头部标题
+		//設置頭部標題
 		if($this->titlebool){
-			$this->sheetObj->mergeCells('A1:'.$this->A[$this->headlen].'1');  //合并单元格
+			$this->sheetObj->mergeCells('A1:'.$this->A[$this->headlen].'1');  //合並單元格
 			$this->sheetObj->setCellValue('A1', $title);
-			$this->sheetObj->getRowDimension(1)->setRowHeight(30); //设置行高
+			$this->sheetObj->getRowDimension(1)->setRowHeight(30); //設置行高
 			$getStyle	= $this->sheetObj->getStyle('A1');
 			$getStyle->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-			$getStyle->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);//垂直剧中
+			$getStyle->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);//垂直劇中
 			$getStyle->getFont()->setBold(true);
 			$getStyle->getFont()->setSize(16);
-			//标题背景颜色
+			//標題背景顏色
 			if($this->titlebgbool){
 				$getStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 				$getStyle->getFill()->getStartColor()->setARGB('FF'.$this->headbgcolor.'');
 			}
 		}
 		
-		//设置表头列标题
-		if($this->headfontbold)$this->sheetObj->getStyle('A'.$zta.':'.$this->A[$this->headlen].''.$zta.'')->getFont()->setBold(true);//标题是否加粗
+		//設置表頭列標題
+		if($this->headfontbold)$this->sheetObj->getStyle('A'.$zta.':'.$this->A[$this->headlen].''.$zta.'')->getFont()->setBold(true);//標題是否加粗
 		foreach($arrh as $key=>$_arrh){
 			$name			= $_arrh;
 			$xlsfontcolor	= $this->headfontcolor;
 			$xlsbgcolor		= $this->headbgcolor;
 			$xlsbordercolor	= $this->bordercolor;
-			$xlsfontsize	= '';//字体大小
-			$xlswidth		= 0;		//宽度
-			$xlsalign		= 'center';	//对齐方式
+			$xlsfontsize	= '';//字體大小
+			$xlswidth		= 0;		//寬度
+			$xlsalign		= 'center';	//對齊方式
 			$xlsbold		= false;	//是否加粗
 			if(is_array($_arrh)){
 				if(isset($_arrh['xlsfontcolor']))$xlsfontcolor=$_arrh['xlsfontcolor'];
@@ -121,27 +121,27 @@ class PHPExcelChajian extends Chajian{
 				if(isset($_arrh['xlsfontsize']))$xlsfontsize=$_arrh['xlsfontsize'];
 				$name= $_arrh['name'];
 			}
-			$this->headWidth[$key] = array(strlen($name), $xlswidth);	//设置宽度
-			//设置样式
+			$this->headWidth[$key] = array(strlen($name), $xlswidth);	//設置寬度
+			//設置樣式
 			$vk	= ''.$this->A[$k].'2';
 			
 			if(!$this->titlebool)$vk = ''.$this->A[$k].'1';
 			$getStyle	= $this->sheetObj->getStyle($vk);
 			
-			//边框
+			//邊框
 			if($xlsbordercolor!='000000')$getStyle->getBorders()->getAllborders()->getColor()->setARGB('FF'.$xlsbordercolor.''); 
 				
 			
-			//设置背景色
+			//設置背景色
 			$getStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 			$getStyle->getFill()->getStartColor()->setARGB('FF'.$xlsbgcolor.'');
 			
-			//设置字体颜色加粗，大小
+			//設置字體顏色加粗，大小
 			if($xlsfontcolor!='')$getStyle->getFont()->getColor()->setARGB('FF'.$xlsfontcolor.'');
 			if($xlsbold)$getStyle->getFont()->setBold(true);
 			if($xlsfontsize!='')$getStyle->getFont()->setSize($xlsfontsize);
 			
-			//设置对齐方式
+			//設置對齊方式
 			if($xlsalign!='center')$getStyle->getAlignment()->setHorizontal($xlsalign);
 			
 			$this->sheetObj->setCellValue($vk, $name);
@@ -151,7 +151,7 @@ class PHPExcelChajian extends Chajian{
 	
 	
 	/**
-		添加数据
+		添加數據
 	*/
 	private function setData()
 	{
@@ -159,7 +159,7 @@ class PHPExcelChajian extends Chajian{
 		if(!is_array($rows))return false;
 		$arrh	= $this->headArr;
 		$zta	= ($this->titlebool)?3:2;
-		//添加数据
+		//添加數據
 		foreach($rows as $r=>$rs){
 			if(!is_array($rs))continue;
 			$k			= 0;
@@ -176,7 +176,7 @@ class PHPExcelChajian extends Chajian{
 				->getStartColor()->setARGB('FF'.$xlsbgcolor.'');
 			}
 			
-			//判断是否有合并单元格的(A:D)
+			//判斷是否有合並單元格的(A:D)
 			if($xlsmerge!=''){
 				$ncta	= explode(':',$xlsmerge);
 				$this->sheetObj->mergeCells(''.$ncta[0].''.$xua.':'.$ncta[1].''.$xua.'');
@@ -192,9 +192,9 @@ class PHPExcelChajian extends Chajian{
 				$xlsbordercolor	= $this->bordercolor;
 				$xlsunderline	= '';
 				$xlsfontsize	= '';
-				$xlsalign		= 'center';	//对齐方式
+				$xlsalign		= 'center';	//對齊方式
 				$xlsbold		= false;	//是否加粗
-				$xlsitalic		= false;	//是否斜体
+				$xlsitalic		= false;	//是否斜體
 				$val			= $rs[$key];
 				$vallen			= strlen(''.$val.'');
 				if($this->headWidth[$key][0]<$vallen)$this->headWidth[$key][0]=$vallen;
@@ -222,30 +222,30 @@ class PHPExcelChajian extends Chajian{
 				if(isset($rs[''.$key.'xlsunderline']))$xlsunderline=$rs[''.$key.'xlsunderline'];
 				
 				$getStyle	= $this->sheetObj->getStyle($vk);
-				//设置背景色
+				//設置背景色
 				if($xlsbgcolor!=''){
 					$getStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 					$getStyle->getFill()->getStartColor()->setARGB('FF'.$xlsbgcolor.'');
 				}
 				
-				//字体颜色
+				//字體顏色
 				if($xlsfontcolor!='')$getStyle->getFont()->getColor()->setARGB('FF'.$xlsfontcolor.'');
 				if($xlsbold)$getStyle->getFont()->setBold(true);
-				if($xlsitalic)$getStyle->getFont()->setItalic(true);//斜体
+				if($xlsitalic)$getStyle->getFont()->setItalic(true);//斜體
 				if($xlsfontsize!='')$getStyle->getFont()->setSize($xlsfontsize);
-				if($xlsunderline!='')$getStyle->getFont()->setUnderline($xlsunderline);//下划线情况double,双下划线、doubleAccounting,整个单元格双下划线、single,单下划线、singleAccounting,整个单元格单下划线
+				if($xlsunderline!='')$getStyle->getFont()->setUnderline($xlsunderline);//下劃線情況double,雙下劃線、doubleAccounting,整個單元格雙下劃線、single,單下劃線、singleAccounting,整個單元格單下劃線
 				
-				//设置边框颜色
+				//設置邊框顏色
 				if($xlsbordercolor!='000000')$getStyle->getBorders()->getAllborders()->getColor()->setARGB('FF'.$xlsbordercolor.''); 
 				
-				//对齐方式
+				//對齊方式
 				if($xlsalign!='center')$getStyle->getAlignment()->setHorizontal($xlsalign);
 				
 				$this->sheetObj->setCellValue($vk, $val);
 				$k++;
 			}
 			
-			//设置行高
+			//設置行高
 			$xlsrowheight	= 0;
 			if(isset($rs['xlsrowheight']))$xlsrowheight=$rs['xlsrowheight'];
 			if($xlsrowheight != 0)$this->sheetObj->getRowDimension($r+$zta)->setRowHeight($xlsrowheight); 
@@ -253,7 +253,7 @@ class PHPExcelChajian extends Chajian{
 	}
 	
 	/**
-		设置列宽
+		設置列寬
 	*/
 	private function setColwidth()
 	{
@@ -271,7 +271,7 @@ class PHPExcelChajian extends Chajian{
 	}
 
 	/**
-		创建数据
+		創建數據
 	*/
 	public function createData()
 	{
@@ -301,9 +301,9 @@ class PHPExcelChajian extends Chajian{
 	}
 	
 	/**
-		输出显示
-		@param	string  $ext   	输出类型 xls,xlsx
-		@param	string  $type   是否直接下载
+		輸出顯示
+		@param	string  $ext   	輸出類型 xls,xlsx
+		@param	string  $type   是否直接下載
 		@return string 文件名
 	*/
 	public function display($ext='xls', $type='down')
@@ -322,11 +322,11 @@ class PHPExcelChajian extends Chajian{
 		$filename	= ''.$title.''.$rand.'.'.$ext.'';
 		$filerand	= ''.$title.''.$rands.'.'.$ext.'';
 
-		//输出
+		//輸出
 		if($ext!='xlsx'){
 			$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
 		}else{
-			$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007'); //保存excel—2007格式或者
+			$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007'); //保存excel2007格式或者
 		}
 		
 		//保存文件
@@ -334,7 +334,7 @@ class PHPExcelChajian extends Chajian{
 		$objWriter->save($savefile);
 		$backfile	= ''.UPDIR.'/'.$dir.'/'.$filerand.'';
 		
-		//下载
+		//下載
 		if($this->contain($type, 'down')){
 			header('Content-type: application/vnd.ms-excel');
 			header('Content-Disposition: attachment; filename="'.iconv('utf-8', 'gbk', $filename).'"');
@@ -347,7 +347,7 @@ class PHPExcelChajian extends Chajian{
 	
 	
 	/**
-		编码转化
+		編碼轉化
 	*/	
 	private function iconvstr($str)
 	{
@@ -357,7 +357,7 @@ class PHPExcelChajian extends Chajian{
 	
 	
 	/**
-		合并单元格
+		合並單元格
 	*/
 	public function mergeCells($cel1, $cel2, $val=null, $sheet=-1)
 	{

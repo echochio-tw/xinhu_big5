@@ -3,7 +3,7 @@
 class flow_custsaleClassModel extends flowModel
 {
 	public function initModel(){
-		$this->statearr		 = c('array')->strtoarray('跟进中|blue,已成交|green,已丢失|#888888');
+		$this->statearr		 = c('array')->strtoarray('跟進中|blue,已成交|green,已丟失|#888888');
 	}
 
 	
@@ -12,7 +12,7 @@ class flow_custsaleClassModel extends flowModel
 		$zt = $this->statearr[$rs['state']];
 		$rs['statess']	 = $rs['state'];
 		$rs['state']	 = '<font color="'.$zt[1].'">'.$zt[0].'</font>';
-		if($rs['htid']>0)$rs['state'].=',<font color=#888888>并建立合同</font>';
+		if($rs['htid']>0)$rs['state'].=',<font color=#888888>並建立合同</font>';
 		return $rs;
 	}
 	
@@ -33,7 +33,7 @@ class flow_custsaleClassModel extends flowModel
 				'uid' 		=> $cnameid,
 				'optname' 	=> $cname
 			), $this->id);
-			$this->push($cnameid, '客户销售', ''.$this->adminname.'将一个客户【{custname}】的一个销售单转移给你');
+			$this->push($cnameid, '客戶銷售', ''.$this->adminname.'將一個客戶【{custname}】的一個銷售單轉移給你');
 		}	
 	}
 	

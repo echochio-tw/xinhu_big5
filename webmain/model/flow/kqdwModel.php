@@ -4,10 +4,10 @@ class flow_kqdwClassModel extends flowModel
 	public function initModel()
 	{
 		$this->dateobj = c('date');
-		$this->typearr = explode(',','普通,事件,企业微信定位');
+		$this->typearr = explode(',','普通,事件,企業微信定位');
 	}
 	
-	//打开详情时跳转到地理位置显示
+	//打開詳情時跳轉到地理位置顯示
 	protected function flowchangedata()
 	{
 		if(!isajax() && !isempt($this->rs['location_x'])){
@@ -18,7 +18,7 @@ class flow_kqdwClassModel extends flowModel
 	}
 	
 	/**
-	*	显示条件过滤
+	*	顯示條件過濾
 	*/
 	protected function flowbillwhere($uid, $lx)
 	{
@@ -29,7 +29,7 @@ class flow_kqdwClassModel extends flowModel
 		$s 		= '';
 		$s		= ' and b.id='.$this->adminid.'';
 		
-		//全部下属打卡
+		//全部下屬打卡
 		if($lx=='down'){
 			$s  = 'and '.m('admin')->getdownwheres('b.id', $uid, 0);
 		}
@@ -49,7 +49,7 @@ class flow_kqdwClassModel extends flowModel
 		);
 	}
 	
-	//替换
+	//替換
 	public function flowrsreplace($rs, $lx=0)
 	{
 		$week 		= $this->dateobj->cnweek($rs['optdt']);

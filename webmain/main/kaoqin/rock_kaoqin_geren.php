@@ -58,8 +58,8 @@ $(document).ready(function(){
 	<table width="100%">
 	<tr>
 		<td align="left" width="30%">
-			<button type="button" click="change,-1" class="btn btn-default"><i class="icon-caret-left"></i> 上个月</button>&nbsp; 
-			<button type="button" click="nowchange" class="btn btn-default"><i class="icon-calendar"></i> 当月</button>&nbsp; 
+			<button type="button" click="change,-1" class="btn btn-default"><i class="icon-caret-left"></i> 上個月</button>&nbsp; 
+			<button type="button" click="nowchange" class="btn btn-default"><i class="icon-calendar"></i> 當月</button>&nbsp; 
 			<button type="button" click="reload" class="btn btn-default">刷新</button>
 		</td>
 		<td align="center" width="40%">
@@ -67,11 +67,11 @@ $(document).ready(function(){
 		</td>
 		<td align="right" width="30%">
 			<button type="button"  click="anaygr" class="btn btn-info">重新分析</button>&nbsp; 
-			<button type="button"  click="change,1" class="btn btn-default">下个月 <i class="icon-caret-right"></i></button>
+			<button type="button"  click="change,1" class="btn btn-default">下個月 <i class="icon-caret-right"></i></button>
 			</td>
 	</tr>
 	</table>
 </div>
 <div class="blank10"></div>
-<div style="height:30px;line-height:30px;border-top:1px #dddddd solid">&nbsp;统计：<span id="total_{rand}"></span></div>
+<div style="height:30px;line-height:30px;border-top:1px #dddddd solid">&nbsp;統計：<span id="total_{rand}"></span></div>
 <div id="veiw_{rand}"></div>

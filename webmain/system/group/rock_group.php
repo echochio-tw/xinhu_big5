@@ -6,11 +6,11 @@ $(document).ready(function(){
 		tablename:'group',celleditor:true,url:publicstore('{mode}','{dir}'),storeafteraction:'groupafter',
 		modenum:'group',
 		columns:[{
-			text:'组名',dataIndex:'name',editor:true
+			text:'組名',dataIndex:'name',editor:true
 		},{
-			text:'排序号',dataIndex:'sort',editor:true
+			text:'排序號',dataIndex:'sort',editor:true
 		},{
-			text:'人员数',dataIndex:'utotal'
+			text:'人員數',dataIndex:'utotal'
 		},{
 			text:'ID',dataIndex:'id'	
 		}],
@@ -18,7 +18,7 @@ $(document).ready(function(){
 			btn(false);
 		},
 		itemdblclick:function(ad,oi,e){
-			$('#downshow_{rand}').html('组<b>['+ad.name+']</b>下的人员');
+			$('#downshow_{rand}').html('組<b>['+ad.name+']</b>下的人員');
 			gid=ad.id;
 			at.setparams({gid:gid},true);
 		}
@@ -29,14 +29,14 @@ $(document).ready(function(){
 		url:publicstore('{mode}','{dir}'),
 		autoLoad:false,storebeforeaction:'groupusershow',
 		columns:[{
-			text:'用户名',dataIndex:'user',sortable:true
+			text:'用戶名',dataIndex:'user',sortable:true
 		},{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
-			text:'部门',dataIndex:'deptname',sortable:true
+			text:'部門',dataIndex:'deptname',sortable:true
 		},{
 			text:'操作',dataIndex:'opt',renderer:function(v,d){
-				return '<a href="javascript:" onclick="return deluserr{rand}('+d.id+')"><i class="icon-trash"> 删</a>';
+				return '<a href="javascript:" onclick="return deluserr{rand}('+d.id+')"><i class="icon-trash"> 刪</a>';
 			}
 		}],
 		load:function(){
@@ -50,15 +50,15 @@ $(document).ready(function(){
 		},
 		clickwin:function(o1,lx){
 			var h = $.bootsform({
-				title:'组',height:400,width:400,
+				title:'組',height:400,width:400,
 				tablename:'group',isedit:lx,
 				url:js.getajaxurl('publicsave','group','system'),
 				params:{int_filestype:'sort',add_otherfields:'indate={now}'},
 				submitfields:'name,sort',
 				items:[{
-					labelText:'组名',name:'name',required:true
+					labelText:'組名',name:'name',required:true
 				},{
-					labelText:'序号',name:'sort',type:'number',value:'0'
+					labelText:'序號',name:'sort',type:'number',value:'0'
 				}],
 				success:function(){
 					a.reload();
@@ -76,7 +76,7 @@ $(document).ready(function(){
 		addguser:function(){
 			var cans = {
 				type:'usercheck',
-				title:'选择人员',
+				title:'選擇人員',
 				callback:function(sna,sid){
 					c.savedist(sid);
 				}
@@ -95,9 +95,9 @@ $(document).ready(function(){
 			}
 		},
 		delusers:function(uid){
-			js.msg('wait','删除中...');
+			js.msg('wait','刪除中...');
 			js.ajax(js.getajaxurl('deluser','{mode}','{dir}'),{sid:uid,gid:gid},function(){
-				js.msg('success','删除成功');
+				js.msg('success','刪除成功');
 				at.reload();
 				a.reload();
 			},'post');
@@ -112,7 +112,7 @@ $(document).ready(function(){
 	js.initbtn(c);
 	
 	deluserr{rand}=function(uid){
-		js.confirm('确定要删除组下的人员吗？',function(lx){
+		js.confirm('確定要刪除組下的人員嗎？',function(lx){
 			if(lx=='yes'){
 				c.delusers(uid);
 			}
@@ -129,18 +129,18 @@ $(document).ready(function(){
 	<div>
 	<ul class="floats">
 		<li class="floats50">
-			<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增组</button>&nbsp; 
+			<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增組</button>&nbsp; 
 			<button class="btn btn-default" click="refresh,0" type="button">刷新</button>
 		</li>
 		<li class="floats50" style="text-align:right">
-			<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button> &nbsp; 
-			<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+			<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button> &nbsp; 
+			<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 		</li>
 	</ul>
 	</div>
 	<div class="blank10"></div>
 	<div id="veiw_{rand}"></div>
-	<div class="tishi">先双击对应组查看人员，在添加组下人员</div>
+	<div class="tishi">先雙擊對應組查看人員，在添加組下人員</div>
 </td>
 <td width="10"></td>
 <td>
@@ -151,7 +151,7 @@ $(document).ready(function(){
 			<span id="downshow_{rand}">&nbsp;</span>
 		</li>
 		<li class="floats50" style="text-align:right">
-			<button class="btn btn-primary" click="addguser,0" id="add_{rand}" disabled type="button"><i class="icon-plus"></i> 添加组下人员</button>
+			<button class="btn btn-primary" click="addguser,0" id="add_{rand}" disabled type="button"><i class="icon-plus"></i> 添加組下人員</button>
 		</li>
 	</ul>
 	</div>

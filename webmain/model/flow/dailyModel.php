@@ -3,7 +3,7 @@ class flow_dailyClassModel extends flowModel
 {
 	public function initModel()
 	{
-		$this->typearr = explode(',','日报,周报,月报,年报');
+		$this->typearr = explode(',','日報,週報,月報,年報');
 		$this->logobj = m('log');
 	}
 	
@@ -39,7 +39,7 @@ class flow_dailyClassModel extends flowModel
 		return $rs;
 	}
 	
-	//提交保存完日报通知上级
+	//提交保存完日報通知上級
 	protected function flowsubmit($na, $sm)
 	{
 		$uparr = m('admin')->getsuperman($this->uid);
@@ -52,9 +52,9 @@ class flow_dailyClassModel extends flowModel
 	
 	protected function flowaddlog($a)
 	{
-		if($a['name'] == '日报评分'){
+		if($a['name'] == '日報評分'){
 			$fenshu	 = (int)$this->rock->post('fenshu','0');
-			$this->push($this->rs['uid'], '工作日报', ''.$this->adminname.'评分你[{dt}]的{typess},分数('.$fenshu.')','工作日报评分');
+			$this->push($this->rs['uid'], '工作日報', ''.$this->adminname.'評分你[{dt}]的{typess},分數('.$fenshu.')','工作日報評分');
 			$this->update(array(
 				'mark' => $fenshu
 			), $this->id);
@@ -64,10 +64,10 @@ class flow_dailyClassModel extends flowModel
 	protected function flowdatalog($arr)
 	{
 		$ispingfen	= 0;
-		$barr 		= m('admin')->getsuperman($this->uid); //获取我的上级主管
+		$barr 		= m('admin')->getsuperman($this->uid); //獲取我的上級主管
 		if($barr){
 			$hes 	= $barr[0];
-			if(contain(','.$hes.',',','.$this->adminid.','))$ispingfen = 1; //是否可以评分
+			if(contain(','.$hes.',',','.$this->adminid.','))$ispingfen = 1; //是否可以評分
 		}
 		$arr['ispingfen'] 	= $ispingfen;
 		$arr['mark'] 		= $this->rs['mark'];
@@ -114,7 +114,7 @@ class flow_dailyClassModel extends flowModel
 		return $rows;
 	}
 	
-	//条件过滤已从流程模块条件下设置
+	//條件過濾已從流程模塊條件下設置
 	protected function flowbillwhere($uid, $lx)
 	{
 		$type 	= $this->rock->post('type');
@@ -134,13 +134,13 @@ class flow_dailyClassModel extends flowModel
 			'fields'=> 'a.*,b.`name`,b.`deptname`',
 			'where' => $where,
 			'keywhere' => $keywhere,
-			'asqom' => 'a.', //主表别名
+			'asqom' => 'a.', //主表別名
 			'order' => 'a.`optdt` desc'
 		);
 	}
 	
 	/**
-	*	日报分析
+	*	日報分析
 	*/
 	public function dailyanay($uid=0, $month='')
 	{
@@ -164,21 +164,21 @@ class flow_dailyClassModel extends flowModel
 		if($uid!=0)$where="and `id`='$uid'";
 		$urows	= m('userinfo')->getall("1=1 $where", 'id,name,workdate,quitdt,isdaily');
 		
-		//日报
+		//日報
 		$dailya = $this->getall("`type`=0 and `dt` like '$mon%' group by `uid`,`dt`",'`uid`,`dt`');
 		foreach($dailya as $k=>$rs){
 			$dailydt['a'.$rs['uid'].'_'.$rs['dt'].''] = 1;
 		}
 		
-		//周报
+		//週報
 		$dailya = $this->getall("`type`=1 and `adddt` like '$mon%'",'`uid`,`adddt`');
 		foreach($dailya as $k=>$rs){
 			$zhoubdt['a'.$rs['uid'].'_'.substr($rs['adddt'],0,10).''] = 1;
 		}
 		
 		
-		//读取是不是全天请假(这种情况无法统计，全天请假写了2个上午和下午的请假条，下次改进)
-		$qjarr = $this->db->getall("select `stime`,`etime`,`uid` from `[Q]kqinfo` where `status`=1 and `kind`='请假' and `etime`>='$start' and `stime`<='$enddt' ");
+		//讀取是不是全天請假(這種情況無法統計，全天請假寫了2個上午和下午的請假條，下次改進)
+		$qjarr = $this->db->getall("select `stime`,`etime`,`uid` from `[Q]kqinfo` where `status`=1 and `kind`='請假' and `etime`>='$start' and `stime`<='$enddt' ");
 		if($qjarr){
 			foreach($qjarr as $k=>$rs){
 				$qjarr[$k]['stimes'] = strtotime($rs['stime']);
@@ -191,16 +191,16 @@ class flow_dailyClassModel extends flowModel
 					$sbdt = $kql->getsbstr($uid, $dt);
 					
 					if($rs['stimes']<=$sbdt['stimes'] && $rs['etimes']>=$sbdt['etimes']){
-						$leavedt['a'.$uid.'_'.$dt.''] = 1; //全天请假
+						$leavedt['a'.$uid.'_'.$dt.''] = 1; //全天請假
 					}
 				}
 			}
 		}
 		
 		foreach($urows as $k=>$urs){
-			$totaly = 0;//应写
-			$totalx	= 0;//已写次数
-			$totalw	= 0;//未写次数
+			$totaly = 0;//應寫
+			$totalx	= 0;//已寫次數
+			$totalw	= 0;//未寫次數
 			$dtjoin	= '';
 			$uid	= $urs['id'];
 			$dtarra	= array();
@@ -216,9 +216,9 @@ class flow_dailyClassModel extends flowModel
 			foreach($dtarr as $d1=>$dtss){
 				$dt  	= $dtss[0];
 				$d 		= $d1+1;
-				$zt  	= 0; //0未写,1已写,2请假,3休息日,4没入职或已离职,5不需要写日报,时间还没到,6写周报了
+				$zt  	= 0; //0未寫,1已寫,2請假,3休息日,4沒入職或已離職,5不需要寫日報,時間還沒到,6寫週報了
 				
-				//入职离职判断
+				//入職離職判斷
 				if($dtss[1]<$ruzd || $dtss[1]>$lzzt){
 					$uarr['day'.$d.''] 	= 4;
 					continue;
@@ -244,13 +244,13 @@ class flow_dailyClassModel extends flowModel
 						$zt = 1;
 					}
 					if($zt==0 && isset($zhoubdt[$keys])){
-						$zt = 6;//写周报了
+						$zt = 6;//寫週報了
 					}
 					if($zt==0){
 						if($urs['isdaily']==0){
 							$zt = 5;
 						}else{
-							$totalw++;//没写没请假
+							$totalw++;//沒寫沒請假
 						}
 					}
 				}
@@ -270,8 +270,8 @@ class flow_dailyClassModel extends flowModel
 	}
 	
 	/**
-	*	未写日报通知
-	*	return 未写人员如：貂蝉(人事部),大乔(开发部)
+	*	未寫日報通知
+	*	return 未寫人員如：貂蟬(人事部),大喬(開發部)
 	*/
 	public function dailytodo($dt='')
 	{
@@ -281,7 +281,7 @@ class flow_dailyClassModel extends flowModel
 		$d 	 = (int)$dta[2];
 		$rows= $this->db->getall("select a.`id`,a.`name`,a.`deptname`,b.`day".$d."` from `[Q]admin` a left join `[Q]dailyfx` b on a.`id`=b.`uid` and b.`month`='$month' where a.`status`=1 and b.`day".$d."`=0");
 		$w	 = c('date')->cnweek($dt);
-		$cont= '你昨天['.$dt.',周'.$w.']的工作日报未写，请及时补充填写。';
+		$cont= '你昨天['.$dt.',週'.$w.']的工作日報未寫，請及時補充填寫。';
 		$receid = '';
 		foreach($rows as $k=>$rs){
 			$receid.=','.$rs['id'].'';
@@ -289,6 +289,6 @@ class flow_dailyClassModel extends flowModel
 		$this->flowweixinarr = array(
 			'url' => $this->getwxurl()
 		);
-		if($receid!='')$this->push(substr($receid, 1),'', $cont, '工作日报未写提醒');
+		if($receid!='')$this->push(substr($receid, 1),'', $cont, '工作日報未寫提醒');
 	}
 }

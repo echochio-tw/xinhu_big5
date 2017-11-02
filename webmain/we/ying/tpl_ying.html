@@ -49,9 +49,9 @@ function yingyonginit(){
 	yy.loadshow();
 }
 function initbody(){
-	adminid = js.getoption('adminid', <?=$da['adminid']?>);
+	adminid = js.getoption('adminid', '<?=$da['adminid']?>');
 	admintoken = js.getoption('admintoken', '<?=$xhrock->admintoken?>');
-	yy.init();
+	try{yy.init();}catch(e){alert(e);}
 	yingyonginit();
 }
 function callPhone(o1){
@@ -84,12 +84,12 @@ function callPhone(o1){
 	<form onclick="yy.searchuser()" class="weui_search_outer" onsubmit="yy.sousousou();return false;">
 		<div class="weui_search_inner">
 			<i class="weui_icon_search"></i>
-			<input type="search" class="weui_search_input" id="search_input" placeholder="输入关键词搜索" >
+			<input type="search" class="weui_search_input" id="search_input" placeholder="輸入關鍵詞搜索" >
 			<a onclick="yy.souclear()" class="weui_icon_clear"></a>
 		</div>
 		<label for="search_input" class="weui_search_text" id="search_text">
 			<i class="weui_icon_search"></i>
-			<span>输入关键词搜索</span>
+			<span>輸入關鍵詞搜索</span>
 		</label>
 	</form>
 	<a onclick="yy.searchcancel()" style="color:#1389D3" class="weui_search_cancel">取消</a>

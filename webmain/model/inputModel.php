@@ -17,7 +17,7 @@ class inputClassModel extends Model
 		$xu	 = $iszb-1;
 		$str = '<table class="tablesub" id="tablesub'.$xu.'" style="width:100%;" border="0" cellspacing="0" cellpadding="0">';
 		$str.='<tr>';
-		$str.='<td width="10%" nowrap>序号</td>';
+		$str.='<td width="10%" nowrap>序號</td>';
 		$yfsr= array('hidden','fixed');
 		$zlen= 0;
 		foreach($rows as $k=>$rs){
@@ -38,7 +38,7 @@ class inputClassModel extends Model
 				if(isset($rows[$k+1]) && in_array($rows[$k+1]['fieldstype'], $yfsr))$str.='['.$rows[$k+1]['fields'].''.$xu.','.$j.']';
 				$str.='</td>';
 			}
-			$str.='<td>{删,'.$xu.'}</td>';
+			$str.='<td>{刪,'.$xu.'}</td>';
 			$str.='</tr>';
 		}
 		$str.='</table>';

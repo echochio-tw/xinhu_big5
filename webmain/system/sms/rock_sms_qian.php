@@ -5,15 +5,15 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'chargems',url:js.getajaxurl('getqian','{mode}','{dir}'),statuschange:false,
 		columns:[{
-			text:'编号',dataIndex:'num'
+			text:'編號',dataIndex:'num'
 		},{
-			text:'签名',dataIndex:'cont'
+			text:'簽名',dataIndex:'cont'
 		},{
-			text:'是否公开',dataIndex:'isgk',type:'checkbox'
+			text:'是否公開',dataIndex:'isgk',type:'checkbox'
 		},{
-			text:'状态',dataIndex:'statustext'
+			text:'狀態',dataIndex:'statustext'
 		},{
-			text:'来源',dataIndex:'fromstr'
+			text:'來源',dataIndex:'fromstr'
 		}],
 		beforeload:function(){
 			btn(true);
@@ -34,16 +34,16 @@ $(document).ready(function(){
 		},
 		clickwin:function(o1,lx){
 			var h = $.bootsform({
-				title:'短信签名',height:400,width:400,
+				title:'短信簽名',height:400,width:400,
 				tablename:'sms',isedit:lx,
 				url:js.getajaxurl('saveqian','{mode}','{dir}'),
 				submitfields:'cont,isgk,num',
 				items:[{
-					labelText:'签名名称',name:'cont',required:true,blankText:'3-8个字符'
+					labelText:'簽名名稱',name:'cont',required:true,blankText:'3-8個字符'
 				},{
 					labelText:'',name:'num',type:'hidden'
 				},{
-					name:'isgk',labelBox:'公开(让其他用户也可以使用)',type:'checkbox',checked:false
+					name:'isgk',labelBox:'公開(讓其他用戶也可以使用)',type:'checkbox',checked:false
 				}],
 				success:function(){
 					js.msg('success','保存成功');
@@ -51,8 +51,8 @@ $(document).ready(function(){
 				},
 				submitcheck:function(d){
 					var len=d.cont.length;
-					if(len<3)return '签名必须3个字符以上';
-					if(len>8)return '签名不能超过8个字符';
+					if(len<3)return '簽名必須3個字符以上';
+					if(len>8)return '簽名不能超過8個字符';
 				}
 			});
 			if(lx==1){
@@ -86,12 +86,12 @@ $(document).ready(function(){
 		<button class="btn btn-default" click="reloads"  type="button"><i class="icon-refresh"></i> 刷新</button>
 	</td>
 	<td align="right">
-	<button class="btn btn-default" click="reloadszt"  type="button"><i class="icon-refresh"></i> 刷新状态</button>&nbsp;
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+	<button class="btn btn-default" click="reloadszt"  type="button"><i class="icon-refresh"></i> 刷新狀態</button>&nbsp;
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</td>
 	</tr>
 	</table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">如公开说明使用信呼系统的用户都可以使用这个签名，审核通过签名不能修改。普通用户不能添加签名，VIP用户可添加1个签名，合作商没限制，添加签名是需要审核的，可[刷新状态]查看审核状态。</div>
+<div class="tishi">如公開說明使用信呼系統的用戶都可以使用這個簽名，審核通過簽名不能修改。普通用戶不能添加簽名，VIP用戶可添加1個簽名，合作商沒限制，添加簽名是需要審核的，可[刷新狀態]查看審核狀態。</div>

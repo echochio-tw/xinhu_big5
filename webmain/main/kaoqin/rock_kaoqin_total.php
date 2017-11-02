@@ -6,29 +6,29 @@ $(document).ready(function(){
 	if(!pnum)pnum='';
 	
 	var col1 = [{
-		text:'部门',dataIndex:'deptname',align:'left',sortable:true
+		text:'部門',dataIndex:'deptname',align:'left',sortable:true
 	},{
 		text:'姓名',dataIndex:'name',sortable:true
 	},{
-		text:'职位',dataIndex:'ranking'
+		text:'職位',dataIndex:'ranking'
 	},{
-		text:'人员状态',dataIndex:'state'
+		text:'人員狀態',dataIndex:'state'
 	}];
 	var col2 = [{
 		text:'正常',dataIndex:'state0'
 	},{
-		text:'迟到',dataIndex:'state1'
+		text:'遲到',dataIndex:'state1'
 	},{
 		text:'早退',dataIndex:'state2'
 	}];
 	var col3 = [{
-		text:'加班(时)',dataIndex:'jiaban'
+		text:'加班(時)',dataIndex:'jiaban'
 	},{
 		text:'外出(次)',dataIndex:'outci'
 	},{
-		text:'异常(次)',dataIndex:'errci'
+		text:'異常(次)',dataIndex:'errci'
 	},{
-		text:'应上班(天)',dataIndex:'sbday'
+		text:'應上班(天)',dataIndex:'sbday'
 	},{
 		text:'已上班(天)',dataIndex:'ysbday'
 	},{
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		anaynow:function(){
 			var dt = get('dt1_{rand}').value;
 			if(dt==''){
-				js.msg('msg','请选择月份');
+				js.msg('msg','請選擇月份');
 				return;
 			}
 			js.msg('wait','['+dt+']月份的考勤分析中...');
@@ -86,12 +86,12 @@ $(document).ready(function(){
 		daochu:function(){
 			a.exceldown(''+nowtabs.name+'('+get('dt1_{rand}').value+')');
 		},
-		//订阅
+		//訂閱
 		dingyue:function(){
 			js.subscribe({
 				title:''+nowtabs.name+'({month-1})',
-				explain:'订阅上月考勤统计表',
-				cont:'{month-1}月份人员'+nowtabs.name+'',
+				explain:'訂閱上月考勤統計表',
+				cont:'{month-1}月份人員'+nowtabs.name+'',
 				objtable:a,
 				params:{'month':'{month-1}','key':get('key_{rand}').value}
 			});
@@ -113,7 +113,7 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td nowrap style="padding-left:10px">
 		<label><input id="iskq_{rand}" checked type="checkbox">只看需考勤</label>
@@ -122,19 +122,19 @@ $(document).ready(function(){
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td  style="padding-left:10px">
-		<button class="btn btn-default" click="dingyue" type="button">订阅此统计表</button>
+		<button class="btn btn-default" click="dingyue" type="button">訂閱此統計表</button>
 	</td>
 	<td  style="padding-left:5px">
 		
 	</td>
 	<td width="80%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-info" click="xqkaoqb" disabled id="xqkaoqb_{rand}" type="button">详情考勤表</button>&nbsp;&nbsp;
+		<button class="btn btn-info" click="xqkaoqb" disabled id="xqkaoqb_{rand}" type="button">詳情考勤表</button>&nbsp;&nbsp;
 		<button class="btn btn-default" click="anaynow" type="button">全部重新分析</button>&nbsp;&nbsp;
-		<button class="btn btn-default" click="daochu" type="button">导出</button>
+		<button class="btn btn-default" click="daochu" type="button">導出</button>
 	</td>
 </tr></table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">人员是从档案表里读取的，如考勤异常有申请请假外出视为正常，统计已审核完成的。</div>
+<div class="tishi">人員是從檔案表裡讀取的，如考勤異常有申請請假外出視為正常，統計已審核完成的。</div>

@@ -1,6 +1,6 @@
 <?php
 /**
-*	客户.合同管理
+*	客戶.合同管理
 */
 class mode_custractClassAction extends inputAction{
 	
@@ -40,7 +40,7 @@ class mode_custractClassAction extends inputAction{
 	
 	
 	protected function saveafter($table, $arr, $id, $addbo){
-		m('crm')->ractmoney($id); //计算未收/付款
+		m('crm')->ractmoney($id); //計算未收/付款
 		$saleid = (int)$arr['saleid'];
 		$dbs 	= m('custsale');
 		$dbs->update('htid=0', "`htid`='$id'");

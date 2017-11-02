@@ -7,11 +7,11 @@ function initbodys(){
 	get('btnchange_ccname').onclick=function(){
 		changeuserss(1);
 	}
-	//读取转发邮件的内容
+	//讀取轉發郵件的內容
 	var zfid = js.request('zfid');
 	if(mid==0&&zfid){
 		js.ajax(geturlact('getzfcont',{zfid:zfid}),false,function(a){
-			form('title').value='转发：'+a.title+'';
+			form('title').value='轉發：'+a.title+'';
 			form('content').value=a.content;
 			if(ismobile==1)form('content').value=a.content.replace(/<br>/g,"\n");
 			if(ismobile==0)c.editorobj['content'].html(a.content);
@@ -21,7 +21,7 @@ function initbodys(){
 	if(mid==0){
 		form('isturn').checked=true;
 	}
-	get('AltS').value='发送(S)';
+	get('AltS').value='發送(S)';
 }
 var txlbool=false,txldata=[];
 function changestype(lx){
@@ -34,10 +34,10 @@ function changestype(lx){
 function changeuserss(lx){
 	var val = form('type').value;
 	if(val==1){
-		var ss1 = 'receid',ss2='recename',tit='选择收信人';
+		var ss1 = 'receid',ss2='recename',tit='選擇收信人';
 		if(lx==1){
 			var ss1 = 'ccid',ss2='ccname';
-			tit='抄送给';
+			tit='抄送給';
 		}
 		c.selectdata('getvcard,'+ss1+'', true, ss2, tit);
 		return;

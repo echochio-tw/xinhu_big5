@@ -7,31 +7,31 @@ $(document).ready(function(){
 		tablename:'admin',params:{'atype':atype,'month':month},fanye:atype=='all',
 		modedir:'{mode}:{dir}',storeafteraction:'custtotalafter',storebeforeaction:'custtotalbefore',
 		columns:[{
-			text:'部门',dataIndex:'deptname'
+			text:'部門',dataIndex:'deptname'
 		},{
 			text:'姓名',dataIndex:'name'
 		},{
 			text:'月份',dataIndex:'month'
 		},{
-			text:'待收金额',dataIndex:'shou_moneyd'
+			text:'待收金額',dataIndex:'shou_moneyd'
 		},{
-			text:'已收金额',dataIndex:'shou_moneys'
+			text:'已收金額',dataIndex:'shou_moneys'
 		},{
-			text:'应收金额',dataIndex:'shou_moneyz'
+			text:'應收金額',dataIndex:'shou_moneyz'
 		},{
-			text:'当月已收金额',dataIndex:'shou_moneyn'
+			text:'當月已收金額',dataIndex:'shou_moneyn'
 		},{
-			text:'收款单数',dataIndex:'shou_shu'
+			text:'收款單數',dataIndex:'shou_shu'
 		},{
-			text:'待付金额',dataIndex:'fu_moneyd'
+			text:'待付金額',dataIndex:'fu_moneyd'
 		},{
-			text:'已付金额',dataIndex:'fu_moneys'
+			text:'已付金額',dataIndex:'fu_moneys'
 		},{
-			text:'应付金额',dataIndex:'fu_moneyz'
+			text:'應付金額',dataIndex:'fu_moneyz'
 		},{
-			text:'当月已付金额',dataIndex:'fu_moneyn'
+			text:'當月已付金額',dataIndex:'fu_moneyn'
 		},{
-			text:'付款单数',dataIndex:'fu_shu'
+			text:'付款單數',dataIndex:'fu_shu'
 		}],
 		load:function(a){
 			c.loadcharts();
@@ -62,7 +62,7 @@ $(document).ready(function(){
 		},
 		view:function(){
 			var d=a.changedata;
-			addtabs({num:'custfintotal'+d.id+'',url:'main,customer,totalge,uid='+d.id+'',icons:'bar-chart',name:''+d.name+'的年度统计'});
+			addtabs({num:'custfintotal'+d.id+'',url:'main,customer,totalge,uid='+d.id+'',icons:'bar-chart',name:''+d.name+'的年度統計'});
 		},
 		loadcharts:function(){
 			if(atype!='down')return;
@@ -81,19 +81,19 @@ $(document).ready(function(){
 			var mon = get('month_{rand}').value;
 			var option = {
 				title: {
-					text: ''+mon+'月份应收金额图表',
+					text: ''+mon+'月份應收金額圖表',
 					left: 'center'
 				},
 				tooltip: {},
 				legend: {
-					data:['应收金额']
+					data:['應收金額']
 				},
 				xAxis: {
 					data: xAxis
 				},
 				yAxis: {type : 'value'},
 				series: [{
-					name: '金额',
+					name: '金額',
 					type: 'bar',
 					data: data
 				}]
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td>
-		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="部门/人员">
+		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="部門/人員">
 	</td>
 	<td style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -130,8 +130,8 @@ $(document).ready(function(){
 		
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 	</tr>
 	</table>
@@ -139,4 +139,4 @@ $(document).ready(function(){
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">系统是以收付款单上是所属日期算对应月份统计的，当月已收金额是收款时间是当月的统计。</div>
+<div class="tishi">系統是以收付款單上是所屬日期算對應月份統計的，當月已收金額是收款時間是當月的統計。</div>

@@ -1,5 +1,5 @@
 <?php
-//车辆保养
+//車輛保養
 class flow_carmbyClassModel extends flowModel
 {
 	
@@ -16,7 +16,7 @@ class flow_carmbyClassModel extends flowModel
 	}
 
 
-	//多个连表查询
+	//多個連表查詢
 	public function flowbillwhere($uid, $lx)
 	{
 		return array(
@@ -27,11 +27,11 @@ class flow_carmbyClassModel extends flowModel
 		);
 	}
 	
-	//自定义审核人读取
+	//自定義審核人讀取
 	protected function flowcheckname($num){
 		$sid = '';
 		$sna = '';
-		//驾驶员审核读取
+		//駕駛員審核讀取
 		if($num=='jia'){
 			$sid = $this->rs['jiaid'];
 			$sna = $this->rs['jianame'];

@@ -21,13 +21,14 @@
 <script type="text/javascript">
 var editor,arr=<?=$da['fieldsjson']?>,moders=<?=json_encode($da['moders'])?>,gongsiarr=<?=json_encode($da['gongsiarr'])?>,subfielsa=<?=json_encode($da['subfielsa'])?>,zbnamearr=<?=json_encode($da['zbnamearr'])?>,isedit=0,mid='<?=$da['mid']?>',data={};
 ismobile=1;
-js.changeuser=function(na,lx){
-	$('body').chnageuser({
+js.changeuser=function(na,lx, cans){
+	var can = {
 		'changetype':lx,
 		'titlebool':get('header_title'),
 		'idobj':get(na+'_id'),
 		'nameobj':get(na)
-	});
+	};
+	$('body').chnageuser(js.apply(can,cans));
 }
 function clearuser(na){
 	get(na).value='';
@@ -69,11 +70,11 @@ if($isheader==1)echo '<div id="header_title" class="header"><span onclick="js.ba
 		<?php 
 		for($i=0;$i<$da['zbshu'];$i++)echo '<input value="0" type="hidden" name="sub_totals'.$i.'">';
 		?>
-		<div  style="background:white;padding-top:10px">
+		<div  style="background:white;padding-top:10px;">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<?php if($da['mid']==0){?>
 		<tr>
-		<td class="lurim" style="color:#888888" nowrap>填写人</td>
+		<td class="lurim" style="color:#888888" nowrap>填寫人</td>
 		<td><div class="divinput"><?=$da['adminname']?></div></td>
 		</tr>
 		<?php
@@ -82,7 +83,7 @@ if($isheader==1)echo '<div id="header_title" class="header"><span onclick="js.ba
 		if($da['isupfile']==1){
 		?>
 		<tr>
-		<td class="lurim" nowrap>相关文件</td>
+		<td class="lurim" nowrap>相關文件</td>
 		<td><div class="divinput">
 			<input name="fileid" id="fileidview-inputEl" type="hidden">
 			<div id="view_fileidview" style="height:60px;overflow:auto" class="inputs"></div>
@@ -109,20 +110,20 @@ if($isheader==1)echo '<div id="header_title" class="header"><span onclick="js.ba
 			}
 			$coursestr .= '</tr></table>';
 			$coursestr .= '</div>';
-			//判断流程步骤是否上步指定
+			//判斷流程步驟是否上步指定
 			if($firstrs && $firstrs['checktype']=='change'){
-				$placeholder = '可不选';
+				$placeholder = '可不選';
 				$firstrs['isbt'] = 0;
 				$stsp = '<tr>';
 				$stsp.= '<td class="lurim" nowrap>';
 				if($firstrs['checktype']=='change'){
 					$stsp.='<font color=red>*</font>';
-					$placeholder = '必须指定人员';
+					$placeholder = '必須指定人員';
 					$firstrs['isbt'] = 1;
 				}
 				$stsp.= ''.$firstrs['name'].':</td>';
 				$stsp.= '<td><div class="divinput"><table width="98%" cellpadding="0" border="0"><tr><td width="100%"><input  class="inputs" style="width:99%" id="sysnextchange" value="" placeholder="'.$placeholder.'" readonly type="text" name="sysnextopt"><input name="sysnextoptid" value="" id="sysnextchange_id" type="hidden"><input name="sysnextcustidid" value="'.$firstrs['id'].'" type="hidden"></td>';
-				$stsp.= '<td nowrap><a href="javascript:;" onclick="js.changeclear(\'sysnextchange\')" class="webbtn">×</a><a href="javascript:;" id="btnchange_recename" onclick="js.changeuser(\'sysnextchange\',\'changeusercheck\')" class="webbtn">选择</a></td></tr></table></div></td>';
+				$stsp.= '<td nowrap><a href="javascript:;" onclick="js.changeclear(\'sysnextchange\')" class="webbtn">×</a><a href="javascript:;" id="btnchange_recename" onclick="js.changeuser(\'sysnextchange\',\'changeusercheck\',{changerange:\''.$firstrs['checktypeid'].'\'})" class="webbtn">選擇</a></td></tr></table></div></td>';
 				$stsp.= '</tr>';
 				echo $stsp;
 			}

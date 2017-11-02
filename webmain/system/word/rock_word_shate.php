@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var at = $('#optionview_{rand}').bootstree({
 		url:js.getajaxurl('getshatewordtype','word','system'),
 		columns:[{
-			text:'共享的文档类型',dataIndex:'name',align:'left',xtype:'treecolumn',width:'99%'
+			text:'共享的文檔類型',dataIndex:'name',align:'left',xtype:'treecolumn',width:'99%'
 		}],
 		itemdblclick:function(d){
 			
@@ -17,23 +17,23 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'word',modedir:'{mode}:{dir}',storebeforeaction:'shatebefore',fanye:true,
 		columns:[{
-			text:'类型',dataIndex:'fileext',renderer:function(v){
+			text:'類型',dataIndex:'fileext',renderer:function(v){
 				var lxs = js.filelxext(v);
 				return '<img src="web/images/fileicons/'+lxs+'.gif">';
 			}
 		},{
-			text:'名称',dataIndex:'filename',editor:true,align:'left'
+			text:'名稱',dataIndex:'filename',editor:true,align:'left'
 		},{
 			text:'大小',dataIndex:'filesizecn',sortable:true
 		},{
-			text:'分类',dataIndex:'typename'
+			text:'分類',dataIndex:'typename'
 		},{
-			text:'添加时间',dataIndex:'optdt',sortable:true
+			text:'添加時間',dataIndex:'optdt',sortable:true
 		},{
-			text:'创建人',dataIndex:'optname',sortable:true
+			text:'創建人',dataIndex:'optname',sortable:true
 		},{
 			text:'',dataIndex:'opt',renderer:function(v,d,oi){
-				return '<a href="javascript:;" onclick="showvies{rand}('+oi+',0)">预览</a>&nbsp;<a href="javascript:;" onclick="showvies{rand}('+oi+',1)"><i class="icon-arrow-down"></i></a>';
+				return '<a href="javascript:;" onclick="showvies{rand}('+oi+',0)">預覽</a>&nbsp;<a href="javascript:;" onclick="showvies{rand}('+oi+',1)"><i class="icon-arrow-down"></i></a>';
 			}
 		}]
 	});
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		<table width="100%">
 		<tr>
 		<td>
-			<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="文件名/创建人/分类">
+			<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="文件名/創建人/分類">
 		</td>
 		<td style="padding-left:10px">
 			<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -107,7 +107,7 @@ $(document).ready(function(){
 		
 		
 		<td align="right" nowrap>
-			<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+			<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 		</td>
 		</tr>
 		</table>

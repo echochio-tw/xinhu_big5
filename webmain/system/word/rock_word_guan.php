@@ -5,26 +5,26 @@ $(document).ready(function(){
 	var num = params.num,pid,optlx=0,movefid='',showlx=params.showlx;
 	var typeid=0,sspid=0;
 	if(!showlx)showlx = '0';
-	var sname = '个人';
+	var sname = '個人';
 	if(showlx=='1'){
-		sname = '部门';
+		sname = '部門';
 	}
 	var at = $('#optionview_{rand}').bootstree({
 		url:js.getajaxurl('getmywordtype','word','system'),params:{showlx:showlx},
 		columns:[{
-			text:''+sname+'文档类型',dataIndex:'name',align:'left',xtype:'treecolumn',width:'79%',renderer:function(v,d){
+			text:''+sname+'文檔類型',dataIndex:'name',align:'left',xtype:'treecolumn',width:'79%',renderer:function(v,d){
 				var s1 = v;
-				if(!isempt(d.recename))s1+='&nbsp;<span style="font-size:10px;color:#888888"><i  title="共享给：'+d.recename+'" class="icon-share-alt"></i></span>';
+				if(!isempt(d.recename))s1+='&nbsp;<span style="font-size:10px;color:#888888"><i  title="共享給：'+d.recename+'" class="icon-share-alt"></i></span>';
 				return s1;
 			}
 		},{
-			text:'序号',dataIndex:'sort',width:'20%'
+			text:'序號',dataIndex:'sort',width:'20%'
 		}],
 		load:function(d){
 			if(sspid==0){
 				typeid = d.pid;
 				sspid = d.pid;
-				c.loadfile('0','所有文档');
+				c.loadfile('0','所有文檔');
 			}
 		},
 		itemdblclick:function(d){
@@ -45,24 +45,24 @@ $(document).ready(function(){
 				return '<img src="web/images/fileicons/'+lxs+'.gif">';
 			}
 		},{
-			text:'名称',dataIndex:'filename',editor:true,align:'left'
+			text:'名稱',dataIndex:'filename',editor:true,align:'left'
 		},{
 			text:'大小',dataIndex:'filesizecn',sortable:true
 		},{
-			text:'添加时间',dataIndex:'optdt',sortable:true
+			text:'添加時間',dataIndex:'optdt',sortable:true
 		},{
-			text:'分类',dataIndex:'typename'
+			text:'分類',dataIndex:'typename'
 		},{
-			text:'上传者',dataIndex:'optname'
+			text:'上傳者',dataIndex:'optname'
 		},{
-			text:'共享给',dataIndex:'shate'
+			text:'共享給',dataIndex:'shate'
 		},{
 			text:'文件ID',dataIndex:'id'
 		},{
-			text:'下载次数',dataIndex:'downci',sortable:true
+			text:'下載次數',dataIndex:'downci',sortable:true
 		},{
 			text:'',dataIndex:'opt',renderer:function(v,d,oi){
-				return '<a href="javascript:;" onclick="showvies{rand}('+oi+',0)">预览</a>&nbsp;<a href="javascript:;" onclick="showvies{rand}('+oi+',1)"><i class="icon-arrow-down"></i></a>';
+				return '<a href="javascript:;" onclick="showvies{rand}('+oi+',0)">預覽</a>&nbsp;<a href="javascript:;" onclick="showvies{rand}('+oi+',1)"><i class="icon-arrow-down"></i></a>';
 			}
 		}],
 		itemclick:function(){
@@ -94,7 +94,7 @@ $(document).ready(function(){
 		uploadfile:function(){
 			var na = at.changedata.name;
 			if(!na)na='文件';
-			js.upload('_editfacech{rand}angback',{'title':'上传'+na+'','params1':typeid});	
+			js.upload('_editfacech{rand}angback',{'title':'上傳'+na+'','params1':typeid});	
 		},
 		loadfile:function(spd,nsd){
 			$('#megss{rand}').html(nsd);
@@ -103,7 +103,7 @@ $(document).ready(function(){
 		genmu:function(){
 			typeid = sspid;
 			at.changedata={};
-			this.loadfile('0','所有文档');
+			this.loadfile('0','所有文檔');
 		},
 		savefile:function(tps, sid){
 			if(sid=='')return;
@@ -113,10 +113,10 @@ $(document).ready(function(){
 		},
 		sharefile:function(){
 			var fid = a.getchecked();
-			if(fid==''){js.msg('msg','没有选中');return;}
+			if(fid==''){js.msg('msg','沒有選中');return;}
 			var cans = {
 				type:'deptusercheck',
-				title:'共享给...',
+				title:'共享給...',
 				callback:function(sna,sid){
 					if(sid)c.sharefiles(sna,sid, fid);
 				}
@@ -131,22 +131,22 @@ $(document).ready(function(){
 		},
 		qxsharefile:function(){
 			var fid = a.getchecked();
-			if(fid==''){js.msg('msg','没有选中');return;}
+			if(fid==''){js.msg('msg','沒有選中');return;}
 			js.ajax(js.getajaxurl('sharefile','{mode}','{dir}'),{'fid':fid},function(s){
 				a.reload();
 			},'post',false, '取消共享中...,取消成功');
 		},
 		movefile:function(){
 			var fid = a.getchecked();
-			if(fid==''){js.msg('msg','没有选中');return;}
+			if(fid==''){js.msg('msg','沒有選中');return;}
 			movefid=fid;
-			js.msg('success','已选中，请在5秒内选择左边类型确认移动');
+			js.msg('success','已選中，請在5秒內選擇左邊類型確認移動');
 			clearTimeout(this.cmoeefese);
 			this.cmoeefese=setTimeout(function(){movefid='';},5000);
 		},
 		typeclidks:function(d){
 			if(movefid=='')return;
-			js.confirm('确定将选中的文件移动到【'+d.name+'】下吗？',function(jg){
+			js.confirm('確定將選中的文件移動到【'+d.name+'】下嗎？',function(jg){
 				if(jg=='yes'){
 					c.movefiles(d.id, movefid);
 				}
@@ -157,7 +157,7 @@ $(document).ready(function(){
 			movefid='';
 			js.ajax(js.getajaxurl('movefile','{mode}','{dir}'),{'fid':moid,'tid':tid},function(s){
 				a.reload();
-			},'post',false, '移动中...,移动成功');
+			},'post',false, '移動中...,移動成功');
 		},
 		clicktypeeidt:function(){
 			var d = at.changedata;
@@ -165,15 +165,15 @@ $(document).ready(function(){
 		},
 		clicktypewin:function(o1, lx, da){
 			var h = $.bootsform({
-				title:'文档类型',height:250,width:300,
+				title:'文檔類型',height:250,width:300,
 				tablename:'option',labelWidth:50,
 				isedit:lx,submitfields:'name,sort,pid',cancelbtn:false,
 				items:[{
-					labelText:'名称',name:'name',required:true
+					labelText:'名稱',name:'name',required:true
 				},{
-					labelText:'上级id',name:'pid',value:0,type:'hidden'
+					labelText:'上級id',name:'pid',value:0,type:'hidden'
 				},{
-					labelText:'排序号',name:'sort',type:'number',value:0
+					labelText:'排序號',name:'sort',type:'number',value:0
 				}],
 				success:function(){
 					if(optlx==0)at.reload();
@@ -196,16 +196,16 @@ $(document).ready(function(){
 		movedata:false,
 		move:function(){
 			var d = at.changedata;
-			if(!d){js.msg('msg','没有选中行');return;}
+			if(!d){js.msg('msg','沒有選中行');return;}
 			this.movedata = d;
-			js.msg('success','请在5秒内选择其他类型确认移动');
+			js.msg('success','請在5秒內選擇其他類型確認移動');
 			clearTimeout(this.cmoeefese);
 			this.cmoeefese=setTimeout(function(){c.movedata=false;},5000);
 		},
 		ismoveok:function(d){
 			var md = this.movedata;
 			if(md && md.id!=d.id){
-				js.confirm('确定要将['+md.name+']移动到['+d.name+']下吗？',function(jg){
+				js.confirm('確定要將['+md.name+']移動到['+d.name+']下嗎？',function(jg){
 					if(jg=='yes'){
 						c.movetoss(md.id,d.id,0);
 					}
@@ -214,7 +214,7 @@ $(document).ready(function(){
 		},
 		moveto:function(){
 			var d = at.changedata;if(!d)return;
-			js.confirm('确定要将['+d.name+']移动到顶级吗？',function(jg){
+			js.confirm('確定要將['+d.name+']移動到頂級嗎？',function(jg){
 				if(jg=='yes'){
 					c.movetoss(d.id,sspid,1);
 				}
@@ -227,23 +227,23 @@ $(document).ready(function(){
 				}else{
 					at.reload();
 				}
-			},'get',false, '移动中...,移动成功');
+			},'get',false, '移動中...,移動成功');
 			c.movedata=false;
 		},
 		floadshate:function(){
 			var d = at.changedata;
-			if(!d){js.msg('msg','没有选中行');return;}
+			if(!d){js.msg('msg','沒有選中行');return;}
 			if(isempt(d.receid)){
 				var cans = {
 					type:'deptusercheck',
-					title:'文档['+d.name+']共享给...',
+					title:'文檔['+d.name+']共享給...',
 					callback:function(sna,sid){
 						if(sid)c.floadshates(sna,sid, d.id);
 					}
 				}
 				js.getuser(cans);
 			}else{
-				js.confirm('确定要将['+d.name+']取消共享吗？',function(jg){
+				js.confirm('確定要將['+d.name+']取消共享嗎？',function(jg){
 					if(jg=='yes'){
 						c.floadshatess(d.id);
 					}
@@ -276,11 +276,11 @@ $(document).ready(function(){
 	  <div id="optionview_{rand}" style="height:400px;overflow:auto;"></div>
 	  <div  class="panel-footer">
 		<a href="javascript:" title="新增" click="clicktypewin,0" onclick="return false"><i class="icon-plus"></i></a>&nbsp; &nbsp;
-		<a href="javascript:" title="编辑" click="clicktypeeidt" onclick="return false"><i class="icon-edit"></i></a>&nbsp; &nbsp;
-		<a href="javascript:" title="删除" click="typedel" onclick="return false"><i class="icon-trash"></i></a>&nbsp; &nbsp;
+		<a href="javascript:" title="編輯" click="clicktypeeidt" onclick="return false"><i class="icon-edit"></i></a>&nbsp; &nbsp;
+		<a href="javascript:" title="刪除" click="typedel" onclick="return false"><i class="icon-trash"></i></a>&nbsp; &nbsp;
 		<a href="javascript:" title="刷新" click="reload" onclick="return false"><i class="icon-refresh"></i></a>&nbsp; &nbsp;
-		<a href="javascript:" title="移动" click="move" onclick="return false"><i class="icon-move"></i></a>&nbsp; &nbsp;
-		<a href="javascript:" title="移动到顶级" click="moveto" onclick="return false"><i class="icon-arrow-up"></i></a>
+		<a href="javascript:" title="移動" click="move" onclick="return false"><i class="icon-move"></i></a>&nbsp; &nbsp;
+		<a href="javascript:" title="移動到頂級" click="moveto" onclick="return false"><i class="icon-arrow-up"></i></a>
 		&nbsp; 
 		<a href="javascript:" title="共享/取消共享" click="floadshate" onclick="return false"><i class="icon-share-alt"></i></a>
 	  </div>
@@ -291,16 +291,16 @@ $(document).ready(function(){
 	<div>
 	<table width="100%"><tr>
 		<td align="left">
-			<button class="btn btn-primary" click="uploadfile"  type="button"><i class="icon-upload-alt"></i> 上传文件</button>&nbsp; 
-			<button class="btn btn-default" click="genmu"  type="button">所有文档</button>&nbsp; 
+			<button class="btn btn-primary" click="uploadfile"  type="button"><i class="icon-upload-alt"></i> 上傳文件</button>&nbsp; 
+			<button class="btn btn-default" click="genmu"  type="button">所有文檔</button>&nbsp; 
 			<span id="megss{rand}"></span>
 		</td>
 		
 		<td align="right">
 			<button class="btn btn-default" click="sharefile" type="button"><i class="icon-share-alt"></i> 共享</button>&nbsp; 
 			<button class="btn btn-default" click="qxsharefile" type="button">取消共享</button>&nbsp; 
-			<button class="btn btn-default" click="movefile" type="button">移动</button>&nbsp; 
-			<button class="btn btn-danger" id="del_{rand}" disabled click="del" type="button"><i class="icon-trash"></i> 删除</button>
+			<button class="btn btn-default" click="movefile" type="button">移動</button>&nbsp; 
+			<button class="btn btn-danger" id="del_{rand}" disabled click="del" type="button"><i class="icon-trash"></i> 刪除</button>
 		</td>
 	</tr></table>
 	</div>

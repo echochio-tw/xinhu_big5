@@ -29,7 +29,7 @@ class flowoptClassAction extends Action
 		$this->showreturn('ok');
 	}
 	
-	//审核
+	//審核
 	public function checkAjax()
 	{
 		$mid 	= (int)$this->post('mid');
@@ -44,7 +44,7 @@ class flowoptClassAction extends Action
 		}
 	}
 	
-	//单据获取操作菜单
+	//單據獲取操作菜單
 	public function getoptnumAjax()
 	{
 		$mid 	= (int)$this->post('mid');
@@ -77,7 +77,7 @@ class flowoptClassAction extends Action
 	}
 	
 	/**
-	*	模块统计
+	*	模塊統計
 	*/
 	public function flowtotalAjax()
 	{
@@ -88,7 +88,7 @@ class flowoptClassAction extends Action
 	}
 	
 	/**
-	*	将异常单据标识已完成
+	*	將異常單據標識已完成
 	*/
 	public function oksuccessAjax()
 	{

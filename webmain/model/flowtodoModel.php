@@ -11,7 +11,7 @@ class flowtodoClassModel extends Model
 	}
 	
 	/**
-	*	添加人员提醒表里，让他必读查看
+	*	添加人員提醒表裡，讓他必讀查看
 	*/
 	public function addtotouids($uids, $uarr=array())
 	{
@@ -33,7 +33,7 @@ class flowtodoClassModel extends Model
 	}
 	
 	/**
-	*	标识已读
+	*	標識已讀
 	*/
 	public function biaoyidu($uid, $mode, $mid)
 	{

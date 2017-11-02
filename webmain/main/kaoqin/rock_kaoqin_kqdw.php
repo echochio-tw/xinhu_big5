@@ -4,23 +4,23 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'kqdw',celleditor:true,fanye:true,url:publicstore('{mode}','{dir}'),storebeforeaction:'kqdwbefore',
 		columns:[{
-			text:'规则名称',dataIndex:'name',align:'left',editor:true
+			text:'規則名稱',dataIndex:'name',align:'left',editor:true
 		},{
-			text:'经度',dataIndex:'location_x',editor:true
+			text:'經度',dataIndex:'location_x',editor:true
 		},{
-			text:'纬度',dataIndex:'location_y',editor:true
+			text:'緯度',dataIndex:'location_y',editor:true
 		},{
-			text:'经纬度',dataIndex:'xuanz',renderer:function(v,d,i){
-				return ''+v+'&nbsp;<a href="javascript:;" onclick="changeweizhi{rand}('+i+')">选择位置</a>';
+			text:'經緯度',dataIndex:'xuanz',renderer:function(v,d,i){
+				return ''+v+'&nbsp;<a href="javascript:;" onclick="changeweizhi{rand}('+i+')">選擇位置</a>';
 			}
 		},{
-			text:'位置名称',dataIndex:'address',editor:true
+			text:'位置名稱',dataIndex:'address',editor:true
 		},{
-			text:'允许误差(米)',dataIndex:'precision',editor:true
+			text:'允許誤差(米)',dataIndex:'precision',editor:true
 		},{
-			text:'无固定地点',dataIndex:'iswgd',editor:true,type:'checkbox'
+			text:'無固定地點',dataIndex:'iswgd',editor:true,type:'checkbox'
 		},{
-			text:'关联其他位置ID',dataIndex:'dwids',editor:true
+			text:'關聯其他位置ID',dataIndex:'dwids',editor:true
 		},{
 			text:'ID',dataIndex:'id'
 		}],
@@ -50,13 +50,13 @@ $(document).ready(function(){
 				tablename:'kqdw',isedit:lx,
 				submitfields:'name,address,precision,dwids',
 				items:[{
-					labelText:'名称',name:'name',required:true
+					labelText:'名稱',name:'name',required:true
 				},{
-					labelText:'位置名称',name:'address',required:true
+					labelText:'位置名稱',name:'address',required:true
 				},{
-					labelText:'允许误差(米)',name:'precision',type:'number',value:0
+					labelText:'允許誤差(米)',name:'precision',type:'number',value:0
 				},{
-					labelText:'关联其他地点',name:'dwids',type:'select',valuefields:'id',displayfields:'name',store:gzdata
+					labelText:'關聯其他地點',name:'dwids',type:'select',valuefields:'id',displayfields:'name',store:gzdata
 				}],
 				success:function(){
 					a.reload();
@@ -75,7 +75,7 @@ $(document).ready(function(){
 		var d = a.getData(oi);
 		var url = '?m=kaoqin&d=main&a=locationchange';
 		if(!isempt(d.location_x))url+='&location_x='+d.location_x+'&location_y='+d.location_y+'&scale='+d.scale+'';
-		openxiangs('选择位置',url,'','backshow{rand}');
+		openxiangs('選擇位置',url,'','backshow{rand}');
 	}
 	backshow{rand}=function(d){
 		d.id = a.changeid;
@@ -92,19 +92,19 @@ $(document).ready(function(){
 		<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增</button>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:200px" id="key_{rand}"  placeholder="规则/位置名称">
+		<input class="form-control" style="width:200px" id="key_{rand}"  placeholder="規則/位置名稱">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td width="100%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button> &nbsp; 
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button>
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button> &nbsp; 
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button>
 		
 	</td>
 </tr></table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">位置必须从地图上选择哦，无固定地点选中了：任何地点都可以考勤打卡，关联其他位置ID：填写当前页面记录的ID，多个,分开。</div>
+<div class="tishi">位置必須從地圖上選擇哦，無固定地點選中了：任何地點都可以考勤打卡，關聯其他位置ID：填寫當前頁面記錄的ID，多個,分開。</div>

@@ -24,5 +24,5 @@ function changetypes(){
 }
 
 function changesubmit(d){
-	if(d.type!='0' && d.enddt=='')return '截止日期不能为空';
+	if(d.type!='0' && d.enddt=='')return '截止日期不能為空';
 }

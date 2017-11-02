@@ -1,6 +1,6 @@
 <?php 
 /**
-*	【文档】记事接口
+*	【文檔】記事接口
 *	createname：雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (www.rockoa.com)

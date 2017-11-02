@@ -310,6 +310,7 @@ class Action extends mainAction
 	*/
 	public function checksignature($table)
 	{
+		//return true;//使用代理這個驗證都失敗直接開啟這行吧。
 		$sign = $this->post('sys_signature');
 		$time = $this->post('sys_timeature');
 		$signs= md5($this->rock->nowurl().$table.$time.'_'.$this->adminid);

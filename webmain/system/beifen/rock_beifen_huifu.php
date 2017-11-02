@@ -5,10 +5,10 @@ $(document).ready(function(){
 	var at = $('#viewss_{rand}').bootstable({
 		tablename:'option',celleditor:false,url:js.getajaxurl('getdata', '{mode}', '{dir}'),
 		columns:[{
-			text:'备份时间',dataIndex:'filename'
+			text:'備份時間',dataIndex:'filename'
 		},{
 			text:'操作',dataIndex:'opt',renderer:function(v,d,i){
-				return '<a href="javascript:;" onclick="huifww{rand}('+i+')">恢复</a>';
+				return '<a href="javascript:;" onclick="huifww{rand}('+i+')">恢復</a>';
 			}
 		}]
 	});
@@ -19,9 +19,9 @@ $(document).ready(function(){
 		columns:[{
 			text:'表名',dataIndex:'fields'
 		},{
-			text:'字段数',dataIndex:'fieldshu'
+			text:'字段數',dataIndex:'fieldshu'
 		},{
-			text:'记录数',dataIndex:'total'
+			text:'記錄數',dataIndex:'total'
 		},{
 			text:'文件大小',dataIndex:'filesizecn'
 		}],
@@ -38,15 +38,15 @@ $(document).ready(function(){
 		huifu:function(f){
 			var d = at.getData(f);
 			folder= d.filename;
-			a.setparams({'folder':d.filename},true);//恢复的文件夹
+			a.setparams({'folder':d.filename},true);//恢復的文件夾
 		},
 		clickwin:function(){
 			var sid = a.getchecked();
 			if(sid==''){
-				js.msg('msg','没有选中记录');
+				js.msg('msg','沒有選中記錄');
 				return;
 			}
-			js.confirm('确定要恢复选中的数据库表吗？恢复了现有的数据就没有了!',function(jg){
+			js.confirm('確定要恢復選中的數據庫表嗎？恢復了現有的數據就沒有了!',function(jg){
 				if(jg=='yes'){
 					setTimeout(function(){
 						c.huifusss(sid);
@@ -55,11 +55,11 @@ $(document).ready(function(){
 			});
 		},
 		huifusss:function(sid){
-			js.wait('恢复中请不要关闭...');
+			js.wait('恢復中請不要關閉...');
 			js.ajax(js.getajaxurl('huifdatanew', '{mode}', '{dir}'),{sid:sid,'folder':folder},function(s){
 				setTimeout(function(){
 					js.tanclose('confirm');
-					js.msg('success','恢复'+s+'');
+					js.msg('success','恢復'+s+'');
 				}, 1000);	
 			},'post');
 		},
@@ -83,8 +83,8 @@ $(document).ready(function(){
 </td>
 <td width="10"></td>
 <td>	
-	<div align="right"><font color="#888888">系统只会恢复数据并不会恢复字段，建议选择单表恢复，以免超时。</font>&nbsp;
-	<button class="btn btn-default" id="btnss_{rand}" click="clickwin,0" type="button">恢复选中表</button>
+	<div align="right"><font color="#888888">系統只會恢復數據並不會恢復字段，建議選擇單表恢復，以免超時。</font>&nbsp;
+	<button class="btn btn-default" id="btnss_{rand}" click="clickwin,0" type="button">恢復選中表</button>
 	</div>
 	<div class="blank10"></div>
 	<div id="view_{rand}"></div>

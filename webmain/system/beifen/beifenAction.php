@@ -6,8 +6,8 @@ class beifenClassAction extends Action
 	public function chushuaAjax()
 	{
 		$myext		= $this->getsession('adminallmenuid');
-		if(getconfig('systype')=='demo')return '演示请勿操作';
-		if($myext!='-1')return '只有管理员才可以用';
+		if(getconfig('systype')=='demo')return '演示請勿操作';
+		if($myext!='-1')return '只有管理員才可以用';
 		$tables		= explode(',', 'daily,file,flow_log,flow_todos,flow_checks,im_history,im_mess,im_messzt,infor,infors,log,logintoken,meet,reads,sjoin,work,todo,flow_bill,flow_remind,goodm,goodss,goods,kqanay,kqdkjl,kqerr,kqout,kqinfo,location,official,schedule,project,userinfo,userinfos,userract,hrpositive,word,hrredund,hrsalary,customer,custsale,custract,custfina,assetm,book,bookborrow,carm,carms,carmang,carmrese,email_cont,emailm,emails,sealapl,vcard,tovoid,editrecord,wouser,dailyfx,knowtraim,knowtrais,fininfom,fininfos,hrtrsalary,hrtransfer,reward,offyuebd,repair,knowtiku,kqdisv,knowledge,kqjcmd,kqjuser,kqjsn');
 		$alltabls 	= $this->db->getalltable();
 		foreach($tables as $tabs){
@@ -35,7 +35,7 @@ class beifenClassAction extends Action
 	
 	public function getdataAjax()
 	{
-		if(getconfig('systype')=='demo')exit('演示请勿操作');
+		if(getconfig('systype')=='demo')exit('演示請勿操作');
 		$carr = c('file')->getfolderrows(''.UPDIR.'/data');
 		$rows = array();
 		foreach($carr as $k=>$fils){
@@ -50,7 +50,7 @@ class beifenClassAction extends Action
 	
 	public function getdatssssAjax()
 	{
-		if(getconfig('systype')=='demo')exit('演示请勿操作');
+		if(getconfig('systype')=='demo')exit('演示請勿操作');
 		$rows = array();
 		$folder = $this->post('folder');
 		$path 	= ''.UPDIR.'/data/'.$folder.'';
@@ -83,7 +83,7 @@ class beifenClassAction extends Action
 	public function huifdatanewAjax()
 	{
 		if(getconfig('systype')=='demo')exit();
-		if($this->adminid!=1)return '只有ID=1的管理员才可以用';
+		if($this->adminid!=1)return '只有ID=1的管理員才可以用';
 		$folder = $this->post('folder');
 		$sida 	= explode(',', $this->post('sid'));
 		$alltabls 	= $this->db->getalltable();
@@ -107,7 +107,7 @@ class beifenClassAction extends Action
 			
 			
 			$dataall 	= $data[$tab]['data'];
-			if(count($dataall)<=0)continue; //没有数据
+			if(count($dataall)<=0)continue; //沒有數據
 			
 			$allfields 	= $this->db->getallfields($tab);
 			$fistdata	= $dataall[0];
@@ -137,15 +137,15 @@ class beifenClassAction extends Action
 			$shul++;
 			$tablss.=','.$tab.'';
 		}
-		return ''.$tablss.'表已恢复';
+		return ''.$tablss.'表已恢復';
 	}
 	
 	/**
-	*	还原数据操作（2017-08-27弃用）
+	*	還原數據操作（2017-08-27棄用）
 	*/
 	public function huifdataAjax()
 	{
-		if(getconfig('systype')=='demo')exit('演示请勿操作');
+		if(getconfig('systype')=='demo')exit('演示請勿操作');
 		$xu   = (int)$this->post('xu');
 		$carr = c('file')->getfilerows(''.UPDIR.'/data');
 		$sida = explode(',', $this->post('sid'));
@@ -195,13 +195,13 @@ class beifenClassAction extends Action
 	public function chushuserAjax()
 	{
 
-		if(getconfig('systype')=='demo')return '演示请勿操作';
-		if($this->adminid!=1)return '只有ID=1的管理员才可以用';
+		if(getconfig('systype')=='demo')return '演示請勿操作';
+		if($this->adminid!=1)return '只有ID=1的管理員才可以用';
 		
 		$users	= "'diaochan','zhangfei','daqiao','xiaoqiao','zhaozl','rock','xinhu'";
 		$dbs	= m('admin');
 		$dba	= m('dept');
-		if($dbs->rows("`user` in($users)")==0)return '不能操作，可能你已初始化过用户和部门了';
+		if($dbs->rows("`user` in($users)")==0)return '不能操作，可能你已初始化過用戶和部門了';
 
 		$dbs->delete('id>1');
 		$this->db->query('alter table `[Q]admin` AUTO_INCREMENT=2', false);

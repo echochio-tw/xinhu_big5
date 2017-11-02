@@ -6,7 +6,7 @@ class mode_meetjyClassAction extends inputAction{
 		
 		$mid = $arr['mid'];
 		$ors = m('meet')->getone($mid);
-		if(!$ors)return '会议不存在';
+		if(!$ors)return '會議不存在';
 		$darr['type'] 	= 2;
 		$darr['title'] 	= $ors['title'];
 		$darr['joinid'] = $ors['joinid'];
@@ -20,7 +20,7 @@ class mode_meetjyClassAction extends inputAction{
 		
 	}
 	
-	//读取会议列表(只能是10天内的)
+	//讀取會議列表(只能是10天內的)
 	public function meetdata()
 	{
 		$dt   = c('date')->adddate($this->rock->date,'d',-10);

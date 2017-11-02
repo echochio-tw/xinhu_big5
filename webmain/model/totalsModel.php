@@ -1,7 +1,7 @@
 <?php
 class totalsClassModel extends Model
 {
-	//首页统计的
+	//首頁統計的
 	public function gettotals($uid)
 	{
 		$optdt 	= $this->rock->now;

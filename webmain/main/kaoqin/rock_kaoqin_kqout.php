@@ -7,27 +7,27 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'kqout',params:{'atype':atype},fanye:true,modenum:modenum,statuschange:false,
 		columns:[{
-			text:'部门',dataIndex:'deptname'
+			text:'部門',dataIndex:'deptname'
 		},{
 			text:'姓名',dataIndex:'name'
 		},{
-			text:'职位',dataIndex:'ranking'
+			text:'職位',dataIndex:'ranking'
 		},{
-			text:'类型',dataIndex:'atype',sortable:true
+			text:'類型',dataIndex:'atype',sortable:true
 		},{
-			text:'外出时间',dataIndex:'outtime',sortable:true
+			text:'外出時間',dataIndex:'outtime',sortable:true
 		},{
-			text:'预计回岗',dataIndex:'intime'
+			text:'預計回崗',dataIndex:'intime'
 		},{
 			text:'外出地址',dataIndex:'address'
 		},{
 			text:'外出理由',dataIndex:'reason',align:'left'
 		},{
-			text:'说明',dataIndex:'explain',align:'left'
+			text:'說明',dataIndex:'explain',align:'left'
 		},{
-			text:'操作时间',dataIndex:'optdt',sortable:true
+			text:'操作時間',dataIndex:'optdt',sortable:true
 		},{
-			text:'状态',dataIndex:'statustext'
+			text:'狀態',dataIndex:'statustext'
 		}],
 		itemclick:function(){
 			btn(false);
@@ -72,7 +72,7 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:250px" id="key_{rand}"   placeholder="人员/部门">
+		<input class="form-control" style="width:250px" id="key_{rand}"   placeholder="人員/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
@@ -82,8 +82,8 @@ $(document).ready(function(){
 	
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 </tr>
 </table>

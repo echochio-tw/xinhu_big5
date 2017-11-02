@@ -5,9 +5,9 @@ $(document).ready(function(){
 		tablename:'menu',url:js.getajaxurl('data','{mode}','{dir}'),
 		tree:true,celleditor:true,bodyStyle:'height:'+(viewheight-70)+'px;overflow:auto',
 		columns:[{
-			text:'菜单名称',dataIndex:'name',align:'left',editor:true
+			text:'菜單名稱',dataIndex:'name',align:'left',editor:true
 		},{
-			text:'编号',dataIndex:'num'	,editor:true
+			text:'編號',dataIndex:'num'	,editor:true
 		},{
 			text:'URL',dataIndex:'url',editor:true,renderstyle:function(v,d){
 				return 'word-wrap:break-word;word-break:break-all;white-space:normal;width:200px';
@@ -15,17 +15,17 @@ $(document).ready(function(){
 		},{
 			text:'PID',dataIndex:'pid',editor:true
 		},{
-			text:'图标',dataIndex:'icons',editor:true
+			text:'圖標',dataIndex:'icons',editor:true
 		},{
-			text:'启用',dataIndex:'status',type:'checkbox',editor:true
+			text:'啟用',dataIndex:'status',type:'checkbox',editor:true
 		},{
-			text:'验证',dataIndex:'ispir',type:'checkbox',editor:true
+			text:'驗證',dataIndex:'ispir',type:'checkbox',editor:true
 		},{
-			text:'显示首页',dataIndex:'ishs',type:'checkbox',editor:true
+			text:'顯示首頁',dataIndex:'ishs',type:'checkbox',editor:true
 		},{
-			text:'排序号',dataIndex:'sort'	,editor:true
+			text:'排序號',dataIndex:'sort'	,editor:true
 		},{
-			text:'颜色',dataIndex:'color',editor:true
+			text:'顏色',dataIndex:'color',editor:true
 		},{
 			text:'ID',dataIndex:'id'	
 		}],
@@ -51,32 +51,32 @@ $(document).ready(function(){
 			a.setparams({key:s},true);
 		},
 		clickwin:function(o1,lx){
-			if(ISDEMO){js.msg('success','演示站点禁止操作');return;}
+			if(ISDEMO){js.msg('success','演示站點禁止操作');return;}
 			var h = $.bootsform({
-				title:'菜单',height:500,width:400,
+				title:'菜單',height:500,width:400,
 				tablename:'menu',isedit:lx,
 				params:{int_filestype:'ispir,status,sort,pid,ishs'},
 				submitfields:'num,name,url,icons,ispir,status,sort,pid,ishs,color',
 				items:[{
-					labelText:'编号',name:'num'
+					labelText:'編號',name:'num'
 				},{
-					labelText:'菜单名称',name:'name',required:true
+					labelText:'菜單名稱',name:'name',required:true
 				},{
 					labelText:'URL地址',name:'url'
 				},{
-					labelText:'图标',name:'icons'
+					labelText:'圖標',name:'icons'
 				},{
-					labelText:'上级ＩＤ',name:'pid',required:true,value:'0',type:'number'
+					labelText:'上級ＩＤ',name:'pid',required:true,value:'0',type:'number'
 				},{
-					name:'status',labelBox:'启用',type:'checkbox',checked:true
+					name:'status',labelBox:'啟用',type:'checkbox',checked:true
 				},{
-					name:'ispir',labelBox:'验证(未√就是任何人可使用菜单)',type:'checkbox',checked:true
+					name:'ispir',labelBox:'驗證(未√就是任何人可使用菜單)',type:'checkbox',checked:true
 				},{
-					name:'ishs',labelBox:'显示在首页',type:'checkbox'
+					name:'ishs',labelBox:'顯示在首頁',type:'checkbox'
 				},{
-					labelText:'颜色',name:'color'
+					labelText:'顏色',name:'color'
 				},{
-					labelText:'序号',name:'sort',type:'number',value:'0'
+					labelText:'序號',name:'sort',type:'number',value:'0'
 				}],
 				success:function(){
 					a.reload();
@@ -97,8 +97,8 @@ $(document).ready(function(){
 
 <table width="100%"><tr>
 	<td nowrap>
-		<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增顶级</button> &nbsp; 
-		<button class="btn btn-success" click="clickwin,2" id="down_{rand}" disabled type="button"><i class="icon-plus"></i> 新增下级</button>&nbsp; 
+		<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增頂級</button> &nbsp; 
+		<button class="btn btn-success" click="clickwin,2" id="down_{rand}" disabled type="button"><i class="icon-plus"></i> 新增下級</button>&nbsp; 
 		<button class="btn btn-default" click="reload" type="button">刷新</button>
 	</td>
 
@@ -114,8 +114,8 @@ $(document).ready(function(){
 	
 	<td width="80%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button> &nbsp; 
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button> &nbsp; 
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</td>
 </tr>
 </table>

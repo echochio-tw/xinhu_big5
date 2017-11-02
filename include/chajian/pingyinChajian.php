@@ -446,4 +446,4 @@ class pingyinChajian extends Chajian
 		return $ret;
 	}
 }
-//echo get('中国人',1);
+//echo get('中國人',1);

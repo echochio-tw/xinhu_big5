@@ -1,6 +1,6 @@
 <?php
 /**
-*	项目的
+*	項目的
 */
 class flow_projectClassModel extends flowModel
 {
@@ -11,11 +11,11 @@ class flow_projectClassModel extends flowModel
 	}
 	
 	/**
-	*	进度报告时更新对应状态
+	*	進度報告時更新對應狀態
 	*/
 	protected function flowaddlog($a)
 	{
-		if($a['name']=='进度报告'){
+		if($a['name']=='進度報告'){
 			$arr['status'] = $a['status'];
 			$this->update($arr, $this->id);
 		}
@@ -39,7 +39,7 @@ class flow_projectClassModel extends flowModel
 		return $this->flowgetoptmenu('shwview');
 	}
 	
-	//显示操作菜单判断
+	//顯示操作菜單判斷
 	protected function flowgetoptmenu($num)
 	{
 		$fuzeid 	= $this->rs['fuzeid'];

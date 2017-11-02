@@ -1,4 +1,4 @@
-/*时间选择器插件样式*/
+/*時間選擇器插件樣式*/
 .rockdatepicker{z-index:9999;box-shadow:2px 2px 2px #cccccc;border:1px #cccccc solid; background-color:#ffffff; left:0px; top:0px; padding:0px}
 .rockdatepicker td{cursor:pointer}
 .rockdatepicker td.td00:hover,.rockdatepicker td.td01{background:#dedede}

@@ -1,15 +1,15 @@
 <?php
 /**
-*	模块：custfina.收付款单，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.收付款单]→生成列表页
+*	模塊：custfina.收付款單，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.收付款單]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
 <script>
 $(document).ready(function(){
 	{params}
-	var modenum = 'custfina',modename='收付款单',isflow=0,modeid='36',atype = params.atype,pnum=params.pnum;
+	var modenum = 'custfina',modename='收付款單',isflow=0,modeid='36',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
 	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"optname","name":"\u6240\u5c5e\u4eba","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"htid","name":"\u5408\u540c","fieldstype":"select","ispx":"0","isalign":"0","islb":"0"},{"fields":"htnum","name":"\u5408\u540c\u7f16\u53f7","fieldstype":"hidden","ispx":"0","isalign":"0","islb":"1"},{"fields":"dt","name":"\u6240\u5c5e\u65e5\u671f","fieldstype":"date","ispx":"0","isalign":"0","islb":"1"},{"fields":"custname","name":"\u5ba2\u6237\u540d\u79f0","fieldstype":"selectdatafalse","ispx":"1","isalign":"0","islb":"1"},{"fields":"custid","name":"\u5ba2\u6237\u540d\u79f0","fieldstype":"hidden","ispx":"0","isalign":"0","islb":"0"},{"fields":"type","name":"\u7c7b\u578b","fieldstype":"select","ispx":"0","isalign":"0","islb":"1"},{"fields":"money","name":"\u91d1\u989d","fieldstype":"number","ispx":"1","isalign":"0","islb":"1"},{"fields":"ispay","name":"\u662f\u5426\u4ed8\u6b3e","fieldstype":"select","ispx":"1","isalign":"0","islb":"1"},{"fields":"paydt","name":"\u6536\u4ed8\u6b3e\u65f6\u95f4","fieldstype":"datetime","ispx":"0","isalign":"0","islb":"1"},{"fields":"explain","name":"\u8bf4\u660e","fieldstype":"textarea","ispx":"0","isalign":"0","islb":"1"},{"fields":"createname","name":"\u521b\u5efa\u4eba","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"}],fieldsselarr= [];
 	
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -49,7 +49,7 @@ $(document).ready(function(){
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -57,7 +57,7 @@ $(document).ready(function(){
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -69,9 +69,9 @@ $(document).ready(function(){
 		},
 		subscribelist:function(){
 			js.subscribe({
-				title:'收付款单('+nowtabs.name+')',
-				cont:'收付款单('+nowtabs.name+')的列表的',
-				explain:'订阅[收付款单]的列表',
+				title:'收付款單('+nowtabs.name+')',
+				cont:'收付款單('+nowtabs.name+')的列表的',
+				explain:'訂閱[收付款單]的列表',
 				objtable:a
 			});
 		},
@@ -121,15 +121,15 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			window.managelistcustfina = a;
-			addtabs({num:'daorucustfina',url:'flow,input,daoru,modenum=custfina',icons:'plus',name:'导入收付款单'});
+			addtabs({num:'daorucustfina',url:'flow,input,daoru,modenum=custfina',icons:'plus',name:'導入收付款單'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -147,7 +147,7 @@ $(document).ready(function(){
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -189,12 +189,12 @@ $(document).ready(function(){
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('Y3VzdGZpbmE:'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"所属人",dataIndex:"optname",sortable:true},{text:"合同编号",dataIndex:"htnum"},{text:"所属日期",dataIndex:"dt"},{text:"客户名称",dataIndex:"custname",sortable:true},{text:"类型",dataIndex:"type"},{text:"金额",dataIndex:"money",sortable:true},{text:"是否付款",dataIndex:"ispay",sortable:true},{text:"收付款时间",dataIndex:"paydt"},{text:"说明",dataIndex:"explain"},{text:"创建人",dataIndex:"createname",sortable:true},{
+		columns:[{text:"所屬人",dataIndex:"optname",sortable:true},{text:"合同編號",dataIndex:"htnum"},{text:"所屬日期",dataIndex:"dt"},{text:"客戶名稱",dataIndex:"custname",sortable:true},{text:"類型",dataIndex:"type"},{text:"金額",dataIndex:"money",sortable:true},{text:"是否付款",dataIndex:"ispay",sortable:true},{text:"收付款時間",dataIndex:"paydt"},{text:"說明",dataIndex:"explain"},{text:"創建人",dataIndex:"createname",sortable:true},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -209,23 +209,23 @@ $(document).ready(function(){
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 c.initpage=function(){
-	$('#key_{rand}').parent().before('<td style="padding-right:10px;"><input onclick="js.datechange(this,\'month\')" style="width:110px" placeholder="所属月份" readonly class="form-control datesss" id="dt_{rand}" ></td>');
+	$('#key_{rand}').parent().before('<td style="padding-right:10px;"><input onclick="js.datechange(this,\'month\')" style="width:110px" placeholder="所屬月份" readonly class="form-control datesss" id="dt_{rand}" ></td>');
 }
 c.searchbtn=function(){
 	var dt = get('dt_{rand}').value;
 	this.search({month:dt});
 }
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewcustfina_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -247,7 +247,7 @@ c.searchbtn=function(){
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
 		
 		<td style="padding-left:10px">
@@ -258,7 +258,7 @@ c.searchbtn=function(){
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

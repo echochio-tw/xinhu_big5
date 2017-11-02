@@ -4,21 +4,21 @@ $(document).ready(function(){
 	var a = $('#veiw_{rand}').bootstable({
 		tablename:'schedule',celleditor:false,fanye:true,modenum:'schedule',sort:'id',dir:'desc',modename:'日程',
 		columns:[{
-			text:'标题',dataIndex:'title',editor:true,align:'left'
+			text:'標題',dataIndex:'title',editor:true,align:'left'
 		},{
-			text:'时间',dataIndex:'startdt',sortable:true
+			text:'時間',dataIndex:'startdt',sortable:true
 		},{
-			text:'截止时间',dataIndex:'enddt',sortable:true
+			text:'截止時間',dataIndex:'enddt',sortable:true
 		},{
-			text:'重复',dataIndex:'rate'
+			text:'重復',dataIndex:'rate'
 		},{
 			text:'是否提醒',dataIndex:'txsj'
 		},{
-			text:'提醒给',dataIndex:'recename'
+			text:'提醒給',dataIndex:'recename'
 		},{
 			text:'添加人',dataIndex:'optname'
 		},{
-			text:'状态',dataIndex:'status',type:'checkbox',editor:true,sortable:true
+			text:'狀態',dataIndex:'status',type:'checkbox',editor:true,sortable:true
 		}],
 		itemclick:function(d){
 			btn(d.uid!=adminid);
@@ -86,20 +86,20 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="标题">
+		<input class="form-control" style="width:180px" id="key_{rand}"   placeholder="標題">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td width="80%" style="padding-left:10px">
 		<div id="stewwews{rand}" class="btn-group">
-		<button class="btn btn-default active" id="state{rand}_0" click="changlx,0" type="button">我创建</button>
-		<button class="btn btn-default" id="state{rand}_1" click="changlx,1" type="button">提醒给我的</button>
+		<button class="btn btn-default active" id="state{rand}_0" click="changlx,0" type="button">我創建</button>
+		<button class="btn btn-default" id="state{rand}_1" click="changlx,1" type="button">提醒給我的</button>
 		</div>	
 	</td>
 	<td align="right" width="200" nowrap>
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button> &nbsp; 
-	<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button> &nbsp; 
+	<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</td>
 </tr>
 </table>

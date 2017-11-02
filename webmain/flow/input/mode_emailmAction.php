@@ -10,10 +10,10 @@ class mode_emailmClassAction extends inputAction{
 		if($this->post('fileid') != '')$isfile = '1';
 		$barr['isfile']		= $isfile;
 		$type 				= (int)$arr['type'];
-		//外发
+		//外發
 		if($type==1 && $arr['isturn']==1){
 			$vsl = $this->option->getval('email_recexin_'.$this->adminid.'');
-			if(isempt($vsl))return '未成功收信过，不能外发邮件';
+			if(isempt($vsl))return '未成功收信過，不能外發郵件';
 		}
 		if($type == 1){
 			$urs = m('admin')->getone($this->adminid, 'id,name,email');
@@ -33,7 +33,7 @@ class mode_emailmClassAction extends inputAction{
 				$this->flow->savesubmid($arr['ccid'], $id, 1,0);
 			}
 			$this->flow->savesubmid($arr['sendid'], $id, 2,1);
-			//外发发邮件的
+			//外發發郵件的
 			if($type == 1){
 				$emsa = $this->getrecename($arr['receid']);
 				if($emsa != ''){
@@ -48,7 +48,7 @@ class mode_emailmClassAction extends inputAction{
 						'ccname' 	=> $ccsa[1],
 						'attachpath'=> $fjar[0],
 						'attachname'=> $fjar[1],
-					), 1);//自己发送，不异步
+					), 1);//自己發送，不異步
 				}
 			}
 		}
@@ -72,7 +72,7 @@ class mode_emailmClassAction extends inputAction{
 	}
 	
 	
-	//邮件回复的
+	//郵件回復的
 	public function emailhuifuAjax()
 	{
 		$mid 	= (int)$this->post('mid');
@@ -81,7 +81,7 @@ class mode_emailmClassAction extends inputAction{
 		echo $flow->huifu($cont);
 	}
 	
-	//获取个人通讯录上联系人，外发发邮件的
+	//獲取個人通訊錄上聯系人，外發發郵件的
 	public function getvcardAjax()
 	{
 		$row = $this->getvcard();
@@ -105,7 +105,7 @@ class mode_emailmClassAction extends inputAction{
 	{
 		$zfid 	= (int)$this->get('zfid');
 		$rs 	= m('emailm')->getone($zfid,'title,content');
-		$zffes	= m('file')->copyfile('emailm', $zfid); //转发附件
+		$zffes	= m('file')->copyfile('emailm', $zfid); //轉發附件
 		$rs['filers'] = $zffes;
 		$this->returnjson($rs);
 	}

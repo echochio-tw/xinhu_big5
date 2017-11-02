@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>文件预览</title>
+<title>文件預覽</title>
 <link rel="stylesheet" type="text/css" href="webmain/css/css.css"/>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
@@ -10,11 +10,11 @@
 var ismobile = <?=$da['ismobile']?>;
 function zhuang(id,o){
 	var o1 = $(o).parent();
-	o1.html(js.getmsg('发送转化中...'));
+	o1.html(js.getmsg('發送轉化中...'));
 	var url = js.getajaxurl('changetopdf','public')+'&id='+id+'';
 	$.get(url,function(s){
 		if(s=='ok'){
-			o1.html(js.getmsg('√ 已发送，大概在<font color=red id="times">20</font>秒后可刷新查看', 'green')+'，<a href="javascript:;" class="zhu" onclick="location.reload()">[刷新看一下]</a>');
+			o1.html(js.getmsg('√ 已發送，大概在<font color=red id="times">20</font>秒後可刷新查看', 'green')+'，<a href="javascript:;" class="zhu" onclick="location.reload()">[刷新看一下]</a>');
 			timeshow(15);
 		}else{
 			o1.html(js.getmsg(s, 'red'));
@@ -36,11 +36,11 @@ function downxia(id){
 <body style="padding:0px;margin:0px;">
 
 <div align="center"  style="font-size:16px;margin-top:40px">
-	<div>无法预览[<?=$da['frs']['fileext']?>]的类型。</div>
-	<div style="margin-top:15px">如是文档类型需要自己转pdf文件上传才能预览。</div>
-	<div style="margin-top:15px"><button type="button" style="padding:15px" onclick="downxia(<?=$da['frs']['id']?>, this)" class="webbtn">↓直接下载</button></div>
+	<div>無法預覽[<?=$da['frs']['fileext']?>]的類型。</div>
+	<div style="margin-top:15px">如是文檔類型需要自己轉pdf文件上傳才能預覽。</div>
+	<div style="margin-top:15px"><button type="button" style="padding:15px" onclick="downxia(<?=$da['frs']['id']?>, this)" class="webbtn">↓直接下載</button></div>
 	
-	<div style="margin-top:15px"><button type="button" onclick="zhuang(<?=$da['frs']['id']?>, this)" class="webbtn">开始转html查看</button>&nbsp; <a class="zhu" href="javascript:;" onclick="location.reload()">[刷新]</a></div>
+	<div style="margin-top:15px"><button type="button" onclick="zhuang(<?=$da['frs']['id']?>, this)" class="webbtn">開始轉html查看</button>&nbsp; <a class="zhu" href="javascript:;" onclick="location.reload()">[刷新]</a></div>
 </div>
 
 </body>

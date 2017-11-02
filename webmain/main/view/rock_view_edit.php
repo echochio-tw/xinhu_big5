@@ -23,7 +23,7 @@ $(document).ready(function(){
 			}
 		},
 		submitcheck:function(d){
-			if(d.type!='1' && d.type!='4' && d.wherestr=='' && d.whereid=='0')return '必须设置输入相应条件';
+			if(d.type!='1' && d.type!='4' && d.wherestr=='' && d.whereid=='0')return '必須設置輸入相應條件';
 			return {wherestr:jm.base64encode(d.wherestr)}
 		}
 	});
@@ -36,12 +36,12 @@ $(document).ready(function(){
 				nameobj:h.form.recename,
 				idobj:h.form.receid,
 				type:'deptusercheck',
-				title:'选择针对人员'
+				title:'選擇針對人員'
 			};
 			js.getuser(cans);
 		},
 		allqt:function(){
-			h.form.recename.value='全体人员';
+			h.form.recename.value='全體人員';
 			h.form.receid.value='all';
 			h.form.recename.focus();
 		},
@@ -75,13 +75,13 @@ $(document).ready(function(){
 		<table cellspacing="0" border="0" width="100%" align="center" cellpadding="0">
 		
 		<tr>
-			<td align="right" ><font color=red>*</font> 针对对象：</td>
+			<td align="right" ><font color=red>*</font> 針對對象：</td>
 			<td class="tdinput" colspan="3">
 				<div class="input-group" style="width:100%">
 					<input readonly  class="form-control"  name="recename" >
 					<input type="hidden" name="receid" >
 					<span class="input-group-btn">
-						<button class="btn btn-default" click="allqt" type="button">全体人员</button>
+						<button class="btn btn-default" click="allqt" type="button">全體人員</button>
 						<button class="btn btn-default" click="getdist,1" type="button"><i class="icon-search"></i></button>
 					</span>
 				</div>
@@ -90,36 +90,36 @@ $(document).ready(function(){
 		</tr>
 		
 		<tr>
-			<td  align="right" width="15%" ><font color=red>*</font> 类型可：</td>
-			<td class="tdinput" width="35%" ><select name="type" class="form-control"><option value="0">查看</option><option value="1">添加</option><option value="2">编辑</option><option value="3">删除</option><option value="4">导入</option></select></td>
+			<td  align="right" width="15%" ><font color=red>*</font> 類型可：</td>
+			<td class="tdinput" width="35%" ><select name="type" class="form-control"><option value="0">查看</option><option value="1">添加</option><option value="2">編輯</option><option value="3">刪除</option><option value="4">導入</option></select></td>
 			<td  align="right"  width="15%"></td>
 			<td class="tdinput" width="35%" ></td>
 		</tr>
 		
 		<tr>
-			<td  align="right" >选择条件：</td>
-			<td class="tdinput"><select class="form-control" name="whereid"><option value="0">无条件</option></select></td>
+			<td  align="right" >選擇條件：</td>
+			<td class="tdinput"><select class="form-control" name="whereid"><option value="0">無條件</option></select></td>
 			<td colspan="2"><a click="reloadhweil" href="javascript:;">[刷新]</a></td>
 		</tr>
 		<tr>
 			<td  align="right" ></td>
-			<td colspan="3" style="padding-bottom:10px"><font color=#888888>在【流程模块条件】上添加，满足此条件才需要此步骤</font></td>
+			<td colspan="3" style="padding-bottom:10px"><font color=#888888>在【流程模塊條件】上添加，滿足此條件才需要此步驟</font></td>
 		</tr>
 		
 		<tr>
-			<td  align="right" >相应条件：</td>
-			<td class="tdinput" colspan="3"><textarea placeholder="由对应模块上主表字段，如:optid={uid}，操作人是当前用户" name="wherestr" style="height:60px" class="form-control"></textarea><br>如:<a click="hanrenss,0" href="javascript:;">[receid中包含我]</a>,<a click="hanrenss,1" href="javascript:;">[所有下属人员]</a>,<a click="hanrenss,2" href="javascript:;">[直属下属人员]</a>,<a click="hanrenss,4" href="javascript:;">[同级本部门]</a>,<a click="hanrenss,3" href="javascript:;">[所有数据]</a></td>
+			<td  align="right" >相應條件：</td>
+			<td class="tdinput" colspan="3"><textarea placeholder="由對應模塊上主表字段，如:optid={uid}，操作人是當前用戶" name="wherestr" style="height:60px" class="form-control"></textarea><br>如:<a click="hanrenss,0" href="javascript:;">[receid中包含我]</a>,<a click="hanrenss,1" href="javascript:;">[所有下屬人員]</a>,<a click="hanrenss,2" href="javascript:;">[直屬下屬人員]</a>,<a click="hanrenss,4" href="javascript:;">[同級本部門]</a>,<a click="hanrenss,3" href="javascript:;">[所有數據]</a></td>
 		</tr>
 		
 		<tr>
-			<td  align="right" >条件说明：</td>
+			<td  align="right" >條件說明：</td>
 			<td class="tdinput" colspan="3"><textarea  name="explain" style="height:60px" class="form-control"></textarea></td>
 		</tr>
 		
 		<tr>
 			<td  align="right" ></td>
 			<td class="tdinput" colspan="3">
-				<label><input name="status" value="1" checked type="checkbox"> 启用?</label>&nbsp; &nbsp; 
+				<label><input name="status" value="1" checked type="checkbox"> 啟用?</label>&nbsp; &nbsp; 
 			</td>
 		</tr>
 

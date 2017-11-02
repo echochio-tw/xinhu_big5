@@ -1,15 +1,15 @@
 <?php 
 /**
-*	win下将word转html
+*	win下將word轉html
 */
 class officeChajian extends Chajian{
 
 
 	public function tohtml($path)
 	{
-		if(!class_exists('COM'))return '没有开启COM组件';
+		if(!class_exists('COM'))return '沒有開啟COM組件';
 		$word = new COM('Word.Application');
-		$word->Visible = true; //可看见
+		$word->Visible = true; //可看見
 		$word->Documents->Open($path);
 		 
 		$word->Documents[1]->SaveAs('upload/abc.html',8);

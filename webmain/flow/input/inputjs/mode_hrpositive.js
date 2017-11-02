@@ -1,4 +1,4 @@
-//初始函数
+//初始函數
 function initbodys(){
 	if(mid==0)loadinstyrs();
 }

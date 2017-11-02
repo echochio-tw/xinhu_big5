@@ -4,7 +4,7 @@ class yingClassAction extends ActionNot{
 	public function initAction()
 	{
 		if($this->adminid==0){
-			exit('登录已经失效了');
+			exit('登錄已經失效了');
 		}
 	}
 	

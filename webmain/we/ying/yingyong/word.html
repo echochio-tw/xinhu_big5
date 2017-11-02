@@ -26,7 +26,7 @@ var c = {
 			},
 			onerror:function(str){
 				js.msg('msg', str);
-				$('#progresstext_heheheh').html('<font color=red>上传失败</font>');
+				$('#progresstext_heheheh').html('<font color=red>上傳失敗</font>');
 			}
 		});
 	},
@@ -40,18 +40,18 @@ var c = {
 	},
 	onsuccess:function(a,str){
 		var f = js.decode(str);
-		$('#progresstext_heheheh').html(''+a.filename+','+a.filesizecn+'，上传成功,保存中...');
+		$('#progresstext_heheheh').html(''+a.filename+','+a.filesizecn+'，上傳成功,保存中...');
 		var fileid = f.id;
 		js.ajax('word','savefile',{typeid:c.typeid,fileid:fileid},function(a){
 			$('#progresscls_hehehehsss').remove();
-			js.msg('success',''+a.filename+'上传成功');
+			js.msg('success',''+a.filename+'上傳成功');
 			a.fileid=a.id;
 			$('#wordlisttable').append(c.showlist(a));
 		},'none');
 	},
 	create:function(){
-		js.wx.prompt('新建文件夹','请输入文件夹名称：',function(text){
-			if(!text){js.msg('msg','没有输入文件夹名称');return;}
+		js.wx.prompt('新建文件夾','請輸入文件夾名稱：',function(text){
+			if(!text){js.msg('msg','沒有輸入文件夾名稱');return;}
 			js.ajax('word','createfolder',{name:text,typeid:c.typeid},function(a){
 				c.createshow(a);
 			});
@@ -92,7 +92,7 @@ var c = {
 		s1='<div id="filename_'+oi+'">'+d.name+'</div>';
 		if(d.fileid){
 			s1+='<div style="font-size:12px;color:#888888">大小：'+d.filesizecn+'';
-			if(!isempt(d.shate))s1+='，共享给：'+d.shate+'';
+			if(!isempt(d.shate))s1+='，共享給：'+d.shate+'';
 			s1+='</div>';
 		}
 		if(d.fileext=='folder'){
@@ -115,22 +115,22 @@ var c = {
 		var d = this.data[oi-1];
 		this.tempoi = oi;
 		this.tempda = d;
-		var a = [{name:(d.fileext=='folder')?'打开':'下载',lx:0}];
+		var a = [{name:(d.fileext=='folder')?'打開':'下載',lx:0}];
 		if(d.fileext!='folder'){
-			a.push({name:'预览',lx:7});
+			a.push({name:'預覽',lx:7});
 		}
 		if(!this.ssslx){
 			if(d.fileext=='folder'){
-				if(this.movedata)a.push({name:'['+this.movedata.name+']移动到这',lx:3});
+				if(this.movedata)a.push({name:'['+this.movedata.name+']移動到這',lx:3});
 			}else{
-				a.push({name:'移动',lx:2});
+				a.push({name:'移動',lx:2});
 			}
 			a.push({name:'重命名',lx:1});
-			a.push({name:'删除',lx:4});
+			a.push({name:'刪除',lx:4});
 		}
 		if(d.fileext!='folder'){
-			if(d.optid==adminid)a.push({name:'共享给...',lx:5});
-			a.push({name:'转发给...',lx:6});
+			if(d.optid==adminid)a.push({name:'共享給...',lx:5});
+			a.push({name:'轉發給...',lx:6});
 		}
 		js.showmenu({data:a,onclick:function(d){c.clickmenuss(d)}});
 	},
@@ -180,8 +180,8 @@ var c = {
 		c.getfile(pid);
 	},
 	cmmr:function(){
-		js.wx.prompt('重命名','请输入新的名称：',function(text){
-			if(!text){js.msg('msg','没有输入新的名称');return;}
+		js.wx.prompt('重命名','請輸入新的名稱：',function(text){
+			if(!text){js.msg('msg','沒有輸入新的名稱');return;}
 			if(c.tempda.name==text)return;
 			c.data[c.tempoi-1].name=text;
 			$('#filename_'+c.tempoi+'').html(text);
@@ -201,11 +201,11 @@ var c = {
 		$('#'+d.fileext+'_'+d.id+'').remove();
 		this.movedata=false;
 		js.ajax('word','movefile',{type:d.fileext,id:d.id,tid:this.tempda.id},function(a){
-			js.msg('success','移动成功');
+			js.msg('success','移動成功');
 		});
 	},
 	delfload:function(){
-		js.wx.confirm('确定要删除吗？',function(lx){
+		js.wx.confirm('確定要刪除嗎？',function(lx){
 			if(lx=='yes')c.delfloadok();
 		});
 	},
@@ -214,13 +214,13 @@ var c = {
 		this.movedata=false;
 		js.ajax('word','delfile',{type:d.fileext,id:d.id},function(a){
 			$('#'+d.fileext+'_'+d.id+'').remove();
-			js.msg('success','删除成功');
+			js.msg('success','刪除成功');
 		});
 	},
 	fenxiang:function(){
 		$('body').chnageuser({
 			'changetype':'changedeptusercheck',
-			'title':'共享给...',
+			'title':'共享給...',
 			'titlebool':get('header_title'),
 			'onselect':function(sna,sid){
 				c.fenxiangok(sna,sid);
@@ -230,7 +230,7 @@ var c = {
 	zhuanfagei:function(){
 		$('body').chnageuser({
 			'changetype':'changeusercheck',
-			'title':'转发给...',
+			'title':'轉發給...',
 			'titlebool':get('header_title'),
 			'onselect':function(sna,sid){
 				c.zhuanfageiok(sna,sid);
@@ -241,14 +241,14 @@ var c = {
 		var d  = this.tempda;
 		var ds = {'tuid':sid,'type':'user','cont':'','fileid':d.id};
 		js.ajax('reim','forward', ds, function(){
-			js.msg('success','已转发给【'+sna+'】')
+			js.msg('success','已轉發給【'+sna+'】')
 		});
 	},
 	fenxiangok:function(sna,sid){
 		if(sid=='')return;
 		var d = this.tempda;
 		js.ajax('word','shatefile',{type:d.fileext,id:d.id,shateid:sid,shate:jm.base64encode(sna)},function(a){
-			js.msg('success','已共享给【'+sna+'】');
+			js.msg('success','已共享給【'+sna+'】');
 		});
 	},
 	wfenxx:function(lx){
@@ -262,5 +262,5 @@ yy.clickevent=function(d){
 	if(d.url=='fxgw')c.wfenxx('fxgw');	
 }
 </script>
-<div class="workheader" id="workheader" style="line-height:50px; background-color:#ffffff;overflow:hidden"><span onclick="c.clickheadeer(0, this)">我的文档&gt;</span></div>
+<div class="workheader" id="workheader" style="line-height:50px; background-color:#ffffff;overflow:hidden"><span onclick="c.clickheadeer(0, this)">我的文檔&gt;</span></div>
 <div id="mainbody_show"></div>

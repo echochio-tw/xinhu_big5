@@ -5,7 +5,7 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'kqxxsj',celleditor:true,keywhere:'[A][K]pid=0',
 		columns:[{
-			text:'规则名称',dataIndex:'name',sortable:true
+			text:'規則名稱',dataIndex:'name',sortable:true
 		},{
 			text:'ID',dataIndex:'id'
 		}],
@@ -31,7 +31,7 @@ $(document).ready(function(){
 			text:'星期',dataIndex:'week'
 		},{
 			text:'操作',dataIndex:'id',renderer:function(s){
-				return '<a href="javascript:;" onclick="renfw{rand}()">删</a>';
+				return '<a href="javascript:;" onclick="renfw{rand}()">刪</a>';
 			}
 		}]
 	});
@@ -52,10 +52,10 @@ $(document).ready(function(){
 		},
 		clickwin:function(o1,lx){
 			var h = $.bootsform({
-				title:'规则',height:180,width:400,
+				title:'規則',height:180,width:400,
 				tablename:'kqxxsj',isedit:lx,submitfields:'name',
 				items:[{
-					labelText:'名称',name:'name',required:true
+					labelText:'名稱',name:'name',required:true
 				}],
 				success:function(){
 					a.reload();
@@ -73,13 +73,13 @@ $(document).ready(function(){
 		byuexiux:function(){
 			var month = $('#dt1_{rand}').val();
 			if(!month){
-				js.msg('msg','请选择月份');
+				js.msg('msg','請選擇月份');
 				return;
 			}
-			js.msg('wait','设置中...');
+			js.msg('wait','設置中...');
 			js.ajax(js.getajaxurl('setxiugdate','{mode}','{dir}'),{'month':month,'pid':pid},function(a){
 				b.reload();
-				js.msg('success','设置成功');
+				js.msg('success','設置成功');
 			});
 		},
 		clickwins:function(o1,lx){
@@ -88,7 +88,7 @@ $(document).ready(function(){
 				tablename:'kqxxsj',isedit:lx,submitfields:'dt,pid',
 				params:{otherfields:'pid='+pid+''},
 				items:[{
-					labelText:'名称',name:'dt',type:'date',view:'date',required:true
+					labelText:'名稱',name:'dt',type:'date',view:'date',required:true
 				}],
 				success:function(){
 					b.reload();
@@ -102,7 +102,7 @@ $(document).ready(function(){
 		search:function(){
 			var month = $('#dt1_{rand}').val();
 			if(!month){
-				//js.msg('msg','请选择月份');
+				//js.msg('msg','請選擇月份');
 				//return;
 			}
 			b.setparams({'month':month},true);
@@ -129,15 +129,15 @@ $(document).ready(function(){
 			
 			<td></td>
 			<td align="right" nowrap>
-				<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button> &nbsp; 
-				<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button>
+				<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button> &nbsp; 
+				<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button>
 				
 			</td>
 		</tr></table>
 		</div>
 		<div class="blank10"></div>
 		<div id="view_{rand}"></div>
-		<div class="tishi">先双击查看设置休息日的日期，在添加休息日</div>
+		<div class="tishi">先雙擊查看設置休息日的日期，在添加休息日</div>
 	</td>
 	<td width="10"><div style="width:20px;overflow:hidden"></div></td>
 	<td width="60%">
@@ -147,7 +147,7 @@ $(document).ready(function(){
 				<button class="btn btn-primary" id="setadds_{rand}" disabled click="clickwins,0" type="button"><i class="icon-plus"></i> 加休息日</button>
 			</td>
 			<td style="padding-left:10px">
-				<button class="btn btn-info" id="set_{rand}" click="byuexiux" disabled type="button">设置本月周六日为休息日</button>
+				<button class="btn btn-info" id="set_{rand}" click="byuexiux" disabled type="button">設置本月週六日為休息日</button>
 			</td>
 			
 			<td width="90%">

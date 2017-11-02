@@ -1,5 +1,5 @@
 <?php
-//维修报备
+//維修報備
 class flow_repairClassModel extends flowModel
 {
 	public function initModel()

@@ -1,4 +1,4 @@
-var daytime = 8;//每天上班默认8个小时
+var daytime = 8;//每天上班默認8個小時
 
 function oninputblur(na){
 	if(na=='stime'|| na=='uname'){
@@ -10,9 +10,9 @@ function oninputblur(na){
 }
 
 function changesubmit(d){
-	if(d.etime<=d.stime)return '截止时间必须大于开始时间';
+	if(d.etime<=d.stime)return '截止時間必須大于開始時間';
 	var st=parseFloat(d.totals);
-	if(st<=0)return '时间必须大于0';
+	if(st<=0)return '時間必須大于0';
 }
 
 function changetotal(){
@@ -26,7 +26,7 @@ function changetotal(){
 		changedays();
 	},'post,json');
 }
-//计算天数
+//計算天數
 function changedays(){
 	if(!form('totday'))return;
 	var to = parseFloat(form('totals').value);

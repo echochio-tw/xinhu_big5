@@ -1,5 +1,5 @@
 <?php
-//考勤信息下的应用
+//考勤信息下的應用
 class agent_kqdkjlClassModel extends agentModel
 {
 	

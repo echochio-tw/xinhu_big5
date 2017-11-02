@@ -3,7 +3,7 @@ class runtAction extends ActionNot
 {
 	public $runid = 0;
 	public $runrs;
-	public $splitlast = 0; //距离上次提醒秒数0上次没有运行
+	public $splitlast = 0; //距離上次提醒秒數0上次沒有運行
 	
 	public $todoarr		= array();
 	
@@ -18,7 +18,7 @@ class runtAction extends ActionNot
 	}
 	
 	/**
-	*	运行完成后判断运行状态
+	*	運行完成後判斷運行狀態
 	*/
 	public function afterAction()
 	{
@@ -66,10 +66,10 @@ class runtClassAction extends runtAction
 	}
 	
 	/**
-	*	运行定时任务用于cli模式的，建每5分钟运行异常
+	*	運行定時任務用于cli模式的，建每5分鐘運行異常
 	*	Linux 使用crontab php task.php runt,task
-	*	win 使用计划任务 php task.php runt,task
-	*	也可以没5分钟访问地址：http://127.0.0.1/app/xinhu/task.php?m=runt&a=task
+	*	win 使用計劃任務 php task.php runt,task
+	*	也可以沒5分鐘訪問地址：http://127.0.0.1/app/xinhu/task.php?m=runt&a=task
 	*/
 	public function taskAction()
 	{

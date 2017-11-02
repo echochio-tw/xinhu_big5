@@ -15,7 +15,7 @@ body, button, input, select, textarea {
 </style>
 <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp"></script>
 <script>
-//初始化函数
+//初始化函數
 var init = function() {
 	var precision = <?=$da['rs']['precision']?>;
     var center = new qq.maps.LatLng(<?=$da['rs']['location_x']?>,<?=$da['rs']['location_y']?>);
@@ -27,7 +27,7 @@ var init = function() {
         map: map
     });
     infoWin.open();
-    infoWin.setContent('地址：<?=$da['rs']['label']?><br>定位时间：<?=$da['rs']['optdt']?>');
+    infoWin.setContent('地址：<?=$da['rs']['label']?><br>定位時間：<?=$da['rs']['optdt']?>');
     infoWin.setPosition(map.getCenter());
 	
 	var marker = new qq.maps.Marker({

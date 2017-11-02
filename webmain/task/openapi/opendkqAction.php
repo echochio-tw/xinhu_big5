@@ -1,9 +1,9 @@
 <?php
 /**
-*	将数据上传到打卡记录表上
-* 	请求地址如：http://127.0.0.1/api.php?m=opendkq&openkey=key
-*	请求方式：POST
-*	提交过来数据[{"name":"姓名","dkdt":"2016-10-22 09:00:00"}]
+*	將數據上傳到打卡記錄表上
+* 	請求地址如：http://127.0.0.1/api.php?m=opendkq&openkey=key
+*	請求方式：POST
+*	提交過來數據[{"name":"姓名","dkdt":"2016-10-22 09:00:00"}]
 */
 class opendkqClassAction extends openapiAction
 {
@@ -39,6 +39,6 @@ class opendkqClassAction extends openapiAction
 				));
 			}
 		}
-		$this->showreturn('成功导入'.$oi.'条数据');
+		$this->showreturn('成功導入'.$oi.'條數據');
 	}
 }

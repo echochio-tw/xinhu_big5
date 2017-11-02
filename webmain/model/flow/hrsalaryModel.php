@@ -3,7 +3,7 @@ class flow_hrsalaryClassModel extends flowModel
 {
 	protected $flowviewufieds	= 'xuid';
 	
-	//薪资是个严格的模块，只能设置权限后才可以查看，不管是不是管理员
+	//薪資是個嚴格的模塊，只能設置權限後才可以查看，不管是不是管理員
 	protected function flowbillwhere($uid, $lx)
 	{
 		$key  	= $this->rock->post('key');
@@ -30,9 +30,9 @@ class flow_hrsalaryClassModel extends flowModel
 	}
 	
 	public function flowrsreplace($rs){
-		$s = '<font color=red>待发放</font>';
+		$s = '<font color=red>待發放</font>';
 		$rs['ispays']	= $rs['ispay'];
-		if($rs['ispay']==1)$s = '<font color=green>已发放</font>';
+		if($rs['ispay']==1)$s = '<font color=green>已發放</font>';
 		$rs['ispay'] = $s;
 		
 		$s = '<font color=red>待核算</font>';
@@ -44,17 +44,17 @@ class flow_hrsalaryClassModel extends flowModel
 	private function fafang()
 	{
 		$this->addlog(array(
-			'name' => '发放'
+			'name' => '發放'
 		));
 		$this->update('ispay=1', $this->id);
 		m('reim')->asynurl('asynrun','salaryff', array(
 			'id' => $this->id
-		));//异步通知给人员
+		));//異步通知給人員
 	}
 	
 	public function todouser()
 	{
-		$this->push($this->rs['xuid'],'','您['.$this->rs['month'].']月份薪资已发放，请注意查看对账。','薪资发放通知');
+		$this->push($this->rs['xuid'],'','您['.$this->rs['month'].']月份薪資已發放，請注意查看對賬。','薪資發放通知');
 	}
 	
 	public function gongzifafang($sid)
@@ -66,7 +66,7 @@ class flow_hrsalaryClassModel extends flowModel
 		}
 	}
 	
-	//一键生成薪资
+	//一鍵生成薪資
 	public function createdata($month)
 	{
 		$lmonth = c('date')->adddate($month.'-01','m',-1, 'Y-m');
@@ -101,14 +101,14 @@ class flow_hrsalaryClassModel extends flowModel
 			$arr['money']	= $money;
 			$this->insert($arr);
 		}
-		return '成功成功'.$count.'条';
+		return '成功成功'.$count.'條';
 	}
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		$barr = array(
-			'uname' 		=> '貂蝉',
+			'uname' 		=> '貂蟬',
 			'month' 		=> '[2017-08]',
 			'base' 			=> '1700',
 			'skilljt' 		=> '3500',
@@ -118,17 +118,17 @@ class flow_hrsalaryClassModel extends flowModel
 			'reward' 		=> '0',
 			'jiabans' 		=> '0',
 			
-			'punish' 		=> '0', //处罚
+			'punish' 		=> '0', //處罰
 			'socials' 		=> '0', 
 			'taxes' 		=> '0', 
 			'money' 		=> '5700', 
-			'explain' 		=> '本月薪资', 
+			'explain' 		=> '本月薪資', 
 			'isturn' 		=> '是', 
 			'status' 		=> '是',
 			
 		);
 		$barr1 = array(
-			'uname' 		=> '大乔',
+			'uname' 		=> '大喬',
 			'month' 		=> '[2017-08]',
 			'base' 			=> '1700',
 			'skilljt' 		=> '3000',
@@ -138,9 +138,9 @@ class flow_hrsalaryClassModel extends flowModel
 			'reward' 		=> '0',
 			'jiabans' 		=> '0',
 			
-			'explain' 		=> '本月薪资',
+			'explain' 		=> '本月薪資',
 			
-			'punish' 		=> '0', //处罚
+			'punish' 		=> '0', //處罰
 			'socials' 		=> '0', 
 			'taxes' 		=> '0', 
 			'money' 		=> '5200', 
@@ -149,7 +149,7 @@ class flow_hrsalaryClassModel extends flowModel
 			
 		);
 		$barr2 = array(
-			'uname' 		=> '小乔',
+			'uname' 		=> '小喬',
 			'month' 		=> '[2017-08]',
 			'base' 			=> '1700',
 			'skilljt' 		=> '2500',
@@ -159,9 +159,9 @@ class flow_hrsalaryClassModel extends flowModel
 			'reward' 		=> '0',
 			'jiabans' 		=> '0',
 			
-			'explain' 		=> '导入',
+			'explain' 		=> '導入',
 			
-			'punish' 		=> '5', //处罚
+			'punish' 		=> '5', //處罰
 			'socials' 		=> '0', 
 			'taxes' 		=> '0', 
 			'money' 		=> '4695', 
@@ -172,7 +172,7 @@ class flow_hrsalaryClassModel extends flowModel
 		return array($barr,$barr1,$barr2);
 	}
 	
-	//导入之前判断
+	//導入之前判斷
 	public function flowdaorubefore($rows)
 	{
 		$inarr	= array();
@@ -188,7 +188,7 @@ class flow_hrsalaryClassModel extends flowModel
 			if(!$urs)continue;
 			
 			$to 	= $this->rows("`xuid`='".$urs['id']."' and `month`='$month'");
-			if($to>0)continue;//已经存在了
+			if($to>0)continue;//已經存在了
 			
 			$arr['month'] = $month;
 			$arr['xuid'] = $urs['id'];
@@ -206,7 +206,7 @@ class flow_hrsalaryClassModel extends flowModel
 		return $inarr;
 	}
 	
-	//导入后处理,未审核需要提交审核
+	//導入後處理,未審核需要提交審核
 	public function flowdaoruafter($drdata=array())
 	{
 		foreach($drdata as $k=>$rs){

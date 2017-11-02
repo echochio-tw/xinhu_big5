@@ -3,7 +3,7 @@ class sjoinClassModel extends Model
 {
 	private $getgroupidarr=array();
 	
-	//获取用户所在组Id
+	//獲取用戶所在組Id
 	public function getgroupid($uid, $fid='')
 	{
 		if($fid=='')$fid = 'id';
@@ -18,7 +18,7 @@ class sjoinClassModel extends Model
 		return $ids;
 	}
 	
-	//把人员加到对应组上
+	//把人員加到對應組上
 	public function addgroupuid($uid, $gid)
 	{
 		$where 	= "1=1 and ((`type`='gu' and `sid`=$uid ) or (`type`='ug' and `mid`=$uid))";
@@ -27,7 +27,7 @@ class sjoinClassModel extends Model
 		$this->db->insert($this->table, '`type`,`mid`,`sid`,`indate`', "select 'ug','$uid',`id`,now() from `[Q]group` where id in($gid)", true);
 	}
 	
-	//获取权限菜单id
+	//獲取權限菜單id
 	public function getmenuid($uid)
 	{
 		$gid 	= $this->getgroupid($uid);
@@ -50,7 +50,7 @@ class sjoinClassModel extends Model
 	}
 	
 	/**
-	*	查看菜单权限
+	*	查看菜單權限
 	*/	
 	public function getuserext($uid, $type=0)
 	{
@@ -76,14 +76,14 @@ class sjoinClassModel extends Model
 	}
 	
 	/**
-	*	获取组列表
+	*	獲取組列表
 	*/
 	public function getgrouparr()
 	{
 		return $this->db->getall("select `id`,`name` from `[Q]group` order by `sort`");
 	}
 	/**
-	*	获取组列表
+	*	獲取組列表
 	*/
 	public function getgrouparrs()
 	{

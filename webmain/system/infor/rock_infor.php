@@ -5,25 +5,25 @@ $(document).ready(function(){
 		tablename:'infor',fanye:true,sort:'sort',dir:'asc',celleditor:true,
 		url:publicstore('{mode}','{dir}'),storeafteraction:'inforafter',storebeforeaction:'inforbefore',
 		columns:[{
-			text:'类型',dataIndex:'typename',sortable:true
+			text:'類型',dataIndex:'typename',sortable:true
 		},{
-			text:'名称',dataIndex:'title',align:'left'
+			text:'名稱',dataIndex:'title',align:'left'
 		},{
-			text:'序号',dataIndex:'sort',editor:true
+			text:'序號',dataIndex:'sort',editor:true
 		},{
-			text:'显示首页',dataIndex:'isshow',type:'checkbox',editor:true,sortable:true
+			text:'顯示首頁',dataIndex:'isshow',type:'checkbox',editor:true,sortable:true
 		},{
 			text:'操作人',dataIndex:'optname',sortable:true
 		},{
-			text:'发布者',dataIndex:'zuozhe'
+			text:'發布者',dataIndex:'zuozhe'
 		},{
-			text:'时间',dataIndex:'indate',sortable:true,sortable:true,renderer:function(v){
+			text:'時間',dataIndex:'indate',sortable:true,sortable:true,renderer:function(v){
 				return v.replace(' ','<br>');
 			}
 		},{
-			text:'发布给',dataIndex:'recename'
+			text:'發布給',dataIndex:'recename'
 		},{
-			text:'修改时间',dataIndex:'optdt',sortable:true,renderer:function(v){
+			text:'修改時間',dataIndex:'optdt',sortable:true,renderer:function(v){
 				return v.replace(' ','<br>');
 			}
 		}],
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			if(lx==1){
 				id = a.changeid;
 				icon='edit';
-				name='编辑信息';
+				name='編輯信息';
 			};
 			guaninforlist = a;
 			addtabs({num:'inforedit'+id+'',url:'system,infor,edit,id='+id+'',icons:icon,name:name});
@@ -86,15 +86,15 @@ $(document).ready(function(){
 	 </td>
 	 <td align="left"  style="padding:0px 10px;">
 		<div class="input-group" style="width:300px;">
-			<input  class="form-control" id="key_{rand}"  placeholder="类型/名称">
+			<input  class="form-control" id="key_{rand}"  placeholder="類型/名稱">
 			<span class="input-group-btn">
 				<button class="btn btn-default" click="search" type="button"><i class="icon-search"></i></button>
 			</span>
 		</div>
 	 </td>
 	  <td align="right">  
-			<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>&nbsp; 
-			<button class="btn btn-danger" click="del" disabled id="del_{rand}" type="button"><i class="icon-trash"></i> 删除</button>
+			<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>&nbsp; 
+			<button class="btn btn-danger" click="del" disabled id="del_{rand}" type="button"><i class="icon-trash"></i> 刪除</button>
 		</td>
 		</tr>
 	</table>

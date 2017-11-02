@@ -15,11 +15,11 @@ class yygongClassAction extends apiAction
 		
 		foreach($data as $k=>$v){
 			if($k=='receid')break;
-			if($this->isempt($v))$this->showreturn('', '['.$k.']不能为空', 201);
+			if($this->isempt($v))$this->showreturn('', '['.$k.']不能為空', 201);
 		}
 		
 		$mid = m('infor')->insert($data);
-		m('flow')->submit('gong', $mid, '发布');
+		m('flow')->submit('gong', $mid, '發布');
 		$this->showreturn('');
 	}
 }

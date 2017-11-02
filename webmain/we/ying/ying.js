@@ -52,7 +52,7 @@ var myScroll=false,yy={
 		}
 	},
 	
-	//显示
+	//顯示
 	scrollnew:function(){
 		var top = $(document).scrollTop();
 		if(top>50){
@@ -78,7 +78,7 @@ var myScroll=false,yy={
 		}
 	},
 	
-	//第一个条件编号
+	//第一個條件編號
 	getfirstnum:function(d){
 		var dbh = 'def',bh='',a = d[0],i,len,lens,subs;
 		if(a){
@@ -114,7 +114,7 @@ var myScroll=false,yy={
 		}
 		return [bh,goi,goj];
 	},
-	showtabstr(oi, tit){
+	showtabstr:function(oi, tit){
 		$('[temp="tablx"]').removeClass('active');
 		$('[temp="tablx"]:eq('+oi+')').addClass('active');
 		$('[temp="tabying"]').css({'color':'','border-top':''});
@@ -192,7 +192,7 @@ var myScroll=false,yy={
 		$('#header_title').html(tit);
 	},
 	
-	//点击菜单了
+	//點擊菜單了
 	clickmenus:function(a,oi){
 		$("div[id^='menushoess']").remove();
 		if(!this.onclickmenu(a))return;
@@ -279,12 +279,12 @@ var myScroll=false,yy={
 		this.tempid 	= ids;
 		this.tempnum 	= nus;
 		this.temparr 	= {oi:oi};
-		var da = [{name:'详情',lx:998,oi:oi}];
+		var da = [{name:'詳情',lx:998,oi:oi}];
 		var subdata = this.suboptmenu[''+nus+'_'+ids+''];
 		if(typeof(subdata)=='object'){
 			for(i=0;i<subdata.length;i++)da.push(subdata[i]);
 		}else{
-			da.push({name:'<img src="images/loadings.gif" align="absmiddle"> 加载菜单中...',lx:999});
+			da.push({name:'<img src="images/loadings.gif" align="absmiddle"> 加載菜單中...',lx:999});
 			this.loadoptnum(nus,ids);
 		}
 		js.showmenu({
@@ -324,17 +324,17 @@ var myScroll=false,yy={
 			return;
 		}
 		if(lx==1 || lx==9 || lx==10 || lx==13 || lx==15 || lx==16 || lx==17){
-			var bts = (d.issm==1)?'必填':'选填';
-			js.wx.prompt(d.name,'请输入['+d.name+']说明('+bts+')：',function(text){
+			var bts = (d.issm==1)?'必填':'選填';
+			js.wx.prompt(d.name,'請輸入['+d.name+']說明('+bts+')：',function(text){
 				if(!text && d.issm==1){
-					js.msg('msg','没有输入['+d.name+']说明');
+					js.msg('msg','沒有輸入['+d.name+']說明');
 				}else{
 					yy.showmenuclicks(d, text);
 				}
 			});
 			return;
 		}
-		//添加提醒设置
+		//添加提醒設置
 		if(lx==14){
 			var url='index.php?a=lum&m=input&d=flow&num=remind&mid='+d.djmid+'&def_modenum='+d.modenum+'&def_mid='+d.mid+'&def_explain=basejm_'+jm.base64encode(d.smcont)+'&show=we';
 			js.location(url);
@@ -394,7 +394,7 @@ var myScroll=false,yy={
 				if(d.picurl)s+='<div onclick="yy.showmenu('+oi+')" class="imgs"><img src="'+d.picurl+'" width="100%"></div>';
 				if(d.cont)s+='<div  onclick="yy.showmenu('+oi+')" class="cont">'+d.cont.replace(/\n/g,'<br>')+'</div>';
 				if(d.id && d.modenum){
-					s+='<div class="xq r-border-t"><font onclick="yy.showmenu('+oi+')">操作<i class="icon-angle-down"></i></font><span onclick="yy.xiang('+oi+')">详情&gt;&gt;</span>';
+					s+='<div class="xq r-border-t"><font onclick="yy.showmenu('+oi+')">操作<i class="icon-angle-down"></i></font><span onclick="yy.xiang('+oi+')">詳情&gt;&gt;</span>';
 					s+='</div>';
 				}
 				if(d.statustext)s+='<div style="background-color:'+d.statuscolor+';opacity:0.7" class="zt">'+d.statustext+'</div>';
@@ -406,25 +406,25 @@ var myScroll=false,yy={
 		if(count==0)count=len;
 		if(count>0){
 			this.nowpage = a.page;
-			s = '<div class="showblank" id="showblank">共'+count+'条记录';
-			if(a.maxpage>1)s+=',当前'+a.maxpage+'/'+a.page+'页';
+			s = '<div class="showblank" id="showblank">共'+count+'條記錄';
+			if(a.maxpage>1)s+=',當前'+a.maxpage+'/'+a.page+'頁';
 			if(a.page<a.maxpage){
-				s+=', <a id="showblankss" onclick="yy.regetdata(this,'+(a.page+1)+')" href="javascript:;">点击加载</a>';
+				s+=', <a id="showblankss" onclick="yy.regetdata(this,'+(a.page+1)+')" href="javascript:;">點擊加載</a>';
 				this.overend = false;
 			}
 			s+= '</div>';
 			this.showobj.append(s);
 			if(a.count==0)$('#showblank').html('');
 		}else{
-			this.showobj.html('<div class="notrecord" id="notrecord">暂无记录</div>');
+			this.showobj.html('<div class="notrecord" id="notrecord">暫無記錄</div>');
 		}
 		if(this.touchobj)this.touchobj.onupok();
 	},
 	onupbefore:function(){
 		if(this.overend)return false;
 		var a={
-			'msg':'↑ 继续上拉加载第'+(this.nowpage+1)+'页',
-			'msgok' : '<a id="showblankss">↓ 释放后</a>加载第'+(yy.nowpage+1)+'页...'
+			'msg':'↑ 繼續上拉加載第'+(this.nowpage+1)+'頁',
+			'msgok' : '<a id="showblankss">↓ 釋放後</a>加載第'+(yy.nowpage+1)+'頁...'
 		};
 		return a;
 	},

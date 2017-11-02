@@ -1,5 +1,5 @@
 /**
-*	rockdatepicker 时间选择插件-手机版本使用
+*	rockdatepicker 時間選擇插件-手機版本使用
 *	caratename：雨中磐石(rainrock)
 *	caratetime：2017-06-19 21:40:00
 *	email:admin@rockoa.com
@@ -33,10 +33,10 @@
 			var lx		= this.format;
 			if(lx=='H:i:00'||lx=='H:i'||lx=='i:s')this.view='time';
 			var minv	= this.mindate;
-			if(isempt(minv))minv= '1930-01-01 00:00:00';//最小时间
+			if(isempt(minv))minv= '1930-01-01 00:00:00';//最小時間
 			this.mindate	= minv;
 			var maxv	= this.maxdate;
-			if(isempt(maxv))maxv= '2050-12-31 23:59:59';//最大时间
+			if(isempt(maxv))maxv= '2050-12-31 23:59:59';//最大時間
 			this.maxdate	= maxv;
 			
 			this.max	= this.shijienges(this.maxdate)
@@ -110,7 +110,7 @@
 			s+='</tr>';
 			
 			s+='</table></div>';
-			s+='<div style="padding-bottom:20px"><table width="100%"><tr><td width="25%" align="center"><input type="button" value="清空"  pickermobile="qk" style="background:none;border:none;padding:5px 10px;color:#888888"></td><td width="25%" align="center"><input type="button" value="现在"  pickermobile="now" style="background:none;border:none;padding:5px 10px;color:#1389D3"></td><td width="25%" align="center"><input type="button" value="确定" pickermobile="ok"  style="background:none;border:none;padding:5px 10px;color:#1389D3"></td><td width="25%" align="center"><input type="button" value="取消" pickermobile="qx"  style="background:none;border:none;padding:5px 10px;color:#888888"></td></tr></table></div>';
+			s+='<div style="padding-bottom:20px"><table width="100%"><tr><td width="25%" align="center"><input type="button" value="清空"  pickermobile="qk" style="background:none;border:none;padding:5px 10px;color:#888888"></td><td width="25%" align="center"><input type="button" value="現在"  pickermobile="now" style="background:none;border:none;padding:5px 10px;color:#1389D3"></td><td width="25%" align="center"><input type="button" value="確定" pickermobile="ok"  style="background:none;border:none;padding:5px 10px;color:#1389D3"></td><td width="25%" align="center"><input type="button" value="取消" pickermobile="qx"  style="background:none;border:none;padding:5px 10px;color:#888888"></td></tr></table></div>';
 			s+='</div>';
 			$('body').append(s);
 			$('[pickermobile]').click(function(){
@@ -147,8 +147,8 @@
 			var Y = parseFloat(get('pickermobile_input_year').value);
 			var m = parseFloat(get('pickermobile_input_month').value);
 			var def= parseFloat(o.value);
-			var max	= me.marr[m-1];//这个月最大天数
-			if(Y%4==0&&m==2)max=29;//判断是不是轮年
+			var max	= me.marr[m-1];//這個月最大天數
+			if(Y%4==0&&m==2)max=29;//判斷是不是輪年
 			if(def>max)def=max;
 			o.length = 0;
 			var oi;

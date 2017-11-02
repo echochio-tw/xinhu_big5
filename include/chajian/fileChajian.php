@@ -2,9 +2,9 @@
 class fileChajian extends Chajian
 {
 	
-	public $path;		//文件路径
-	public $name;		//文件名称
-	public $ext;		//扩展名
+	public $path;		//文件路徑
+	public $name;		//文件名稱
+	public $ext;		//擴展名
 	
 	private $mimitype =  array(
 		'unkown' => 'application/octet-stream',
@@ -227,7 +227,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-		删除文件
+		刪除文件
 	*/
 	public function delfile($file)
 	{
@@ -251,7 +251,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-		判断文件是否存在
+		判斷文件是否存在
 	*/
 	public function filebool($path)
 	{
@@ -259,9 +259,9 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-		创建文件
-		@pamars	$path	文件路径
-		@pamars $cont	内容
+		創建文件
+		@pamars	$path	文件路徑
+		@pamars $cont	內容
 	*/
 	public function caretefile($path,$cont)
 	{
@@ -284,7 +284,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-	*	获取某个目录下所有文件
+	*	獲取某個目錄下所有文件
 	*/
 	public function getfilerows($path)
 	{
@@ -296,8 +296,8 @@ class fileChajian extends Chajian
 			if(!in_array($file, $nyunf)){
 				$filess = $path.'/'.$file;
 				if(is_file($filess)){
-					$editdt = filectime($filess);//上次修改时间
-					$lastdt = filemtime($filess);//最后修改的时间
+					$editdt = filectime($filess);//上次修改時間
+					$lastdt = filemtime($filess);//最後修改的時間
 					$rows[] = array(
 						'filename' 	=> $file,
 						'editdt' 	=> date('Y-m-d H:i:s', $editdt),
@@ -310,7 +310,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-	*	获取某个目录下所有文件夹
+	*	獲取某個目錄下所有文件夾
 	*/
 	public function getfolderrows($path)
 	{
@@ -332,7 +332,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-	*	获取文件的mime类型
+	*	獲取文件的mime類型
 	*/
 	public function getMime($file)
 	{
@@ -349,7 +349,7 @@ class fileChajian extends Chajian
 	}
 	
 	/**
-	*	根据文件获取对应扩展名
+	*	根據文件獲取對應擴展名
 	*/
 	public function getfiletoExt($file, $ext='')
 	{

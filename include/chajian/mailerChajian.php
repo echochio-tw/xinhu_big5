@@ -1,6 +1,6 @@
 <?php 
 /**
-	PHPMailer 读取插件类
+	PHPMailer 讀取插件類
 */
 
 include_once(ROOT_PATH.'/include/PHPMailer/class.phpmailer.php');
@@ -32,12 +32,12 @@ class mailerChajian extends Chajian{
 		$this->addReplyTo($email);
 	}
 	
-	//发件人邮箱地址  
+	//發件人郵箱地址  
 	public function setFrom($from, $name=''){
 		$this->mail->SetFrom($from, $this->tojoin($name));
 	}
 	
-	//设置回复
+	//設置回復
 	public function addReplyTo($address, $name=''){
 		$this->mail->AddReplyTo($address, $this->tojoin($name));
 	}
@@ -91,7 +91,7 @@ class mailerChajian extends Chajian{
 		}
 	}
 	
-	//发送邮件
+	//發送郵件
 	public function sendMail($Subject, $body=''){
 		$this->mail->Subject = $this->tojoin($Subject);
 		$this->mail->Body 	 = $body;

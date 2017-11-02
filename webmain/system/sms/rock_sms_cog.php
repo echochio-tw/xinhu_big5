@@ -6,10 +6,10 @@ $(document).ready(function(){
 	var c={
 		init:function(){
 			var o = get('btnss{rand}');
-			o.value='加载中...';
+			o.value='加載中...';
 			js.ajax(js.getajaxurl('gettotal','{mode}','{dir}'),false,function(ret){
 				if(ret.success){
-					$('#stotal{rand}').html(''+ret.data.balance+'元('+ret.data.smstotal+'条)');
+					$('#stotal{rand}').html(''+ret.data.balance+'元('+ret.data.smstotal+'條)');
 					$('#typetext{rand}').html(ret.data.typetext);
 				}else{
 					js.msg('msg', ret.msg);
@@ -20,15 +20,15 @@ $(document).ready(function(){
 			},'get,json');
 		},
 		ceshi:function(){
-			js.prompt('测试发短信','输入手机号码(测试成功会扣除一条短信)',function(lx,txt){
+			js.prompt('測試發短信','輸入手機號碼(測試成功會扣除一條短信)',function(lx,txt){
 				if(lx=='yes'&&txt)c.sheniokx(txt)
 			});
 		},
 		sheniokx:function(sj){
-			js.msg('wait','发送中...');
+			js.msg('wait','發送中...');
 			js.ajax(js.getajaxurl('testsend','{mode}','{dir}'),{mobile:sj},function(ret){
 				if(ret.success){
-					js.msg('success','测试发送成功');
+					js.msg('success','測試發送成功');
 					c.init();
 				}else{
 					js.msg('msg', ret.msg);
@@ -59,13 +59,13 @@ $(document).ready(function(){
 	</tr>
 
 	<tr>
-		<td  align="right" width="180">剩余短信：</td>
-		<td class="tdinput"><span id="stotal{rand}">0.00元(0条)</span>，<a class="btn btn-success btn-xs" href="<?=URLY?>user_index_sms_a.html" target="_blank">去充值</a></td>
+		<td  align="right" width="180">剩餘短信：</td>
+		<td class="tdinput"><span id="stotal{rand}">0.00元(0條)</span>，<a class="btn btn-success btn-xs" href="<?=URLY?>user_index_sms_a.html" target="_blank">去充值</a></td>
 	</tr>
 	
 	<tr>
-		<td  align="right" width="180">官网用户类型：</td>
-		<td class="tdinput"><span id="typetext{rand}">普通用户</span></td>
+		<td  align="right" width="180">官網用戶類型：</td>
+		<td class="tdinput"><span id="typetext{rand}">普通用戶</span></td>
 	</tr>
 	
 	
@@ -73,22 +73,22 @@ $(document).ready(function(){
 		<td  align="right" ></td>
 		<td class="tdinput">
 		<input type="button" click="init" id="btnss{rand}" value="刷新" class="btn btn-default">&nbsp; &nbsp;
-		<input type="button" click="ceshi" id="test{rand}" value="测试发送" class="btn btn-default">&nbsp;&nbsp;
-		<a href="<?=URLY?>view_dxto.html" target="_blank">[使用帮助]</a>
+		<input type="button" click="ceshi" id="test{rand}" value="測試發送" class="btn btn-default">&nbsp;&nbsp;
+		<a href="<?=URLY?>view_dxto.html" target="_blank">[使用幫助]</a>
 		</td>
 	</tr>
 	
 	<tr>
-		<td  colspan="2"><div class="inputtitle">功能设置</div></td>
+		<td  colspan="2"><div class="inputtitle">功能設置</div></td>
 	</tr>
 	
 	<tr>
-		<td  align="right">是否开短信催办：</td>
-		<td class="tdinput"><select id="sms_iscb_{rand}" class="form-control"><option value="0">不开启</option><option value="1">开启</option></select></td>
+		<td  align="right">是否開短信催辦：</td>
+		<td class="tdinput"><select id="sms_iscb_{rand}" class="form-control"><option value="0">不開啟</option><option value="1">開啟</option></select></td>
 	</tr>
 	
 	<tr>
-		<td  align="right">短信催办模版编号：</td>
+		<td  align="right">短信催辦模版編號：</td>
 		<td class="tdinput"><input id="sms_cbnum_{rand}" maxlength="8" value="defnum" class="form-control"></td>
 	</tr>
 	

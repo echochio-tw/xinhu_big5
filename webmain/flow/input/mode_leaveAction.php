@@ -14,12 +14,12 @@ class mode_leaveClassAction extends inputAction{
 		//$date	= c('date', true);
 		//$sj		= $date->datediff('H', $start, $end);
 		$sj 	= $kq->getsbtime($this->adminid,$start, $end);
-		$sbtime = $kq->getworktime($this->adminid, $start); //一天上班小时
+		$sbtime = $kq->getworktime($this->adminid, $start); //一天上班小時
 		$sj 	= $this->qjshieuts($sj);
 		return array($sj, '', $sbtime);
 	}
 	
-	//请假最小单位0.5小时
+	//請假最小單位0.5小時
 	private function qjshieuts($jst)
 	{
 		$sts = explode('.', $jst.'');
@@ -35,7 +35,7 @@ class mode_leaveClassAction extends inputAction{
 	
 
 	
-	//统计剩余时间
+	//統計剩餘時間
 	public function getshentime()
 	{
 		$mid = (int)$this->get('mid');

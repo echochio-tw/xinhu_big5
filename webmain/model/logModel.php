@@ -25,7 +25,7 @@ class logClassModel extends Model
 	}
 	
 	/**
-	*	提醒返回错误日志添加
+	*	提醒返回錯誤日志添加
 	*/
 	public function todolog($type,$barr=array())
 	{
@@ -55,7 +55,7 @@ class logClassModel extends Model
 	}
 	
 	/**
-	*	获取已读人员
+	*	獲取已讀人員
 	*/
 	public function getreadarr($table, $mid)
 	{
@@ -107,7 +107,7 @@ class logClassModel extends Model
 		return $to;
 	}
 	
-	//获取已读未读数
+	//獲取已讀未讀數
 	public function getreadshu($table, $mid, $receid, $optdt='', $dbs=null)
 	{
 		$ydshu	= $wdshu = 0;
@@ -126,7 +126,7 @@ class logClassModel extends Model
 		$rows 	= $this->db->getall("SELECT `optid` FROM `[Q]reads` where `table`='$table' and `mid`='$mid' GROUP BY `optid`");
 		$ydarr	= array();
 		foreach($rows as $k=>$rs)$ydarr[] = $rs['optid'];
-		$wduarr	= array(); //未读人员数组
+		$wduarr	= array(); //未讀人員數組
 		foreach($uarr as $k=>$rs){
 			$uid 	= $rs['id'];
 			$name 	= $rs['name'];

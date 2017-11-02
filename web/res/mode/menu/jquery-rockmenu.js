@@ -1,5 +1,5 @@
 /**
-	rockmenu 菜单选择插件
+	rockmenu 菜單選擇插件
 	caratename：chenxihu
 	caratetime：214-04-06 21:40:00
 	email:qqqq2900@126.com
@@ -124,7 +124,7 @@ var rockmenuobj	= null;
 				t		= off.top+can.top;
 			this._reshewhere(l,t);
 		};
-		//项目单击
+		//項目單擊
 		this.itemsclick = function(o){
 			var oi	= parseInt($(o).attr('temp'));
 			can.itemsclick(json[oi],oi,me);
@@ -143,7 +143,7 @@ var rockmenuobj	= null;
 	$.rockmenu	  = function(options, dxo){
 		var defaultVal = {
 			data:[],
-			display:'name',//显示的名称
+			display:'name',//顯示的名稱
 			left:0,
 			overcls:'li01',
 			maincls:'',
@@ -156,8 +156,8 @@ var rockmenuobj	= null;
 			autoremove:true,
 			trigger:'click',
 			autohide:true,
-			arrowup:false,	//是否有箭头
-			background:'#ffffff',//背景颜色
+			arrowup:false,	//是否有箭頭
+			background:'#ffffff',//背景顏色
 			bgcolor:'',
 			resultbody:function(){
 				return '';

@@ -35,7 +35,7 @@ class agent_gongClassModel extends agentModel
 			$ydarr	= explode(',', m('log')->getread('infor', $uid));
 			foreach($rowd as $k=>$rs){
 				if(!in_array($rs['id'], $ydarr)){
-					$rows[$k]['statustext'] 	= '未读';
+					$rows[$k]['statustext'] 	= '未讀';
 					$rows[$k]['statuscolor'] 	= '#ED5A5A';
 				}else{
 					$rows[$k]['ishui']			= 1;

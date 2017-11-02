@@ -7,23 +7,23 @@ $(document).ready(function(){
 		tablename:'im_mess',celleditor:false,sort:'id',dir:'desc',checked:true,modedir:'{mode}:{dir}',
 		storeafteraction:'storeaftershow',params:{'atype':atype},storebeforeaction:'storebeforeshow',fanye:true,
 		columns:[{
-			text:'发送人',dataIndex:'sendname'
+			text:'發送人',dataIndex:'sendname'
 		},{
 			text:'接收人',dataIndex:'recename',editor:true
 		},{
-			text:'消息类型',dataIndex:'typetxt'
+			text:'消息類型',dataIndex:'typetxt'
 		},{
-			text:'消息内容',dataIndex:'cont',align:'left',renderer:function(v){
+			text:'消息內容',dataIndex:'cont',align:'left',renderer:function(v){
 				return jm.base64decode(v);
 			},renderstyle:function(v,d){
 				return 'word-wrap:break-word;word-break:break-all;white-space:normal;';
 			}
 		},{
-			text:'相关文件',dataIndex:'fileid'
+			text:'相關文件',dataIndex:'fileid'
 		},{
-			text:'发送时间',dataIndex:'optdt'
+			text:'發送時間',dataIndex:'optdt'
 		},{
-			text:'状态',dataIndex:'zttext'
+			text:'狀態',dataIndex:'zttext'
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		}]
@@ -53,7 +53,7 @@ $(document).ready(function(){
 				nameobj:get('recename{rand}'),
 				idobj:get('receid{rand}'),
 				type:'usercheck',
-				title:'选择发送人/接收人'
+				title:'選擇發送人/接收人'
 			};
 			js.getuser(cans);
 		}
@@ -68,7 +68,7 @@ $(document).ready(function(){
 	
 	<table width="100%">
 	<tr>
-		<td nowrap>日期从&nbsp;</td>
+		<td nowrap>日期從&nbsp;</td>
 		<td nowrap>
 			<input style="width:110px" onclick="js.changedate(this)" readonly class="form-control datesss" id="dt1_{rand}" >
 		</td>
@@ -78,11 +78,11 @@ $(document).ready(function(){
 		</td>
 		
 		<td style="padding-left:10px">
-			<input class="form-control" style="width:110px" id="key_{rand}" placeholder="消息内容">
+			<input class="form-control" style="width:110px" id="key_{rand}" placeholder="消息內容">
 		</td>
 		<td style="padding-left:10px">
 			<div style="width:230px" class="input-group">
-				<input readonly class="form-control" placeholder="发送人/接收人" id="recename{rand}" >
+				<input readonly class="form-control" placeholder="發送人/接收人" id="recename{rand}" >
 				<input type="hidden" id="receid{rand}" >
 				<span class="input-group-btn">
 					<button class="btn btn-default" click="removes" type="button"><i class="icon-remove"></i></button>
@@ -96,8 +96,8 @@ $(document).ready(function(){
 		<td  width="90%" style="padding-left:10px"></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu,1" type="button">导出</button> &nbsp;
-			<button class="btn btn-danger" click="del" type="button"><i class="icon-trash"></i> 删除</button>
+			<button class="btn btn-default" click="daochu,1" type="button">導出</button> &nbsp;
+			<button class="btn btn-danger" click="del" type="button"><i class="icon-trash"></i> 刪除</button>
 		</td>
 	</tr>
 	</table>

@@ -14,7 +14,7 @@ $(document).ready(function(){
 			if(da=='success'){
 				js.msg('success','修改成功');
 			}else{
-				if(da=='')da='修改失败';
+				if(da=='')da='修改失敗';
 				js.msg('msg',da);
 			}
 			form('submitbtn',fm).disabled=false;
@@ -64,8 +64,8 @@ function showface(img)
 				<td width="15"></td>
 				<td valign="bottom">
                	 	<input class="btn btn-success" name="submitbtn" click="save" value="保存修改" type="button">&nbsp; 
-                	<input class="btn btn-default" click="claertx" value="清空头像" type="button">&nbsp; 
-                	<a href="javascript:" click="yongyt" onclick="return false">[用原图]</a>
+                	<input class="btn btn-default" click="claertx" value="清空頭像" type="button">&nbsp; 
+                	<a href="javascript:" click="yongyt" onclick="return false">[用原圖]</a>
                 </td>
 			</tr>
 			</table>

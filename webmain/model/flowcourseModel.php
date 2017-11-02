@@ -1,6 +1,6 @@
 <?php
 /**
-*	流程步骤的
+*	流程步驟的
 */
 class flowcourseClassModel extends Model
 {
@@ -22,7 +22,7 @@ class flowcourseClassModel extends Model
 			if($rs['mid']>0)$isinit=true;
 			if($rs['optdt']>$time)$isinit=true;
 		}
-		//没有初始化
+		//沒有初始化
 		if(!$isinit){
 			$pid = '-1';
 			foreach($rows as $k=>$rs){
@@ -45,10 +45,10 @@ class flowcourseClassModel extends Model
 				$this->courserows[] = $rs;
 			}
 		}
-		//分支说明
+		//分支說明
 		foreach($this->courserows as $k=>$rs){
 			$fzsm = '';
-			if(!isempt($rs['recename']))$fzsm='适用('.$rs['recename'].')';
+			if(!isempt($rs['recename']))$fzsm='適用('.$rs['recename'].')';
 			$whereid = (int)$rs['whereid'];
 			if($whereid>0){
 				$wherena = $this->db->getmou('[Q]flow_where','name', 'id='.$whereid.'');
@@ -102,7 +102,7 @@ class flowcourseClassModel extends Model
 		return $rows;
 	}
 	
-	//获取显示数据
+	//獲取顯示數據
 	public function getTreedata($setid)
 	{
 		$drows = $this->db->getall("select *,(select count(1) from `[Q]flow_course` where `mid`=a.id)as stotal from `[Q]flow_course` a where a.`setid`='$setid' order by a.`sort`");

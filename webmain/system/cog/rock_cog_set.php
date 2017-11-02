@@ -16,7 +16,7 @@ $(document).ready(function(){
 				d[i] = $('#'+i+'_{rand}').val();
 			}
 			if(d.title==''){
-				js.msg('msg','系统标题不能为空');
+				js.msg('msg','系統標題不能為空');
 				return;
 			}
 			js.ajax(js.getajaxurl('savecong','{mode}','{dir}'), d, function(s){
@@ -51,85 +51,85 @@ $(document).ready(function(){
 		
 		<tr>
 			<td  colspan="2"><div class="inputtitle">基本信息
-			<div style="padding:5px;line-height:18px;font-size:12px;color:#888888">此保存在配置文件下，也可以自己打开配置文件(webmain/webmainConfig.php)来修改</div>
+			<div style="padding:5px;line-height:18px;font-size:12px;color:#888888">此保存在配置文件下，也可以自己打開配置文件(webmain/webmainConfig.php)來修改</div>
 			</div></td>
 		</tr>
 	
 		<tr>
-			<td  align="right" width="180">系统标题：</td>
+			<td  align="right" width="180">系統標題：</td>
 			<td class="tdinput"><input id="title_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">APP移动端PC上标题：</td>
+			<td  align="right">APP移動端PC上標題：</td>
 			<td class="tdinput"><input id="apptitle_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">REIM即时通信标题：</td>
+			<td  align="right">REIM即時通信標題：</td>
 			<td class="tdinput"><input id="reimtitle_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">系统URL地址：</td>
+			<td  align="right">系統URL地址：</td>
 			<td class="tdinput"><input id="url_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">系统本地地址：</td>
+			<td  align="right">系統本地地址：</td>
 			<td class="tdinput"><input id="localurl_{rand}" class="form-control">
-			<font color="#888888">用于计划任务异步任务使用，没有可跟系统URL一样</font></td>
+			<font color="#888888">用于計劃任務異步任務使用，沒有可跟系統URL一樣</font></td>
 		</tr>
 		
 		<tr>
-			<td  align="right"><a target="_blank" href="<?=URLY?>">信呼官网</a>key：</td>
+			<td  align="right"><a target="_blank" href="<?=URLY?>">信呼官網</a>key：</td>
 			<td class="tdinput"><input id="xinhukey_{rand}" class="form-control">
-			<font color="#888888">用于在线升级使用,看<a target="_blank" href="<?=URLY?>view_xhkey.html">[帮助]</a>获取</font></td>
+			<font color="#888888">用于在線升級使用,看<a target="_blank" href="<?=URLY?>view_xhkey.html">[幫助]</a>獲取</font></td>
 		</tr>
 		
 		<tr>
-			<td  colspan="2"><div class="inputtitle">高级设置</div></td>
+			<td  colspan="2"><div class="inputtitle">高級設置</div></td>
 		</tr>
 		
 		<tr>
 			<td  align="right">debug模式：</td>
-			<td class="tdinput"><select id="debug_{rand}"  class="form-control"><option value="0">上线模式</option><option value="1">开发调试模式</option></select></td>
+			<td class="tdinput"><select id="debug_{rand}"  class="form-control"><option value="0">上線模式</option><option value="1">開發調試模式</option></select></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">异步任务key：</td>
+			<td  align="right">異步任務key：</td>
 			<td class="tdinput"><input id="asynkey_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">对外接口openkey：</td>
+			<td  align="right">對外接口openkey：</td>
 			<td class="tdinput"><input id="openkey_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">操作数据库驱动：</td>
-			<td class="tdinput"><select id="db_drive_{rand}"  class="form-control"><option value="mysql">mysql(不推荐)</option><option value="mysqli">mysqli</option><option value="pdo">pdo</option></select></td>
+			<td  align="right">操作數據庫驅動：</td>
+			<td class="tdinput"><select id="db_drive_{rand}"  class="form-control"><option value="mysql">mysql(不推薦)</option><option value="mysqli">mysqli</option><option value="pdo">pdo</option></select></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">提醒消息发送方式：</td>
-			<td class="tdinput"><select id="asynsend_{rand}"  class="form-control"><option value="0">同步发送</option><option value="1">异步发送(自己服务端)</option><option value="2">异步发送(官网VIP专用)</option></select>
-			<font color="#888888">提醒消息发送微信消息提示发送，邮件提醒发送等。选择[异步发送]需安装服务端，异步发送能大大提高效率。</font></td>
+			<td  align="right">提醒消息發送方式：</td>
+			<td class="tdinput"><select id="asynsend_{rand}"  class="form-control"><option value="0">同步發送</option><option value="1">異步發送(自己服務端)</option><option value="2">異步發送(官網VIP專用)</option></select>
+			<font color="#888888">提醒消息發送微信消息提示發送，郵件提醒發送等。選擇[異步發送]需安裝服務端，異步發送能大大提高效率。</font></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">是否记录访问sql日志：</td>
-			<td class="tdinput"><select id="sqllog_{rand}"  class="form-control"><option value="0">否</option><option value="1">是</option></select><font color="#888888">开启了日志将记录在目录<?=UPDIR?>/sqllog下</font></td>
+			<td  align="right">是否記錄訪問sql日志：</td>
+			<td class="tdinput"><select id="sqllog_{rand}"  class="form-control"><option value="0">否</option><option value="1">是</option></select><font color="#888888">開啟了日志將記錄在目錄<?=UPDIR?>/sqllog下</font></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">详情上线条颜色：</td>
-			<td class="tdinput"><input id="bcolorxiang_{rand}" placeholder="用于单据详情默认颜色" maxlength="7" class="form-control"></td>
+			<td  align="right">詳情上線條顏色：</td>
+			<td class="tdinput"><input id="bcolorxiang_{rand}" placeholder="用于單據詳情默認顏色" maxlength="7" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right">PC首页显示：</td>
-			<td class="tdinput">REIM：<select id="reim_show_{rand}" ><option value="0">不显示</option><option value="1">显示</option></select>&nbsp;&nbsp;手机版：<select id="mobile_show_{rand}" ><option value="0">不显示</option><option value="1">显示</option></select></td>
+			<td  align="right">PC首頁顯示：</td>
+			<td class="tdinput">REIM：<select id="reim_show_{rand}" ><option value="0">不顯示</option><option value="1">顯示</option></select>&nbsp;&nbsp;手機版：<select id="mobile_show_{rand}" ><option value="0">不顯示</option><option value="1">顯示</option></select></td>
 		</tr>
 		
 		

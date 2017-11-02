@@ -1,7 +1,7 @@
 .imtitle{height:40px;line-height:40px;overflow:hidden;font-size:18px;text-align:left;border-bottom:1px #cccccc solid;color:white;font-weight:bold;background-color:#2C81C4}
 
 
-/*灰色渐变*/
+/*灰色漸變*/
 .gradienth{
 	background:#d2d5d9;
 	background:-moz-linear-gradient(top, #eef2f5, #e6eaed,#d2d5d9);
@@ -15,7 +15,7 @@
 .textarea{height:150px; width:97%;padding:5px;border-radius:5px; border:1px #cccccc solid}
 .input:hover,.textarea:hover,.select:hover,.inputs,.textareas{box-shadow:0px 0px 5px rgba(0,0,0,0.3); border:1px #368ED1 solid; color:#000000}
 
-/*聊天窗口，信息气泡样式position:relative;*/
+/*聊天窗口，信息氣泡樣式position:relative;*/
 .ltcont{margin:0px 5px;padding:10px 0px}
 .ltcont .dt{font-size:12px;color:#888888;margin-bottom:3px}
 .qipao{}

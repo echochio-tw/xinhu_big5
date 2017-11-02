@@ -7,7 +7,7 @@ class flowcnameClassModel extends Model
 	}
 	
 	/**
-	*	根据编号读取对应审核人员
+	*	根據編號讀取對應審核人員
 	*/
 	public function getcheckname($num, $uid)
 	{

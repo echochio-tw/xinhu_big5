@@ -1,5 +1,5 @@
 /**
-*	居于touch.js下屏幕滚动操作的
+*	居于touch.js下屏幕滾動操作的
 */	
 (function ($) {
 	
@@ -13,7 +13,7 @@
 			ondragrl:function(){},
 			scrollbool:false,
 			dropdown_bgcolor:'#f1f1f1', //下拉背景色
-			dropdown_success:function(){} //下拉回调
+			dropdown_success:function(){} //下拉回調
 		}, options);
 		var obj 	= element;
 		
@@ -53,7 +53,7 @@
 				var lef = this.startarr[2]-hei;
 				if(lef<0)lef=0;
 				this.mobj.scrollTop(lef);
-				if(lef==0 && hei>0 && this.startarr[2]==0)this._upstart(hei,e);//继续下拉刷新
+				if(lef==0 && hei>0 && this.startarr[2]==0)this._upstart(hei,e);//繼續下拉刷新
 			}
 			
 			this.ondrag(e);
@@ -70,7 +70,7 @@
 			var sid = 'updowns_'+this.rand+'';
 			$('#'+sid+'').remove();
 			var tx= '↓ 下拉刷新';
-			if(hei>50)tx='↑ 释放立即刷新';
+			if(hei>50)tx='↑ 釋放立即刷新';
 			var s = '<div id="'+sid+'" style="height:'+hei+'px;overflow:hidden; line-height:50px;text-align:center;color:#666666;background:'+this.dropdown_bgcolor+';font-size:14px;position:relative"><div style="height:50px;line-height:50px;position:absolute;left:0px;bottom:0px;width:100%">'+tx+'</div></div>';
 			this.mobj.before(s);
 		};
@@ -144,7 +144,7 @@
 			off = this.mobj.offset();
 			lets= off.top;
 			zh	= obj.scrollHeight-obj.clientHeight;
-			mh	= obj.clientHeight-80; //可滚动高度
+			mh	= obj.clientHeight-80; //可滾動高度
 			bl  = top/zh;
 			var jgt = bl*mh;
 			$('#'+this.scrollsid+'').css('top',''+jgt+'px').show();

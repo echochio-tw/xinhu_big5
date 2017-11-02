@@ -1,4 +1,4 @@
-//流程模块【remind.单据提醒设置】下录入页面自定义js页面,初始函数
+//流程模塊【remind.單據提醒設置】下錄入頁面自定義js頁面,初始函數
 function initbodys(){
 	$(form('startdt')).blur(function(){
 		gettotal();
@@ -13,7 +13,7 @@ function changeblur(o1){
 function changeblur2(o1){
 	gettotal();
 }
-//新增记录
+//新增記錄
 function changeadd(o1){
 	var html = $(o1).parent().html();
 	html = html.replace('rockdatepickerbool="true"','');
@@ -26,7 +26,7 @@ function changeadd(o1){
 function changejian(o1){
 	var len = $('#pinlv div').length;
 	if(len<=1){
-		js.msg('msg','最后一行就不要删了');return;
+		js.msg('msg','最後一行就不要刪了');return;
 	}
 	$(o1).parent().remove();
 	gettotal();
@@ -90,7 +90,7 @@ function gettotal(){
 			rate3+=','+v3+' '+v2+'';
 			if(v4 && (v1=='h')){
 				rate2+='|'+v4+'';
-				rate3+=' 每天从'+sts+'至'+v4+'提醒';
+				rate3+=' 每天從'+sts+'至'+v4+'提醒';
 			}
 		}
 	}

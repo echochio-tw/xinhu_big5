@@ -1,5 +1,5 @@
 <?php
-//考勤机管理命令
+//考勤機管理命令
 class kqjcmdClassModel extends Model
 {
 	private $snrs;
@@ -11,55 +11,55 @@ class kqjcmdClassModel extends Model
 	}
 	
 	/**
-	*	命令类型
+	*	命令類型
 	*/
 	public function cmdtype($type)
 	{
 		$atrr = array(
-			'config' => '设置配置',
-			'reboot' => '重启',
-			'dept' 	 => '上传部门',
-			'user' 	 => '上传人员',
-			'deluser' 	=> '删除人员',
-			'delsuser' 	=> '删除不存在人员',
-			'getfingerprint' => '获取指纹',
-			'getheadpic' => '获取头像',
-			'headpic' 	 => '上传头像',
-			'advert1' 	 => '设置广告图1',
-			'advert2' 	 => '设置广告图2',
-			'advert3' 	 => '设置广告图3',
-			'deladvert' 	 => '删除广告图',
-			'getuser' 	 => '获取人员',
-			'getinfo' 	 => '获取设备信息',
-			'getclockin' 	 => '获取打卡记录',
-			'delclockin' 	 => '删除打卡记录',
-			'getpic'  => '获取现场照片',
-			'delpic'  => '删除现场照片',
-			'fingerprint'  => '上传指纹',
+			'config' => '設置配置',
+			'reboot' => '重啟',
+			'dept' 	 => '上傳部門',
+			'user' 	 => '上傳人員',
+			'deluser' 	=> '刪除人員',
+			'delsuser' 	=> '刪除不存在人員',
+			'getfingerprint' => '獲取指紋',
+			'getheadpic' => '獲取頭像',
+			'headpic' 	 => '上傳頭像',
+			'advert1' 	 => '設置廣告圖1',
+			'advert2' 	 => '設置廣告圖2',
+			'advert3' 	 => '設置廣告圖3',
+			'deladvert' 	 => '刪除廣告圖',
+			'getuser' 	 => '獲取人員',
+			'getinfo' 	 => '獲取設備信息',
+			'getclockin' 	 => '獲取打卡記錄',
+			'delclockin' 	 => '刪除打卡記錄',
+			'getpic'  => '獲取現場照片',
+			'delpic'  => '刪除現場照片',
+			'fingerprint'  => '上傳指紋',
 		);
 		
 		return arrvalue($atrr, $type, $type);
 	}
 	
 	/**
-	*	发送命令
+	*	發送命令
 	*/
 	public function send($snid, $type, $ohter='')
 	{
 		$snrs = $this->getsninfo($snid);
-		if(!$snrs)return returnerror('设备不存在,请添加');
-		if(isempt($snrs['name']))return returnerror('请设置设备名称');
-		if(isempt($snrs['company']))return returnerror('请设置设备显示公司名称');
+		if(!$snrs)return returnerror('設備不存在,請添加');
+		if(isempt($snrs['name']))return returnerror('請設置設備名稱');
+		if(isempt($snrs['company']))return returnerror('請設置設備顯示公司名稱');
 		$id = 0;
 		
-		//判断是不是有重复
+		//判斷是不是有重復
 		$arrpda = array('reboot','config','getuser','getinfo','advert');
 		if(in_array($type, $arrpda)){
 			$tod = $this->rows("`snid`='$snid' and `atype`='$type' and `status`=0");
-			if($tod>0)return returnerror('还有['.$this->cmdtype($type).']命令待运行，不能重复发送');
+			if($tod>0)return returnerror('還有['.$this->cmdtype($type).']命令待運行，不能重復發送');
 		}
 		
-		//重启
+		//重啟
 		if($type=='reboot'){
 			$id = $this->savedata($snid, $type, array(
 				'do' => 'cmd',
@@ -67,7 +67,7 @@ class kqjcmdClassModel extends Model
 			));
 		}
 		
-		//获取设备信息
+		//獲取設備信息
 		if($type=='getinfo'){
 			$id = $this->savedata($snid, $type, array(
 				'do' 	=> 'upload',
@@ -75,27 +75,27 @@ class kqjcmdClassModel extends Model
 			));
 		}
 		
-		//发送配置信息
+		//發送配置信息
 		if($type=='config'){
 			$id = $this->savedata($snid, $type, $this->getconfigs($snrs));
 		}
 		
-		//部门推送更新
+		//部門推送更新
 		if($type=='dept'){
 			$id = $this->savedata($snid, $type, $this->depttosn($ohter));
 		}
 		
-		//人员推送
+		//人員推送
 		if($type=='user'){
 			$id = $this->savedata($snid, $type, $this->usertosn($ohter));
 		}
 		
-		//获取指纹和头像
+		//獲取指紋和頭像
 		if($type=='getfingerprint' || $type=='getheadpic'){
 			$id = $this->savedata($snid, $type, $this->sntofingerhead($ohter, $type));
 		}
 		
-		//获取所有人员
+		//獲取所有人員
 		if($type=='getuser'){
 			$id = $this->savedata($snid, $type, array(
 				'do' 	=> 'upload',
@@ -103,12 +103,12 @@ class kqjcmdClassModel extends Model
 			));
 		}
 		
-		//设置广告图
+		//設置廣告圖
 		if(substr($type,0,6)=='advert'){
 			$index = substr($type,6);
 			$path  = 'images/kqbanner'.$index.'.jpg';
 			if(!file_exists($path)){
-				$id = '广告图片'.$index.'不存在，请在系统目录下添加图片：'.$path.'';
+				$id = '廣告圖片'.$index.'不存在，請在系統目錄下添加圖片：'.$path.'';
 			}else{
 				$id = $this->savedata($snid, $type, array(
 					'do' 	=> 'update',
@@ -119,39 +119,39 @@ class kqjcmdClassModel extends Model
 			}
 		}
 		
-		//上传头像
+		//上傳頭像
 		if($type=='headpic'){
 			$id = $this->uoloadface($snid,$ohter);
 		}
 		
-		//删除选中人员
+		//刪除選中人員
 		if($type=='deluser'){
 			$id = $this->savedata($snid, $type, $this->userdeltosn($snid, $ohter));
 		}
-		//删除不存在人员
+		//刪除不存在人員
 		if($type=='delsuser'){
 			$id = $this->savedata($snid, 'deluser', $this->userdeltosns($snid));
 		}
 		
-		//获取打卡记录
+		//獲取打卡記錄
 		if($type=='getclockin' || $type=='getpic' || $type=='delclockin' || $type=='delpic'){
 			$id = $this->savedata($snid, $type, $this->getsntosyspic($snid, $type,$ohter));
 		}
 		
-		//上次指纹,采集就不上传了
+		//上次指紋,採集就不上傳了
 		if($type=='fingerprint'){
 			$id = $this->fingerprinttosn($snid, $ohter);
 		}
 		
 		
-		if($id==0 || is_string($id))return returnerror('发送失败:'.$id.'');
+		if($id==0 || is_string($id))return returnerror('發送失敗:'.$id.'');
 		
 		return returnsuccess(array(
 			'id' => $id
 		));
 	}
 	
-	//保存命令到数据库
+	//保存命令到數據庫
 	private function savedata($snid, $type, $data)
 	{
 		if(is_string($data))return $data;
@@ -168,7 +168,7 @@ class kqjcmdClassModel extends Model
 		$this->insert(array(
 			'id'	=> $id,
 			'snid' 	=> $snid,
-			'others' 	=> $others, //其他主键ID
+			'others' 	=> $others, //其他主鍵ID
 			'status'=> '0',
 			'atype' => $type,
 			'cmd' 	=> $cmd,
@@ -186,11 +186,11 @@ class kqjcmdClassModel extends Model
 	
 	
 	/**
-	*	获取命令,一次可获取条数
+	*	獲取命令,一次可獲取條數
 	*/
 	public function getcmd($snid)
 	{
-		//10分钟内的
+		//10分鐘內的
 		$optdt= date('Y-m-d H:i:s', time()-10*60);
 		$rows = $this->getall("`snid`='$snid' and `status`=0 and `optdt`>'$optdt'",'*','optdt asc');
 		$snrs = $this->getsninfo($snid);
@@ -216,8 +216,8 @@ class kqjcmdClassModel extends Model
 	//配置信息
 	private function getconfigs($snrs)
 	{
-		$name 		= arrvalue($snrs,'name','信呼云考勤');
-		$company 	= arrvalue($snrs,'company','信呼云考勤');
+		$name 		= arrvalue($snrs,'name','信呼雲考勤');
+		$company 	= arrvalue($snrs,'company','信呼雲考勤');
 		$snid 		= arrvalue($snrs,'id','0');
 		
 		return array(
@@ -226,8 +226,8 @@ class kqjcmdClassModel extends Model
 			'data' 		=> 'config',
 			'name' 		=> $name,
 			'company' 	=> $company,
-			'companyid' => $snid, 	//公司ID/设备ID
-			'max' 		=> 3000,	//目前设计最大值
+			'companyid' => $snid, 	//公司ID/設備ID
+			'max' 		=> 3000,	//目前設計最大值
 			'function' 	=> 65535, 	//全部功能
 			'delay' 	=> 20,
 			'errdelay' 	=> 50,
@@ -240,7 +240,7 @@ class kqjcmdClassModel extends Model
 	
 	
 	/**
-	*	推送过来的数据
+	*	推送過來的數據
 	*/
 	public function postdata($snid, $dstr)
 	{
@@ -250,17 +250,17 @@ class kqjcmdClassModel extends Model
 		$uids = $dids = '';
 		$snrs = $this->getsninfo($snid);
 		if($barr)foreach($barr as $k=>$rs){
-			$dtype = arrvalue($rs, 'data'); //数据类型
+			$dtype = arrvalue($rs, 'data'); //數據類型
 			
-			$carr[]= $rs['id']; //设备上来的ID
+			$carr[]= $rs['id']; //設備上來的ID
 			
-			//发送的命令返回
+			//發送的命令返回
 			if($dtype == 'return'){
 				$mids 	= '';
 				foreach($rs['return'] as $k1=>$rs1){
-					$mid 	= arrvalue($rs1,'id'); //我发送时ID
+					$mid 	= arrvalue($rs1,'id'); //我發送時ID
 					if(isempt($mid))continue;
-					$result = $rs1['result']; //处理结果
+					$result = $rs1['result']; //處理結果
 					$status = ($result=='0') ? 1 : 3;//
 					$this->update(array(
 						'status' => $status,
@@ -270,126 +270,126 @@ class kqjcmdClassModel extends Model
 				}
 				if($mids!=''){
 					$mids = substr($mids, 1);
-					$this->returnchuli($mids, $snid); //返回处理
+					$this->returnchuli($mids, $snid); //返回處理
 				}
 			}
 			
-			//推送过来的人员信息
+			//推送過來的人員信息
 			if($dtype=='user' && isset($rs['deptid'])){
 				$uids .= ','.$rs['ccid'].'';
 				$dids .= ','.$rs['deptid'].'';
 			}
 			
-			//推送来的指纹
+			//推送來的指紋
 			if($dtype=='fingerprint'){
 				$this->savefingerprint($snid, $rs['ccid'], $rs['fingerprint']);
 			}
 			
-			//推送来的头像
+			//推送來的頭像
 			if($dtype=='headpic'){
 				$this->saveheadpic($snid, $rs['ccid'], $rs['headpic']);
 			}
 			
-			//解除绑定（解除绑定会清空设备上所有数据，包括设备上待发送的命令）
+			//解除綁定（解除綁定會清空設備上所有數據，包括設備上待發送的命令）
 			if($dtype=='unbound'){
 				$this->cleardatasn($snid);
 			}
 			
-			//打卡记录
+			//打卡記錄
 			if($dtype=='clockin'){
 				$this->adddkjl($snid, $rs);
 			}
 			
-			//推送来的设备信息
+			//推送來的設備信息
 			if($dtype=='info'){
 				$this->setsnconfig($snid, $rs);
 			}
 		}
 		
-		//保存用户
+		//保存用戶
 		if($uids!='')$this->saveuseriddids(substr($uids, 1), substr($dids, 1), $snid);
 
 		return $carr;
 	}
 	
-	//上传完成回调处理
+	//上傳完成回調處理
 	private function returnchuli($mids, $snid)
 	{
-		$clarr = $this->getall("`id` in($mids) and `status`=1");//处理成功的
+		$clarr = $this->getall("`id` in($mids) and `status`=1");//處理成功的
 		$detpids= $userids= $useridsdel = '';
 		foreach($clarr as $k=>$rs){
 			$others = $rs['others'];
-			if(isempt($others))continue;//不需要处理
+			if(isempt($others))continue;//不需要處理
 			$atype  = $rs['atype'];
 			
-			//部门说明设备已
+			//部門說明設備已
 			if($atype=='dept'){
 				$detpids.=','.$others.'';
 			}
 			
-			//人员
+			//人員
 			if($atype=='user'){
 				$userids.=','.$others.'';
 			}
 			
-			//上传头像成功
+			//上傳頭像成功
 			if($atype=='headpic'){
 				$uid = (int)$others;
 				$face= $this->db->getmou('[Q]admin','face','`id`='.$uid.'');
-				$this->saveheadpic($snid, $uid, '', $face); //设置设备头像
+				$this->saveheadpic($snid, $uid, '', $face); //設置設備頭像
 			}
 			
-			//删除人员成功
+			//刪除人員成功
 			if($atype=='deluser'){
 				$useridsdel.=','.$others.'';
 			}
 			
-			//指纹上传成功
+			//指紋上傳成功
 			if($atype=='fingerprint'){
 				$cmdarr = json_decode($rs['cmd'], true);
 				$cnsrs	= $cmdarr[0];
-				$this->savefingerprint($snid, $cnsrs['ccid'], $cnsrs['fingerprint']); //保存指纹
+				$this->savefingerprint($snid, $cnsrs['ccid'], $cnsrs['fingerprint']); //保存指紋
 			}
 		}
 		
-		//部门
+		//部門
 		if(!isempt($detpids)){
 			$this->addupstr($snid, substr($detpids, 1), 'deptids');
 		}
 		
-		//人员的，说明设备上有哪些人员
+		//人員的，說明設備上有哪些人員
 		if(!isempt($userids)){
 			$this->addupstr($snid, substr($userids, 1), 'userids');
 		}
 		
-		//删除人员
+		//刪除人員
 		if(!isempt($useridsdel)){
 			$this->delupstr($snid, substr($useridsdel, 1), 'userids');
 		}
 	}
 	
-	//清除设备上所有信息
+	//清除設備上所有信息
 	private function cleardatasn($snid)
 	{
-		m('kqjuser')->delete('`snid`='.$snid.'');//删除数据
-		m('kqjcmd')->delete('`snid`='.$snid.''); //删除命令
+		m('kqjuser')->delete('`snid`='.$snid.'');//刪除數據
+		m('kqjcmd')->delete('`snid`='.$snid.''); //刪除命令
 		$this->snobj->update(array(
 			'userids' => '',
 			'deptids' => '',
 		), $snid);
 	}
 	
-	//添加打卡记录
+	//添加打卡記錄
 	private function adddkjl($snid, $rs)
 	{
 		$dkdt 	= $rs['time'];
-		$uid 	= $rs['ccid']; //用户ID
-		$pic	= arrvalue($rs,'pic');	 //现成照片
+		$uid 	= $rs['ccid']; //用戶ID
+		$pic	= arrvalue($rs,'pic');	 //現成照片
 		$sntype = $rs['verify'];//打卡方式
 		$where 	= "`uid`='$uid' and `dkdt`='$dkdt' and `type`=1";
 		$ddbs	= m('kqdkjl');
 		$to 	= $ddbs->rows($where);
-		$datype = array('密码','指纹','刷卡');
+		$datype = array('密碼','指紋','刷卡');
 		
 		$uarr['sntype'] = $sntype;
 		$uarr['snid'] 	= $snid;
@@ -410,7 +410,7 @@ class kqjcmdClassModel extends Model
 		$ddbs->record($uarr, $where);
 	}
 	
-	//保存设备用户
+	//保存設備用戶
 	private function saveuseriddids($userids, $dids, $snid)
 	{
 		$darrs 	 = $this->depttosn($dids);
@@ -421,7 +421,7 @@ class kqjcmdClassModel extends Model
 		), $snid);
 	}
 	
-	//保存指纹
+	//保存指紋
 	private function savefingerprint($snid, $uid, $finge)
 	{
 		$where = "`snid`='$snid' and `uid`='$uid'";
@@ -436,13 +436,13 @@ class kqjcmdClassModel extends Model
 		$this->kquobj->record($arr, $where);
 	}
 	
-	//保存设备头像
+	//保存設備頭像
 	private function saveheadpic($snid, $uid, $headpic, $face='')
 	{
 		$where = "`snid`='$snid' and `uid`='$uid'";
 		if(isempt($face)){
 			if(isempt($headpic))return;
-			$face  = ''.UPDIR.'/face/kqj'.$snid.'_u'.$uid.'.jpg'; //头像保存为图片
+			$face  = ''.UPDIR.'/face/kqj'.$snid.'_u'.$uid.'.jpg'; //頭像保存為圖片
 			$this->rock->createtxt($face, base64_decode($headpic));
 		}
 		$arr['headpic'] = $face;
@@ -454,15 +454,15 @@ class kqjcmdClassModel extends Model
 		$this->kquobj->record($arr, $where);
 	}
 	
-	//获取设备信息
+	//獲取設備信息
 	public function getsninfo($id)
 	{
 		$snrs			= $this->db->getone('`[Q]kqjsn`','`id`='.$id.'');
-		$this->snrs 	= $snrs;//当前设备信息
+		$this->snrs 	= $snrs;//當前設備信息
 		return $snrs;
 	}
 	
-	//设置设备信息
+	//設置設備信息
 	private function setsnconfig($snid, $rs)
 	{
 		$uarr['model'] = arrvalue($rs,'model');
@@ -485,10 +485,10 @@ class kqjcmdClassModel extends Model
 		$snrs = $this->getsninfo($snid);
 		$odeptid = $snrs[$fields];
 		if(isempt($odeptid))return;
-		$dstr = ','.$dstr.','; //要删除的
+		$dstr = ','.$dstr.','; //要刪除的
 		
 		$depta 	 = explode(',', $odeptid);
-		$dids 	 = array(); //最后Id
+		$dids 	 = array(); //最後Id
 		foreach($depta as $dis1){
 			if(!contain($dstr,','.$dis1.','))$dids[] = $dis1;
 		}
@@ -497,7 +497,7 @@ class kqjcmdClassModel extends Model
 		$this->snobj->update("`$fields`='$ids'", $snid);
 	}
 	
-	//更新添加记录
+	//更新添加記錄
 	private function addupstr($snid, $strss, $fields)
 	{
 		$snrs = $this->getsninfo($snid);
@@ -507,7 +507,7 @@ class kqjcmdClassModel extends Model
 		$odeptid.=''.$strss.''; //最新的
 		
 		$depta 	 = explode(',', $odeptid);
-		$dids 	 = array(); //最后Id
+		$dids 	 = array(); //最後Id
 		foreach($depta as $dis1){
 			if(!in_array($dis1, $dids))$dids[] = $dis1;
 		}
@@ -517,7 +517,7 @@ class kqjcmdClassModel extends Model
 	}
 	
 	/**
-	*	部门推送更新
+	*	部門推送更新
 	*/
 	private function depttosn($deptids)
 	{
@@ -525,7 +525,7 @@ class kqjcmdClassModel extends Model
 		$dids 		= '';
 		$deptida	= explode(',', $deptids);
 		foreach($deptida as $did){
-			$didsss 	= $this->db->getpval('[Q]dept', 'pid', 'id', $did,','); //获取路径
+			$didsss 	= $this->db->getpval('[Q]dept', 'pid', 'id', $did,','); //獲取路徑
 			if(!isempt($didsss))$dids.=','.$didsss.'';
 			
 		}
@@ -545,12 +545,12 @@ class kqjcmdClassModel extends Model
 		$data['do'] 	= 'update';
 		$data['data'] 	= 'dept';
 		$data['dept'] 	= $deptarr;
-		$data['others'] = substr($ids, 1); //部门id
+		$data['others'] = substr($ids, 1); //部門id
 
 		return $data;
 	}
 	
-	//人员上传
+	//人員上傳
 	private function usertosn($uids)
 	{
 		$uarr = m('admin')->getall('id in('.$uids.') and `status`=1');
@@ -566,11 +566,11 @@ class kqjcmdClassModel extends Model
 				'data' 	=> 'user',
 				'ccid' 	=> $rs['id'],
 				'name' 	=> $rs['name'],
-				'passwd'=> $rs['pass'], // 密码
+				'passwd'=> $rs['pass'], // 密碼
 				'card' 	=> $rs['user'],
 				'deptid' => $rs['deptid'],
-				'auth' 	=> 0, //刷卡卡号
-				'faceexist' => 0, //是否有人脸，0 没有，1 有（暂无用，预留字段）
+				'auth' 	=> 0, //刷卡卡號
+				'faceexist' => 0, //是否有人臉，0 沒有，1 有（暫無用，預留字段）
 			);
 			$ids.=','.$rs['id'].'';
 			
@@ -578,10 +578,10 @@ class kqjcmdClassModel extends Model
 				$dids.=','.$rs['deptid'].'';
 			}
 		}
-		$data[0]['others'] = substr($ids, 1); //人员ID
+		$data[0]['others'] = substr($ids, 1); //人員ID
 		
 		
-		//同时也要上传部门ID
+		//同時也要上傳部門ID
 		if($dids!=''){
 			$dids = substr($dids, 1);
 			$this->savedata($this->snrs['id'], 'dept', $this->depttosn($dids));
@@ -591,7 +591,7 @@ class kqjcmdClassModel extends Model
 		return $data;
 	}
 	
-	//设备上获取指纹和头像
+	//設備上獲取指紋和頭像
 	private function sntofingerhead($uids, $type)
 	{
 		$uarr 		= $this->userinsn($uids);
@@ -611,18 +611,18 @@ class kqjcmdClassModel extends Model
 		return $data;
 	}
 	
-	//判断人员是否在设备上
+	//判斷人員是否在設備上
 	private function userinsn($uids)
 	{
 		$userids 	= arrvalue($this->snrs,'userids');
-		if(isempt($userids))return '设备上没有人员';
+		if(isempt($userids))return '設備上沒有人員';
 		$uarr = m('admin')->getall('id in('.$uids.') and `id` in('.$userids.')');
-		if(!$uarr)return '没有选中人员没在此设备上';
+		if(!$uarr)return '沒有選中人員沒在此設備上';
 		
 		return $uarr;
 	}
 	
-	//上传头像
+	//上傳頭像
 	private function uoloadface($snid, $uids)
 	{
 		$uarr 		= $this->userinsn($uids);
@@ -643,7 +643,7 @@ class kqjcmdClassModel extends Model
 		return 1;
 	}
 	
-	//删除选中的人员
+	//刪除選中的人員
 	private function userdeltosn($snid, $uids)
 	{
 		$uarr 		= $this->userinsn($uids);
@@ -655,21 +655,21 @@ class kqjcmdClassModel extends Model
 		}
 		$data = array(
 			'do' 	=> 'delete',
-			'data' 	=> array("user","fingerprint","face","headpic","clockin","pic"), //删除全部
+			'data' 	=> array("user","fingerprint","face","headpic","clockin","pic"), //刪除全部
 			'ccid' 	=> $ccid,
 			'others' => join(',', $ccid)
 		);
 		
 		return $data;
 	}
-	//删除不存在的
+	//刪除不存在的
 	private function userdeltosns($snid)
 	{
 		$ccid = $this->getnosys($snid);
-		if(!$ccid)return '没有可删除的人员';
+		if(!$ccid)return '沒有可刪除的人員';
 		$data = array(
 			'do' 	=> 'delete',
-			'data' 	=> array("user","fingerprint","face","headpic","clockin","pic"), //删除全部
+			'data' 	=> array("user","fingerprint","face","headpic","clockin","pic"), //刪除全部
 			'ccid' 	=> $ccid,
 			'others' => join(',', $ccid)
 		);
@@ -677,7 +677,7 @@ class kqjcmdClassModel extends Model
 		return $data;
 	}
 	
-	//对应设备显示显示离职人员等信息
+	//對應設備顯示顯示離職人員等信息
 	public function getnosys($snid)
 	{
 		$snrs = $this->getsninfo($snid);
@@ -696,27 +696,27 @@ class kqjcmdClassModel extends Model
 		return $nuco;
 	}
 	
-	//获取打卡记录
+	//獲取打卡記錄
 	private function getsntosyspic($snid, $type, $uids)
 	{
 		$startdt = $this->rock->post('startdt', $this->rock->date);
 		$endddt  = $this->rock->post('endddt', $this->rock->date);
-		if($endddt<$startdt)return '获取开始日期不能大于截止日期';
+		if($endddt<$startdt)return '獲取開始日期不能大于截止日期';
 		
 		$userids 	= arrvalue($this->snrs,'userids');
-		if(isempt($userids))return '设备上没有人员';
+		if(isempt($userids))return '設備上沒有人員';
 		
 		$ccid 		= array();
 		if($uids!='0'){
 			$uarr = m('admin')->getall('`id` in('.$userids.')');
-			if(!$uarr)return '没有选中人员没在此设备上';
+			if(!$uarr)return '沒有選中人員沒在此設備上';
 			
 			$ccid = array();
 			foreach($uarr as $k=>$rs){
 				$ccid[] = $rs['id'];
 			}
 		}
-		//删除
+		//刪除
 		if($type=='delclockin' || $type=='delpic'){
 			$data['do'] = 'delete';
 			$data['data'] = array(substr($type, 3));
@@ -735,7 +735,7 @@ class kqjcmdClassModel extends Model
 		return $data;
 	}
 	
-	//上传指纹
+	//上傳指紋
 	public function fingerprinttosn($snid, $uids)
 	{
 		$uarr 		= $this->userinsn($uids);
@@ -751,7 +751,7 @@ class kqjcmdClassModel extends Model
 			
 			$uobo		 = false;
 			
-			//找找别的设备有没有指纹
+			//找找別的設備有沒有指紋
 			if(isempt($fingerprint1)){
 				$fingerprint1s = $this->kquobj->getmou('fingerprint1',"`uid`='$uid' and ifnull(`fingerprint1`,'')<>''");
 				if(!isempt($fingerprint1s)){
@@ -779,7 +779,7 @@ class kqjcmdClassModel extends Model
 				$this->savedata($snid, 'fingerprint', $data);
 			}
 		}
-		if($ubo==0)$ubo = '没有可上传的指纹';
+		if($ubo==0)$ubo = '沒有可上傳的指紋';
 		return $ubo;
 	}
 }

@@ -1,4 +1,4 @@
-﻿var objcont,tabs_title,tabsarr={},nowtabs,opentabs=[],menutabs,menuarr,admintype='0';
+var objcont,tabs_title,tabsarr={},nowtabs,opentabs=[],menutabs,menuarr,admintype='0';
 var viewwidth,viewheight,optmenudatas=[];
 
 js.initbtn = function(obj){
@@ -43,7 +43,7 @@ js.initedit = function(id,can){
 js.setwhere	= function(mid,call){
 	if(!call)call='';
 	var url =js.getajaxurl('@setwhere','where','flow',{modeid:mid,callback:call});
-	js.tanbody('setwherewin','设置条件',500,330,{
+	js.tanbody('setwherewin','設置條件',500,330,{
 		html:'<div style="height:320px;overflow:hidden"><iframe src="" name="winiframese" width="100%" height="100%" frameborder="0"></iframe></div>',
 		bbar:'none'
 	});
@@ -73,9 +73,9 @@ function _editfacechangback(a,xid){
 	var nf= f.thumbpath+'?'+Math.random()+'';
 	if(xid==adminid)get('myface').src=nf;
 	if(get('faceviewabc_'+xid+''))get('faceviewabc_'+xid+'').src=nf;
-	js.msg('wait','头像修改中...');
+	js.msg('wait','頭像修改中...');
 	js.ajax(js.getajaxurl('editface','admin','system'),{fid:f.id,'uid':xid},function(){
-		js.msg('success','修改成功,如没显示最新头像，请清除浏览器缓存');
+		js.msg('success','修改成功,如沒顯示最新頭像，請清除瀏覽器緩存');
 	});
 }
 function _addbodykey(){
@@ -89,9 +89,9 @@ function _addbodykey(){
 			}
 			return false;
 		}
-		//弹出帮助
+		//彈出幫助
 		if(code==113){
-			js.confirm('是否打开查看关于['+nowtabs.name+']的帮助信息？',function(jg){
+			js.confirm('是否打開查看關于['+nowtabs.name+']的幫助信息？',function(jg){
 				if(jg=='yes')window.open('http://www.rockoa.com/view_'+nowtabs.num+'.html?title='+jm.base64encode(nowtabs.name)+'');
 			});
 			return false;
@@ -103,7 +103,7 @@ function _addbodykey(){
 function openinput(name,num, id,cbal){
 	if(!id)id=0;
 	if(!cbal)cbal='';
-	if(id==0){name='[新增]'+name+'';}else{name='[编辑]'+name+'';}
+	if(id==0){name='[新增]'+name+'';}else{name='[編輯]'+name+'';}
 	var url='?a=lu&m=input&d=flow&num='+num+'&mid='+id+'';
 	openxiangs(name, url,'', cbal);
 	return false;
@@ -122,7 +122,7 @@ function openxiang(num,id,cbal){
 	js.open(url, 800,500);
 }
 
-//打开聊天会话
+//打開聊天會話
 function openchat(id, lx,face){
 	try{if(nwjsgui){opener.openchat(id, lx,face);return;}}catch(e){}
 	if(!lx)lx=0;var types=['user','group'];
@@ -153,11 +153,11 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 			itemsclick:function(d){me.showmenuclick(d);},
 			width:150
 		});
-		var da = [{name:'详情',lx:998,nbo:false},{name:'详情(新窗口)',lx:998,nbo:true}];
+		var da = [{name:'詳情',lx:998,nbo:false},{name:'詳情(新窗口)',lx:998,nbo:true}];
 		var off=$(this.obj).offset();
 		var subdata = this.optmenudatas[''+this.modenum+'_'+this.id+''];
 		if(!subdata){
-			da.push({name:'<img src="images/loadings.gif" align="absmiddle"> 加载菜单中...',lx:999});
+			da.push({name:'<img src="images/loadings.gif" align="absmiddle"> 加載菜單中...',lx:999});
 			this.loadoptnum();
 		}else{
 			for(i=0;i<subdata.length;i++)da.push(subdata[i]);
@@ -168,7 +168,7 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 	this.xiang=function(oi,nbo){
 		var mnem=this.modename;
 		if(!nbo){
-			if(!mnem)mnem='详情';
+			if(!mnem)mnem='詳情';
 			openxiangs(mnem,this.modenum,this.mid, this.callbackstr);
 		}else{
 			openxiang(this.modenum,this.mid, this.callbackstr);
@@ -194,14 +194,14 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 		}
 		var nwsh = 'showfielsv_'+js.getrand()+'';
 		var uostr= '<div align="left" style="padding:10px"><div id="'+nwsh+'" style="height:60px;overflow:auto" class="input"></div><input style="width:180px" id="'+nwsh+'_input" type="file"></div>';
-		var bts = (d.issm==1)?'必填':'选填';
+		var bts = (d.issm==1)?'必填':'選填';
 		if(!d.smcont)d.smcont='';
 		if(lx==1 || lx==9 || lx==10 || lx==13 || lx==15 || lx==16 || lx==17){
-			if(d.nup==1)uostr=''; //不需要上传文件
-			js.prompt(d.name,'请输入['+d.name+']说明('+bts+')：',function(index, text){
+			if(d.nup==1)uostr=''; //不需要上傳文件
+			js.prompt(d.name,'請輸入['+d.name+']說明('+bts+')：',function(index, text){
 				if(index=='yes'){
 					if(!text && d.issm==1){
-						js.msg('msg','没有输入['+d.name+']说明');
+						js.msg('msg','沒有輸入['+d.name+']說明');
 					}else{
 						me.okchangevalue(d, text);
 					}
@@ -213,18 +213,18 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 		}
 		//提醒
 		if(lx==14){
-			openinput('提醒设置','remind',''+d.djmid+'&def_modenum='+this.modenum+'&def_mid='+this.mid+'&def_explain=basejm_'+jm.base64encode(d.smcont)+'', this.callbackstr);
+			openinput('提醒設置','remind',''+d.djmid+'&def_modenum='+this.modenum+'&def_mid='+this.mid+'&def_explain=basejm_'+jm.base64encode(d.smcont)+'', this.callbackstr);
 			return;
 		}
 		if(lx==4){
-			js.prompt(d.name, '说明('+bts+')：', function(index, text){
+			js.prompt(d.name, '說明('+bts+')：', function(index, text){
 				if(index=='yes'){
 					var ad=js.getformdata('myformsbc');
 					for(var i in ad)d['fields_'+i+'']=ad[i];
 					me.okchangevalue(d, text);
 					return true;
 				}
-			},'','<div align="left" id="showmenusss" style="padding:10px">加载中...</div>', uostr);
+			},'','<div align="left" id="showmenusss" style="padding:10px">加載中...</div>', uostr);
 			var url='index.php?a=lus&m=input&d=flow&num='+d.modenum+'&menuid='+d.optmenuid+'&mid='+d.mid+'';
 			$.get(url, function(s){
 				var s='<form name="myformsbc">'+s+'</form>';
@@ -270,12 +270,12 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 		if(!sm)sm='';
 		d.sm = sm;
 		for(var i in d)if(d[i]==null)d[i]='';
-		js.msg('wait','处理中...');
+		js.msg('wait','處理中...');
 		js.ajax(js.getajaxurl('yyoptmenu','flowopt','flow'),d,function(ret){
 			if(ret.code==200){
 				me.optmenudatas[''+d.modenum+'_'+d.mid+'']=false;
 				me.tableobj.reload();
-				js.msg('success','处理成功');
+				js.msg('success','處理成功');
 			}else{
 				js.msg('msg',ret.msg);
 			}
@@ -294,13 +294,13 @@ function optmenuclass(o1,num,id,obj,mname,oi, cola){
 	this._init();
 }
 js.getuser = function(cans){
-	var can = js.apply({title:'读取人员',idobj:false,nameobj:false,value:'',type:'deptusercheck',callback:function(){}}, cans);
+	var can = js.apply({title:'讀取人員',idobj:false,nameobj:false,value:'',type:'deptusercheck',callback:function(){}}, cans);
 	can.onselect=can.callback;
 	js.changeuser(false, can.type, can.title, can);
 }
 
 /**
-*	type=0高级搜索使用,1设置自定义字段
+*	type=0高級搜索使用,1設置自定義字段
 */
 var highdata={};
 function highsearchclass(options){
@@ -310,7 +310,7 @@ function highsearchclass(options){
 	this.init 	= function(){
 		if(!this.modenum)return;
 		if(this.type==0){
-			js.tanbody('searchhigh','高级搜索', 450,300,{
+			js.tanbody('searchhigh','高級搜索', 450,300,{
 				html:'<div id="searchhighhtml" style="height:200px;overflow:auto;"></div>',
 				btn:[{text:'搜索'}],
 				msg:'<a id="searchhigh_cz" href="javascript:;">[重置]</a> &nbsp; '
@@ -318,9 +318,9 @@ function highsearchclass(options){
 			this.initfields();
 		}
 		if(this.type==1){
-			js.tanbody('searchhigh','自定义列显示', 300,350,{
+			js.tanbody('searchhigh','自定義列顯示', 300,350,{
 				html:'<div id="searchhighhtml" class="select-list" style="height:300px;overflow:auto;"></div>',
-				btn:[{text:'确定'}]
+				btn:[{text:'確定'}]
 			});
 			this.initfields();
 		}
@@ -349,7 +349,7 @@ function highsearchclass(options){
 			this.columnsnum = fid;
 			return;
 		}
-		$('#searchhighhtml').html('<div align="center" style="padding:10px">'+js.getmsg('加载中...')+'</div>');
+		$('#searchhighhtml').html('<div align="center" style="padding:10px">'+js.getmsg('加載中...')+'</div>');
 		var fieldsat = this.getinitdata('fields');
 		if(!fieldsat){
 			var url = js.getajaxurl('getcolumns','mode_'+this.modenum+'|input','flow');
@@ -399,7 +399,7 @@ function highsearchclass(options){
 	};
 	this.searchhighshowinput=function(b){
 		var type = b.fieldstype,name = 'soufields_'+b.fields+'';
-		var s = '<input placeholder="关键词包含" type="text" class="inputs" name="'+name+'">';
+		var s = '<input placeholder="關鍵詞包含" type="text" class="inputs" name="'+name+'">';
 		if(type=='date' || type=='datetime' || type=='month'){
 			s='<input style="width:150px" onclick="js.datechange(this,\'date\')" class="inputs datesss" readonly  name="'+name+'_start"> 至 <input onclick="js.datechange(this,\'date\')" style="width:150px" class="inputs datesss" readonly name="'+name+'_end"> ';
 		}
@@ -412,7 +412,7 @@ function highsearchclass(options){
 		if(type=='select' || type=='rockcombo'){
 			var i = 0,len=b.store.length;
 			s='<select name="'+name+'" class="inputs">';
-			s+='<option value="">-选择-</option>';
+			s+='<option value="">-選擇-</option>';
 			for(i=0;i<len;i++){
 				s+='<option value="'+b.store[i].value+'">'+b.store[i].name+'</option>';
 			}
@@ -456,7 +456,7 @@ function highsearchclass(options){
 }
 
 /**
-*	订阅
+*	訂閱
 */
 function classubscribe(options){
 	var me 		= this;
@@ -464,7 +464,7 @@ function classubscribe(options){
 	for(var a in cans)this[a]=cans[a];
 	this._init 	= function(){
 		if(!this.objtable){
-			js.msg('msg','没指定一个表格无法设置订阅');
+			js.msg('msg','沒指定一個表格無法設置訂閱');
 			return;
 		}
 		var cyrl = this.objtable.geturlparams(),cstr='',i,vsts,ostrs='';
@@ -482,28 +482,28 @@ function classubscribe(options){
 		}
 		if(ostrs!='')ostrs=ostrs.substr(1);
 		var h = $.bootsform({
-			title:'订阅',height:500,width:500,tablename:'subscribe',isedit:0,
+			title:'訂閱',height:500,width:500,tablename:'subscribe',isedit:0,
 			params:{int_filestype:'status',otherfields:'optid={adminid},optname={admin},optdt={now}'},
 			submitfields:'title,cont,explain,suburl,suburlpost',
 			url:publicmodeurl('subscribe','publicsave'),beforesaveaction:'savebefore',
 			items:[{
-				labelText:'订阅名称',name:'title',required:true,value:this.title
+				labelText:'訂閱名稱',name:'title',required:true,value:this.title
 			},{
-				labelText:'订阅提醒内容',name:'cont',value:this.cont,type:'textarea',required:true,height:60
+				labelText:'訂閱提醒內容',name:'cont',value:this.cont,type:'textarea',required:true,height:60
 			},{
-				labelText:'订阅参数',name:'suburlpost',type:'hidden',height:60,value:cstr
+				labelText:'訂閱參數',name:'suburlpost',type:'hidden',height:60,value:cstr
 			},{
-				labelText:'订阅地址',name:'suburl',type:'hidden',height:50,value:jm.base64encode(cyrl[0])
+				labelText:'訂閱地址',name:'suburl',type:'hidden',height:50,value:jm.base64encode(cyrl[0])
 			},{
-				labelText:'订阅参数',blankText:'根据参数获取数据如：key=关键词&month={month}，乱写会导致预想不到的后果。',name:'suburlposts',type:'textarea',height:60,value:ostrs
+				labelText:'訂閱參數',blankText:'根據參數獲取數據如：key=關鍵詞&month={month}，亂寫會導致預想不到的後果。',name:'suburlposts',type:'textarea',height:60,value:ostrs
 			},{
-				labelText:'说明',name:'explain',type:'textarea',height:50,value:this.explain
+				labelText:'說明',name:'explain',type:'textarea',height:50,value:this.explain
 			},{
-				name:'status',labelBox:'启用',type:'checkbox',checked:true
+				name:'status',labelBox:'啟用',type:'checkbox',checked:true
 			}],
 			success:function(){
-				js.confirm('订阅成功，是否直接到我的订阅管理下添加订阅运行时间？',function(jg){
-					if(jg=='yes')addtabs({url:'flow,page,subscribe,atype=my',name:'我订阅管理',num:'rssglmy','icons':'cog'});
+				js.confirm('訂閱成功，是否直接到我的訂閱管理下添加訂閱運行時間？',function(jg){
+					if(jg=='yes')addtabs({url:'flow,page,subscribe,atype=my',name:'我訂閱管理',num:'rssglmy','icons':'cog'});
 				});
 				me.oncallback();
 			},

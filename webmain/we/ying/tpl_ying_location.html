@@ -31,7 +31,7 @@ function initbody(){
 
 function initbodyss(){
 	js.getsplit();
-	js.dw.init(isgzh); //定位开始
+	js.dw.init(isgzh); //定位開始
 	showtimessabc();
 	
 	var lata = js.getoption('latlongedu','24.504332,118.141136,12').split(',');
@@ -71,7 +71,7 @@ function dingweidak(){
 	js.dw.start();
 }
 
-//定位成功后回调
+//定位成功後回調
 js.dw.ondwcall = function(res){
 	latitude 	= res.latitude;
 	longitude 	= res.longitude;
@@ -90,7 +90,7 @@ js.dw.ondwcall = function(res){
 		enddt = new qq.maps.LatLng(parseFloat(kqrsa.location_x), parseFloat(kqrsa.location_y));
 		juli  = parseInt(qq.maps.geometry.spherical.computeDistanceBetween(center, enddt));
 		if(juli<0)juli = 0-juli;
-		if(kqrsa['iswgd']=='1')juli=0; //无固定位置的
+		if(kqrsa['iswgd']=='1')juli=0; //無固定位置的
 		kqallrs[i]['kqjuli'] = juli;
 		kqjuli = juli;
 	}
@@ -139,7 +139,7 @@ function adddkjl(lx,ss,sm, uobo){
 	var data = {location_x:latitude,type:lx,location_y:longitude,fileid:upfileid,scale:scale,precision:accuracy,label:jm.base64encode(label),sm:jm.base64encode(sm)};
 	js.ajax('weixin','addlocation',data,function(ret){
 		js.msg('success',''+ss+'成功:'+ret.now+'');
-		$('#dwdiv').after('<div>刚'+ss+'.'+ret.now.substr(10)+'('+label+')</div>');
+		$('#dwdiv').after('<div>剛'+ss+'.'+ret.now.substr(10)+'('+label+')</div>');
 		addbo = false;
 	},'none');
 }
@@ -148,10 +148,10 @@ function adddkjlok(ids){
 	adddkjl(adddkjlcs.lx,adddkjlcs.ss,adddkjlcs.sm,true);
 }
 function adddkjlsss(){
-	if(js.dw.dwbool){js.wx.alert('正在定位，稍后在添加');return;}
-	if(latitude==''){js.wx.alert('定位没有成功，不能添加');return;}
-	if(!addbo){js.wx.alert('已保存过了，请重新定位后在保存');return;}
-	js.wx.prompt('保存定位','请输入说明(选填)：',function(text){
+	if(js.dw.dwbool){js.wx.alert('正在定位，稍後在添加');return;}
+	if(latitude==''){js.wx.alert('定位沒有成功，不能添加');return;}
+	if(!addbo){js.wx.alert('已保存過了，請重新定位後在保存');return;}
+	js.wx.prompt('保存定位','請輸入說明(選填)：',function(text){
 		adddkjl(0,'保存', text);
 	});
 }
@@ -159,24 +159,24 @@ function adddkjlsss(){
 var dwarr = <?=json_encode($dwarr)?>;
 function showdw(id){
 	var d = dwarr[id];
-	if(isempt(d.location_x)){js.wx.alert('没有位置信息无法查看');return;}
+	if(isempt(d.location_x)){js.wx.alert('沒有位置信息無法查看');return;}
 	if(js.jssdkstate!=1 || isempt(d.location_x)){
 		var url = '?d=main&m=kaoqin&a=location&id='+d.id+'';
 		js.location(url);
 	}else{
 		wx.openLocation({
-			latitude: parseFloat(d.location_x), // 纬度，浮点数，范围为90 ~ -90
-			longitude: parseFloat(d.location_y), // 经度，浮点数，范围为180 ~ -180。
+			latitude: parseFloat(d.location_x), // 緯度，浮點數，範圍為90 ~ -90
+			longitude: parseFloat(d.location_y), // 經度，浮點數，範圍為180 ~ -180。
 			name: '定位地址', // 位置名
-			address: d.label, // 地址详情说明
+			address: d.label, // 地址詳情說明
 			scale: parseFloat(d.scale)
 		});
 	}
 }
 function addkaoqin(){
-	if(!kqrs){js.wx.alert('没有设置定位考勤位置');return;}
-	if(js.dw.dwbool){js.wx.alert('正在定位，稍后在添加');return;}
-	if(latitude=='' || kqjuli==-1){js.wx.alert('定位没有成功，不能添加');return;}
+	if(!kqrs){js.wx.alert('沒有設置定位考勤位置');return;}
+	if(js.dw.dwbool){js.wx.alert('正在定位，稍後在添加');return;}
+	if(latitude=='' || kqjuli==-1){js.wx.alert('定位沒有成功，不能添加');return;}
 	
 	var i,kqrsa,slju,sljus,iskqbo=false;
 	for(i=0;i<kqallrs.length;i++){
@@ -185,9 +185,9 @@ function addkaoqin(){
 		sljus	= parseFloat(kqrsa.kqjuli);
 		if(sljus<=slju)iskqbo = true;
 	}
-	if(!iskqbo){js.wx.alert('当前位置距离考勤点有'+kqjuli+'米,考勤设置误差不能超过'+slju+'米，故不能添加考勤打卡！');return;}
+	if(!iskqbo){js.wx.alert('當前位置距離考勤點有'+kqjuli+'米,考勤設置誤差不能超過'+slju+'米，故不能添加考勤打卡！');return;}
 	
-	if(!addbo){js.wx.alert('已打卡过了，请重新定位后在打卡');return;}
+	if(!addbo){js.wx.alert('已打卡過了，請重新定位後在打卡');return;}
 	adddkjl(1,'打卡');
 }
 
@@ -209,7 +209,7 @@ function initupload(){
 			ispzs = true;
 		},
 		onprogress:function(f,bl){
-			$('#tisssa').html('上传图中('+bl+'%)');
+			$('#tisssa').html('上傳圖中('+bl+'%)');
 		},
 		allsuccess:function(far, ids){
 			adddkjlok(ids);

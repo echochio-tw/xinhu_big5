@@ -2,7 +2,7 @@
 class bookClassModel extends Model
 {
 	/**
-	*	读取当前时间借阅数量
+	*	讀取當前時間借閱數量
 	*/
 	public function getborrowshu($bookid, $dt='', $sid=0)
 	{
@@ -14,7 +14,7 @@ class bookClassModel extends Model
 	}
 	
 	/**
-	*	读取数可借阅数量
+	*	讀取數可借閱數量
 	*/
 	public function getjieshu($bookid, $dt='', $sid=0)
 	{

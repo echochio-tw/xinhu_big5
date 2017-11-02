@@ -307,7 +307,7 @@ KindEditor.plugin('image', function(K) {
 					} else {
 						self.exec('insertimage', url, title, width, height, border, align);
 					}
-					// Bugfix: [Firefox] 上传图片后，总是出现正在加载的样式，需要延迟执行hideDialog
+					// Bugfix: [Firefox] 上傳圖片後，總是出現正在加載的樣式，需要延遲執行hideDialog
 					setTimeout(function() {
 						self.hideDialog().focus();
 					}, 0);
@@ -320,7 +320,7 @@ KindEditor.plugin('image', function(K) {
 				target = target.parent();
 			}
 			target.remove();
-			// [IE] 删除图片后立即点击图片按钮出错
+			// [IE] 刪除圖片後立即點擊圖片按鈕出錯
 			self.addBookmark();
 		}
 	};

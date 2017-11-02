@@ -1,4 +1,4 @@
-var daytime = 8;//每天上班默认8个小时
+var daytime = 8;//每天上班默認8個小時
 function initbodys(){
 	
 }
@@ -11,12 +11,12 @@ function oninputblur(na){
 	}
 }
 function changesubmit(d){
-	if(d.etime<=d.stime)return '截止时间必须大于开始时间';
+	if(d.etime<=d.stime)return '截止時間必須大于開始時間';
 	if(d.stime.substr(0,7)!=d.etime.substr(0,7)){
-		return '不允许跨月申请';
+		return '不允許跨月申請';
 	}
 	var st=parseFloat(d.totals);
-	if(st<=0)return '请假时间必须大于0';
+	if(st<=0)return '請假時間必須大于0';
 }
 
 function changetotal(){
@@ -27,7 +27,7 @@ function changetotal(){
 		return;
 	}
 	if(st.substr(0,7)!=et.substr(0,7)){
-		js.setmsg('不允许跨月申请');
+		js.setmsg('不允許跨月申請');
 		return;
 	}
 	js.ajax(geturlact('total'),{stime:st,etime:et}, function(a){
@@ -37,7 +37,7 @@ function changetotal(){
 		changedays();
 	},'post,json');
 }
-//计算天数
+//計算天數
 function changedays(){
 	if(!form('totday'))return;
 	var to = parseFloat(form('totals').value);

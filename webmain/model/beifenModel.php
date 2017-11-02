@@ -2,13 +2,13 @@
 class beifenClassModel extends Model
 {
 	/**
-	*	创建备份使用加密的字符串
-	*	每个安装的系统备份的数据是不一样，即使得到备份文件也无法打开数据
+	*	創建備份使用加密的字符串
+	*	每個安裝的系統備份的數據是不一樣，即使得到備份文件也無法打開數據
 	*/
 	public function start()
 	{
 		$alltabls 	= $this->db->getalltable();
-		$nobeifne	= array(''.PREFIX.'log',''.PREFIX.'logintoken',''.PREFIX.'kqanay',''.PREFIX.'email_cont',''.PREFIX.'reads'); //不备份的表;
+		$nobeifne	= array(''.PREFIX.'log',''.PREFIX.'logintoken',''.PREFIX.'kqanay',''.PREFIX.'email_cont',''.PREFIX.'reads'); //不備份的表;
 		
 		$beidir 	= ''.UPDIR.'/data/'.date('Y.m.d.H.i.s').'';
 		foreach($alltabls as $tabs){
@@ -34,7 +34,7 @@ class beifenClassModel extends Model
 	}
 	
 	/**
-	*	获取备份的数据
+	*	獲取備份的數據
 	*/
 	public function getbfdata($file, $path='')
 	{

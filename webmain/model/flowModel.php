@@ -92,10 +92,10 @@ class flowClassModel extends Model
 				$hshu+=$this->db->row_count();
 				if(isempt($bar['nowcheckid']))$yics++;
 			}
-			if($hshu>0)$str.=''.$rs['name'].'匹配('.$hshu.')条;';
-			if($yics>0)$str.=''.$rs['name'].'<font color=red>('.$yics.')条没审核人</font>;';
+			if($hshu>0)$str.=''.$rs['name'].'匹配('.$hshu.')條;';
+			if($yics>0)$str.=''.$rs['name'].'<font color=red>('.$yics.')條沒審核人</font>;';
 		}
-		if($str=='')$str = '无从新匹配记录';
+		if($str=='')$str = '無從新匹配記錄';
 		
 		$rows	= $this->db->getall("select a.`id`,b.`name`,b.`deptname` from `[Q]flow_bill` a left join `[Q]admin` b on a.`uid`=b.`id` where b.`id` is not null and (ifnull(a.uname,'')='' or ifnull(a.udeptname,'')='')");
 		foreach($rows as $k=>$rs){

@@ -1,7 +1,7 @@
 <?php
 /**
-*	模块：knowtraim.考试培训人员
-*	来源：http://www.rockoa.com/
+*	模塊：knowtraim.考試培訓人員
+*	來源：http://www.rockoa.com/
 */
 defined('HOST') or die ('not access');
 ?>
@@ -15,23 +15,23 @@ $(document).ready(function(){
 		url:publicmodeurl('knowtraim'),storebeforeaction:'knowtraimuserbefore',storeafteraction:'knowtraimuserafter',checked:atype=='all',
 		params:{atype:atype},
 		columns:[{
-			text:"部门",dataIndex:"deptname"
+			text:"部門",dataIndex:"deptname"
 		},{
 			text:"姓名",dataIndex:"name"
 		},{
-			text:"题目",dataIndex:"title"
+			text:"題目",dataIndex:"title"
 		},{
-			text:"时间",dataIndex:"startdt",sortable:true
+			text:"時間",dataIndex:"startdt",sortable:true
 		},{
-			text:"考试时间",dataIndex:"kssdt",sortable:true
+			text:"考試時間",dataIndex:"kssdt",sortable:true
 		},{
-			text:"考试状态",dataIndex:"isks",sortable:true
+			text:"考試狀態",dataIndex:"isks",sortable:true
 		},{
-			text:"分数",dataIndex:"fenshu",sortable:true
+			text:"分數",dataIndex:"fenshu",sortable:true
 		},{
 			text:'',dataIndex:'optsw',renderer:function(v,d, oi){
 				var s = '&nbsp;';
-				if(d.state=='1' && d.iskszt=='0' && d.uid==adminid)s='<a onclick="openks{rand}('+oi+')" href="javascript:;">去考试</font>';
+				if(d.state=='1' && d.iskszt=='0' && d.uid==adminid)s='<a onclick="openks{rand}('+oi+')" href="javascript:;">去考試</font>';
 				return s;
 			}
 		}],
@@ -50,15 +50,15 @@ $(document).ready(function(){
 	var c = {
 		chongkx:function(){
 			var fid = a.getchecked();
-			if(fid==''){js.msg('msg','没有选中复选框');return;}
-			js.confirm('确定要标识未可考试嘛，将会清空原来记录', function(jg){
+			if(fid==''){js.msg('msg','沒有選中復選框');return;}
+			js.confirm('確定要標識未可考試嘛，將會清空原來記錄', function(jg){
 				if(jg=='yes')c.chongkxs(fid);
 			});
 		},
 		chongkxs:function(fid){
 			js.ajax(publicmodeurl('knowtraim','biaoshi'),{'fid':fid},function(s){
 				a.reload();
-			},'post',false, '处理中...,处理成功');
+			},'post',false, '處理中...,處理成功');
 		},
 		daochu:function(){
 			a.exceldown();
@@ -76,7 +76,7 @@ $(document).ready(function(){
 	<table width="100%">
 	<tr>
 		<td>
-			<input class="form-control" style="width:180px" id="key_{rand}" placeholder="题目/人员/部门">
+			<input class="form-control" style="width:180px" id="key_{rand}" placeholder="題目/人員/部門">
 		</td>
 		
 		<td style="padding-left:10px">
@@ -85,8 +85,8 @@ $(document).ready(function(){
 		<td  width="90%" style="padding-left:10px"></td>
 	
 		<td align="right"  nowrap>
-			 <button id="showbtn{rand}" class="btn btn-default" click="chongkx" type="button">重新标识可培训</button>&nbsp;&nbsp; 
-			<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+			 <button id="showbtn{rand}" class="btn btn-default" click="chongkx" type="button">重新標識可培訓</button>&nbsp;&nbsp; 
+			<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 		</td>
 	</tr>
 	</table>

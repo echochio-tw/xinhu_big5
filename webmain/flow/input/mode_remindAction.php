@@ -1,7 +1,7 @@
 <?php
 /**
-*	此文件是流程模块【remind.单据提醒设置】对应接口文件。
-*	可在页面上创建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_remind|input','flow')调用到对应方法
+*	此文件是流程模塊【remind.單據提醒設置】對應接口文件。
+*	可在頁面上創建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_remind|input','flow')調用到對應方法
 */ 
 class mode_remindClassAction extends inputAction{
 	
@@ -12,7 +12,7 @@ class mode_remindClassAction extends inputAction{
 		$rows['table'] = m('flow_set')->getmou('`table`', "`num`='$modenum'");
 		
 		$where 	 = "`uid`='$this->adminid' and `modenum`='$modenum' and `mid`='".$arr['mid']."' and `id`<>$id";
-		if($this->flow->rows($where)>0)return '你已设置这单据提醒了';
+		if($this->flow->rows($where)>0)return '你已設置這單據提醒了';
 		
 		return array(
 			'rows' => $rows
@@ -33,18 +33,18 @@ class mode_remindClassAction extends inputAction{
 		$ratea		= explode(',', $rate);
 		$rateb		= explode(',', $rateval);
 		$len 		= count($ratea);
-		$selarr['o'] = '仅一次';
-		$selarr['h'] = '每小时';
+		$selarr['o'] = '僅一次';
+		$selarr['h'] = '每小時';
 		$selarr['d'] = '每天';
 		$selarr['g'] = '每工作日';
 		$selarr['x'] = '每休息日';
-		$selarr['w1'] = '每周一';
-		$selarr['w2'] = '每周二';
-		$selarr['w3'] = '每周三';
-		$selarr['w4'] = '每周四';
-		$selarr['w5'] = '每周五';
-		$selarr['w6'] = '每周六';
-		$selarr['w7'] = '每周日';
+		$selarr['w1'] = '每週一';
+		$selarr['w2'] = '每週二';
+		$selarr['w3'] = '每週三';
+		$selarr['w4'] = '每週四';
+		$selarr['w5'] = '每週五';
+		$selarr['w6'] = '每週六';
+		$selarr['w7'] = '每週日';
 		$selarr['m']  = '每月';
 		$selarr['y']  = '每年';
 		$isbr 		  = $this->rock->ismobile() ? '<br>' : '';

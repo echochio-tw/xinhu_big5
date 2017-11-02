@@ -4,7 +4,7 @@ class optionClassModel extends Model
 	private	$getypsarr = array();
 	
 	/**
-		获取选项
+		獲取選項
 	*/
 	public function getval($num, $dev='', $lx=0)
 	{
@@ -31,7 +31,7 @@ class optionClassModel extends Model
 		return $id;
 	}
 	
-	//获取数据
+	//獲取數據
 	public function getdata($num, $whe='')
 	{
 		$pid = $this->getpids($num);
@@ -43,7 +43,7 @@ class optionClassModel extends Model
 		return $this->getdata($num);
 	}
 	
-	//获取树形结构
+	//獲取樹形結構
 	public function getselectdata($num, $tbo=false)
 	{
 		$this->getselectdatad = array();
@@ -71,7 +71,7 @@ class optionClassModel extends Model
 	
 	
 	
-	//设置选项值
+	//設置選項值
 	public function setval($num, $val='', $name=null, $isub=true)
 	{
 		$numa	= explode('@', $num);
@@ -115,7 +115,7 @@ class optionClassModel extends Model
 		return $idd;
 	}
 	
-	//获取一组设置
+	//獲取一組設置
 	public function getpidarr($pid, $lx=0)
 	{
 		$rows = $this->getall("`pid`='$pid'");
@@ -126,7 +126,7 @@ class optionClassModel extends Model
 		return $barr;
 	}
 	
-	//获取所有下级Id
+	//獲取所有下級Id
 	public function getalldownid($id)
 	{
 		$str  = $id;
@@ -138,7 +138,7 @@ class optionClassModel extends Model
 		return $str;
 	}
 	
-	//根据receid获取记录 $type=0，默认1其他
+	//根據receid獲取記錄 $type=0，默認1其他
 	public function getreceiddownall($uid, $optid=0, $type=0)
 	{
 		$rstr = m('admin')->getjoinstr('`receid`', $uid, 1,1);
@@ -155,7 +155,7 @@ class optionClassModel extends Model
 	}
 	
 	/**
-	*	根据名称如：技术姿势/PHP知识 得到对应ID
+	*	根據名稱如：技術姿勢/PHP知識 得到對應ID
 	*/
 	public function gettypeid($djnum,$s)
 	{
@@ -164,7 +164,7 @@ class optionClassModel extends Model
 		$s 	 = str_replace(',','/', $s);
 		$djid= $this->getval($djnum,'0',2);
 		if(isempt($djid)){
-			$djid = $this->insert(array('name' => '分类','num' => $djnum,'pid'=> 0,'valid'=> 1));
+			$djid = $this->insert(array('name' => '分類','num' => $djnum,'pid'=> 0,'valid'=> 1));
 		}
 		$dsja= $djid;
 		$sarr= explode('/', $s);

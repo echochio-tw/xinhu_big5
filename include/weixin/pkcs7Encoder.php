@@ -12,20 +12,20 @@ class PKCS7Encoder
 	public static $block_size = 32;
 
 	/**
-	 * 对需要加密的明文进行填充补位
-	 * @param $text 需要进行填充补位操作的明文
-	 * @return 补齐明文字符串
+	 * 對需要加密的明文進行填充補位
+	 * @param $text 需要進行填充補位操作的明文
+	 * @return 補齊明文字符串
 	 */
 	function encode($text)
 	{
 		$block_size = PKCS7Encoder::$block_size;
 		$text_length = strlen($text);
-		//计算需要填充的位数
+		//計算需要填充的位數
 		$amount_to_pad = PKCS7Encoder::$block_size - ($text_length % PKCS7Encoder::$block_size);
 		if ($amount_to_pad == 0) {
 			$amount_to_pad = PKCS7Encoder::block_size;
 		}
-		//获得补位所用的字符
+		//獲得補位所用的字符
 		$pad_chr = chr($amount_to_pad);
 		$tmp = "";
 		for ($index = 0; $index < $amount_to_pad; $index++) {
@@ -35,9 +35,9 @@ class PKCS7Encoder
 	}
 
 	/**
-	 * 对解密后的明文进行补位删除
-	 * @param decrypted 解密后的明文
-	 * @return 删除填充补位后的明文
+	 * 對解密後的明文進行補位刪除
+	 * @param decrypted 解密後的明文
+	 * @return 刪除填充補位後的明文
 	 */
 	function decode($text)
 	{
@@ -54,7 +54,7 @@ class PKCS7Encoder
 /**
  * Prpcrypt class
  *
- * 提供接收和推送给公众平台消息的加解密接口.
+ * 提供接收和推送給公眾平台消息的加解密接口.
  */
 class Prpcrypt
 {
@@ -66,22 +66,22 @@ class Prpcrypt
 	}
 
 	/**
-	 * 对明文进行加密
+	 * 對明文進行加密
 	 * @param string $text 需要加密的明文
-	 * @return string 加密后的密文
+	 * @return string 加密後的密文
 	 */
 	public function encrypt($text, $corpid)
 	{
 
 		try {
-			//获得16位随机字符串，填充到明文之前
+			//獲得16位隨機字符串，填充到明文之前
 			$random = $this->getRandomStr();
 			$text = $random . pack("N", strlen($text)) . $text . $corpid;
-			// 网络字节序
+			// 網絡字節序
 			$size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
 			$module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 			$iv = substr($this->key, 0, 16);
-			//使用自定义的填充方式对明文进行补位填充
+			//使用自定義的填充方式對明文進行補位填充
 			$pkc_encoder = new PKCS7Encoder;
 			$text = $pkc_encoder->encode($text);
 			mcrypt_generic_init($module, $this->key, $iv);
@@ -91,7 +91,7 @@ class Prpcrypt
 			mcrypt_module_close($module);
 
 			//print(base64_encode($encrypted));
-			//使用BASE64对加密后的字符串进行编码
+			//使用BASE64對加密後的字符串進行編碼
 			return array(ErrorCode::$OK, base64_encode($encrypted));
 		} catch (Exception $e) {
 			print $e;
@@ -100,7 +100,7 @@ class Prpcrypt
 	}
 
 	/**
-	 * 对密文进行解密
+	 * 對密文進行解密
 	 * @param string $encrypted 需要解密的密文
 	 * @return string 解密得到的明文
 	 */
@@ -108,7 +108,7 @@ class Prpcrypt
 	{
 
 		try {
-			//使用BASE64对需要解密的字符串进行解码
+			//使用BASE64對需要解密的字符串進行解碼
 			$ciphertext_dec = base64_decode($encrypted);
 			$module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 			$iv = substr($this->key, 0, 16);
@@ -124,10 +124,10 @@ class Prpcrypt
 
 
 		try {
-			//去除补位字符
+			//去除補位字符
 			$pkc_encoder = new PKCS7Encoder;
 			$result = $pkc_encoder->decode($decrypted);
-			//去除16位随机字符串,网络字节序和AppId
+			//去除16位隨機字符串,網絡字節序和AppId
 			if (strlen($result) < 16)
 				return "";
 			$content = substr($result, 16, strlen($result));
@@ -147,7 +147,7 @@ class Prpcrypt
 
 
 	/**
-	 * 随机生成16位字符串
+	 * 隨機生成16位字符串
 	 * @return string 生成的字符串
 	 */
 	function getRandomStr()

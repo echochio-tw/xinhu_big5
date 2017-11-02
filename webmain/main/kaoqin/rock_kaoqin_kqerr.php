@@ -7,23 +7,23 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'kqerr',params:{'atype':atype},fanye:true,modenum:modenum,statuschange:false,
 		columns:[{
-			text:'部门',dataIndex:'deptname'
+			text:'部門',dataIndex:'deptname'
 		},{
 			text:'姓名',dataIndex:'name'
 		},{
-			text:'职位',dataIndex:'ranking'
+			text:'職位',dataIndex:'ranking'
 		},{
-			text:'异常类型',dataIndex:'errtype',sortable:true
+			text:'異常類型',dataIndex:'errtype',sortable:true
 		},{
-			text:'异常日期',dataIndex:'dt',sortable:true
+			text:'異常日期',dataIndex:'dt',sortable:true
 		},{
-			text:'应打卡时间',dataIndex:'ytime'
+			text:'應打卡時間',dataIndex:'ytime'
 		},{
-			text:'说明',dataIndex:'explain',align:'left'
+			text:'說明',dataIndex:'explain',align:'left'
 		},{
-			text:'操作时间',dataIndex:'optdt',sortable:true
+			text:'操作時間',dataIndex:'optdt',sortable:true
 		},{
-			text:'状态',dataIndex:'statustext'
+			text:'狀態',dataIndex:'statustext'
 		}],
 		itemclick:function(){
 			btn(false);
@@ -32,7 +32,7 @@ $(document).ready(function(){
 			btn(true);
 		},
 		itemdblclick:function(d){
-			openxiangs('打卡异常',modenum,d.id);
+			openxiangs('打卡異常',modenum,d.id);
 		}
 	});
 	
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		},
 		view:function(){
 			var d=a.changedata;
-			openxiangs('打卡异常',modenum,d.id);
+			openxiangs('打卡異常',modenum,d.id);
 		}
 	};
 	js.initbtn(c);
@@ -68,7 +68,7 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:250px" id="key_{rand}"   placeholder="人员/部门">
+		<input class="form-control" style="width:250px" id="key_{rand}"   placeholder="人員/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
@@ -78,8 +78,8 @@ $(document).ready(function(){
 	
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">详情</button> &nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button> 
+		<button class="btn btn-default" id="xiang_{rand}" click="view" disabled type="button">詳情</button> &nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button> 
 	</td>
 </tr>
 </table>

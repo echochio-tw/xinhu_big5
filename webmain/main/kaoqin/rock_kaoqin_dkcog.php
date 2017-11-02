@@ -5,15 +5,15 @@ $(document).ready(function(){
 		tablename:'userinfo',celleditor:true,fanye:true,
 		url:publicstore('{mode}','{dir}'),storeafteraction:'kqtotalaftershow',storebeforeaction:'kqtotalbeforeshow',
 		columns:[{
-			text:'部门',dataIndex:'deptname',align:'left',sortable:true
+			text:'部門',dataIndex:'deptname',align:'left',sortable:true
 		},{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
-			text:'职位',dataIndex:'ranking'
+			text:'職位',dataIndex:'ranking'
 		},{
-			text:'在线打卡IP',dataIndex:'dkip'
+			text:'在線打卡IP',dataIndex:'dkip'
 		},{
-			text:'在线打卡MAC地址',dataIndex:'dkmac'
+			text:'在線打卡MAC地址',dataIndex:'dkmac'
 		},{
 			text:'ID',dataIndex:'id'
 		}],
@@ -33,7 +33,7 @@ $(document).ready(function(){
 <div>
 <table width="100%"><tr>
 	<td nowrap>
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>

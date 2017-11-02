@@ -68,21 +68,21 @@ class kaoqinClassAction extends Action
 	public function kqinfoaftershow($table, $rows)
 	{
 		$uid 	= $this->adminid;
-		$types 	= explode(',','<font color=blue>待审核</font>,<font color=green>已审核</font>,<font color=red>未通过</font>,,,<font color=#888888>已作废</font>');
+		$types 	= explode(',','<font color=blue>待審核</font>,<font color=green>已審核</font>,<font color=red>未通過</font>,,,<font color=#888888>已作廢</font>');
 		foreach($rows as $k=>$rs){
 			$rows[$k]['status'] = $this->rock->arrvalue($types, $rs['status']);
 			$modenum  = 'leavehr';
 			$modename = '考勤信息';
-			if($rs['kind']=='请假'){
+			if($rs['kind']=='請假'){
 				$modenum  = 'leave';
-				$modename = '请假条';
+				$modename = '請假條';
 			}
 			$jiatype 	 = '';
 			if($rs['kind']=='加班'){
 				$modenum  = 'jiaban';
-				$modename = '加班单';
-				$jiatype  = '调休';
-				if($rs['jiatype']=='1')$jiatype='加班费'.$rs['jiafee'].'';
+				$modename = '加班單';
+				$jiatype  = '調休';
+				if($rs['jiatype']=='1')$jiatype='加班費'.$rs['jiafee'].'';
 			}
 			$rows[$k]['modenum'] 	= $modenum;
 			$rows[$k]['modename'] 	= $modename;
@@ -98,7 +98,7 @@ class kaoqinClassAction extends Action
 			$kqm 	= m('kaoqin');
 			$jiafee = $kqm->getjiafee($uid, $month);
 			$str	= ''.$kqm->getqjsytimestr($uid).'';
-			if($jiafee>0)$str.='，'.substr($month,0,7).'加班费('.$jiafee.'元)';
+			if($jiafee>0)$str.='，'.substr($month,0,7).'加班費('.$jiafee.'元)';
 		}
 		return array('rows'=>$rows,'totalstr'=> $str);
 	}
@@ -136,7 +136,7 @@ class kaoqinClassAction extends Action
 	{
 		$type	= (int)$this->post('type','0');
 		$id 	= (int)$this->post('id');
-		if($id==1 && $type!=3)showreturn('','此记录不能删除',201);
+		if($id==1 && $type!=3)showreturn('','此記錄不能刪除',201);
 		if($type==0)m('kqsjgz')->delete("`id`='$id' or pid='$id'");
 		if($type==1)m('kqdist')->delete("`id`='$id'"); //分配的
 		if($type==2)m('kqxxsj')->delete("`id`='$id' or pid='$id'");
@@ -155,7 +155,7 @@ class kaoqinClassAction extends Action
 	
 	
 	
-	//考勤时间分配
+	//考勤時間分配
 	public function kqdistbefore($table)
 	{
 		$type	= (int)$this->post('type','0');
@@ -288,7 +288,7 @@ class kaoqinClassAction extends Action
 		echo 'ok';
 	}
 	
-	//考勤分析总表
+	//考勤分析總表
 	public function kqanayallbeforeshow($table)
 	{
 		$this->month	= substr($this->post('dt1',date('Y-m')),0,7);
@@ -327,7 +327,7 @@ class kaoqinClassAction extends Action
 	}
 	
 	
-	//个人考勤数据库
+	//個人考勤數據庫
 	public function getmyanaykqAjax()
 	{
 		$uid 	= (int)$this->post('uid', $this->adminid);
@@ -371,7 +371,7 @@ class kaoqinClassAction extends Action
 	
 	
 	
-	//考勤统计
+	//考勤統計
 	public function kqtotalbeforeshow($table)
 	{
 		$dt1			= $this->post('month', date('Y-m'));
@@ -408,12 +408,12 @@ class kaoqinClassAction extends Action
 		$barr 	= $kqobj->alltotalrows($this->months, $rows);
 		$rows 	= $barr['rows'];
 		$darr 	= array();
-		//读取表头
+		//讀取表頭
 		if($pnum=='all'){
 			$dt 	= $this->months.'-01';
-			//获取每天考勤几个状态
+			//獲取每天考勤幾個狀態
 			$sbarr	= $kqobj->getsbarr($this->adminid, $dt);
-			$lenz 	= count($sbarr); //每天考勤几个状态
+			$lenz 	= count($sbarr); //每天考勤幾個狀態
 			$touar 	= array();
 			
 			$max 	= $kqobj->dtobj->getmaxdt($this->months);
@@ -432,7 +432,7 @@ class kaoqinClassAction extends Action
 			
 			$darr[] = $touar;
 			
-			//读取人员考勤状态
+			//讀取人員考勤狀態
 			foreach($rows as $k=>$rs){
 				$uid 	= $rs['id'];
 				$kqarr 	= $kqobj->getanay($uid, $this->months);
@@ -441,7 +441,7 @@ class kaoqinClassAction extends Action
 					$dt = $this->months.'-'.$oi.'';
 					if(isset($kqarr[$dt]))foreach($kqarr[$dt] as $j=>$rs1){
 						$dataIndex = 'dt'.$i.'_'.$j.'';
-						$rs[$dataIndex] = $kqobj->getkqstate($rs1); //考勤状态
+						$rs[$dataIndex] = $kqobj->getkqstate($rs1); //考勤狀態
 					}
 				}
 				$darr[] = $rs;
@@ -462,7 +462,7 @@ class kaoqinClassAction extends Action
 	
 	
 	/**
-	*	批量导入打卡记录(2017-08-22)弃用
+	*	批量導入打卡記錄(2017-08-22)棄用
 	*/
 	public function addpldkjlAjax()
 	{
@@ -501,7 +501,7 @@ class kaoqinClassAction extends Action
 				));
 			}
 		}
-		backmsg('','成功导入'.$oi.'条数据');
+		backmsg('','成功導入'.$oi.'條數據');
 	}
 	private function adtewe($a, $len){
 		for($i=0;$i<$len;$i++){
@@ -547,7 +547,7 @@ class kaoqinClassAction extends Action
 		$this->assign('scale', $scale);
 	}
 	
-	//删除打卡记录
+	//刪除打卡記錄
 	public function deldkjlAjax()
 	{
 		$sid = $this->post('id');
@@ -560,15 +560,15 @@ class kaoqinClassAction extends Action
 	
 	
 	
-	//排班读取人员
+	//排班讀取人員
 	public function pbkqdistbefore($table)
 	{
-		$pblx	= (int)$this->post('pblx',0);//0查看,1组,2人员
+		$pblx	= (int)$this->post('pblx',0);//0查看,1組,2人員
 		
 		$dt1			= $this->post('dt1', date('Y-m'));
 		$this->months 	= $dt1;
 		
-		//根据组
+		//根據組
 		if($pblx==1){
 			return array(
 				'table' => '`[Q]group`'
@@ -603,7 +603,7 @@ class kaoqinClassAction extends Action
 		$kqobj  = m('kaoqin');
 		$pblx	= $this->post('pblx','0');
 		
-		//人员的
+		//人員的
 		if($pblx=='0'){
 			foreach($rows as $k=>$rs){
 				if($rs['state']==5)$rows[$k]['ishui']=1;
@@ -623,7 +623,7 @@ class kaoqinClassAction extends Action
 			}
 		}
 		
-		//组的
+		//組的
 		if($pblx=='1' || $pblx=='2'){
 			$gset = $this->db->getall("select * from `[Q]kqdisv` where `dt` like '".$this->months."%' and `plx`=".$pblx." order by `type`");
 			$setar= array();
@@ -633,7 +633,7 @@ class kaoqinClassAction extends Action
 			}
 			
 			foreach($rows as $k=>$rs){
-				if($pblx=='1')$rows[$k]['deptname']='组';
+				if($pblx=='1')$rows[$k]['deptname']='組';
 				for($i=1;$i<=$maxjg;$i++){
 					$oi  	= ($i<10) ? '0'.$i.'' : $i;
 					$dt 	= $this->months.'-'.$oi;
@@ -643,7 +643,7 @@ class kaoqinClassAction extends Action
 					$iswork = 1;
 					$zt 	= '';
 					if(isset($setar[$key1]))$iswork=0;
-					if(isset($setar[$key2]))$iswork=1;//有设置工作日就是工作日
+					if(isset($setar[$key2]))$iswork=1;//有設置工作日就是工作日
 					if($iswork==1){
 						$zt = arrvalue($setar, $key0,'0');
 					}
@@ -654,7 +654,7 @@ class kaoqinClassAction extends Action
 		}
 		
 		
-		//读取考勤时间规则
+		//讀取考勤時間規則
 		$gzrows = m('kqsjgz')->getall('pid=0','`id`,`name`','`sort`');
 		
 		return array(
@@ -665,7 +665,7 @@ class kaoqinClassAction extends Action
 		);
 	}
 	
-	//排班标识保存
+	//排班標識保存
 	public function setpaibanAjax()
 	{
 		$len 	= (int)$this->post('len','0');
@@ -673,17 +673,17 @@ class kaoqinClassAction extends Action
 		for($i=0;$i<$len;$i++){
 			$dt  = date('Y-m-d',strtotime($this->post('dt_'.$i.'')));
 			$mid = $this->post('mid_'.$i.'');
-			$plx = $this->post('plx_'.$i.'');//1组,2人员
+			$plx = $this->post('plx_'.$i.'');//1組,2人員
 			$receid = $this->post('receid_'.$i.'');
 			$lx = (int)$this->post('type_'.$i.'','0');
 			
-			$type = 0;//考勤规则
+			$type = 0;//考勤規則
 			
-			//设置休息日 取消休息日
+			//設置休息日 取消休息日
 			if($lx==0 || $lx==1){
 				$type = 1;
 			}
-			//设置工作日 取消工作日
+			//設置工作日 取消工作日
 			if($lx==2 || $lx==3){
 				$type = 2;
 			}
@@ -705,5 +705,13 @@ class kaoqinClassAction extends Action
 				}
 			}
 		}
+	}
+	
+	//自動添加年假
+	public function addnianjiaAjax()
+	{
+		$dt 	= $this->get('dt');
+		$barr	= m('flow:leave')->autoaddleave();
+		return '共添加'.count($barr).'人';
 	}
 }

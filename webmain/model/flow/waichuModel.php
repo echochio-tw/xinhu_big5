@@ -3,7 +3,7 @@ class flow_waichuClassModel extends flowModel
 {
 	protected function flowgetfields($lx)
 	{
-		$arr['location'] 		= '此时间定位打卡';
+		$arr['location'] 		= '此時間定位打卡';
 		return $arr;
 	}
 	

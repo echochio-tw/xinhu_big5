@@ -2,16 +2,16 @@
 class flow_tovoidClassModel extends flowModel
 {
 	
-	//展示是替换一下
+	//展示是替換一下
 	public function flowrsreplace($rs)
 	{
-		$str= '作废';
-		if($rs['type']==1)$str= '删除';
+		$str= '作廢';
+		if($rs['type']==1)$str= '刪除';
 		$rs['type'] = $str;
 		return $rs;
 	}
 
-	//审核完成了处理单据，删除还是作废
+	//審核完成了處理單據，刪除還是作廢
 	protected function flowcheckfinsh($zt)
 	{
 		$type = $this->rs['type'];
@@ -19,11 +19,11 @@ class flow_tovoidClassModel extends flowModel
 		if(!$bilrs)return;
 		$mors = $this->db->getone('[Q]flow_set',"`id`='".$bilrs['modeid']."'");
 		if(!$mors)return;
-		//作废
+		//作廢
 		if($type==0){
 			m('flow')->zuofeibill($mors['num'], $bilrs['mid'], $this->rs['explain']);
 		}
-		//删除
+		//刪除
 		if($type==1){
 			m('flow')->deletebill($mors['num'], $bilrs['mid'], $this->rs['explain'], false);
 		}

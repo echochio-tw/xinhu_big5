@@ -1,6 +1,6 @@
 <?php
 /**
-*	模块.图书借阅
+*	模塊.圖書借閱
 */
 class flow_bookborrowClassModel extends flowModel
 {

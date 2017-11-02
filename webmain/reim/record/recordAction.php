@@ -28,13 +28,13 @@ class recordClassAction extends Action
 		return $where;
 	}
 	
-	//数据显示后处理
+	//數據顯示後處理
 	public function storeaftershow($table,$rows)
 	{
 		$suids 	 = '0';
 		$guids 	 = '0';
 		$fuids 	 = '0';
-		$typearr = array('user'=>'单人','group'=>'群会话');
+		$typearr = array('user'=>'單人','group'=>'群會話');
 		foreach($rows as $k=>$rs){
 			$suids.=','.$rs['sendid'].'';
 			
@@ -51,7 +51,7 @@ class recordClassAction extends Action
 		if($suids!='0')$farr	= $this->db->getarr('[Q]admin', "`id` in($suids)",'`face`,`name`');
 		if($guids!='0')$garr	= $this->db->getarr('[Q]im_group', "`id` in($guids)",'`face`,`name`');
 		
-		if($fuids!='0')$warr	= $this->db->getarr('[Q]file', "`id` in($fuids)",'filename,filesizecn,fileext,filepath'); //相关文件
+		if($fuids!='0')$warr	= $this->db->getarr('[Q]file', "`id` in($fuids)",'filename,filesizecn,fileext,filepath'); //相關文件
 		$fobj 	= m('file');
 		$ztfo   = m('im_messzt');
 		foreach($rows as $k=>$rs){
@@ -67,26 +67,26 @@ class recordClassAction extends Action
 				}
 			}else{
 				if(isset($garr[$receid])){
-					$rows[$k]['recename'] = $garr[$receid]['name']; //群名称
+					$rows[$k]['recename'] = $garr[$receid]['name']; //群名稱
 				}
 			}
-			//发送人是我判断是否已读未读
+			//發送人是我判斷是否已讀未讀
 			$zttext = '';
 			if($type=='user'){
 				if($rs['zt']=='1'){
-					$zttext = '已读';
+					$zttext = '已讀';
 					$rows[$k]['ishui']=1;
 				}else{
-					$zttext = '<font color=red>未读</font>';
+					$zttext = '<font color=red>未讀</font>';
 				}
 			}else{
 				if($sendid == $this->adminid){
 					$tos = $ztfo->rows('mid='.$rs['id'].'');
 					if($tos==0){
-						$zttext = '全部已读';
+						$zttext = '全部已讀';
 						$rows[$k]['ishui']=1;
 					}else{
-						$zttext = '<font color=red>'.$tos.'人未读</font>';
+						$zttext = '<font color=red>'.$tos.'人未讀</font>';
 					}
 				}
 			}
@@ -109,7 +109,7 @@ class recordClassAction extends Action
 		);
 	}
 	
-	//删除聊天记录
+	//刪除聊天記錄
 	public function delrecordAjax()
 	{
 		$id 	= $this->post('id');
@@ -119,8 +119,8 @@ class recordClassAction extends Action
 				m('reim')->clearrecord('',0,$this->adminid, $id);
 			}
 		}else{
-			//管理员删除
-			if($this->getsession('isadmin')!='1')backmsg('非管理员不能操作');
+			//管理員刪除
+			if($this->getsession('isadmin')!='1')backmsg('非管理員不能操作');
 			
 			if(!isempt($id)){
 				m('im_mess')->delete('id in('.$id.')');

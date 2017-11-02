@@ -1,7 +1,7 @@
 <?php
 /**
-*	此文件是流程模块【finccbx.出差报销】对应接口文件。
-*	可在页面上创建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_finccbx|input','flow')调用到对应方法
+*	此文件是流程模塊【finccbx.出差報銷】對應接口文件。
+*	可在頁面上創建更多方法如：public funciton testactAjax()，用js.getajaxurl('testact','mode_finccbx|input','flow')調用到對應方法
 */ 
 class mode_finccbxClassAction extends inputAction{
 	

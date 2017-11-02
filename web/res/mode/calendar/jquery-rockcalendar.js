@@ -24,11 +24,11 @@
 		this.nobj	= null;
 		this.sterma	= {};
 		this.dayobj	= [];
-		this.feastarr	= {'0101':'元旦','0214':'情人节','正月初一':'春节','正月十五':'元宵节','七月初七':'七夕','五月初五':'端午节','0501':'劳动节','0601':'儿童节','1001':'国庆节','1111':'光棍日','八月十五':'中秋节','腊月三十':'除夕','腊月初八':'腊八','0801':'建军节','0701':'建党日','0401':'愚人节','0504':'五四青年节','0308':'妇女节','1225':'圣诞节','1224':'平安夜','1031':'万圣节','九月初九':'重阳节','0910':'教师节','0504':'青年节','0312':'植树节','0314':'白色情人节','0315':'消费者权益日','腊月廿三':'小年','0305':'学雷锋日','0422':'世界地球日','0920':'国际爱牙日','0918':'九一八事变','1213':'南京大屠杀日','1201':'世界艾滋病日','1203':'国际残疾人日','0815':'日本投降日'};
-		this.tsarr	= {'1144':'感恩节','0520':'母亲节','0630':'父亲节'};
+		this.feastarr	= {'0101':'元旦','0214':'情人節','正月初一':'春節','正月十五':'元宵節','七月初七':'七夕','五月初五':'端午節','0501':'勞動節','0601':'兒童節','1001':'國慶節','1111':'光棍日','八月十五':'中秋節','臘月三十':'除夕','臘月初八':'臘八','0801':'建軍節','0701':'建黨日','0401':'愚人節','0504':'五四青年節','0308':'婦女節','1225':'聖誕節','1224':'平安夜','1031':'萬聖節','九月初九':'重陽節','0910':'教師節','0504':'青年節','0312':'植樹節','0314':'白色情人節','0315':'消費者權益日','臘月廿三':'小年','0305':'學雷鋒日','0422':'世界地球日','0920':'國際愛牙日','0918':'九一八事變','1213':'南京大屠殺日','1201':'世界艾滋病日','1203':'國際殘疾人日','0815':'日本投降日'};
+		this.tsarr	= {'1144':'感恩節','0520':'母親節','0630':'父親節'};
 		
 		var tgString = '甲乙丙丁戊己庚辛壬癸';
-		var dzString = '子丑寅卯辰巳午未申酉戌亥';
+		var dzString = '子醜寅卯辰巳午未申酉戌亥';
 		var bool	 = false;	
 		
 		
@@ -85,7 +85,7 @@
 				this.obj[i]=no;
 				no.onclick=function(){me.click(this)}
 			}
-			this.nowmonth(can.month);//当月
+			this.nowmonth(can.month);//當月
 		}
 		this.nowmonth=function(nmot)
 		{
@@ -132,7 +132,7 @@
 			var mx	= this.max+this.w;
 			var offstaa	= $('#calmain_div'+this.mid+'').offset();
 			$("span[temp='showcaentt5eaee"+this.mid+"']").remove();
-			//当月24节气名称
+			//當月24節氣名稱
 			var tmp1=lunar.sTerm(gY, gm*2-2);
 			var tmp2=lunar.sTerm(gY, gm*2-1);
 			this.sterma={};
@@ -160,7 +160,7 @@
 				var jie		= '';
 				var jiec	= this.getJie(gY,gm,j1,lun[1]+sn);
 				var jiec1	= this.sterma[''+this.sa(gm)+''+this.sa(j1)+''];
-				var jiec2	= this.tsarr[''+this.sa(gm)+''+xqarr[oci]+''+oci+''];//年第几个星期
+				var jiec2	= this.tsarr[''+this.sa(gm)+''+xqarr[oci]+''+oci+''];//年第幾個星期
 				
 				if(j1==this.nd){
 					this.nobj=this.obj[i1];
@@ -172,7 +172,7 @@
 				
 				if(jiec!='')jie+=','+jiec+'';
 				
-				//节气
+				//節氣
 				if(jiec1){
 					if(jiec1!='清明'){
 						col2='#006699';
@@ -211,14 +211,14 @@
 				can.changemonth(this.Y, this.m, this);
 				return;
 			}	
-			//填充其余的
+			//填充其餘的
 			var lY	= gY,lm	= gm-1,lx=0,lxu=0;
 			if(lm==0){
 				lY	= lY-1;
 				lm	= 12;
 			}
 			lx	= this.marr[lm-1];
-			if(lY%4==0 && lm==2)lx++;//闰年2月29天
+			if(lY%4==0 && lm==2)lx++;//閏年2月29天
 			for(var i=this.w;i>=1;i--){
 				var day	= ''+lY+'-'+this.sa(lm)+'-'+this.sa(lx)+'';
 				
@@ -275,10 +275,10 @@
 			//alert(day);
 			$('#leftday').html(this.sa(d));
 			$('#changedate').html(''+day+'');
-			$('#lunanday').html(''+gY+'年 农历 '+lun[1]+''+lun[2]+'');
-			//什么月
+			$('#lunanday').html(''+gY+'年 農歷 '+lun[1]+''+lun[2]+'');
+			//什麼月
 			var yue1 = this.showYue(gY,gm);
-			//什么日
+			//什麼日
 			var day1 = this.showDay(gY,gm,d);
 			$('#lunanday1').html(''+lun[0]+' '+yue1+'月 '+day1+'日');
 			
@@ -317,7 +317,7 @@
 
 		this.getSpanAcc=function(s1,s2,col1,col2, day, oi)
 		{
-			if(s2.indexOf('国际')==0 || s2.indexOf('世界')==0)col2='#419900';
+			if(s2.indexOf('國際')==0 || s2.indexOf('世界')==0)col2='#419900';
 			var s = '<div><font color='+col1+'>'+s1+'</font><font style="font-size:11px" color='+col2+'>,'+s2+'</font></div>';
 			var sq 	= can.renderer(day, s, s1,s2,col1,col2, oi,this);
 			if(sq)s = sq;

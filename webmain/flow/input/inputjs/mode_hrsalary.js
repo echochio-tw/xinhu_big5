@@ -1,14 +1,14 @@
 var initshujubs=false;
 function initsssss(){
 	if(ismobile==1){
-		$('#div_punish').before('<div><b>减少部分(-)</b></div>');
+		$('#div_punish').before('<div><b>減少部分(-)</b></div>');
 	}
 }
 initsssss();
 function initbodys(){
 	var o = $('input[type=number]');
 	o.attr('minValue','0');
-	$('#AltS').before('<input type="button" style="background:#888888" onclick="return initshuju()" value="初始数据" class="webbtn">&nbsp; &nbsp;');
+	$('#AltS').before('<input type="button" style="background:#888888" onclick="return initshuju()" value="初始數據" class="webbtn">&nbsp; &nbsp;');
 	o.blur(function(){
 		jisuantongzi();
 	});
@@ -20,11 +20,11 @@ function initbodys(){
 function initshuju(){
 	var xuid=form('xuid').value,month=form('month').value;
 	if(xuid==''){
-		js.msg('msg','请选择人员');
+		js.msg('msg','請選擇人員');
 		return;
 	}
 	if(month==''){
-		js.msg('msg','请选择月份');
+		js.msg('msg','請選擇月份');
 		return;
 	}
 	js.ajaxbool=false;
@@ -32,7 +32,7 @@ function initshuju(){
 	js.setmsg();
 	initshujubs = false;
 	js.ajax(geturlact('initdatas'),{'xuid':xuid,'month':month},function(adds){
-		js.msg('success','初始化完成，请认真核对');
+		js.msg('success','初始化完成，請認真核對');
 		for(var i in adds){
 			if(form(i))form(i).value=adds[i];
 		}
@@ -45,7 +45,7 @@ function changesubmitbefore(){
 }
 function changesubmit(){
 	if(mid=='0' && !initshujubs){
-		return '请先初始数据';
+		return '請先初始數據';
 	}
 }
 function jisuantongzi(){

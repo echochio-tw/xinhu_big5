@@ -8,11 +8,11 @@ $(document).ready(function(){
 		columns:[{
 			text:'',dataIndex:'caozuo'
 		},{
-			text:'题名',dataIndex:'title',editor:false,align:'left'
+			text:'題名',dataIndex:'title',editor:false,align:'left'
 		},{
-			text:'分类',dataIndex:'typename'
+			text:'分類',dataIndex:'typename'
 		},{
-			text:'类型',dataIndex:'type'
+			text:'類型',dataIndex:'type'
 		},{
 			text:'A',dataIndex:'ana'
 		},{
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		},{
 			text:'排序',dataIndex:'sort',sortable:true,editor:true
 		},{
-			text:'状态',dataIndex:'status',type:'checkbox',editor:true,sortable:true
+			text:'狀態',dataIndex:'status',type:'checkbox',editor:true,sortable:true
 		}]
 	});
 
@@ -38,7 +38,7 @@ $(document).ready(function(){
 			a.exceldown();
 		},
 		adds:function(){
-			openinput('知识题库',modenum);
+			openinput('知識題庫',modenum);
 		},
 		search:function(){
 			var s=get('key_{rand}').value;
@@ -47,12 +47,12 @@ $(document).ready(function(){
 		daoru:function(){
 			
 			managelistknowtiku = a;
-			addtabs({num:'daoruknowtiku',url:'flow,input,daoru,modenum=knowtiku',icons:'plus',name:'导入题库'});
+			addtabs({num:'daoruknowtiku',url:'flow,input,daoru,modenum=knowtiku',icons:'plus',name:'導入題庫'});
 			
 		},
 		
 		mobj:a,
-		title:'题库分类',
+		title:'題庫分類',
 		stable:'knowtiku',
 		optionview:'optionview_{rand}',
 		optionnum:'knowtikutype',
@@ -80,12 +80,12 @@ $(document).ready(function(){
 	<table width="100%"><tr>
 		<td align="left" nowrap>
 			<button class="btn btn-primary" click="adds"  type="button"><i class="icon-plus"></i> 新增</button>&nbsp; 
-			<button class="btn btn-default" click="allshow"  type="button">所有题库</button>&nbsp; 
+			<button class="btn btn-default" click="allshow"  type="button">所有題庫</button>&nbsp; 
 			
 		</td>
 		
 		<td style="padding-left:10px">
-		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="题名/分类">
+		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="題名/分類">
 		</td>
 		<td style="padding-left:10px">
 			<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -94,8 +94,8 @@ $(document).ready(function(){
 			&nbsp;&nbsp;<span id="megss{rand}"></span>
 		</td>
 		<td align="right" nowrap>
-			<button class="btn btn-default"  click="daoru" type="button">导入题库</button>&nbsp;
-			<button class="btn btn-default"  click="daochu" type="button">导出</button>
+			<button class="btn btn-default"  click="daoru" type="button">導入題庫</button>&nbsp;
+			<button class="btn btn-default"  click="daochu" type="button">導出</button>
 		</td>
 	</tr></table>
 	</div>

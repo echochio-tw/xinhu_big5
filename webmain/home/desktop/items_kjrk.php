@@ -1,6 +1,6 @@
 <?php 
 /**
-*	桌面首页项(快捷入口)
+*	桌面首頁項(快捷入口)
 */
 defined('HOST') or die ('not access');
 
@@ -8,7 +8,7 @@ defined('HOST') or die ('not access');
 <script>
 homeobject.showicons=function(a){
 	if(a.length%2!=0)a.push({name:'none'});
-	a.push({name:'刷新统计中...',icons:'refresh',num:'refresh',color:'#888888'});
+	a.push({name:'刷新統計中...',icons:'refresh',num:'refresh',color:'#888888'});
 	this.menuarr = a;
 	var o = $('#kuailistdonw'),s='<table width="100%"><tr>',a1,oi=0,s1t='';
 	for(var i=0; i<a.length-1;i++){

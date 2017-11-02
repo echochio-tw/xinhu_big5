@@ -1,4 +1,4 @@
-//流程模块【officic.公文查阅】下录入页面自定义js页面,初始函数
+//流程模塊【officic.公文查閱】下錄入頁面自定義js頁面,初始函數
 function initbodys(){
 	
 }

@@ -22,8 +22,8 @@ $(document).ready(function(){
 		}
 		,
 		testss:function(o1,lx){
-			if(ISDEMO){js.msg('success','demo上就不要测试，我们都测试通过的');return;}
-			js.msg('wait','测试中...');
+			if(ISDEMO){js.msg('success','demo上就不要測試，我們都測試通過的');return;}
+			js.msg('wait','測試中...');
 			js.ajax(js.getajaxurl('testsend','{mode}','{dir}'),{lx:lx}, function(a){
 				if(a.success){
 					js.msg('success',a.msg);
@@ -47,21 +47,21 @@ $(document).ready(function(){
 		
 		
 		<tr>
-			<td  align="right"><font color=red>*</font> AppID(应用ID)：</td>
+			<td  align="right"><font color=red>*</font> AppID(應用ID)：</td>
 			<td class="tdinput"><input id="wxgzhappid_{rand}" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right" width="180"><font color=red>*</font>AppSecret(应用密钥)：</td>
+			<td  align="right" width="180"><font color=red>*</font>AppSecret(應用密鑰)：</td>
 			<td class="tdinput">
 			<textarea id="wxgzhsecret_{rand}" style="height:60px" class="form-control"></textarea>
-			<font color="#888888">可以使用公众号的订阅号/服务号都可以，到公众号后台【开发→基本配置】下获取,<a href="http://xh829.com/view_wxgzh.html"  target="_blank">[帮助]</a></font>
+			<font color="#888888">可以使用公眾號的訂閱號/服務號都可以，到公眾號後台【開發→基本配置】下獲取,<a href="http://xh829.com/view_wxgzh.html"  target="_blank">[幫助]</a></font>
 			</td>
 		</tr>
 		
 		<tr>
 			<td  align="right"></td>
-			<td  class="tdinput" align="left"><button click="testss,0" class="btn btn-default" type="button">测试是否有效</button>
+			<td  class="tdinput" align="left"><button click="testss,0" class="btn btn-default" type="button">測試是否有效</button>
 		</td>
 		</tr>
 		

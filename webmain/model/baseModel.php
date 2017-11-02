@@ -1,16 +1,16 @@
 <?php
-//基础使用
+//基礎使用
 class baseClassModel extends Model
 {
 	private $usrr = array();
 	
 	/**
-	*	获取异步地址
+	*	獲取異步地址
 	*/
 	public function getasynurl($m, $a,$can=array(), $lx=0)
 	{
 		if($lx==0)$runurl		= getconfig('localurl', URL);
-		if($lx==1)$runurl		= getconfig('anayurl', URL); //使用异步通信地址
+		if($lx==1)$runurl		= getconfig('anayurl', URL); //使用異步通信地址
 		$key 	 	= getconfig('asynkey');
 		if($key!='')$key = md5(md5($key));
 		$runurl 	.= 'api.php?m='.$m.'&a='.$a.'&adminid='.$this->adminid.'&asynkey='.$key.'';
@@ -19,7 +19,7 @@ class baseClassModel extends Model
 	}
 	
 	/**
-	*	系统上变量替换
+	*	系統上變量替換
 	*	$lx = 0 加''，$lx=1不加
 	*/
 	public function strreplace($str, $uid=0, $lx=0)
@@ -29,7 +29,7 @@ class baseClassModel extends Model
 		$month 	= date('Y-m');
 		$str 		= str_replace('[date]', $date, $str);
 		$str 		= str_replace('[month]', $month, $str);
-		if(!contain($str,'{') || !contain($str,'}'))return $str; //没有{}变量
+		if(!contain($str,'{') || !contain($str,'}'))return $str; //沒有{}變量
 		
 		if($uid==0)$uid = $this->adminid;
 		$ckey 	= 'u'.$uid.'';
@@ -58,7 +58,7 @@ class baseClassModel extends Model
 				if($lx==0)$val = "'$val'";
 				$str = str_replace('{'.$match.'}', $val, $str);
 			}
-			//是否日期加减{date+1},{second-20}
+			//是否日期加減{date+1},{second-20}
 			if(contain($match,'+') || contain($match,'-')){
 				$add = 1;
 				if(contain($match,'-'))$add=-1;

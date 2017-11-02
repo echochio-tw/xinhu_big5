@@ -39,7 +39,7 @@
 			}
 			this.setDefault(can.value, can.data);
 			this._loadbool = false;
-			this._fistload(0);//自动加载
+			this._fistload(0);//自動加載
 		};
 		
 		this._down = function(o1){
@@ -175,7 +175,7 @@
 			$('#value_'+rand+'').val(val);
 			this._setselcol();
 		};
-		//设置默认值
+		//設置默認值
 		this.setDefault = function(vs1,a){
 			var nae = can.display,
 				val = vs1,
@@ -327,7 +327,7 @@
 			displayfields:'name',valuefields:'name',
 			renderer:function(){return ''},listheight:38,
 			itemsclick:function(){},height:300,width:0,placeholder:'',
-			maxlist:1000,//最多列表数
+			maxlist:1000,//最多列表數
 			checked:false,
 			clearbool:false,
 			value:'',display:'',

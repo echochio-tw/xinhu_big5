@@ -1,6 +1,6 @@
 <?php
 /**
-	下载文件类插件
+	下載文件類插件
 */
 
 class downChajian extends Chajian{
@@ -15,7 +15,7 @@ class downChajian extends Chajian{
 	}
 	
 	/**
-	*	获取随机文件名
+	*	獲取隨機文件名
 	*/
 	public function getallfilename($ext)
 	{
@@ -26,7 +26,7 @@ class downChajian extends Chajian{
 	}
 	
 	/**
-	*	根据扩展名保存文件(一般邮件附件下载)
+	*	根據擴展名保存文件(一般郵件附件下載)
 	*/
 	public function savefilecont($ext, $cont)
 	{
@@ -57,7 +57,7 @@ class downChajian extends Chajian{
 		return false;
 	}
 	
-	//获取提示内容
+	//獲取提示內容
 	public function gettishi($msg1='')
 	{
 		$msg = $this->messign;
@@ -66,16 +66,16 @@ class downChajian extends Chajian{
 	}
 	
 	/**
-	*	根据内容创建文件
+	*	根據內容創建文件
 	*/
 	public function createimage($cont, $ext, $filename, $thumbnail='')
 	{
-		if(isempt($cont))return $this->reutnmsg('创建内容为空');
+		if(isempt($cont))return $this->reutnmsg('創建內容為空');
 		$allfilename			= $this->getallfilename($ext);
 		$upses['oldfilename'] 	= $filename.'.'.$ext;
 		$upses['fileext'] 	  	= $ext;
 		@file_put_contents($allfilename, $cont);
-		if(!file_exists($allfilename))return $this->reutnmsg('无法写入:'.$allfilename.'');
+		if(!file_exists($allfilename))return $this->reutnmsg('無法寫入:'.$allfilename.'');
 		
 		$fileobj				= getimagesize($allfilename);
 		$mime					= strtolower($fileobj['mime']);
@@ -90,7 +90,7 @@ class downChajian extends Chajian{
 			$upses['oldfilename'] 	= $filename.'.'.$ext;
 			$upses['fileext'] 	  	= $ext;
 			@file_put_contents($allfilename, $cont);
-			if(!file_exists($allfilename))return $this->reutnmsg('无法写入:'.$allfilename.'');
+			if(!file_exists($allfilename))return $this->reutnmsg('無法寫入:'.$allfilename.'');
 		}
 		
 		$filesize 			  	= filesize($allfilename);
@@ -99,7 +99,7 @@ class downChajian extends Chajian{
 		$pich					= $fileobj[1];
 		if($picw==0||$pich==0){
 			@unlink($allfilename);
-			return $this->reutnmsg('无效的图片');;
+			return $this->reutnmsg('無效的圖片');;
 		}
 		$upses['filesize']	 	= $filesize;
 		$upses['filesizecn']	= $filesizecn;
@@ -157,7 +157,7 @@ class downChajian extends Chajian{
 		return $data;
 	}
 	
-	//过滤特殊文件名
+	//過濾特殊文件名
 	private function replacefile($str)
 	{
 		$s 			= strtolower($str);
@@ -169,7 +169,7 @@ class downChajian extends Chajian{
 		return $str;
 	}
 	
-	//获取扩展名
+	//獲取擴展名
 	public function getext($file)
 	{
 		return strtolower(substr($file,strrpos($file,'.')+1));

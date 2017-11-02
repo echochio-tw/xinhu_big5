@@ -1,8 +1,8 @@
-//流程模块【finpay.付款申请】下录入页面自定义js页面,初始函数
+//流程模塊【finpay.付款申請】下錄入頁面自定義js頁面,初始函數
 function initbodys(){
 	
 }
 function changesubmit(){
 	var jg = parseFloat(form('money').value);
-	if(jg<=0)return '付款金额不能小于0';
+	if(jg<=0)return '付款金額不能小于0';
 }

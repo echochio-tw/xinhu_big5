@@ -1,6 +1,6 @@
 <?php 
 /**
-	html相关插件
+	html相關插件
 */
 class htmlChajian extends Chajian{
 	
@@ -56,7 +56,7 @@ class htmlChajian extends Chajian{
 	}
 	
 	/**
-	*	单据详情默认展示的
+	*	單據詳情默認展示的
 	*/
 	public function xiangtable($fields, $arr,$bcolor='', $lx='')
 	{
@@ -64,9 +64,9 @@ class htmlChajian extends Chajian{
 	}
 	
 	/**
-		创建table表格数据
-		@param	string  $rows  	 下载导出数据
-		@param	string  $headstr 表格表头(如：lie1,列1,left@lie2,列2,center)
+		創建table表格數據
+		@param	string  $rows  	 下載導出數據
+		@param	string  $headstr 表格表頭(如：lie1,列1,left@lie2,列2,center)
 		@return	string
 	*/
 	public function createrows($rows, $headstr='', $bor='#C9ECFF',$lx='')
@@ -116,7 +116,7 @@ class htmlChajian extends Chajian{
 	}
 	
 	/**
-	*	创建excel导出表格
+	*	創建excel導出表格
 	*/
 	public function execltable($title, $headArr, $rows, $lx='')
 	{
@@ -126,7 +126,7 @@ class htmlChajian extends Chajian{
 		$s 		= '<html><head><meta charset="utf-8"><title>'.$title.'</title></head><body>';
 		$s 	   .= '<table border="0" style="border-collapse:collapse;">';
 		$hlen 	= 1;
-		$s1='<tr height="30"><td '.$sty.'>序号</td>';
+		$s1='<tr height="30"><td '.$sty.'>序號</td>';
 		foreach($headArr as $na){
 			$hlen++;
 			$s1.='<td '.$sty.'>'.$na.'</td>';
@@ -151,7 +151,7 @@ class htmlChajian extends Chajian{
 		$mkdir 	= ''.UPDIR.'/'.date('Y-m').'';
 		
 		if(contain(strtolower(PHP_OS),'linux')){
-			$title = c('pingyin')->get($title, 1);//linux要用拼音，不然会乱码
+			$title = c('pingyin')->get($title, 1);//linux要用拼音，不然會亂碼
 		}
 		
 		$filename 	= ''.$title.'_'.date('d_His').'.'.$lx.'';
@@ -184,7 +184,7 @@ class htmlChajian extends Chajian{
 		return implode('', $chars);  
 	} 
 	
-	//判断字符串是否包含html代码
+	//判斷字符串是否包含html代碼
 	public function ishtml($val)
 	{
 		$bo = false;

@@ -1,6 +1,6 @@
 <?php
 /**
-*	人事模块.调薪
+*	人事模塊.調薪
 */
 class flow_hrtrsalaryClassModel extends flowModel
 {

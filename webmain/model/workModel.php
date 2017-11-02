@@ -2,7 +2,7 @@
 class workClassModel extends Model
 {
 	/**
-	*	未完成统计的也可以用m('flow')->initflow('work')->getdaiban();
+	*	未完成統計的也可以用m('flow')->initflow('work')->getdaiban();
 	*/
 	public function getwwctotals($uid)
 	{

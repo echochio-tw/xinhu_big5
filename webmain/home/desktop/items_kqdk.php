@@ -1,6 +1,6 @@
 <?php 
 /**
-*	桌面首页项(考勤打卡)
+*	桌面首頁項(考勤打卡)
 */
 defined('HOST') or die ('not access');
 
@@ -53,7 +53,7 @@ homeobject.kqdk_init=function(){
 			}else{
 				js.msg('msg',d.msg);
 				o.disabled = false;
-				o.value='重试打卡';
+				o.value='重試打卡';
 			}
 		},'get,json');
 	}
@@ -68,7 +68,7 @@ homeobject.kqdk_init=function(){
 	}
 }
 
-//数秒显示时间
+//數秒顯示時間
 homeobject.showtime=function(){
 	var time = js.serverdt('Y年m月d日(星期W) H:i:s').split(' ');
 	$('#nowtimess').html(time[1]);

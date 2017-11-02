@@ -1,6 +1,6 @@
 <?php 
 /**
-*	腾讯云上文件存储上传管理
+*	騰訊雲上文件存儲上傳管理
 */
 include_once(ROOT_PATH.'/\include/cos-php-sdk-v4-master/include.php');
 use qcloudcos\Cosapi;
@@ -10,14 +10,14 @@ class qcloudCosChajian extends Chajian{
 	
 	protected function initChajian()
 	{
-		Cosapi::initConf(); //初始设置
+		Cosapi::initConf(); //初始設置
 	}
 	
 	/**
-	*	上传文件
-	*	filepath 要上传的文件全路径
-	*	updir 上传到哪个目录
-	*	upname 上传后保存文件名
+	*	上傳文件
+	*	filepath 要上傳的文件全路徑
+	*	updir 上傳到哪個目錄
+	*	upname 上傳後保存文件名
 	*/
 	public function upload($filepath, $updir='', $upname='')
 	{
@@ -30,7 +30,7 @@ class qcloudCosChajian extends Chajian{
 	}
 	
 	/**
-	*	创建文件夹
+	*	創建文件夾
 	*/
 	public function createFolder($folder)
 	{

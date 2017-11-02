@@ -1,6 +1,6 @@
 <?php 
 /**
-*	【文档】应用的接口
+*	【文檔】應用的接口
 *	createname：雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (www.rockoa.com)
@@ -50,7 +50,7 @@ class wordClassAction extends apiAction
 				$where = ' and ((1 '.$where.') or a.`typeid` in('.$alsid.') )';
 			}
 		}
-		//共享给我的
+		//共享給我的
 		if($slx=='fxgw'){
 			$alsid	= $this->option->getreceiddownall($this->adminid, 0);
 			$where 	= m('admin')->getjoinstrs('a.shateid', $this->adminid, 1);
@@ -113,7 +113,7 @@ class wordClassAction extends apiAction
 		if($type=='folder'){
 			$delbo	= true;
 			if($delbo)if($this->option->rows("`pid`='$id'")>0)$delbo=false;
-			if(!$delbo)$this->showreturn('','有下级文件夹不允许删除',201);
+			if(!$delbo)$this->showreturn('','有下級文件夾不允許刪除',201);
 			$this->option->delete($id);
 			m('word')->update('`typeid`=0', "`typeid`='$id'");
 		}else{

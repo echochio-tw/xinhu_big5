@@ -1,5 +1,5 @@
 /**
-	rockdatepicker 时间选择插件
+	rockdatepicker 時間選擇插件
 	caratename：chenxihu
 	caratetime：2014-05-13 21:40:00
 	email:qqqq2900@126.com
@@ -16,7 +16,7 @@
 		var timeas	= null;
 		this.rand	= rand;
 		
-		this.nY		= 2014;//当前月份
+		this.nY		= 2014;//當前月份
 		this.nm		= 5;
 		this.marr	= [31,28,31,30,31,30,31,31,30,31,30,31];
 		this.weekarr= ['日','一','二','三','四','五','六'];
@@ -45,11 +45,11 @@
 			if(lx=='H:i:00'||lx=='H:i'||lx=='i:s')can.view='time';
 			var minv	= can.mindate;
 			if(isempt(minv))minv= obj.attr('mindate');
-			if(isempt(minv))minv= '1930-01-01 00:00:00';//最小时间
+			if(isempt(minv))minv= '1930-01-01 00:00:00';//最小時間
 			can.mindate	= minv;
 			var maxv	= can.maxdate;
 			if(isempt(maxv))maxv= obj.attr('maxdate');
-			if(isempt(maxv))maxv= '2050-12-31 23:59:59';//最大时间
+			if(isempt(maxv))maxv= '2050-12-31 23:59:59';//最大時間
 			can.maxdate	= maxv;
 			
 			this.max	= this.shijienges(can.maxdate)
@@ -127,11 +127,11 @@
 				s+='		<td height="30" style="padding:0px 5px" nowrap><span class="rockdatepicker_span" id="rockdatepicker_year'+rand+'">2014</span>年<td>';
 				s+='		<td style="padding:0px 4px" class="td00" tdaddclick="y" title="下一年">〉<td>';
 				s+='		<td style="padding:0px 2px"><td>';
-				s+='		<td style="padding:0px 4px" class="td00" tdaddclick="-m" title="上个月">〈<td>';
+				s+='		<td style="padding:0px 4px" class="td00" tdaddclick="-m" title="上個月">〈<td>';
 				s+='		<td height="30" style="padding:0px 5px" nowrap><span lass="rockdatepicker_span" id="rockdatepicker_month'+rand+'">06</span>月<td>';
-				s+='		<td style="padding:0px 4px" class="td00" tdaddclick="m" title="下个月">〉<td>';
+				s+='		<td style="padding:0px 4px" class="td00" tdaddclick="m" title="下個月">〉<td>';
 				s+='		<td style="padding:0px 4px" width="30%">&nbsp;<td>';
-				s+='		<td style="padding:0px 4px" class="td00" nowrap tdaddclick="today" title="当月">&nbsp;当月&nbsp;<td>';
+				s+='		<td style="padding:0px 4px" class="td00" nowrap tdaddclick="today" title="當月">&nbsp;當月&nbsp;<td>';
 				s+='	</tr></table>';
 				s+='	</div>';
 				
@@ -158,16 +158,16 @@
 				w = 220;h=200;
 			}
 			
-			s+='	<div style="line-height:30px">&nbsp; <font color="#888888">选择：</font><span id="rockdatepicker_span'+rand+'"></span>';
+			s+='	<div style="line-height:30px">&nbsp; <font color="#888888">選擇：</font><span id="rockdatepicker_span'+rand+'"></span>';
 			s+='		<span><input min="0" max="23" readOnly id="rockdatepicker_input_h'+rand+'" style="width:24px;text-align:center;height:20px;line-height:16px;border:1px #cccccc solid;background:none" value="00" maxlength="2"></span>:';
 			s+='		<span><input min="0" max="59" readOnly id="rockdatepicker_input_i'+rand+'" style="width:24px;text-align:center;height:20px;line-height:16px;border:1px #cccccc solid;background:none" value="00" maxlength="2"></span>:';
 			s+='		<span><input min="0" max="59" readOnly id="rockdatepicker_input_s'+rand+'" style="width:24px;text-align:center;height:20px;line-height:16px;border:1px #cccccc solid;background:none" value="00" maxlength="2"></span>';
 			s+=		'</div>';
 			s+='	<div style="height:30px;overflow:hidden;text-align:right;background:#eeeeee;line-height:28px">';
 			s+='		<a href="javascript:;" class="a" id="rockdatepicker_clear'+rand+'">清空</a>&nbsp; ';
-			s+='		<a href="javascript:;" class="a" id="rockdatepicker_now'+rand+'">现在</a>&nbsp; ';
-			s+='		<a href="javascript:;" class="a" id="rockdatepicker_queding'+rand+'">确定</a>&nbsp; ';
-			s+='		<a href="javascript:;" class="a" id="rockdatepicker_close'+rand+'">关闭</a>&nbsp; ';
+			s+='		<a href="javascript:;" class="a" id="rockdatepicker_now'+rand+'">現在</a>&nbsp; ';
+			s+='		<a href="javascript:;" class="a" id="rockdatepicker_queding'+rand+'">確定</a>&nbsp; ';
+			s+='		<a href="javascript:;" class="a" id="rockdatepicker_close'+rand+'">關閉</a>&nbsp; ';
 			s+='	</div>';
 			
 			
@@ -251,7 +251,7 @@
 				me.changemonth(this);
 			});
 		};
-		//选择年的
+		//選擇年的
 		this.changeyear=function(o1){
 			this.hidefudong();
 			var o = $(o1);
@@ -274,7 +274,7 @@
 				me.changeyeara(this);
 			});
 		};
-		//选择年的
+		//選擇年的
 		this.changemonth=function(o1){
 			this.hidefudong();
 			var o = $(o1);
@@ -333,7 +333,7 @@
 			this.mtop	= t;
 			o.css({'left':''+l+'px','top':''+t+'px'});
 		};
-		//单元格单击
+		//單元格單擊
 		this.tdclick	= function(o){
 			var o1	= $(o);
 			var d	= o1.text();
@@ -346,7 +346,7 @@
 			o.className='td01';
 			this.shetispannvel(1);
 		};
-		//确定
+		//確定
 		this.queding	= function(){
 			var jg	= $('#rockdatepicker_span'+rand+'').html();
 			if(can.view=='time')jg=js.now('Y-m-d');
@@ -387,7 +387,7 @@
 		this.queclear	= function(){
 			this.setValue('');
 		};
-		//单击
+		//單擊
 		this.itemsclick = function(o,event){
 			
 		};
@@ -412,7 +412,7 @@
 				this.addcale(this.todate.Y,this.todate.m);
 			}
 		};
-		//上个月
+		//上個月
 		this.plftmonth=function(lx)
 		{
 			var Y=parseFloat(this.Y),m=parseFloat(this.m);
@@ -446,8 +446,8 @@
 			stuat=stuat.split('-');
 			var year	= parseFloat(stuat[0]);
 			var month	= parseFloat(stuat[1]);
-			var maxday	= me.marr[month-1];//这个月最大天数
-			if(year%4==0&&month==2)maxday=29;//判断是不是轮年
+			var maxday	= me.marr[month-1];//這個月最大天數
+			if(year%4==0&&month==2)maxday=29;//判斷是不是輪年
 			if(month<10)month='0'+month;
 			var ic=parseFloat(stuat[2]);
 			var maic=1;
@@ -519,12 +519,12 @@
 				s+=' <td width="109"><div align="center" style="line-height:30px;background:#eeeeee">月份</div><div id="rockdatepicker_monthlist'+rand+'" style="line-height:30px" align="center"></div></td>';
 			}
 			s+='</tr></table>';
-			s+='<div style="line-height:30px">&nbsp; <font color="#888888">选择：</font><span id="rockdatepicker_span'+rand+'">'+this.now.Y+'-0'+this.now.d+'</span></div>';
+			s+='<div style="line-height:30px">&nbsp; <font color="#888888">選擇：</font><span id="rockdatepicker_span'+rand+'">'+this.now.Y+'-0'+this.now.d+'</span></div>';
 			s+='<div style="height:30px;overflow:hidden;text-align:right;background:#eeeeee;line-height:28px">';
 			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_clear'+rand+'">清空</a>';
-			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_now'+rand+'">现在</a>';
-			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_queding'+rand+'">确定</a>';
-			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_close'+rand+'">关闭</a>';
+			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_now'+rand+'">現在</a>';
+			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_queding'+rand+'">確定</a>';
+			s+='	<a href="javascript:" onclick="return false" class="a" id="rockdatepicker_close'+rand+'">關閉</a>';
 			s+='</div>';
 			oac.html(s);
 			$('#rockdatepicker_close'+rand+'').click(function(){

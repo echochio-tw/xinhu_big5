@@ -1,5 +1,5 @@
 /**
-	edittable 选择人员插件
+	edittable 選擇人員插件
 	caratename：chenxihu
 	caratetime：2014-04-06 21:40:00
 	email:admin@rockoa.com
@@ -34,12 +34,13 @@
 	
 			this.userarr = [];
 			this.deptarr = [];
-			
-			var us = js.getoption('userjson');
-			if(us)this.userarr = js.decode(us);
-			
-			us = js.getoption('deptjson');
-			if(us)this.deptarr = js.decode(us);
+			if(isempt(this.changerange)){
+				var us = js.getoption('userjson');
+				if(us)this.userarr = js.decode(us);
+				
+				us = js.getoption('deptjson');
+				if(us)this.deptarr = js.decode(us);
+			}
 			this.show();
 		};
 		
@@ -59,7 +60,7 @@
 				jhei+=50;
 			}
 			if(this.changetype.indexOf('user')>=0){
-				s+='<div style="height:50px;overflow:hidden;border-bottom:1px #cccccc solid"><table width="100%"><tr><td width="100%" height="50"><input id="changekey_'+this.rand+'" placeholder="部门/姓名/职位" style="height:30px;border:none;background:none;width:100%;margin:0px 10px"></td><td><input style="background:none;border:none;color:#666666" class="changeuserbotton" id="changesoubtn_'+this.rand+'" value="查找" type="button" ></td></tr></table></div>';
+				s+='<div style="height:50px;overflow:hidden;border-bottom:1px #cccccc solid"><table width="100%"><tr><td width="100%" height="50"><input id="changekey_'+this.rand+'" placeholder="部門/姓名/職位" style="height:30px;border:none;background:none;width:100%;margin:0px 10px"></td><td><input style="background:none;border:none;color:#666666" class="changeuserbotton" id="changesoubtn_'+this.rand+'" value="查找" type="button" ></td></tr></table></div>';
 				jhei+=50;
 			}
 			s+='<div style="-webkit-overflow-scrolling:touch;height:'+(hei-jhei)+'px;overflow:auto; background:#f1f1f1" class="changeuserlist">';
@@ -68,7 +69,7 @@
 			s+='</div>';
 			var s3= '<input id="changeboxs_'+rand+'" style="width:18px;height:18px;" align="absmiddle" type="checkbox" >';
 			if(type!='checkbox1')s3='';
-			s+='<div style="height:50px;line-height:50px;border-top:1px #cccccc solid" align="right"><table width="100%"><tr><td width="10" nowrap>&nbsp;</td><td width="80%">'+s3+'</td><td><input style="width:70px;border:none" type="button" id="changereload_'+rand+'" class="changeuserbotton" value="刷新数据" ></td><td width="20" nowrap>&nbsp;</td><td><input class="changeuserbotton" type="button" id="changecancl_'+rand+'" value="取消" ></td><td width="20" nowrap>&nbsp;</td><td height="50"><input style="background:#1389D3;" id="changeok_'+rand+'" type="button" value="确定" class="changeuserbotton"></td><td width="10" nowrap>&nbsp;</td></tr></table></div>';
+			s+='<div style="height:50px;line-height:50px;border-top:1px #cccccc solid" align="right"><table width="100%"><tr><td width="10" nowrap>&nbsp;</td><td width="80%">'+s3+'</td><td><input style="width:70px;border:none" type="button" id="changereload_'+rand+'" class="changeuserbotton" value="刷新數據" ></td><td width="20" nowrap>&nbsp;</td><td><input class="changeuserbotton" type="button" id="changecancl_'+rand+'" value="取消" ></td><td width="20" nowrap>&nbsp;</td><td height="50"><input style="background:#1389D3;" id="changeok_'+rand+'" type="button" value="確定" class="changeuserbotton"></td><td width="10" nowrap>&nbsp;</td></tr></table></div>';
 			s+=_getstyles();
 			s+='</div>';
 			if(atts==''){
@@ -98,7 +99,7 @@
 		};
 		this.showlist=function(pid,oi){
 			var type=this.inputtype,hw=24;
-			var a=this.deptarr,len=a.length,i,s='',wjj,s2='';
+			var a=this.deptarr,len=a.length,i,s='',ssu='',wjj,s2='';
 			var s1='<div style="width:'+(hw*oi)+'px"></div>';
 			var dob=this.changetype.indexOf('dept')==-1;
 			var uob=this.changetype.indexOf('user')>=0;
@@ -120,14 +121,14 @@
 				len=a.length;
 				for(i=0;i<len;i++){
 					if(a[i].deptid==pid){
-						s+='<div class="listsss">';
-						s+='<table width="100%"><tr><td>'+s1+'</td><td width="100%"><img align="absmiddle" height="24" height="24" src="'+a[i].face+'">&nbsp;'+a[i].name+'<span style="font-size:12px;color:#888888">('+a[i].ranking+')</span></td><td><input name="changeuserinput_'+rand+'"  xls="u" xname="'+a[i].name+'" value="'+a[i].id+'" style="width:18px;height:18px;" type="'+type+'"></td></tr></table>';
-						s+='</div>';
+						ssu+='<div class="listsss">';
+						ssu+='<table width="100%"><tr><td>'+s1+'</td><td width="100%"><img align="absmiddle" height="24" height="24" src="'+a[i].face+'">&nbsp;'+a[i].name+'<span style="font-size:12px;color:#888888">('+a[i].ranking+')</span></td><td><input name="changeuserinput_'+rand+'"  xls="u" xname="'+a[i].name+'" value="'+a[i].id+'" style="width:18px;height:18px;" type="'+type+'"></td></tr></table>';
+						ssu+='</div>';
 					}
 				}
 			}
 			
-			$('#showdiv'+rand+'_'+pid+'').html(s).attr('show','true');
+			$('#showdiv'+rand+'_'+pid+'').html(ssu+s).attr('show','true');
 			if(pid==0)this.showlist(1, 1);
 			$('#showdiv'+rand+'_0 [deptxu]').unbind('click').click(function(){
 				me._deptclicks(this);
@@ -165,7 +166,7 @@
 			if(nstotal<stotal){
 				o1.checked=false;
 				o1.disabled=true;
-				js.msg('msg','无权选择部门['+a.name+']');
+				js.msg('msg','無權選擇部門['+a.name+']');
 			}
 		},
 		this._searchkey = function(bo){
@@ -179,7 +180,7 @@
 				s+='<table width="100%"><tr><td></td><td width="100%"><img align="absmiddle" height="24" height="24" src="'+d[i].face+'">&nbsp;'+d[i].name+'<span style="font-size:12px;color:#888888">('+d[i].ranking+')</span></td><td><input name="changeuserinput_'+rand+'_soukey"  xls="u" xname="'+d[i].name+'" value="'+d[i].id+'" style="width:18px;height:18px;" type="'+this.inputtype+'"></td></tr></table>';
 				s+='</div>';
 			}
-			if(bo && s=='' && key!='')js.msg('msg','无相关['+key+']的记录', 2);
+			if(bo && s=='' && key!='')js.msg('msg','無相關['+key+']的記錄', 2);
 			$('#showdiv'+rand+'_search').html(s);
 			var o1 = $('#showdiv'+rand+'_0');
 			if(s==''){o1.show();}else{o1.hide();}
@@ -216,22 +217,27 @@
 			var o1 = $('#showdiv'+rand+'_0'),url;
 			o1.html('<div align="center" style="padding:30px"><img src="images/mloading.gif"></div>');
 			if(js.getajaxurl){
-				url = js.getajaxurl('deptuserjson','dept','system');
+				url = js.getajaxurl('deptuserjson','dept','system',{'changerange':this.changerange,'gtype':'change'});
 			}else{
-				url = js.apiurl('dept','data',{callback:'?'});
+				url = js.apiurl('dept','data',{callback:'?','changerange':this.changerange,'gtype':'change'});
 			}
 			$.getJSON(url, function(ret){
 				if(ret.code==200){
 					ret = ret.data;
-					js.setoption('deptjson', ret.deptjson);
-					js.setoption('userjson', ret.userjson);
-					me.userarr = js.decode(ret.userjson);
-					me.deptarr = js.decode(ret.deptjson);
-					me.showlist(0, 0);
+					me._loaddatashow(ret);	
 				}else{
 					o1.html(ret.msg);
 				}
 			});
+		};
+		this._loaddatashow=function(ret){
+			if(isempt(this.changerange)){
+				js.setoption('deptjson', ret.deptjson);
+				js.setoption('userjson', ret.userjson);
+			}
+			this.userarr = js.decode(ret.userjson);
+			this.deptarr = js.decode(ret.deptjson);
+			this.showlist(0, 0);
 		};
 		this._changboxxuan=function(os){
 			var ns= 'changeuserinput_'+rand+'';
@@ -288,9 +294,9 @@
 			var s='<div style="z-index:1;width:100%;height:100%;overflow:hidden;left:0px;top:0px; background:rgba(0,0,0,0.3);position:fixed;z-index:9" id="selectdata_'+rand+'">';
 			s+='<div tsid="main" id="mints_'+rand+'" style="position:absolute;top:30%; background:white;width:'+ws+';box-shadow:0px 0px 5px rgba(0,0,0,0.3)">';
 			s+='	<div onmousedown="js.move(\'mints_'+rand+'\')" style="line-height:40px; background:#2c3e50;color:white;font-size:16px"> &nbsp; &nbsp;'+this.title+'</div>';
-			s+='	<div style="height:50px;overflow:hidden;border-bottom:1px #cccccc solid"><table width="100%"><tr><td width="100%" height="50"><input id="changekey_'+this.rand+'" placeholder="搜索关键词" style="height:30px;border:none;background:none;width:100%;margin:0px 10px"></td><td><input style="background:none;color:#666666" class="changeuserbotton" id="changesoubtn_'+this.rand+'" value="查找" type="button" ></td></tr></table></div>';
+			s+='	<div style="height:50px;overflow:hidden;border-bottom:1px #cccccc solid"><table width="100%"><tr><td width="100%" height="50"><input id="changekey_'+this.rand+'" placeholder="搜索關鍵詞" style="height:30px;border:none;background:none;width:100%;margin:0px 10px"></td><td><input style="background:none;color:#666666" class="changeuserbotton" id="changesoubtn_'+this.rand+'" value="查找" type="button" ></td></tr></table></div>';
 			s+='	<div style="-webkit-overflow-scrolling:touch;height:300px;overflow:auto; background:#f1f1f1" id="selectlist_'+rand+'" class="changeuserlist"></div>';
-			s+='	<div style="height:50px;line-height:50px;border-top:1px #cccccc solid" align="right"><table width="100%"><tr><td width="10" nowrap>&nbsp;</td><td width="80%"><font color="#888888" tsid="count"></font></td><td><input type="button" id="changereload_'+rand+'" class="changeuserbotton" value="刷新" ></td><td width="10" nowrap>&nbsp;</td><td><input class="changeuserbotton" type="button" id="changecancl_'+rand+'" value="取消" ></td><td width="10" nowrap>&nbsp;</td><td height="50"><input style="background:#1389D3;" id="changeok_'+rand+'" type="button" value="确定" class="changeuserbotton"></td><td width="10" nowrap>&nbsp;</td></tr></table></div>';
+			s+='	<div style="height:50px;line-height:50px;border-top:1px #cccccc solid" align="right"><table width="100%"><tr><td width="10" nowrap>&nbsp;</td><td width="80%"><font color="#888888" tsid="count"></font></td><td><input type="button" id="changereload_'+rand+'" class="changeuserbotton" value="刷新" ></td><td width="10" nowrap>&nbsp;</td><td><input class="changeuserbotton" type="button" id="changecancl_'+rand+'" value="取消" ></td><td width="10" nowrap>&nbsp;</td><td height="50"><input style="background:#1389D3;" id="changeok_'+rand+'" type="button" value="確定" class="changeuserbotton"></td><td width="10" nowrap>&nbsp;</td></tr></table></div>';
 			s+='</div>';
 			s+='</div>';
 			s+=_getstyles();
@@ -312,6 +318,9 @@
 				me._searchkey(true);
 			});
 			$('#changekey_'+this.rand+'').keydown(function(e){
+				me._searchkeys(e)
+			});
+			$('#changekey_'+this.rand+'').keyup(function(e){
 				me._searchkeys(e)
 			});
 		};
@@ -336,9 +345,9 @@
 					xna= o1.attr('xname');
 					xu = parseFloat(o1.attr('xu'));
 					if(this.checked){
-						seld.push(this.data[xu]);
+						seld.push(this.nowdata[xu]);
 					}else{
-						seld=this.data[xu];
+						seld=this.nowdata[xu];
 					}
 					xal= o1.val();
 					sid+=','+xal+'';
@@ -359,29 +368,35 @@
 		};
 		this.showdata=function(a,inb){
 			if(!a)a=[];
-			var i,len=a.length,s='',s2,s1='',atr,oldvel='';
+			var s='',len=a.length,s1='';
 			if(len==0){
-				s='<div align="center" style="margin-top:30px;color:#cccccc;font-size:16px">无记录</div>';
+				s='<div align="center" style="margin-top:30px;color:#cccccc;font-size:16px">無記錄</div>';
 				if(!inb)this.loaddata();
 			}else{
-				if(this.nameobj)oldvel=this.nameobj.value;
-				if(this.idobj)oldvel=this.idobj.value;
-				var type='checkbox',ched='';
-				if(!this.checked)type='radio';
-				oldvel = ','+oldvel+',';
-				for(i=0;i<len && i<this.maxshow;i++){
-					ched='';
-					if(!isempt(a[i].value) && oldvel.indexOf(','+a[i].value+',')>-1)ched='checked';
-					s2 = '<input xu="'+i+'" '+ched+' name="changeuserinput_'+rand+'" xname="'+a[i].name+'" value="'+a[i].value+'" style="width:18px;height:18px;" align="absmiddle" type="'+type+'">';
-					atr = '';
-					if(a[i].padding)atr='style="padding-left:'+a[i].padding+'px"';
-					s+='<div class="listsss" '+atr+'><label>'+s2+'&nbsp;'+a[i].name+'</label></div>';
-				}
-				s1='共'+len+'条';
+				s = this.showhtml(a);
+				s1='共'+len+'條';
 			}
 			this._getobj('count').html(s1);
 			var o = $('#selectlist_'+rand+'');
 			o.html(s);
+		};
+		this.showhtml=function(a){
+			this.nowdata = a;
+			var i,len=a.length,s='',s2,s1='',atr,oldvel='';
+			if(this.nameobj)oldvel=this.nameobj.value;
+			if(this.idobj)oldvel=this.idobj.value;
+			var type='checkbox',ched='';
+			if(!this.checked)type='radio';
+			oldvel = ','+oldvel+',';
+			for(i=0;i<len && i<this.maxshow;i++){
+				ched='';
+				if(!isempt(a[i].value) && oldvel.indexOf(','+a[i].value+',')>-1)ched='checked';
+				s2 = '<input xu="'+i+'" '+ched+' name="changeuserinput_'+rand+'" xname="'+a[i].name+'" value="'+a[i].value+'" style="width:18px;height:18px;" align="absmiddle" type="'+type+'">';
+				atr = '';
+				if(a[i].padding)atr='style="padding-left:'+a[i].padding+'px"';
+				s+='<div class="listsss" '+atr+'><label>'+s2+'&nbsp;'+a[i].name+'</label></div>';
+			}
+			return s;
 		};
 		this.loaddata=function(){
 			var url = this.url;
@@ -400,35 +415,33 @@
 			},500);
 		};
 		this._searchkey = function(bo){
-			var key = $('#changekey_'+this.rand+'').val(),a=[],d=[],len,i,oi=0;
+			var key = $('#changekey_'+this.rand+'').val(),a=[],d=[],len,i,oi=0,s;
 			a=this.data;
-			len=a.length;
-			var o = $('#selectlist_'+rand+'');
+			len=a.length;if(len==0)return;
 			if(key!='')for(i=0;i<len;i++){
 				if(a[i].name.indexOf(key)>-1 || a[i].value==key){
-					d.push(i);
+					d.push(a[i]);
 					oi++;
-					if(oi>this.maxshow)break;
+					if(oi>20)break;//最多顯示搜索
 				}
 			}
 			len = d.length;
 			if(len==0){
-				o.find('div').show();
+				s=this.showhtml(this.data);
 			}else{
-				o.find('div').hide();
-				for(i=0;i<len;i++){
-					o.find('div:eq('+d[i]+')').show();
-				}
+				s=this.showhtml(d);
 			}
-			if(bo && len==0 && key!='')js.msg('msg','无相关['+key+']的记录', 2);
+			$('#selectlist_'+rand+'').html(s);
+			if(bo && len==0 && key!='')js.msg('msg','無相關['+key+']的記錄', 2);
 		};
 	}
 	
 	$.fn.chnageuser	= function(options){
 		var defaultVal = {
-			'title' : '请选择...',
+			'title' : '請選擇...',
 			'titlebool':true,
 			'showview':'',
+			'changerange':'', //從哪些人員中選擇
 			'changetype' : 'user',
 			'idobj':false,'nameobj':false,
 			'onselect':function(){},
@@ -443,8 +456,8 @@
 	$.selectdata	= function(options){
 		var defaultVal = {
 			'showview': '',
-			'title' : '请选择...',
-			'maxshow' : 200, //最多显示防止卡死浏览器
+			'title' : '請選擇...',
+			'maxshow' : 100, //最多顯示防止卡死瀏覽器
 			'data'	  : [], 'url' : '',
 			'checked' : false,
 			'idobj'	  : false, 'nameobj':false,

@@ -8,7 +8,7 @@ class wxgzh_oauthClassModel extends wxgzhModel
 	}
 	
 	/**
-	*	调整到获取
+	*	調整到獲取
 	*/
 	public function oauthto()
 	{
@@ -27,7 +27,7 @@ class wxgzh_oauthClassModel extends wxgzhModel
 	}
 	
 	/**
-	*	得到openid获取用户信息
+	*	得到openid獲取用戶信息
 	*/
 	public function oauthback()
 	{
@@ -45,9 +45,9 @@ class wxgzh_oauthClassModel extends wxgzhModel
 			if(isset($arr->access_token))$access_token = $arr->access_token;
 		}
 		
-		$errmsg 	= '无法获取用户openid';
+		$errmsg 	= '無法獲取用戶openid';
 		if($openid != ''){
-		//拉取用户信息
+		//拉取用戶信息
 		$this->rock->savecookie('wxopenid', $openid);
 		$gurl  	= 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
 		$result = c('curl')->getcurl($gurl);
@@ -73,18 +73,18 @@ class wxgzh_oauthClassModel extends wxgzhModel
 					$where			= '';
 				}
 				$bo 	= $this->record($uarr, $where);
-				$errmsg	= '已成功绑定微信['.$uarr['nickname'].']';
+				$errmsg	= '已成功綁定微信['.$uarr['nickname'].']';
 				if(!$bo)$errmsg = $this->db->error();
 			}
 		}else{
-			$errmsg	= '无法获取用户信息';
+			$errmsg	= '無法獲取用戶信息';
 		}}
 		$url 		= '?d=we&errmsg='.$this->rock->jm->base64encode($errmsg).'';
 		$this->rock->location($url);
 	}
 	
 	/**
-	*	读取当前绑定微信用户信息
+	*	讀取當前綁定微信用戶信息
 	*/
 	public function getbdwx($uid)
 	{

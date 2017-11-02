@@ -5,24 +5,24 @@ class flow_userinfoClassModel extends flowModel
 	
 	public function initModel()
 	{
-		//读取状态
+		//讀取狀態
 		$this->statearr 	= array();
 		$this->statearrs 	= array();
 		$ztarrs = m('option')->getmnum('userstate');
 		if(!$ztarrs){
-			$ztarrs[] = array('value'=>0,'name'=>'试用期');
+			$ztarrs[] = array('value'=>0,'name'=>'試用期');
 			$ztarrs[] = array('value'=>1,'name'=>'正式');
-			$ztarrs[] = array('value'=>2,'name'=>'实习生');
-			$ztarrs[] = array('value'=>3,'name'=>'兼职');
-			$ztarrs[] = array('value'=>4,'name'=>'临时工');
-			$ztarrs[] = array('value'=>5,'name'=>'离职');
+			$ztarrs[] = array('value'=>2,'name'=>'實習生');
+			$ztarrs[] = array('value'=>3,'name'=>'兼職');
+			$ztarrs[] = array('value'=>4,'name'=>'臨時工');
+			$ztarrs[] = array('value'=>5,'name'=>'離職');
 		}
 		foreach($ztarrs as $k=>$rs){
 			$this->statearr[$rs['value']] = $rs['name'];
 			$this->statearrs[] = array('id'=> $rs['value'], 'name'=>$rs['name']);
 		}
 		
-		$this->birtypearr 	= explode(',','阳历,农历');
+		$this->birtypearr 	= explode(',','陽歷,農歷');
 		$this->calendar		= c('calendar');
 	}
 	
@@ -48,7 +48,7 @@ class flow_userinfoClassModel extends flowModel
 				$rs['shengri'] = $rs['birthday'];
 			}else{
 				$days			= $this->calendar->daytocal($rs['birthday']);
-				$rs['shengri'] = ''.$days['year'].'年农历'.$days['month'].'月'.$days['day'].'';
+				$rs['shengri'] = ''.$days['year'].'年農歷'.$days['month'].'月'.$days['day'].'';
 			}
 		}
 		
@@ -82,7 +82,7 @@ class flow_userinfoClassModel extends flowModel
 	}
 	
 	/**
-	*	员工生日提醒
+	*	員工生日提醒
 	*/
 	public function birthdaytodo()
 	{
@@ -91,7 +91,7 @@ class flow_userinfoClassModel extends flowModel
 		$nongli	= $cala['cal'];
 		$rows 	= $this->db->getall("select a.`birthday`,b.`id`,a.`birtype`,b.`name` from `[Q]".$this->mtable."` a left join `[Q]admin` b on a.`id`=b.`id` where b.`status`=1 and a.`state`<>5 and ((a.`birthday` like '%".$dt."' and a.`birtype`=0) or (a.`birthday` like '%".$nongli."' and a.`birtype`=1) )");
 		foreach($rows as $k=>$rs){
-			$cont = '今天是'.date('Y年m月d日').',农历'.$cala['month'].''.$cala['day'].'，是你的生日，我们在这里祝你生日快乐。';
+			$cont = '今天是'.date('Y年m月d日').',農歷'.$cala['month'].''.$cala['day'].'，是你的生日，我們在這裡祝你生日快樂。';
 			$this->push($rs['id'],'', $cont, '生日祝福');
 		}
 	}

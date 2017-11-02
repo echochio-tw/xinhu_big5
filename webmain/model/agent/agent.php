@@ -1,6 +1,6 @@
 <?php
 /**
-*	应用上的接口文件，读取数据显示
+*	應用上的接口文件，讀取數據顯示
 */
 class agentModel extends Model
 {
@@ -18,8 +18,8 @@ class agentModel extends Model
 	public function getdatas($uid, $lx, $p){}
 	
 	/**
-	*	从新接口方法
-	*	$rows 要展示数据 $rowd 原始数据
+	*	從新接口方法
+	*	$rows 要展示數據 $rowd 原始數據
 	*/
 	protected function agentrows($rows, $rowd, $uid){return $rows;}
 	protected function agenttotals($uid){return array();}
@@ -85,7 +85,7 @@ class agentModel extends Model
 		return $arr;
 	}
 	
-	//状态切换读取一般用于有流程
+	//狀態切換讀取一般用于有流程
 	protected function agentrows_status($rows, $rowd){
 		foreach($rowd as $k=>$rs){
 			if($this->flow){
@@ -103,7 +103,7 @@ class agentModel extends Model
 	}
 	
 	/**
-	*	应用上获取数据
+	*	應用上獲取數據
 	*/
 	public function getdatalimit($uid, $lx)
 	{
@@ -178,7 +178,7 @@ class agentModel extends Model
 	}
 	
 	/**
-	*	显示人员对应头像
+	*	顯示人員對應頭像
 	*/
 	private function showrowsface($rows)
 	{

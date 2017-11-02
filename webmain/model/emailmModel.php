@@ -11,9 +11,9 @@ class emailmClassModel extends Model
 	}
 	
 	/**
-	*	用户收邮件
-	*	$uid 用户id
-	*	return 返回是数组就说明成功，字符串就失败
+	*	用戶收郵件
+	*	$uid 用戶id
+	*	return 返回是數組就說明成功，字符串就失敗
 	*/
 	public function receemail($uid)
 	{
@@ -21,9 +21,9 @@ class emailmClassModel extends Model
 		$myurs 	= $this->adminobj->getone($uid, 'email,emailpass');
 		$time	= $this->optionobj->getval($ukey,'',3);
 		if(!isempt($time))$time = strtotime($time);
-		if(isempt($this->receyumi))return '未设置收信邮箱域名';
-		if(isempt($myurs['email']))return '未设置邮箱，可到[系统→邮件管理→用户邮箱设置]下设置';
-		if(!contain($myurs['email'], $this->receyumi))return '邮箱域名必须是['.$this->receyumi.']，当前用户邮箱:'.$myurs['email'].'';
+		if(isempt($this->receyumi))return '未設置收信郵箱域名';
+		if(isempt($myurs['email']))return '未設置郵箱，可到[系統→郵件管理→用戶郵箱設置]下設置';
+		if(!contain($myurs['email'], $this->receyumi))return '郵箱域名必須是['.$this->receyumi.']，當前用戶郵箱:'.$myurs['email'].'';
 		$rows 	= c('imap')->receemail($this->recehost, $myurs['email'], $myurs['emailpass'], $time);
 		if(!is_array($rows))return $rows;
 		$jf 	= 0;
@@ -77,7 +77,7 @@ class emailmClassModel extends Model
 				$jf++;
 			}
 		}
-		if($bool)$this->optionobj->setval($ukey.'@-2', '共'.$jf.'封');//记录最后收信时间
+		if($bool)$this->optionobj->setval($ukey.'@-2', '共'.$jf.'封');//記錄最後收信時間
 		return array(
 			'count' => $jf
 		);
@@ -115,7 +115,7 @@ class emailmClassModel extends Model
 		return array($sid, $sna);
 	}
 	
-	//保存邮件的附件
+	//保存郵件的附件
 	private function saveattach($oi, $arr, $id)
 	{
 		$dbs 	= m('file');
@@ -136,7 +136,7 @@ class emailmClassModel extends Model
 			$where 				= "`mtype`='emailm' and `mid`='$id' and `filename`='".$sarr['filename']."' and `filesize`='".$sarr['filesize']."'";
 			
 			if($dbs->rows($where)==0){
-				$sarr['filepath'] = $doobj->savefilecont($sarr['fileext'], $rs['attachcont']);//下载附件
+				$sarr['filepath'] = $doobj->savefilecont($sarr['fileext'], $rs['attachcont']);//下載附件
 				$fid = $dbs->insert($sarr);
 			}
 		}
@@ -144,7 +144,7 @@ class emailmClassModel extends Model
 	
 	
 	/**
-	*	统计我未读邮件
+	*	統計我未讀郵件
 	*/
 	public function wdtotal($uid)
 	{
@@ -173,12 +173,12 @@ class emailmClassModel extends Model
 	
 	public function zongtotal($uid)
 	{
-		$zz = $this->gettotsllss($uid, 0); //所有邮件
-		$wd = $this->gettotsllss($uid, 1); //未读邮件
+		$zz = $this->gettotsllss($uid, 0); //所有郵件
+		$wd = $this->gettotsllss($uid, 1); //未讀郵件
 		$cgx= $this->gettotsllss($uid, 2); //草稿箱
 		
-		$yfs= $this->gettotsllss($uid, 3); //已发送
-		$ysc= $this->gettotsllss($uid, 4); //已删除
+		$yfs= $this->gettotsllss($uid, 3); //已發送
+		$ysc= $this->gettotsllss($uid, 4); //已刪除
 		
 		return array(
 			'wd' 	=> $wd,
@@ -190,7 +190,7 @@ class emailmClassModel extends Model
 	}
 	
 	/**
-	*	标识已读了
+	*	標識已讀了
 	*/
 	public function biaoyd($uid,$sid)
 	{

@@ -2,7 +2,7 @@ var touchobj=false;
 var strformat = {
 	sendcodearr:{},
 	sendcuxo:0,
-	emotsstr:',[微笑],[撇嘴],[色],[发呆],[得意],[流泪],[害羞],[闭嘴],[睡],[大哭],[尴尬],[发怒],[调皮],[呲牙],[惊讶],[难过],[酷],[冷汗],[抓狂],[吐],[偷笑],[愉快],[白眼],[傲慢],[饥饿],[困],[恐惧],[流汗],[憨笑],[悠闲],[奋斗],[咒骂],[疑问],[嘘],[晕],[疯了],[衰],[骷髅],[敲打],[再见],[擦汗],[抠鼻],[鼓掌],[糗大了],[坏笑],[左哼哼],[右哼哼],[哈欠],[鄙视],[委屈],[快哭了],[阴险],[亲亲],[吓],[可怜],[菜刀],[西瓜],[啤酒],[篮球],[乒乓],[咖啡],[饭],[猪头],[玫瑰],[凋谢],[嘴唇],[爱心],[心碎],[蛋糕],[闪电],[炸弹],[刀],[足球],[瓢虫],[便便],[月亮],[太阳],[礼物],[拥抱],[强],[弱],[握手],[胜利],[抱拳],[勾引],[拳头],[差劲],[爱你],[NO],[OK],[爱情],[飞吻],[跳跳],[发抖],[怄火],[转圈],[磕头],[回头],[跳绳],[投降],[激动],[街舞],[献吻],[左太极],[右太极]',
+	emotsstr:',[微笑],[撇嘴],[色],[發呆],[得意],[流淚],[害羞],[閉嘴],[睡],[大哭],[尷尬],[發怒],[調皮],[呲牙],[驚訝],[難過],[酷],[冷汗],[抓狂],[吐],[偷笑],[愉快],[白眼],[傲慢],[飢餓],[困],[恐懼],[流汗],[憨笑],[悠閒],[奮鬥],[咒罵],[疑問],[噓],[暈],[瘋了],[衰],[骷髏],[敲打],[再見],[擦汗],[摳鼻],[鼓掌],[糗大了],[壞笑],[左哼哼],[右哼哼],[哈欠],[鄙視],[委屈],[快哭了],[陰險],[親親],[嚇],[可憐],[菜刀],[西瓜],[啤酒],[籃球],[乒乓],[咖啡],[飯],[豬頭],[玫瑰],[凋謝],[嘴唇],[愛心],[心碎],[蛋糕],[閃電],[炸彈],[刀],[足球],[瓢蟲],[便便],[月亮],[太陽],[禮物],[擁抱],[強],[弱],[握手],[勝利],[抱拳],[勾引],[拳頭],[差勁],[愛你],[NO],[OK],[愛情],[飛吻],[跳跳],[發抖],[慪火],[轉圈],[磕頭],[回頭],[跳繩],[投降],[激動],[街舞],[獻吻],[左太極],[右太極]',
 	addcode:function(key, val){
 		this.sendcuxo++;
 		key	= key+','+this.sendcuxo;
@@ -73,7 +73,7 @@ var strformat = {
 		}
 		var nowa	= js.serverdt('Y-m-d H:i:s 星期W'),
 			nowas	= nowa.split(' ');
-		var ztstr	= [['now',nowa],['date',nowas[0]],['time',nowas[1]],['week',nowas[2]],['百度','https://www.baidu.com/',1],['官网','http://www.rockoa.com/',1]];
+		var ztstr	= [['now',nowa],['date',nowas[0]],['time',nowas[1]],['week',nowas[2]],['百度','https://www.baidu.com/',1],['官網','http://www.rockoa.com/',1]];
 		var patt1,a,thnr,ths='';
 		for(var i=0; i<ztstr.length; i++){
 			a	=	ztstr[i];
@@ -90,7 +90,7 @@ var strformat = {
 	},
 	picshow:function(str, wj){
 		var s=str,sa;
-		if(s.indexOf('[图片.')==0){
+		if(s.indexOf('[圖片.')==0){
 			s=s.substr(1,s.length-1);
 			sa=s.split('.');
 			if(wj)s='<img src="'+apiurl+''+wj+'">';
@@ -125,7 +125,7 @@ var strformat = {
 			nr+='			<td><div class="qipao'+type+'"></div></td>';
 		}else{
 			nr+='			<td width="30" align="right">';
-			if(nuid)nr+='<img src="images/loadings.gif" title="发送中..." id="'+nuid+'" style="margin-top:5px" align="absmiddle">&nbsp;';
+			if(nuid)nr+='<img src="images/loadings.gif" title="發送中..." id="'+nuid+'" style="margin-top:5px" align="absmiddle">&nbsp;';
 			nr+='			</td>';
 		}
 		
@@ -160,7 +160,7 @@ var strformat = {
 		}
 		if(snr){
 			nr+= '<div><img src="'+snr+'" id="jietuimg_'+nuid+'" width="150"></div>';
-			nr+= '<div><a onclick="im.upbase64(\''+nuid+'\')" href="javascript:;">[发送截图]</a>';
+			nr+= '<div><a onclick="im.upbase64(\''+nuid+'\')" href="javascript:;">[發送截圖]</a>';
 		}
 		nr+= '<div class="progresscls"><div id="progresscls_'+nuid+'" class="progressclssse"></div><div class="progressclstext"  id="progresstext_'+nuid+'">0%</div></div>';
 		nr+= '<div id="progcanter_'+nuid+'"><a href="javascript:;" onclick="strformat.cancelup(\''+nuid+'\')">取消</a></div>';
@@ -178,10 +178,10 @@ var strformat = {
 	upsuccess:function(f,nuid){
 		if(!nuid)nuid=this.nuidup_tep;
 		this.upprogresss(100, nuid);
-		$('#progresstext_'+nuid+'').html('上传成功');
+		$('#progresstext_'+nuid+'').html('上傳成功');
 		var contss;
 		if(js.isimg(f.fileext)){
-			contss = '[图片 '+f.filesizecn+']';
+			contss = '[圖片 '+f.filesizecn+']';
 		}else{
 			contss = '['+f.filename+' '+f.filesizecn+']';
 		}
@@ -191,7 +191,7 @@ var strformat = {
 	},
 	uperror:function(nuid){
 		if(!nuid)nuid=this.nuidup_tep;
-		$('#progresstext_'+nuid+'').html('<font color=red>上传失败</font>');
+		$('#progresstext_'+nuid+'').html('<font color=red>上傳失敗</font>');
 		$('#progcanter_'+nuid+'').remove();
 	},
 	cancelup:function(nuid){
@@ -236,7 +236,7 @@ var strformat = {
 		}else{
 			slx = d.fileext;if(!lj)lj='';
 			if(js.fileall.indexOf(','+slx+',')<0)slx='wz';
-			s=''+d.filename+'<br><a href="javascript:;" onclick="js.downshow('+d.fileid+')">下载</a>&nbsp;&nbsp;<a href="javascript:;" onclick="im.fileyulan(\''+d.filename+'\','+d.fileid+')">预览</a>&nbsp;'+d.filesizecn+'';
+			s=''+d.filename+'<br><a href="javascript:;" onclick="js.downshow('+d.fileid+')">下載</a>&nbsp;&nbsp;<a href="javascript:;" onclick="im.fileyulan(\''+d.filename+'\','+d.fileid+')">預覽</a>&nbsp;'+d.filesizecn+'';
 			s='<table><tr><td><div class="qipaofile">'+d.fileext.toUpperCase()+'</div></td><td>'+s+'</td></tr></table>';
 		}
 		return s;

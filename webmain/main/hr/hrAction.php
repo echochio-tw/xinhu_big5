@@ -1,24 +1,24 @@
 <?php
 class hrClassAction extends Action
 {
-	//培训考试
+	//培訓考試
 	public function kaoshiAction()
 	{
 		$id 	= (int)$this->get('id');
-		m('flow:knowtraim')->reloadstate($id);//更新状态
+		m('flow:knowtraim')->reloadstate($id);//更新狀態
 		
 		$mrs 	= m('knowtraim')->getone($id);
-		if(!$mrs)return '主题不存在';
+		if(!$mrs)return '主題不存在';
 		
-		if($mrs['state']!='1')return '培训考试题目可能还未开始或已结束了';
+		if($mrs['state']!='1')return '培訓考試題目可能還未開始或已結束了';
 		
 		$uid 	= $this->adminid;
 		$ors 	= m('knowtrais')->getone('`mid`='.$id.' and `uid`='.$uid.'');
-		if(!$ors)return '当前主题你不需要培训考试';
+		if(!$ors)return '當前主題你不需要培訓考試';
 		
 		
 		
-		if($ors['isks']=='1')return '你已经考试过了分数:'.$ors['fenshu'].'';
+		if($ors['isks']=='1')return '你已經考試過了分數:'.$ors['fenshu'].'';
 		
 		$tkids	= $ors['tkids'];
 		$tkrows= array();

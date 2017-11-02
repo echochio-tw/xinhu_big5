@@ -1,5 +1,5 @@
 <?php
-//客户收付款单
+//客戶收付款單
 class flow_custfinaClassModel extends flowModel
 {
 	
@@ -15,15 +15,15 @@ class flow_custfinaClassModel extends flowModel
 		$ispay 			= '<font color=red>未'.$starrr[$rs['type']].'款</font>';
 		if($rs['ispay']==1)$ispay = '<font color=green>已'.$starrr[$rs['type']].'款</font>';
 		$rs['ispay']	 = $ispay;
-		$rs['type']	 	 = ''.$starrr[$rs['type']].'款单';
+		$rs['type']	 	 = ''.$starrr[$rs['type']].'款單';
 		
 		return $rs;
 	}
 	
-	//操作菜单操作
+	//操作菜單操作
 	protected function flowoptmenu($ors, $arr)
 	{
-		//标识已付款处理
+		//標識已付款處理
 		if($ors['num']=='pay'){
 			$ispay = 0;
 			$paydt = $arr['fields_paydt'];

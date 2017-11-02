@@ -83,42 +83,42 @@ class emailClassAction extends Action
 		}
 	}
 	
-	//标已读
+	//標已讀
 	public function biaoydAjax()
 	{
 		$sid = $this->post('sid');
 		m('emailm')->biaoyd($this->adminid, $sid);
-		echo '成功标识';
+		echo '成功標識';
 	}
 		
 	/**
-	*	删除邮件
+	*	刪除郵件
 	*/
 	public function delyjAjax()
 	{
 		$sid 	= $this->post('sid');
 		$atype 	= $this->post('atype');
 		$uid 	= $this->adminid;
-		//收件箱删除
+		//收件箱刪除
 		if($atype==''){
 			m('emails')->update('isdel=1','`uid`='.$uid.' and `mid` in('.$sid.') and `type` in(0,1)');
 		}
-		//草稿箱删除
+		//草稿箱刪除
 		if($atype=='cgx'){
 			m('emailm')->delete('`id` in('.$sid.') and `sendid`='.$uid.' and `isturn`=0');
 		}
-		//已发送删除
+		//已發送刪除
 		if($atype=='yfs'){
 			m('emails')->update('isdel=1','`uid`='.$uid.' and `mid` in('.$sid.') and `type`=2');
 		}
-		//已删除删除
+		//已刪除刪除
 		if($atype=='ysc'){
 			m('emails')->delete('`uid`='.$uid.' and `mid` in('.$sid.') and `isdel`=1 and `type` in(0,1)');
 		}
-		echo '删除成功';
+		echo '刪除成功';
 	}
 	
-	//用户修改自己邮箱密码
+	//用戶修改自己郵箱密碼
 	public function saveemaipassAjax()
 	{
 		$pass = $this->post('emailpass');

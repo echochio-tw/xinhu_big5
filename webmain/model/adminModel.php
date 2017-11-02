@@ -3,9 +3,10 @@ class adminClassModel extends Model
 {
 	private $_getjoinstr = array();
 	
-	public function gjoin($joinid, $glx='ud', $blx='bxl')
+	public function gjoin($joinid, $glx='', $blx='bxl')
 	{
 		$uid 	= $did = $gid = '0';
+		if($glx=='')$glx = 'ud';
 		if(isempt($joinid))return '';
 		$joinid 	= strtolower($joinid);
 		if(contain($joinid, 'all'))return 'all';
@@ -45,7 +46,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	根据组部门id获取底下人员ID
+	*	根據組部門id獲取底下人員ID
 	*/
 	public function gjoins($receid)
 	{
@@ -54,7 +55,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	根据组获取底下人员Id
+	*	根據組獲取底下人員Id
 	*/
 	public function getgrouptouid($gid)
 	{
@@ -71,7 +72,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-		判断某个id是不是在里面
+		判斷某個id是不是在裡面
 	*/
 	public function containjoin($joinid, $myid=0, $glx='ud')
 	{
@@ -113,7 +114,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取对应部门负责人
+	*	獲取對應部門負責人
 	*/
 	public function getdeptheadman($id, $lx=0)
 	{
@@ -135,7 +136,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取某个人的上级主管或者领导
+	*	獲取某個人的上級主管或者領導
 	*	返回 array(id,$name)
 	*/
 	public function getsuperman($uid)
@@ -167,7 +168,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-		获取人员上级主管id
+		獲取人員上級主管id
 	*/
 	public function getup($uid)
 	{
@@ -198,18 +199,21 @@ class adminClassModel extends Model
 			if($superpath!='')$superpath=substr($superpath,1);
 			if($supername!='')$supername=substr($supername,1);
 		}
-		//部门路径
-		$deptpath	= $this->rock->strformat('[?0]', $deptpath);
+		//部門路徑
+		if(!isempt($deptpath))$deptpath	= $this->rock->strformat('[?0]', $deptpath);
+		//有多部門
 		if(!isempt($dids)){
 			$didsa = explode(',', $dids);
 			foreach($didsa as $dids1){
 				$desss 	= $this->db->getpval('[Q]dept', 'pid', 'id', $dids1, '],[');
+				if(isempt($desss))continue;
 				$desssa	= explode(',', $this->rock->strformat('[?0]', $desss));
 				foreach($desssa as $desssa1){
 					if(!contain($deptpath, $desssa1))$deptpath.=','.$desssa1.'';
 				}
 			}
 		}
+		if(!isempt($deptpath) && substr($deptpath,0,1)==',')$deptpath = substr($deptpath,1);
 		
 		$rows['deptpath'] 	= $deptpath; 
 		$rows['superpath'] 	= $superpath;
@@ -221,9 +225,9 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取下级人员id
-	*	$lx 0 全部下级，1直属下级
-	*	return 所有人员ID
+	*	獲取下級人員id
+	*	$lx 0 全部下級，1直屬下級
+	*	return 所有人員ID
 	*/
 	public function getdown($uid, $lx=0)
 	{
@@ -236,9 +240,9 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取下级人员id
-	*	$lx 0 全部下级，1直属下级
-	*	return 字符串条件
+	*	獲取下級人員id
+	*	$lx 0 全部下級，1直屬下級
+	*	return 字符串條件
 	*/
 	public function getdowns($uid, $lx=0)
 	{
@@ -248,7 +252,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取下属人员Id条件记录,如我下属任务
+	*	獲取下屬人員Id條件記錄,如我下屬任務
 	*	返回如( distid in(1) or uid in(2) )
 	*/
 	public function getdownwhere($fid, $uid, $lx=0)
@@ -266,7 +270,7 @@ class adminClassModel extends Model
 		return $where;
 	}
 	
-	//返回我下属字符串条件如： instr(',1,2,3,', 字段)>0;
+	//返回我下屬字符串條件如： instr(',1,2,3,', 字段)>0;
 	public function getdownwheres($fid, $uid, $lx=0)
 	{
 		$bstr = $this->getdown($uid, $lx);
@@ -281,7 +285,7 @@ class adminClassModel extends Model
 	
 	
 	/**
-	*	获取用户信息(部门，单位，职位等)
+	*	獲取用戶信息(部門，單位，職位等)
 	*/
 	public function getinfor($uid)
 	{
@@ -309,7 +313,7 @@ class adminClassModel extends Model
 	}
 	
 	/*
-		获取在线的人员Id
+		獲取在線的人員Id
 	*/
 	public function getonline($receid, $lx=10)
 	{
@@ -318,7 +322,7 @@ class adminClassModel extends Model
 		return $jonus;
 	}
 	
-	//获取对应类型在线人员
+	//獲取對應類型在線人員
 	public function getonlines($type, $teuid='all', $lx=11, $where='')
 	{
 		$arrs 	= array();
@@ -352,7 +356,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取人员信息
+	*	獲取人員信息
 	*/
 	public function getuserinfo($uids='0')
 	{
@@ -364,15 +368,21 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	获取人员数据
+	*	獲取人員數據
 	*/
 	public function getuser($lx=0)
 	{
-		$uid  = $this->adminid;
-		$where= m('view')->viewwhere('user', $uid, 'id');
+		$uid  	= $this->adminid;
+		$where	= m('view')->viewwhere('user', $uid, 'id');
+		$range 	= $this->rock->get('changerange'); //指定了人
+		$where1 = '';
+		if(!isempt($range)){
+			$where1 = $this->gjoin($range, '', 'where');
+			$where1 = 'and ('.$where1.')';
+		}
 		$fields = '`id`,`name`,`deptid`,`deptname`,`deptpath`,`deptallname`,`mobile`,`ranking`,`tel`,`face`,`sex`,`email`,`pingyin`';
-		//读取我可查看权限
-		$rows = $this->getall("`status`=1 and ((1 $where) or (`id`='$uid'))",$fields,'sort,name');
+		//讀取我可查看權限
+		$rows = $this->getall("`status`=1 and ((1 $where) or (`id`='$uid')) $where1",$fields,'`sort`,`name`');
 		$py   = c('pingyin');
 		foreach($rows as $k=>$rs){
 			$rows[$k]['face'] = $rs['face'] = $this->getface($rs['face']);
@@ -441,9 +451,9 @@ class adminClassModel extends Model
 		}
 		$this->updateuserinfo($where);
 		
-		//更新单据上flow_bill上的uname,udeptname
+		//更新單據上flow_bill上的uname,udeptname
 		m('flowbill')->updatebill();
-		m('imgroup')->updategall(); //更新会话上
+		m('imgroup')->updategall(); //更新會話上
 		
 		return array($total, $cl);
 	}
@@ -477,7 +487,7 @@ class adminClassModel extends Model
 		}
 	}
 	
-	//返回这个月份人员
+	//返回這個月份人員
 	public function monthuwhere($month, $qz='')
 	{
 		$month	= substr($month, 0, 7);
@@ -504,7 +514,7 @@ class adminClassModel extends Model
 			$this->rock->createdir($face);
 			c('image')->conver($path, $face);
 			$oface  = $this->getmou('face', $uid);
-			if(!isempt($oface) && file_exists($oface))@unlink($oface);//删除原来头像
+			if(!isempt($oface) && file_exists($oface))@unlink($oface);//刪除原來頭像
 			$this->update("face='$face'", $uid);
 		}
 		m('file')->delfile($fid);
@@ -512,7 +522,7 @@ class adminClassModel extends Model
 		return $face;
 	}
 	
-	//根据邮箱获取人员姓名
+	//根據郵箱獲取人員姓名
 	private $emailtoursarr = array();
 	public function emailtours($email)
 	{
@@ -527,7 +537,7 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	关键词搜索的
+	*	關鍵詞搜索的
 	*/
 	public function getkeywhere($key, $qz='', $ots='')
 	{
@@ -536,12 +546,12 @@ class adminClassModel extends Model
 	}
 	
 	/**
-	*	根据receid获取对应字段$fid聚合得到多个,分开的
+	*	根據receid獲取對應字段$fid聚合得到多個,分開的
 	*/
 	public function getjoinfields($receid, $fid)
 	{
 		if(!is_numeric($receid)){
-			$receid = $this->gjoin($receid,'ud', 'where'); //读取
+			$receid = $this->gjoin($receid,'ud', 'where'); //讀取
 			$where 	= '1=1';
 			if($receid != 'all')$where = $receid;
 			if(isempt($receid))$where = '1=2';

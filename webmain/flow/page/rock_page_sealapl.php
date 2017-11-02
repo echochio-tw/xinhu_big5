@@ -1,17 +1,18 @@
 <?php
 /**
-*	模块：sealapl.印章申请，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.印章申请]→生成列表页
+*	模塊：sealapl.印章申請，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.印章申請]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
 <script>
 $(document).ready(function(){
 	{params}
-	var modenum = 'sealapl',modename='印章申请',isflow=1,modeid='49',atype = params.atype,pnum=params.pnum;
+	var modenum = 'sealapl',modename='印章申請',isflow=1,modeid='49',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
-var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部門","fields":"base_deptname"},{"name":"單號","fields":"sericnum"},{"fields":"sealid","name":"申請印章","fieldstype":"select","ispx":"0","isalign": "0","islb":"0"},{"fields":"sealname","name":"印章名稱","fieldstype":"hidden","ispx":"0","isalign" :"0","islb":"1"},{"fields":"isout","name":"是否外帶","fieldstype":"select","ispx":"1"," isalign":"0","islb":"1"},{"fields":"explain","name":"說明","fieldstype":"textarea","ispx":"0"," isalign":"0","islb":"1"}],fieldsselarr= [];
+	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"sealid","name":"\u7533\u8bf7\u5370\u7ae0","fieldstype":"select","ispx":"0","isalign":"0","islb":"0"},{"fields":"sealname","name":"\u5370\u7ae0\u540d\u79f0","fieldstype":"hidden","ispx":"0","isalign":"0","islb":"1"},{"fields":"isout","name":"\u662f\u5426\u5916\u5e26","fieldstype":"select","ispx":"1","isalign":"0","islb":"1"},{"fields":"explain","name":"\u8bf4\u660e","fieldstype":"textarea","ispx":"0","isalign":"0","islb":"1"}],fieldsselarr= [];
+	
 	var c = {
 		reload:function(){
 			a.reload();
@@ -34,7 +35,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -48,7 +49,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -56,7 +57,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -68,9 +69,9 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		},
 		subscribelist:function(){
 			js.subscribe({
-				title:'印章申请('+nowtabs.name+')',
-				cont:'印章申请('+nowtabs.name+')的列表的',
-				explain:'订阅[印章申请]的列表',
+				title:'印章申請('+nowtabs.name+')',
+				cont:'印章申請('+nowtabs.name+')的列表的',
+				explain:'訂閱[印章申請]的列表',
 				objtable:a
 			});
 		},
@@ -120,15 +121,15 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		},
 		daoru:function(){
 			window.managelistsealapl = a;
-			addtabs({num:'daorusealapl',url:'flow,input,daoru,modenum=sealapl',icons:'plus',name:'导入印章申请'});
+			addtabs({num:'daorusealapl',url:'flow,input,daoru,modenum=sealapl',icons:'plus',name:'導入印章申請'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -146,7 +147,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -163,7 +164,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -188,12 +189,12 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('c2VhbGFwbA::'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"申请人",dataIndex:"base_name",sortable:true},{text:"申请人部门",dataIndex:"base_deptname",sortable:true},{text:"单号",dataIndex:"sericnum"},{text:"印章名称",dataIndex:"sealname"},{text:"是否外带",dataIndex:"isout",sortable:true},{text:"说明",dataIndex:"explain"},{text:"状态",dataIndex:"statustext"},{
+		columns:[{text:"申請人",dataIndex:"base_name",sortable:true},{text:"申請人部門",dataIndex:"base_deptname",sortable:true},{text:"單號",dataIndex:"sericnum"},{text:"印章名稱",dataIndex:"sealname"},{text:"是否外帶",dataIndex:"isout",sortable:true},{text:"說明",dataIndex:"explain"},{text:"狀態",dataIndex:"statustext"},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -208,17 +209,17 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewsealapl_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -240,9 +241,9 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字/申请人/单号">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字/申請人/單號">
 		</td>
-		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部状态-</option><option style="color:blue" value="0">待处理</option><option style="color:green" value="1">已审核</option><option style="color:red" value="2">不同意</option><option style="color:#888888" value="5">已作废</option><option style="color:#17B2B7" value="23">退回</option></select></td>
+		<td style="padding-left:10px"><select class="form-control" style="width:120px" id="selstatus_{rand}"><option value="">-全部狀態-</option><option style="color:blue" value="0">待處理</option><option style="color:green" value="1">已審核</option><option style="color:red" value="2">不同意</option><option style="color:#888888" value="5">已作廢</option><option style="color:#17B2B7" value="23">退回</option></select></td>
 		<td style="padding-left:10px">
 			<div style="width:85px" class="btn-group">
 			<button class="btn btn-default" click="searchbtn" type="button">搜索</button><button class="btn btn-default" id="downbtn_{rand}" type="button" style="padding-left:8px;padding-right:8px"><i class="icon-angle-down"></i></button> 
@@ -251,7 +252,7 @@ var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

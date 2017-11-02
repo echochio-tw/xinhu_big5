@@ -1,12 +1,12 @@
 <?php
 /**
-*	对外开发接口文件
+*	對外開發接口文件
 *	createname：信呼
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (www.rockoa.com)
 *	Date:2016-11-01
-*	explain：返回200为正常
-*	post需开启：always_populate_raw_post_data = On
+*	explain：返回200為正常
+*	post需開啟：always_populate_raw_post_data = On
 */
 class openapiAction extends ActionNot
 {

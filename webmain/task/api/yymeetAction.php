@@ -20,10 +20,10 @@ class yymeetClassAction extends apiAction
 		
 		foreach($data as $k=>$v){
 			if($k=='explain')break;
-			if($this->isempt($v))$this->showreturn('', '['.$k.']不能为空', 201);
+			if($this->isempt($v))$this->showreturn('', '['.$k.']不能為空', 201);
 		}
 		$mid = m('meet')->insert($data);
-		m('flow')->submit('meet', $mid, '预定');
+		m('flow')->submit('meet', $mid, '預定');
 		$this->showreturn('');
 	}
 }

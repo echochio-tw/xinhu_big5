@@ -1,7 +1,7 @@
 <?php 
 class calendarChajian extends Chajian{
 
-	//农历每月的天数
+	//農歷每月的天數
     private $everyCMonth=array(
     0=>array(8,0,0,0,0,0,0,0,0,0,0,0,29,30,7,1),
     1=>array(0,29,30,29,29,30,29,30,29,30,30,30,29,0,8,2),
@@ -125,29 +125,29 @@ class calendarChajian extends Chajian{
     119=>array(0,30,29,30,29,30,29,29,30,29,29,30,30,0,6,12),
     120=>array(4,29,30,30,30,29,30,29,29,30,29,30,29,30,7,1)
     );
-//农历天干
-    private $mten=array("null","甲","乙","丙","丁","戊","己","庚","辛","壬","癸");    //农历地支
-    private $mtwelve=array("null","子(鼠)","丑(牛)","寅(虎)","卯(兔)","辰(龙)",
-                   "巳(蛇)","午(马)","未(羊)","申(猴)","酉(鸡)","戌(狗)","亥(猪)");    //农历月份
-    private $mmonth=array("闰","正","二","三","四","五","六",
+//農歷天幹
+    private $mten=array("null","甲","乙","丙","丁","戊","己","庚","辛","壬","癸");    //農歷地支
+    private $mtwelve=array("null","子(鼠)","醜(牛)","寅(虎)","卯(兔)","辰(龍)",
+                   "巳(蛇)","午(馬)","未(羊)","申(猴)","酉(雞)","戌(狗)","亥(豬)");    //農歷月份
+    private $mmonth=array("閏","正","二","三","四","五","六",
                   "七","八","九","十","十一","十二","月");
     private $mday=array("null","初一","初二","初三","初四","初五","初六","初七","初八","初九","初十",
                 "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
-                "廿一","廿二","廿三","廿四","廿五","廿六","廿七","廿八","廿九","三十");//农历日
-//赋给初值
-//天干地支
+                "廿一","廿二","廿三","廿四","廿五","廿六","廿七","廿八","廿九","三十");//農歷日
+//賦給初值
+//天幹地支
     private $ten=0;
     private $twelve=0;
     private function MyPub($cYear,$cMonth,$cDay)
     {
-        $total=11;//阳历总天数 至1900年12月21日  
-        $mtotal=0;//阴历总天数
+        $total=11;//陽歷總天數 至1900年12月21日  
+        $mtotal=0;//陰歷總天數
         for ($y=1901;$y<$cYear;$y++)
         {
             $total+=365;
             if ($y%4==0) $total ++;
         }
-        //再加当年的几个月
+        //再加當年的幾個月
         switch ($cMonth){
                  case 12:
                       $total+=30;
@@ -173,14 +173,14 @@ class calendarChajian extends Chajian{
                       $total+=31;
                }
  
-            //如果当年是闰年还要加一天
+            //如果當年是閏年還要加一天
             if ($cYear%4==0 and $cMonth>2)
             {
                 $total++;
             }
             $total+=$cDay-1;
 			$flag = 0;
-            //用农历的天数累加来判断是否超过阳历的天数
+            //用農歷的天數累加來判斷是否超過陽歷的天數
             for($j=0;$j<=120;$j++)
             {
                 $i=1;
@@ -211,7 +211,7 @@ class calendarChajian extends Chajian{
         }
         if ($Par["d"]==$this->everyCMonth[$Par["d"]][0]+1 and $this->everyCMonth[$Par["d"]][0]<>0)
         {
-            $cMonth=$this->mmonth[0].$this->mmonth[$mm];//闰月
+            $cMonth=$this->mmonth[0].$this->mmonth[$mm];//閏月
         }else{
             $cMonth=$this->mmonth[$mm].$this->mmonth[13];
         }

@@ -1,4 +1,4 @@
-*{font-family:微软雅黑,Verdana, Geneva, sans-serif;padding:0px;margin:0px;}
+*{font-family:微軟雅黑,Verdana, Geneva, sans-serif;padding:0px;margin:0px;}
 body{color:#222222;margin:0px;border:0;font-size:14px;-webkit-overflow-scrolling:touch;overflow-scrolling:touch;}
 td,button{ font-size:14px}
 a,c,.cursor{cursor:pointer;}
@@ -89,23 +89,23 @@ input.checkbox,input.radio{ border:none;padding:0;margin-right:5px; width:14px; 
 
 .topmenubg{height:50px;color:white;overflow:hidden;}
 .topcenter{height:50px;color:white;overflow:hidden; position:absolute;right:0px;top:0px}
-.topcenter span,.topmenubg span{ color:white; display:block; height:50px; line-height:49px; float:right; padding:0px 15px; text-decoration:none;border-right:1px #15AF90 solid; cursor:pointer} 		/*换皮肤的 头部快间隔*/
-.topcenter span:hover,.topmenubg span:hover,.spanactive{background:#15AF90} 	/*换皮肤的  选中的模块*/
+.topcenter span,.topmenubg span{ color:white; display:block; height:50px; line-height:49px; float:right; padding:0px 15px; text-decoration:none;border-right:1px #15AF90 solid; cursor:pointer} 		/*換皮膚的 頭部快間隔*/
+.topcenter span:hover,.topmenubg span:hover,.spanactive{background:#15AF90} 	/*換皮膚的  選中的模塊*/
 .topmenubg span{float:left;border-right-width:0px;}
 
-.topheader{color:white;font-size:24px;background:#1389D3;height:50px;overflow:hidden;} /*头部颜色*/
+.topheader{color:white;font-size:24px;background:#1389D3;height:50px;overflow:hidden;} /*頭部顏色*/
 
 .topmenu{font-size:14px;padding:0px 20px;}
 .topactive{background-color:#0784C6}
 .topuser{color:white;position:absolute;right:5px;top:12px;font-size:14px;}
 
 .menubg{background:#F8F9FB; float:left; width:190px;}
-.menutoptext{height:44px;overflow:hidden;background:#505050;line-height:44px;color:white;} /*导航头部背景*/
+.menutoptext{height:44px;overflow:hidden;background:#505050;line-height:44px;color:white;} /*導航頭部背景*/
 .menutoptext li{height:44px;overflow:hidden;line-height:44px;color:white;float:left;}
 .menutoptext .li01{width:70%}
 .menutoptext .li02{width:30%}
 .indexsplit{background:#e1e1e1}
-.menulistbg{background:#505050;width:30px;overflow:hidden;text-align:center;line-height:22px;color:white} /*导航头部背景*/
+.menulistbg{background:#505050;width:30px;overflow:hidden;text-align:center;line-height:22px;color:white} /*導航頭部背景*/
 
 .menuone{padding:10px 10px;border-bottom:1px #eeeeee solid;cursor:pointer;background:#ffffff; position:relative;font-size:14px}
 .menutwo{padding:8px 0px 8px 30px;border-bottom:1px #EAF1FC solid;cursor:pointer;background:#F8F9FB;font-size:13px;color:#555555}
@@ -134,9 +134,9 @@ input.checkbox,input.radio{ border:none;padding:0;margin-right:5px; width:14px; 
 .arrow-down{
 width: 0;
 height: 0;
-border-left: 10px solid transparent; /* 左边框的宽 */
-border-right: 10px solid transparent; /* 右边框的宽 */
-border-top: 10px solid #cccccc; /* 下边框的长度|高,以及背景色 */
+border-left: 10px solid transparent; /* 左邊框的寬 */
+border-right: 10px solid transparent; /* 右邊框的寬 */
+border-top: 10px solid #cccccc; /* 下邊框的長度|高,以及背景色 */
 font-size: 0;
 line-height: 0;
 } 
@@ -197,7 +197,7 @@ line-height: 0;
 
 
 
-/*图形样式*/
+/*圖形樣式*/
 .rf{position:absolute;background-color:#D2E9F7;border:1px #B8DAEF solid;color:#1389D3;text-align:center;max-width:150px;min-width:100px}
 .rf_nei{padding:5px 10px}
 .rf_ract{}
@@ -208,7 +208,7 @@ line-height: 0;
 .rf-txt{position:absolute;color:#1389D3}
 .rf-active{background-color:#60C2F7}
 
-/*箭头的*/
+/*箭頭的*/
 .rf_shu{position:absolute;height:100px;border:none;width:12px;overflow:hidden;transform-origin:0px 0px;-webkit-transform-origin:0px 0px;-ms-transform-origin:0px 0px;-moz-transform-origin:0px 0px;}
 .rf_shu1{width:6px;height:94px;background-color:#C6E1F2;margin-left:3px}
 .rf_shu2{width:0px;height:0px; overflow:hidden;border-width:6px;border-style:solid;border-color:#C6E1F2 transparent transparent transparent;}

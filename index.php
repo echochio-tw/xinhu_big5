@@ -1,8 +1,8 @@
 <?php 
 /**
-*	系统主要入口
-*	主页：http://www.rockoa.com/
-*	软件：信呼
+*	系統主要入口
+*	主頁：http://www.rockoa.com/
+*	軟件：信呼
 *	作者：雨中磐石(rainrock)
 */
 include_once('config/config.php');

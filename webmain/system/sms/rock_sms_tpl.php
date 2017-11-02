@@ -5,18 +5,18 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:'chargems',url:js.getajaxurl('gettpl','{mode}','{dir}'),statuschange:false,
 		columns:[{
-			text:'编号',dataIndex:'num'
+			text:'編號',dataIndex:'num'
 		},{
-			text:'模版内容',dataIndex:'cont',align:'left'
+			text:'模版內容',dataIndex:'cont',align:'left'
 		},{
-			text:'是否公开',dataIndex:'isgk',type:'checkbox'
+			text:'是否公開',dataIndex:'isgk',type:'checkbox'
 		},{
-			text:'状态',dataIndex:'statustext',renderer:function(v,d){
-				if(d.status=='0')v+='<a href="javascript:;" onclick="urelsd{rand}(\''+d.num+'\')">[刷新状态]</a>';
+			text:'狀態',dataIndex:'statustext',renderer:function(v,d){
+				if(d.status=='0')v+='<a href="javascript:;" onclick="urelsd{rand}(\''+d.num+'\')">[刷新狀態]</a>';
 				return v;
 			}
 		},{
-			text:'来源',dataIndex:'fromstr'
+			text:'來源',dataIndex:'fromstr'
 		}],
 		beforeload:function(){
 			btn(true);
@@ -43,7 +43,7 @@ $(document).ready(function(){
 				url:js.getajaxurl('savetpl','{mode}','{dir}'),
 				submitfields:'cont,num',
 				items:[{
-					labelText:'模版内容',type:'textarea',name:'cont',required:true,blankText:'请严格按照规范填写，变量用#name#格式。',height:150
+					labelText:'模版內容',type:'textarea',name:'cont',required:true,blankText:'請嚴格按照規範填寫，變量用#name#格式。',height:150
 				},{
 					labelText:'',name:'num',type:'hidden'
 				}],
@@ -58,16 +58,16 @@ $(document).ready(function(){
 			h.getField('cont').focus();
 		},
 		del:function(){
-			js.confirm('确定要删除此模版吗？',function(jg){
+			js.confirm('確定要刪除此模版嗎？',function(jg){
 				if(jg=='yes')c.dels();
 			});
 		},
 		dels:function(){
 			var num = a.changedata.num;
-			js.msg('wait','删除中...');
+			js.msg('wait','刪除中...');
 			js.ajax(js.getajaxurl('deltpl','{mode}','{dir}'),{num:num}, function(ret){
 				if(ret.success){
-					js.msg('success','删除成功');
+					js.msg('success','刪除成功');
 					a.reload();
 				}else{
 					js.msg('msg',ret.msg);
@@ -103,12 +103,12 @@ $(document).ready(function(){
 	</td>
 	<td align="right">
 		
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button> &nbsp; 
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button> &nbsp; 
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</td>
 	</tr>
 	</table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">如公开说明使用信呼系统的用户都可以使用这个模版，为了防止资源浪费，所有的模版都是公开的。普通用户不能添加模版，VIP用户可添加10个模版，合作商没限制，添加编辑模版是需要审核的，可[刷新状态]查看审核状态。</div>
+<div class="tishi">如公開說明使用信呼系統的用戶都可以使用這個模版，為了防止資源浪費，所有的模版都是公開的。普通用戶不能添加模版，VIP用戶可添加10個模版，合作商沒限制，添加編輯模版是需要審核的，可[刷新狀態]查看審核狀態。</div>

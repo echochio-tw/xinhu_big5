@@ -1,4 +1,4 @@
-//³õÊ¼º¯Êý
+//
 function initbodys(){
 	
 }

@@ -3,7 +3,7 @@ class flow_assetmClassModel extends flowModel
 {
 	public function initModel()
 	{
-		$this->statearr = c('array')->strtoarray('blue|闲置,#ff6600|在用,red|维修,gray|报废,gray|丢失');
+		$this->statearr = c('array')->strtoarray('blue|閒置,#ff6600|在用,red|維修,gray|報廢,gray|丟失');
 	}
 	
 	public function flowrsreplace($rs)
@@ -35,21 +35,21 @@ class flow_assetmClassModel extends flowModel
 		);
 	}
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		return array(
-			'typeid' 		=> '电脑/台式电脑',
-			'title' 		=> '这是一个电脑啊',
+			'typeid' 		=> '電腦/台式電腦',
+			'title' 		=> '這是一個電腦啊',
 			'num' 		=> 'ZiCAN-001',
-			'brand' 		=> '联想',
-			'laiyuan' 		=> '购买',
+			'brand' 		=> '聯想',
+			'laiyuan' 		=> '購買',
 			'buydt' 		=> '2017-01-17',
-			'explain' 		=> '简单说明一下',
+			'explain' 		=> '簡單說明一下',
 		);
 	}
 	
-	//导入之前
+	//導入之前
 	public function flowdaorubefore($rows)
 	{
 		foreach($rows as $k=>$rs){

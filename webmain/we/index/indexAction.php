@@ -22,7 +22,7 @@ class indexClassAction extends ActionNot{
 	}
 	
 	/**
-	*	用户信息
+	*	用戶信息
 	*/
 	public function userinfoAction()
 	{

@@ -42,7 +42,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	返回判断是否有安装微信企业号/企业微信 $lx=0企业号,1企业微信,2钉钉
+	*	返回判斷是否有安裝微信企業號/企業微信 $lx=0企業號,1企業微信,2釘釘
 	*/
 	public function installwx($lx=0)
 	{
@@ -139,8 +139,8 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	应用信息推送
-	*	$slx 0,1发送给pc，0,2发送给移动端,3不发送
+	*	應用信息推送
+	*	$slx 0,1發送給pc，0,2發送給移動端,3不發送
 	*/
 	public function pushagent($receid, $gname, $cont, $title='', $url='', $wxurl='', $slx=0)
 	{
@@ -161,7 +161,7 @@ class reimClassModel extends Model
 		
 		if($title=='')$title = $gname;
 		
-		//保存到推送会话列表上历史记录上
+		//保存到推送會話列表上歷史記錄上
 		if($gid>0){
 			$receids = $admdb->gjoins($receid);
 			if($receids!='all' &&
@@ -183,7 +183,7 @@ class reimClassModel extends Model
 	}
 	
 	
-	//获取REIM未读的
+	//獲取REIM未讀的
 	public function getwdarr($mid=0, $ldt='')
 	{
 		$rows 	= array();
@@ -208,7 +208,7 @@ class reimClassModel extends Model
 			}
 		}
 		
-		// 讨论组 群
+		// 討論組 群
 		$groupa	= $this->db->getarr('[Q]im_group','1=1','`name`,`face`,`type`');
 		$gid 	= '0';
 		foreach($groupa as $_gid=>$kvs)$gid.=','.$_gid.'';
@@ -228,7 +228,7 @@ class reimClassModel extends Model
 			);
 		}
 		
-		//应用的信息	
+		//應用的信息	
 		$arr 	= $this->getall("`type`='agent' and `receid` in($gid) and $whes $wher and id in(select mid from [Q]im_messzt where uid='$mid') group by `receid`", "`receid`,count(1) as stotal,max(optdt) as optdts,cont");
 		foreach($arr as $k=>$rs){
 			$grs	= $groupa[$rs['receid']];
@@ -259,7 +259,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	获取未读的会话消息数量
+	*	獲取未讀的會話消息數量
 	*/
 	public function getreimwd($uid)
 	{
@@ -269,7 +269,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	获取人员所在的会话上
+	*	獲取人員所在的會話上
 	*/
 	public function getgroup($uid)
 	{
@@ -316,7 +316,7 @@ class reimClassModel extends Model
 		$facarr = array('images/group.png','images/group.png','images/system.png');
 		$rs['face'] 	= $this->getface($rs['face'], $facarr[$rs['type']]);
 		$rs['utotal'] 	= $this->db->rows('[Q]im_groupuser','gid='.$gid.'');
-		$rs['innei'] 	= $this->db->rows('[Q]im_groupuser','gid='.$gid.' and uid='.$this->adminid.''); //是否在会话中
+		$rs['innei'] 	= $this->db->rows('[Q]im_groupuser','gid='.$gid.' and uid='.$this->adminid.''); //是否在會話中
 		return $rs;
 	}
 	
@@ -329,7 +329,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-		设置已读
+		設置已讀
 	*/
 	public function setyd($ids, $receid)
 	{
@@ -349,7 +349,7 @@ class reimClassModel extends Model
 	
 	
 	/**
-	*	桌面版PC客户端获取应用
+	*	桌面版PC客戶端獲取應用
 	*/
 	public function getagent($uid=0, $whe='', $pid=0)
 	{
@@ -394,7 +394,7 @@ class reimClassModel extends Model
 			$rs['stotal'] 	= $stotal;
 			$rs['totals'] 	= 0;
 			
-			//连接地址转化
+			//連接地址轉化
 			if($rs['url']=='link' || $rs['url']=='linko'){
 				$urlpc = $rs['urlpc'];
 				if(!isempt($urlpc) && $mrs = $mdbs->getone("`num`='$urlpc'")){
@@ -407,13 +407,13 @@ class reimClassModel extends Model
 		}
 		foreach($barr as $k=>$rs){
 			$types = $rs['types'];
-			if(isempt($types))$types='应用';
+			if(isempt($types))$types='應用';
 			if(!isset($carr[$types]))$carr[$types]=array();
 			$rs['types']	= $types;
 			$carr[$types][] = $rs;
 		}
 		
-		//应用统计
+		//應用統計
 		$gcarr = array();
 		foreach($carr as $types=>$rows){
 			$ntypes = $types.'('.count($rows).')';
@@ -429,7 +429,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	手机app/手机网页版上获取应用
+	*	手機app/手機網頁版上獲取應用
 	*/
 	public function getappagent($uid=0)
 	{
@@ -443,7 +443,7 @@ class reimClassModel extends Model
 			if(isempt($rs['num']))continue;
 			$rs['face'] 	= $this->getface($rs['face']);
 			$stotal			= 0;
-			$btosr 			= m('agent:'.$rs['num'].'')->gettotal(); //统计红点数
+			$btosr 			= m('agent:'.$rs['num'].'')->gettotal(); //統計紅點數
 			$stotal			= $btosr['stotal'];
 			$stotalt+=$stotal;
 			$rs['titles'] 	= $btosr['titles'];
@@ -453,13 +453,13 @@ class reimClassModel extends Model
 		
 		foreach($barr as $k=>$rs){
 			$types = $rs['types'];
-			if(isempt($types))$types='应用';
+			if(isempt($types))$types='應用';
 			if(!isset($carr[$types]))$carr[$types]=array();
 			$rs['types']	= $types;
 			$carr[$types][] = $rs;
 		}
 		
-		//应用统计
+		//應用統計
 		$gcarr = array();
 		foreach($carr as $types=>$rows){
 			$ntypes = $types.'('.count($rows).')';
@@ -479,7 +479,7 @@ class reimClassModel extends Model
 	
 	
 	/**
-	*	获取历史记录
+	*	獲取歷史記錄
 	*/
 	public function gethistory($uid=0, $optdt='', $whes='')
 	{
@@ -514,7 +514,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	微信上获取未读消息
+	*	微信上獲取未讀消息
 	*/
 	public function getuntodo($uid)
 	{
@@ -522,14 +522,14 @@ class reimClassModel extends Model
 		$str = '';
 		foreach($rows as $k=>$rs){
 			if($k>0)$str.= "\n";
-			$str.=''.($k+1).'、'.$rs['name'].'：'.$rs['stotal'].'条';
+			$str.=''.($k+1).'、'.$rs['name'].'：'.$rs['stotal'].'條';
 		}
 		return $str;
 	}
 	
 	
 	/**
-	*	添加到历史记录,用户不显示历史记录让从新显示
+	*	添加到歷史記錄,用戶不顯示歷史記錄讓從新顯示
 	*/
 	public function addhistory($type, $receid, $uids,$optdt, $cont,$sendid=0, $title='')
 	{
@@ -568,7 +568,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	获取聊天会话记录
+	*	獲取聊天會話記錄
 	*/
 	public function getrecord($type, $uid, $gid, $minid=0, $lastdt='')
 	{
@@ -641,8 +641,8 @@ class reimClassModel extends Model
 	
 	
 	/**
-	*	获取人员信息
-	*	$uid 当前用户
+	*	獲取人員信息
+	*	$uid 當前用戶
 	*/
 	public function getuserinfor($uid, $receid, $minid=0, $lastdt='')
 	{
@@ -759,8 +759,8 @@ class reimClassModel extends Model
 	
 	
 	/**
-		发送单人信息
-		$lx = 0 app发送 1web客户端
+		發送單人信息
+		$lx = 0 app發送 1web客戶端
 	*/
 	public function senduser($sendid,$receid, $cans=array(), $lx=0)
 	{
@@ -793,7 +793,7 @@ class reimClassModel extends Model
 			$farr = m('file')->getone($fileid,'filesizecn,fileext,thumbpath,filename');
 			if($farr)foreach($farr as $fk=>$fv)$arr[$fk]		= $fv;
 		}
-		//给客户端发送0
+		//給客戶端發送0
 		if($lx==0){
 			$receids = m('admin')->getonline($arr['receid']);
 			if($receids != ''){
@@ -812,35 +812,35 @@ class reimClassModel extends Model
 		$this->addhistory('user', $receid, $sendid, $optdt, $cont, $sendid);
 		if($sendid!=$receid)$this->addhistory('user', $sendid, $receid, $optdt, $cont, $sendid);
 		
-		//推送的原生App上(使用异步推送哦)
+		//推送的原生App上(使用異步推送哦)
 		$tuicont['sendid'] 		= $arr['sendid'];
 		$tuicont['sendname'] 	= $this->adminname;
 		$tuicont['name'] 		= $this->adminname;
 		$tuicont['cont'] 		= $cont;
-		$tuicont['pushtype'] 	= 'chat'; //推送消息类型
+		$tuicont['pushtype'] 	= 'chat'; //推送消息類型
 		$tuicont['receid'] 		= $receid;
 		$tuicont['fileid'] 		= $fileid;
 		$tuicont['type'] 		= 'user';
 		$tuicont['id'] 			= $arr['id'];
 		$tuicont['optdt'] 		= $optdt;
 		$tuicont['optdts'] 		= substr($optdt,11,5);
-		$this->pushapp($receid, '['.$this->adminname.']发来一条消息', $tuicont, $lx);
+		$this->pushapp($receid, '['.$this->adminname.']發來一條消息', $tuicont, $lx);
 		
 		/*
 		$last	= date('Y-m-d H:i:s', time()-15);
 		$where 	= "`uid`='$receid' and `online`=1 and `cfrom` in('appandroid','appios') and `moddt`<'$last'";
 		$tos 	= m('logintoken')->rows($where);
-		if($tos>0){//没有打开应用
+		if($tos>0){//沒有打開應用
 			$conts = substr($this->rock->jm->base64decode($cont),0,99);
-			c('JPush')->send($receid,'['.$this->adminname.']发来一条消息', ''.$this->adminname.':'.$conts, 1);
+			c('JPush')->send($receid,'['.$this->adminname.']發來一條消息', ''.$this->adminname.':'.$conts, 1);
 		}*/
 		
 		return $arr;
 	}
 	
 	/**
-		发送群讨论信息
-		$lx = 0 app发送 1web客户端
+		發送群討論信息
+		$lx = 0 app發送 1web客戶端
 	*/
 	public function sendgroup($sendid, $gid, $cans=array(), $lx=0)
 	{
@@ -893,7 +893,7 @@ class reimClassModel extends Model
 			if($farr)foreach($farr as $fk=>$fv)$arr[$fk]		= $fv;
 		}
 		
-		//推送到PC客户端上
+		//推送到PC客戶端上
 		if($lx==0 && $asid != ''){
 			$receids = m('admin')->getonline($asid);
 			if($receids != ''){
@@ -913,29 +913,29 @@ class reimClassModel extends Model
 		$cont1 = $this->rock->jm->base64encode(''.$this->adminname.':'.$this->rock->jm->base64decode($cont).'');
 		$this->addhistory('group', $gid, $arr['receuid'], $optdt, $cont1,$sendid);
 		
-		//推送的原生App上(使用异步推送哦)
+		//推送的原生App上(使用異步推送哦)
 		if($asid != ''){
 			$tuicont['sendid'] 		= $arr['sendid'];
 			$tuicont['sendname'] 	= $this->adminname;
 			$tuicont['cont'] 		= $cont1;
 			$tuicont['name'] 		= $gname;
-			$tuicont['pushtype'] 	= 'chat'; //推送消息类型
+			$tuicont['pushtype'] 	= 'chat'; //推送消息類型
 			$tuicont['receid'] 		= $receid;
 			$tuicont['fileid'] 		= $fileid;
 			$tuicont['type'] 		= 'group';
 			$tuicont['id'] 			= $arr['id'];
 			$tuicont['optdt'] 		= $optdt;
 			$tuicont['optdts'] 		= substr($optdt,11,5);
-			$this->pushapp($asid, '['.$gname.']发来一条消息', $tuicont, $lx);
+			$this->pushapp($asid, '['.$gname.']發來一條消息', $tuicont, $lx);
 		}
 		/*
 		if($asid != ''){
 			$last	= date('Y-m-d H:i:s', time()-15);
 			$where 	= "`uid` in($asid) and `online`=1 and `cfrom` in('appandroid','appios') and `moddt`<'$last'";
 			$tos 	= m('logintoken')->rows($where);
-			if($tos>0){//有打开应用
+			if($tos>0){//有打開應用
 				$conts = substr($this->rock->jm->base64decode($cont),0,99);
-				c('JPush')->send($asid,'['.$gname.']发来一条消息', ''.$this->adminname.':'.$conts, 1);
+				c('JPush')->send($asid,'['.$gname.']發來一條消息', ''.$this->adminname.':'.$conts, 1);
 			}
 		}*/
 		$arr['gname'] = $gname;
@@ -952,7 +952,7 @@ class reimClassModel extends Model
 			$arr 	= $this->sendgroup($sendid, $gid, $cans, $lx);
 		}
 		
-		//同步消息必须用异步
+		//同步消息必須用異步
 		if($this->wxchattb==1 && isset($arr['id']) && getconfig('systype') != 'dev'){
 			$msgid 	= $arr['msgid'];
 			if(isempt($msgid)){
@@ -971,7 +971,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	获取用户的app上设置别名，也就是token拉
+	*	獲取用戶的app上設置別名，也就是token拉
 	*/
 	public function getalias($uid, $lx=0)
 	{
@@ -1043,7 +1043,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	推送发送命令类型
+	*	推送發送命令類型
 	*/
 	public function sendcmd($receid, $conarr=array())
 	{
@@ -1052,15 +1052,15 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	向服务端发送异步任务
-	*	$runtime 运行的时间贞
+	*	向服務端發送異步任務
+	*	$runtime 運行的時間貞
 	*/
 	public function asynurl($m, $a,$can=array(), $runtime=0)
 	{
 		$asyn   = (int)getconfig('asynsend','0');
 		$runurl	= m('base')->getasynurl($m, $a,$can);
 
-		//用官网VIP异步
+		//用官網VIP異步
 		if($asyn==2){
 			$barr = c('xinhuapi')->sendanay($m, $a,$can, $runtime);
 			if($barr['success'])return true;
@@ -1075,7 +1075,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	获取得到推送的端口号
+	*	獲取得到推送的端口號
 	*/
 	public function getpushhostport($str)
 	{
@@ -1090,7 +1090,7 @@ class reimClassModel extends Model
 	}
 
 	/**
-	*	服务端推送，返回boolean看是否成功
+	*	服務端推送，返回boolean看是否成功
 	*/
 	public function pushserver($atype, $cans=array())
 	{
@@ -1109,7 +1109,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	判断异步地址是否可以使用
+	*	判斷異步地址是否可以使用
 	*/
 	public function asynurlbo()
 	{
@@ -1128,7 +1128,7 @@ class reimClassModel extends Model
 	
 	
 	
-	//创建群等
+	//創建群等
 	public function creategroup($name, $receid, $type=1, $explain='')
 	{
 		$arr['name'] 		= $name;
@@ -1146,9 +1146,9 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	下载同步聊天记录到app本地
-	*	$uid 对应用户，$maxid 从哪个最大的id，$minid从哪个最小Id
-	*	最多下载20天内的记录，每次下载30条
+	*	下載同步聊天記錄到app本地
+	*	$uid 對應用戶，$maxid 從哪個最大的id，$minid從哪個最小Id
+	*	最多下載20天內的記錄，每次下載30條
 	*/
 	public function downrecord($uid, $maxid=0, $minid=999999999)
 	{
@@ -1189,7 +1189,7 @@ class reimClassModel extends Model
 		$rows 	= $this->ivaregarr($suids, $rows);
 		$rows	= $this->replacefileid($rows);
 		$isdown	= '0';
-		if(count($rows)==$limit)$isdown = '1'; //需要继续下载
+		if(count($rows)==$limit)$isdown = '1'; //需要繼續下載
 		$arr['rows'] 	= $rows;
 		$arr['maxid'] 	= $maxid;
 		$arr['minid'] 	= $minid;
@@ -1199,7 +1199,7 @@ class reimClassModel extends Model
 	
 	
 	/**
-	*	删除服务器上记录
+	*	刪除服務器上記錄
 	*/
 	public function clearrecord($type,$gid, $uid, $ids='',$day=0)
 	{
@@ -1246,7 +1246,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	转发
+	*	轉發
 	*/
 	public function forward($tuid, $type, $cont, $fid=0)
 	{
@@ -1258,7 +1258,7 @@ class reimClassModel extends Model
 			if(!file_exists($frs['filepath']))return $msg;
 			$cont 	= '';$jpgallext	= '|jpg|png|gif|bmp|jpeg|';
 			if(contain($jpgallext,'|'.$frs['fileext'].'|')){
-				$cont = '[图片 '.$frs['filesizecn'].']';
+				$cont = '[圖片 '.$frs['filesizecn'].']';
 			}else{
 				$cont = '['.$frs['filename'].' '.$frs['filesizecn'].']';
 			}
@@ -1273,7 +1273,7 @@ class reimClassModel extends Model
 		return 'ok';
 	}
 	
-	//会话管理的
+	//會話管理的
 	public function createchat($name, $aid, $uids='', $na='', $optdt='', $iscjwx=false)
 	{
 		if($optdt=='')$optdt=$this->rock->now;
@@ -1335,7 +1335,7 @@ class reimClassModel extends Model
 	
 	
 	
-	//微信消息回调
+	//微信消息回調
 	public function getwxchat($arr)
 	{
 		$this->rock->debugs(json_encode($arr),'cccc');if(!isset($arr['MsgType']))return;
@@ -1382,7 +1382,7 @@ class reimClassModel extends Model
 			$cont = '位置：'.$arr['Label'];
 		}
 		if($MsgType=='voice'){
-			$cont = '语音,请用微信收听';
+			$cont = '語音,請用微信收聽';
 			if(isset($arr['MediaId']))$this->asynurl('asynrun','downwxmedia', array(
 				'mediaid' 	=> $arr['MediaId'],
 				'msgid' 	=> $msgid,
@@ -1391,7 +1391,7 @@ class reimClassModel extends Model
 			));
 		}
 		if($MsgType=='image'){
-			$cont = '[图片]';
+			$cont = '[圖片]';
 			$PicUrl = $this->rock->jm->encrypt($arr['PicUrl']);
 			$this->asynurl('asynrun','downwxpic', array(
 				'picurl' 	=> $PicUrl,
@@ -1400,7 +1400,7 @@ class reimClassModel extends Model
 			));
 		}
 		if($MsgType=='link'){
-			if(isempt($arr['Title']))$arr['Title']='链接';
+			if(isempt($arr['Title']))$arr['Title']='鏈接';
 			$cont = '[A]'.$arr['Title'].'|'.$arr['Url'].'[/A]';
 		}
 		if($cont!='')$this->sendinfor($type,$sendid, $gid, array(
@@ -1410,12 +1410,12 @@ class reimClassModel extends Model
 		));
 	}
 	
-	//下载微信上图片
+	//下載微信上圖片
 	public function downwximg($url, $msgid)
 	{
 		if($url=='' || $msgid=='')return;
 		$cont	= c('curl')->getcurl($url);
-		$barr 	= c('down')->createimage($cont,'jpg','微信图片');
+		$barr 	= c('down')->createimage($cont,'jpg','微信圖片');
 		if($barr){
 			$fileid 	= $barr['id'];
 			$filesize 	= $barr['filesizecn'];
@@ -1429,7 +1429,7 @@ class reimClassModel extends Model
 	}
 	
 	/**
-	*	定时未读的会话消息提醒推送到微信上
+	*	定時未讀的會話消息提醒推送到微信上
 	*/
 	public function chatpushtowx($dt='')
 	{
@@ -1475,10 +1475,10 @@ class reimClassModel extends Model
 			}
 			if($zshu==0)continue;
 			if($zshu==1){
-				$title 	= '你有['.$rs['name'].']未读会话消息';
+				$title 	= '你有['.$rs['name'].']未讀會話消息';
 				$url 	= ''.URL.'?m=chat&d=we&type='.$rs['type'].'&uid='.$rs['receid'].'';
 			}else{
-				$title 	= '你有'.$zshu.'个未读会话消息';
+				$title 	= '你有'.$zshu.'個未讀會話消息';
 				$url 	= ''.URL.'?d=we#list';
 			}
 			
@@ -1489,7 +1489,7 @@ class reimClassModel extends Model
 				'uid'			=> $uid
 			);
 			
-			//根据内容分组发送
+			//根據內容分組發送
 			$contkey 	= md5($cont);
 			$sendarr[$contkey][] = $wxarr;
 		}
@@ -1501,7 +1501,7 @@ class reimClassModel extends Model
 			foreach($rowss as $k=>$rs){
 				$uids.=','.$rs['uid'].'';
 			}
-			//发送
+			//發送
 			if($uids!=''){
 				$uids = substr($uids, 1);
 
@@ -1509,8 +1509,8 @@ class reimClassModel extends Model
 					m('weixin:index')->sendnews($uids, 'REIM,0', $wxarr);
 				}
 				if($bowxqy){
-					$barr = m('weixinqy:index')->sendxiao($uids, 'REIM,办公助手', $wxarr);
-					m('log')->todolog('企业微信提醒', $barr);
+					$barr = m('weixinqy:index')->sendxiao($uids, 'REIM,辦公助手', $wxarr);
+					m('log')->todolog('企業微信提醒', $barr);
 				}
 			}
 		}

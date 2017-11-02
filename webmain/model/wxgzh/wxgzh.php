@@ -1,16 +1,16 @@
 <?php
 class wxgzhModel extends Model
 {
-	//定义远程连接的
+	//定義遠程連接的
 	protected $URL_public		= 'https:&#47;&#47;api.weixin.qq.com/cgi-bin/';
 	
 	protected $URL_gettoken		= 'token';
 	protected $URL_jsapiticket	= 'ticket/getticket';
 	
-	//获取用户信息跟openid
+	//獲取用戶信息跟openid
 	protected $URL_userinfo		= 'user/info';
 	
-	//发模版消息的
+	//發模版消息的
 	protected $URL_tplsend		= 'message/template/send';
 	
 
@@ -42,7 +42,7 @@ class wxgzhModel extends Model
 		return $url;
 	}
 
-	//读取配置
+	//讀取配置
 	public function readwxset()
 	{
 		if($this->appid!='')return $this->appid;
@@ -54,8 +54,8 @@ class wxgzhModel extends Model
 	}
 	
 	/**
-	*	判断是否可以使用公众号定位的
-	*	$lx 0有企业号判断
+	*	判斷是否可以使用公眾號定位的
+	*	$lx 0有企業號判斷
 	*/
 	public function isusegzh($lx=0)
 	{
@@ -67,7 +67,7 @@ class wxgzhModel extends Model
 		return $is;
 	}
 	
-	//获取token
+	//獲取token
 	public function gettoken()
 	{
 		$time 	= date('Y-m-d H:i:s', time()-2*3600);
@@ -78,7 +78,7 @@ class wxgzhModel extends Model
 		if(isempt($val)){
 			$this->readwxset();
 			$secret = $this->secret;
-			if($this->appid=='' || $this->secret=='')showreturn('','没有设置公众号',201);
+			if($this->appid=='' || $this->secret=='')showreturn('','沒有設置公眾號',201);
 			if(isempt($secret))return '';
 			$url 	= ''.$this->gettourl('URL_gettoken').'?grant_type=client_credential&appid='.$this->appid.'&secret='.$secret.'';
 			$result = c('curl')->getcurl($url);

@@ -1,15 +1,15 @@
 <?php
 /**
-*	来自：信呼开发团队
+*	來自：信呼開發團隊
 *	作者：磐石(rainrock)
-*	网址：http://www.rockoa.com/
-*	系统默认配置文件，请不要去修改
+*	網址：http://www.rockoa.com/
+*	系統默認配置文件，請不要去修改
 *	要修改配置文件在：webmain/webmainConfig.php
 */
 @session_start();
-if(function_exists('date_default_timezone_set'))date_default_timezone_set('Asia/Shanghai'); //设置默认时区
+if(function_exists('date_default_timezone_set'))date_default_timezone_set('Asia/Shanghai'); //設置默認時區
 header('Content-Type:text/html;charset=utf-8');
-define('ROOT_PATH',str_replace('\\','/',dirname(dirname(__FILE__))));	//系统跟目录路径
+define('ROOT_PATH',str_replace('\\','/',dirname(dirname(__FILE__))));	//系統跟目錄路徑
 
 include_once(''.ROOT_PATH.'/include/rockFun.php');
 include_once(''.ROOT_PATH.'/include/Chajian.php');
@@ -26,7 +26,7 @@ if(!defined('ENTRANCE'))define('ENTRANCE', 'index');
 $config		= array(
 	'title'		=> '信呼',
 	'url'		=> '',
-	'urly'		=> 'http://www.rockoa.com/',	//官网域名地址，修改后就无法提供在线升级了。
+	'urly'		=> 'http://www.rockoa.com/',	//官網域名地址，修改後就無法提供在線升級了。
 	'db_host'	=> '127.0.0.1',
 	'db_user'	=> 'root',
 	'db_pass'	=> '',
@@ -40,12 +40,13 @@ $config		= array(
 	'updir'		=> 'upload',
 	'dbencrypt'	=> false,
 	'sqllog'	=> false,
-	'db_drive'	=> 'mysqli',	//数据库操作驱动
-	'db_engine'	=> 'MyISAM',	//数据库默认引擎
-	'debug'			=> true,	//默认debug模式
-	'reim_show' 	=> true,	//首页是否显示REIM
-	'mobile_show' 	=> true,	//首页是否显示手机版
-	'accesslogs' 	=> false	//是否记录访问日志和限制IP
+	'memory_limit'	=> '',			//運行內存大小
+	'db_drive'		=> 'mysqli',	//數據庫操作驅動
+	'db_engine'		=> 'MyISAM',	//數據庫默認引擎
+	'debug'			=> true,	//默認debug模式
+	'reim_show' 	=> true,	//首頁是否顯示REIM
+	'mobile_show' 	=> true,	//首頁是否顯示手機版
+	'accesslogs' 	=> false	//是否記錄訪問日志和限制IP
 );
 
 $_confpath		= $rock->strformat('?0/?1/?1Config.php', ROOT_PATH, PROJECT);
@@ -53,6 +54,7 @@ if(file_exists($_confpath)){
 	$_tempconf	= require($_confpath);
 	foreach($_tempconf as $_tkey=>$_tvs)$config[$_tkey] = $_tvs;
 	if(isempt($config['url']))$config['url'] = $rock->url();
+	if(!isempt($config['memory_limit']) && function_exists('ini_set'))ini_set('memory_limit', $config['memory_limit']);
 }
 
 define('DEBUG', $config['debug']);
@@ -76,6 +78,6 @@ define('VERSION', $config['version']);
 define('HIGHPASS', $config['highpass']);
 define('SYSURL', ''.URL.PATH.'.php');
 
-$_confpath	= ''.ROOT_PATH.'/config/iplogs.php'; //这个用来限制IP访问的
+$_confpath	= ''.ROOT_PATH.'/config/iplogs.php'; //這個用來限制IP訪問的
 if($config['accesslogs'] && file_exists($_confpath))include_once($_confpath);
 $rock->initRock();

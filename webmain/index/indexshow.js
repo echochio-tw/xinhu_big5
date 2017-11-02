@@ -1,4 +1,4 @@
-﻿function initbody(){
+function initbody(){
 	jm.setJmstr(jm.base64decode(show_key));
 	objcont = $('#content_allmainview');
 	objtabs = $('#tabs_title');
@@ -14,7 +14,7 @@ function opentixiang(){
 }
 
 function clickhome(){
-	addtabs({num:'home',url:'home,index',icons:'home',name:'首页',hideclose:true});
+	addtabs({num:'home',url:'home,index',icons:'home',name:'首頁',hideclose:true});
 	return false;
 }
 
@@ -156,7 +156,7 @@ function addtabs(a){
 		urlpms += ",'"+nus[0]+"':'"+nus[1]+"'";
 	}
 	if(urlpms!='')urlpms = urlpms.substr(1);
-	var bgs = '<div id="mainloaddiv" style="width:'+viewwidth+'px;height:'+viewheight+'px;overflow:hidden;background:#000000;color:white;filter:Alpha(opacity=20);opacity:0.2;z-index:3;position:absolute;left:0px;line-height:'+viewheight+'px;top:0px;" align="center"><img src="images/mloading.gif"  align="absmiddle">&nbsp;加载中...</div>';
+	var bgs = '<div id="mainloaddiv" style="width:'+viewwidth+'px;height:'+viewheight+'px;overflow:hidden;background:#000000;color:white;filter:Alpha(opacity=20);opacity:0.2;z-index:3;position:absolute;left:0px;line-height:'+viewheight+'px;top:0px;" align="center"><img src="images/mloading.gif"  align="absmiddle">&nbsp;加載中...</div>';
 	$('#indexcontent').append(bgs);
 	
 	objcont.append('<div temp="content" id="content_'+num+'"></div>');
@@ -177,8 +177,8 @@ function addtabs(a){
 		},
 		error:function(){
 			$('#mainloaddiv').remove();
-			var s = 'Error:加载出错喽,'+url+'';
-			if(num=='home')s+='<br><h3>你的服务器不支持shtml文件的类型，请设置添加，后缀名：.shtml，MIME类型：text/html</h3>';
+			var s = 'Error:加載出錯嘍,'+url+'';
+			if(num=='home')s+='<br><h3>你的服務器不支持shtml文件的類型，請設置添加，後綴名：.shtml，MIME類型：text/html</h3>';
 			$('#content_'+num+'').html(s);
 		}
 	});

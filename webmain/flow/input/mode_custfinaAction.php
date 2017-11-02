@@ -1,6 +1,6 @@
 <?php
 /**
-*	客户.收付款单
+*	客戶.收付款單
 */
 class mode_custfinaClassAction extends inputAction{
 	
@@ -10,7 +10,7 @@ class mode_custfinaClassAction extends inputAction{
 		$narr	= array();
 		$htid 	= (int)$arr['htid'];
 		$money 	= floatval($arr['money']);
-		if($money<=0)return '金额必须大于0';
+		if($money<=0)return '金額必須大于0';
 		if($htid>0){
 			$htrs = m('custract')->getone($htid);
 			$narr['htnum'] 		= $htrs['num'];
@@ -20,7 +20,7 @@ class mode_custfinaClassAction extends inputAction{
 			$zmoney				= floatval($htrs['money']);
 			$omoney	= m('crm')->getmoneys($htid, $id);
 			$chaojg	= $omoney + $money - $zmoney;
-			if($chaojg>0)return '金额已超过合同上金额';
+			if($chaojg>0)return '金額已超過合同上金額';
 		}
 		$narr['htid'] = $htid;
 		return array('rows'=> $narr);
@@ -43,7 +43,7 @@ class mode_custfinaClassAction extends inputAction{
 		$htid = 0;
 		$mid  = (int)$this->get('mid','0');
 		if($mid>0){
-			$htid = (int)$this->flow->getmou('htid', $mid); //当前记录也要显示合同ID
+			$htid = (int)$this->flow->getmou('htid', $mid); //當前記錄也要顯示合同ID
 		}
 		$rows = m('crm')->getmyract($this->adminid, $htid);
 		$arr  = array();

@@ -1,27 +1,27 @@
 <?php
 /**
-	上传文件类upfileChajian
+	上傳文件類upfileChajian
 	create：chenxihu
 	createdt：2013-11-15
-	explain：上传文件类，可上传任何文件类型
+	explain：上傳文件類，可上傳任何文件類型
 */
 
 class upfileChajian extends Chajian{
 	
-	public $ext;     //上传类型
-	public $maxsize; //上传大小(MB)
-	public $path;    //文件夹
+	public $ext;     //上傳類型
+	public $maxsize; //上傳大小(MB)
+	public $path;    //文件夾
 	
-	private $jpgallext		= '|jpg|png|gif|bmp|jpeg|';	//图片格式
+	private $jpgallext		= '|jpg|png|gif|bmp|jpeg|';	//圖片格式
 	
-	//可上传文件类型，也就是不保存为uptemp的文件
+	//可上傳文件類型，也就是不保存為uptemp的文件
 	private $upallfile		= '|doc|docx|xls|xlsx|ppt|pptx|pdf|swf|rar|zip|txt|gz|wav|mp3|mp4|flv|wma|chm|apk|amr|log|json|';
 	
 	/**
 		初始化
-		@param	$ext string 上传类型
-		@param	$path string 上传目录 如：upload|e|ee
-		@param	$maxsize ing 上传大小(MB)
+		@param	$ext string 上傳類型
+		@param	$path string 上傳目錄 如：upload|e|ee
+		@param	$maxsize ing 上傳大小(MB)
 	*/
 	public function initupfile($ext,$path,$maxsize=1)
 	{
@@ -70,7 +70,7 @@ class upfileChajian extends Chajian{
 	}
 	
 	/**
-	*	是否在可保存范围内容
+	*	是否在可保存範圍內容
 	*/
 	public function issavefile($ext)
 	{
@@ -86,7 +86,7 @@ class upfileChajian extends Chajian{
 	}
 	
 	/**
-	*	判断是不是图片
+	*	判斷是不是圖片
 	*/
 	public function isimgsave($ext, $file)
 	{
@@ -104,25 +104,25 @@ class upfileChajian extends Chajian{
 	}
 	
 	/**
-		上传
-		@param	$name	string	对应文本框名称
-		@param	$cfile	string	文件名心的文件名，不带扩展名的
+		上傳
+		@param	$name	string	對應文本框名稱
+		@param	$cfile	string	文件名心的文件名，不帶擴展名的
 		@return	string/array
 	*/
 	public function up($name,$cfile='')
 	{
 		if(!$_FILES)return 'sorry!';
 		$file_name		= $_FILES[$name]['name'];
-		$file_size		= $_FILES[$name]['size'];//字节
+		$file_size		= $_FILES[$name]['size'];//字節
 		$file_type		= $_FILES[$name]['type'];
 		$file_error		= $_FILES[$name]['error'];
 		$file_tmp_name	= $_FILES[$name]['tmp_name'];
 		$zongmax		= $this->getmaxupsize();	
 		if($file_size<=0 || $file_size > $zongmax){
-			return '文件为0字节/超过'.$this->formatsize($zongmax).'，不能上传';
+			return '文件為0字節/超過'.$this->formatsize($zongmax).'，不能上傳';
 		}
 		$file_sizecn	= $this->formatsize($file_size);
-		$file_ext		= $this->getext($file_name);//文件扩展名
+		$file_ext		= $this->getext($file_name);//文件擴展名
 		
 		
 		$file_img		= $this->isimg($file_ext);
@@ -135,14 +135,14 @@ class upfileChajian extends Chajian{
 		}
 			
 		if(!$this->contain('|'.$this->ext.'|', '|'.$file_ext.'|') && $this->ext != '*'){
-			return '禁止上传文件类型['.$file_ext.']';
+			return '禁止上傳文件類型['.$file_ext.']';
 		}
 		
 		if($file_size>$this->maxsize*1024*1024){
-			return '上传文件过大，限制在：'.$this->formatsize($this->maxsize*1024*1024).'内，当前文件大小是：'.$file_sizecn.'';
+			return '上傳文件過大，限制在：'.$this->formatsize($this->maxsize*1024*1024).'內，當前文件大小是：'.$file_sizecn.'';
 		}
 		
-		//创建目录
+		//創建目錄
 		$zpath=explode('|',$this->path);
 		$mkdir='';
 		for($i=0;$i<count($zpath);$i++){
@@ -167,7 +167,7 @@ class upfileChajian extends Chajian{
 		$upbool	 	= true;
 		if(!$file_kup){
 			$allfilename= $this->filesave($file_tmp_name, $file_newname, $save_path, $file_ext);
-			if(isempt($allfilename))return '无法保存到'.$save_path.'';
+			if(isempt($allfilename))return '無法保存到'.$save_path.'';
 		}else{
 			$upbool		= @move_uploaded_file($file_tmp_name,$allfilename);
 		}
@@ -177,7 +177,7 @@ class upfileChajian extends Chajian{
 			if($file_img){
 				$fobj = $this->isimgsave($file_ext, $allfilename);
 				if(!$fobj){
-					return 'error:非法图片文件';
+					return 'error:非法圖片文件';
 				}else{
 					$picw = $fobj[0];
 					$pich = $fobj[1];	
@@ -196,19 +196,19 @@ class upfileChajian extends Chajian{
 				'pich'        => $pich
 			);
 		}else{
-			return '上传失败：'.$this->geterrmsg($file_error).'';
+			return '上傳失敗：'.$this->geterrmsg($file_error).'';
 		}
 	}
 	
 	private function geterrmsg($code)
 	{
-		$arrs[1] = '上传文件大小超过服务器允许上传的最大值';
-		$arrs[2] = '上传文件大小超过HTML表单中隐藏域MAX_FILE_SIZE选项指定的值';
-		$arrs[6] = '没有找不到临时文件夹';
-		$arrs[7] = '文件写入失败';
-		$arrs[8] = 'php文件上传扩展没有打开';
-		$arrs[3] = '文件只有部分被上传';
-		$rrs 	 = '上传失败，可能是服务器内部出错，请重试';
+		$arrs[1] = '上傳文件大小超過服務器允許上傳的最大值';
+		$arrs[2] = '上傳文件大小超過HTML表單中隱藏域MAX_FILE_SIZE選項指定的值';
+		$arrs[6] = '沒有找不到臨時文件夾';
+		$arrs[7] = '文件寫入失敗';
+		$arrs[8] = 'php文件上傳擴展沒有打開';
+		$arrs[3] = '文件只有部分被上傳';
+		$rrs 	 = '上傳失敗，可能是服務器內部出錯，請重試';
 		if(isset($arrs[$code]))$rrs=$arrs[$code];
 		return $rrs;
 	}
@@ -221,14 +221,14 @@ class upfileChajian extends Chajian{
 		return number_format(($size/pow(1024,floor($e))),2,'.','').' '.$arr[$e];
 	}
 	
-	//获取扩展名
+	//獲取擴展名
 	public function getext($file)
 	{
 		return strtolower(substr($file,strrpos($file,'.')+1));
 	}
 	
 	/**
-	*	非法文件保存为临时uptemp的形式
+	*	非法文件保存為臨時uptemp的形式
 	*/
 	public function filesave($oldfile, $filename, $savepath, $ext)
 	{

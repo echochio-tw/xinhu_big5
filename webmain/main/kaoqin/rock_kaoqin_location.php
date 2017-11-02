@@ -7,23 +7,23 @@ $(document).ready(function(){
 		tablename:'location',celleditor:true,fanye:true,sort:'id',dir:'desc',
 		modedir:'{mode}:{dir}',params:{'atype':atype},modenum:'kqdw',
 		columns:[{
-			text:'部门',dataIndex:'deptname',align:'left'
+			text:'部門',dataIndex:'deptname',align:'left'
 		},{
 			text:'姓名',dataIndex:'name'
 		},{
-			text:'打卡时间',dataIndex:'optdt',sortable:true
+			text:'打卡時間',dataIndex:'optdt',sortable:true
 		},{
 			text:'星期',dataIndex:'week'
 		},{
-			text:'定位类型',dataIndex:'type',sortable:true
+			text:'定位類型',dataIndex:'type',sortable:true
 		},{
 			text:'地址',dataIndex:'label'
 		},{
-			text:'精确到',dataIndex:'precision'
+			text:'精確到',dataIndex:'precision'
 		},{
-			text:'说明',dataIndex:'explain',align:'left'
+			text:'說明',dataIndex:'explain',align:'left'
 		},{
-			text:'图片',dataIndex:'imgpath',renderer:function(v){
+			text:'圖片',dataIndex:'imgpath',renderer:function(v){
 				var s='&nbsp;';
 				if(!isempt(v))s='<img height="60" onclick="$.imgview({url:this.src})" src="'+v+'">';
 				return s;
@@ -31,7 +31,7 @@ $(document).ready(function(){
 		},{
 			text:'',dataIndex:'opt',renderer:function(v,d){
 				var s='&nbsp;';
-				if(!isempt(d.location_x))s='<a onclick="js.locationshow('+d.id+')" href="javascript:;">地图上打开</a>';
+				if(!isempt(d.location_x))s='<a onclick="js.locationshow('+d.id+')" href="javascript:;">地圖上打開</a>';
 				return s;
 			}
 		}]
@@ -72,13 +72,13 @@ $(document).ready(function(){
 		</div>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部门">
+		<input class="form-control" style="width:150px" id="key_{rand}"   placeholder="姓名/部門">
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td  style="padding-left:5px">
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button>
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button>
 	</td>
 	<td width="80%"></td>
 	<td align="right" nowrap>
@@ -88,4 +88,4 @@ $(document).ready(function(){
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">定位打卡并不能使用做考勤打卡，目前只是用于外勤定位打卡使用。</div>
+<div class="tishi">定位打卡並不能使用做考勤打卡，目前只是用于外勤定位打卡使用。</div>

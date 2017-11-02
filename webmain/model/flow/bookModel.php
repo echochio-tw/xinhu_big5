@@ -22,15 +22,15 @@ class flow_bookClassModel extends flowModel
 		);
 	}
 	
-	//导入数据的测试显示
+	//導入數據的測試顯示
 	public function flowdaorutestdata()
 	{
 		return array(
-			'typeid' 		=> '计算机/编程',
-			'title' 		=> 'PHP从入门到放弃',
+			'typeid' 		=> '計算機/編程',
+			'title' 		=> 'PHP從入門到放棄',
 			'num' 		=> 'TS-003',
 			'author' 		=> '磐石',
-			'chuban' 		=> '信呼开发团队',
+			'chuban' 		=> '信呼開發團隊',
 			'cbdt' 			=> '2017-01-17',
 			'price' 		=> '49.9',
 			'shul' 		=> '5',
@@ -39,7 +39,7 @@ class flow_bookClassModel extends flowModel
 		);
 	}
 	
-	//导入之前
+	//導入之前
 	public function flowdaorubefore($rows)
 	{
 		$inarr = array();

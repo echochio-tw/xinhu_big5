@@ -7,13 +7,13 @@ $(document).ready(function(){
 	
 	var ucans= {
 		tablename:'admin',sort:'sort',dir:'asc',modedir:'{mode}:{dir}',storebeforeaction:'beforeextentuser',
-		title:'人员',bodyStyle:'height:'+(viewheight-135)+'px;overflow:auto',
+		title:'人員',bodyStyle:'height:'+(viewheight-135)+'px;overflow:auto',
 		columns:[{
 			text:'姓名',dataIndex:'name',sortable:true
 		},{
-			text:'部门',dataIndex:'deptname',sortable:true
+			text:'部門',dataIndex:'deptname',sortable:true
 		},{
-			text:'用户名',dataIndex:'user',sortable:true
+			text:'用戶名',dataIndex:'user',sortable:true
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		}]
@@ -22,22 +22,22 @@ $(document).ready(function(){
 	var mcans = {
 		tablename:'menu',selectcls:'info',
 		url:js.getajaxurl('data','menu','system',{'type':type}),
-		tree:true,title:'菜单',bodyStyle:'height:'+(viewheight-135)+'px;overflow:auto',
+		tree:true,title:'菜單',bodyStyle:'height:'+(viewheight-135)+'px;overflow:auto',
 		columns:[{
-			text:'菜单名称',dataIndex:'name',align:'left'
+			text:'菜單名稱',dataIndex:'name',align:'left'
 		},{
-			text:'编号',dataIndex:'num'
+			text:'編號',dataIndex:'num'
 		},{
 			text:'ID',dataIndex:'id'
 		}]
 	};
 	
 	var gcans = {
-		tablename:'group',sort:'sort',dir:'asc',title:'组',
+		tablename:'group',sort:'sort',dir:'asc',title:'組',
 		columns:[{
-			text:'组名',dataIndex:'name',sortable:true
+			text:'組名',dataIndex:'name',sortable:true
 		},{
-			text:'排序号',dataIndex:'sort',sortable:true
+			text:'排序號',dataIndex:'sort',sortable:true
 		},{
 			text:'ID',dataIndex:'id',sortable:true
 		}]
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	
 	
 	if(type=='view'){
-		$('#viessban_{rand}').html('人员菜单权限有如下得来：1、根据[人员→菜单,菜单→人员]；2、如所在的组有权限，组下人员也有权限；3、在[菜单管理]没有开启验证的菜单任何人是都有权限。');
+		$('#viessban_{rand}').html('人員菜單權限有如下得來：1、根據[人員→菜單,菜單→人員]；2、如所在的組有權限，組下人員也有權限；3、在[菜單管理]沒有開啟驗證的菜單任何人是都有權限。');
 	}
 	
 	var bool = false,changeid=0;
@@ -85,9 +85,9 @@ $(document).ready(function(){
 	$('#title2_{rand}').html(viewcan2.title);
 	
 	function getextent(d){
-		setmsg('读取中...');
+		setmsg('讀取中...');
 		if(bool)return;
-		$('#title2_{rand}').html(viewcan1.title+'['+d.name+']对应'+viewcan2.title+'');
+		$('#title2_{rand}').html(viewcan1.title+'['+d.name+']對應'+viewcan2.title+'');
 		btn(false);
 		var mid		= d.id;
 		changeid 	= mid;
@@ -139,27 +139,27 @@ $(document).ready(function(){
 </script>
 
 <div id="viessban_{rand}" style="margin-bottom:10px">
-	<button class="btn btn-primary" disabled id="save_{rand}" click="save" type="button"><i class="icon-save"></i> 保存设置</button>&nbsp; <span id="msgview_{rand}">用户类型为管理员具有全部菜单权限，权限管理中不会在人员列表上显示。</span>
+	<button class="btn btn-primary" disabled id="save_{rand}" click="save" type="button"><i class="icon-save"></i> 保存設置</button>&nbsp; <span id="msgview_{rand}">用戶類型為管理員具有全部菜單權限，權限管理中不會在人員列表上顯示。</span>
 </div>
 <table width="100%">
 <tr valign="top">
 	<td width="50%">
 		<div class="input-group" style="width:250px;margin-bottom:10px;display:none" id="soukey_{rand}">
-			<input class="form-control" id="key_{rand}"   placeholder="人员关键词搜索">
+			<input class="form-control" id="key_{rand}"   placeholder="人員關鍵詞搜索">
 			<span class="input-group-btn">
 				<button class="btn btn-default" click="search" type="button"><i class="icon-search"></i></button>
 			</span>
 		</div>
 		
 		<div class="panel panel-info">
-			<div class="panel-heading"><h3 class="panel-title" id="title1_{rand}">人员</h3></div>
+			<div class="panel-heading"><h3 class="panel-title" id="title1_{rand}">人員</h3></div>
 			<div id="view1_{rand}"></div>
 		</div>
 	</td>
 	<td width="10"><div style="width:10px;overflow:hidden"></div></td>
 	<td width="50%">
 		<div class="panel panel-success">
-			<div class="panel-heading"><h3 class="panel-title" id="title2_{rand}">菜单</h3></div>
+			<div class="panel-heading"><h3 class="panel-title" id="title2_{rand}">菜單</h3></div>
 			<div id="view2_{rand}"></div>
 		</div>
 	</td>

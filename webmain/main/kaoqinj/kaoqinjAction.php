@@ -16,7 +16,7 @@ class kaoqinjClassAction extends Action
 		m('kqjcmd')->delete("`id` in ($id)");
 		showreturn();
 	}
-	//设备搜索
+	//設備搜索
 	public function kqjsnbefore($table)
 	{
 		$key = $this->post('key');
@@ -26,7 +26,7 @@ class kaoqinjClassAction extends Action
 		return $where;
 	}
 	
-	//设备搜索命令
+	//設備搜索命令
 	public function kqjcmdbefore($table)
 	{
 		$optdt= date('Y-m-d H:i:s', time()-10*60);
@@ -50,11 +50,11 @@ class kaoqinjClassAction extends Action
 		$time = time();
 		foreach($rows as $k=>$rs){
 			$zt = $rs['status'];
-			if($zt=='0')$zt = '<font color="blue">待发送</font>';
-			if($zt=='1')$zt = '<font color="green">处理成功</font>';
-			if($zt=='2')$zt = '<font color="#ff6600">已请求</font>';
-			if($zt=='3')$zt = '<font color="red">处理失败</font>';
-			if($zt=='5')$zt = '<font color="#888888">已过期</font>';
+			if($zt=='0')$zt = '<font color="blue">待發送</font>';
+			if($zt=='1')$zt = '<font color="green">處理成功</font>';
+			if($zt=='2')$zt = '<font color="#ff6600">已請求</font>';
+			if($zt=='3')$zt = '<font color="red">處理失敗</font>';
+			if($zt=='5')$zt = '<font color="#888888">已過期</font>';
 			
 			$rows[$k]['atype']  = $cmds->cmdtype($rs['atype']);
 			if($rs['status']=='5'){
@@ -76,7 +76,7 @@ class kaoqinjClassAction extends Action
 		);
 	}
 	
-	//发送设备命令
+	//發送設備命令
 	public function sendcmdAjax()
 	{
 		$ids 	= $this->get('ids');
@@ -91,11 +91,11 @@ class kaoqinjClassAction extends Action
 				if(substr($type,0,6)=='advert')return $barr;
 			}
 		}
-		return returnsuccess('成功发送'.$oi.'条命令，可到[考勤机命令查看]下查看结果');
+		return returnsuccess('成功發送'.$oi.'條命令，可到[考勤機命令查看]下查看結果');
 	}
 	
 	
-	//考勤机上人员管理
+	//考勤機上人員管理
 	public function kquserafter($table,$rows)
 	{
 		$snid  	= (int)$this->post('snid','0');
@@ -103,18 +103,18 @@ class kaoqinjClassAction extends Action
 		if($rows && $snid>0 && $snrs = m('kqjcmd')->getsninfo($snid)){
 			$userids = $snrs['userids'];
 			$deptids = $snrs['deptids'];
-			$useridf = ','.$userids.','; //判断是否在考勤机上
+			$useridf = ','.$userids.','; //判斷是否在考勤機上
 			$uids 	 = '';
 			foreach($rows as $k=>$rs){
 				if(contain($useridf,','.$rs['id'].',')){
-					$kqjzt = '<font color=green>已上传</font>';
+					$kqjzt = '<font color=green>已上傳</font>';
 				}else{
-					$kqjzt = '';//'<font color=red>未上传</font>';
+					$kqjzt = '';//'<font color=red>未上傳</font>';
 				}
 				
-				$fingerprint1	= '';//'<font color=red>未采集</font>';
-				$fingerprint2	= '';//'<font color=#888888>未采集</font>';
-				$headpic		= '';//'<font color=#888888>无</font>';
+				$fingerprint1	= '';//'<font color=red>未採集</font>';
+				$fingerprint2	= '';//'<font color=#888888>未採集</font>';
+				$headpic		= '';//'<font color=#888888>無</font>';
 				
 				
 				$rows[$k]['fingerprint1']  = $fingerprint1;
@@ -125,22 +125,22 @@ class kaoqinjClassAction extends Action
 			}
 			$uids = substr($uids, 1);
 			
-			//显示已存在部门
+			//顯示已存在部門
 			if(!isempt($deptids)){
 				$detpros = m('dept')->getdeptrows($deptids);
 				$deptsdata = $this->depttreeshu($detpros,'0');
 			}
 	
-			//判断指纹是否存在
+			//判斷指紋是否存在
 			$zwarr = $this->db->getarr('[Q]kqjuser','`snid`='.$snid.' and `uid` in('.$uids.')','fingerprint1,fingerprint2,headpic','uid');
 			if($zwarr)foreach($rows as $k=>$rs){
 				if(isset($zwarr[$rs['id']])){
 					$ztrs = $zwarr[$rs['id']];
 					if(!isempt($ztrs['fingerprint1'])){
-						$rows[$k]['fingerprint1'] = '<font color=green>已采集</font>';
+						$rows[$k]['fingerprint1'] = '<font color=green>已採集</font>';
 					}
 					if(!isempt($ztrs['fingerprint2'])){
-						$rows[$k]['fingerprint2'] = '<font color=green>已采集</font>';
+						$rows[$k]['fingerprint2'] = '<font color=green>已採集</font>';
 					}
 					if(!isempt($ztrs['headpic']) && file_exists($ztrs['headpic'])){
 						$rows[$k]['headpic'] = '<img onclick="$.imgview({url:this.src})" src="'.$ztrs['headpic'].'" height="24">';
@@ -183,7 +183,7 @@ class kaoqinjClassAction extends Action
 		);
 	}
 	
-	//组织结构活动得到树形数据
+	//組織結構活動得到樹形數據
 	private function depttreeshu($rows, $pid)
 	{
 		$barr = array();
@@ -197,18 +197,18 @@ class kaoqinjClassAction extends Action
 		return $barr;
 	}
 	
-	//人员到设备上信息管理
+	//人員到設備上信息管理
 	public function sendusercmdAjax()
 	{
-		$uids = $this->get('uids'); //人员ID
+		$uids = $this->get('uids'); //人員ID
 		$snid = $this->get('snid');
 		$type = $this->get('type');
 		
-		$gtype 	 = (int)$this->post('gtype','0'); //0选中,1全部
+		$gtype 	 = (int)$this->post('gtype','0'); //0選中,1全部
 		if($gtype==1)$uids = '0';
 		
 		$barr =  m('kqjcmd')->send($snid, $type, $uids);
-		if($barr['success'])$barr['data'] = '命令已发送，可到[考勤机命令查看]下查看结果';
+		if($barr['success'])$barr['data'] = '命令已發送，可到[考勤機命令查看]下查看結果';
 		
 		return $barr;
 	}

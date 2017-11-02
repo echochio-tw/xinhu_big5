@@ -7,7 +7,7 @@ class indexClassAction extends apiAction
 	}
 	
 	/**
-	*	手机app读取
+	*	手機app讀取
 	*/
 	public function indexinitAction()
 	{
@@ -21,7 +21,7 @@ class indexClassAction extends apiAction
 	}
 	
 	/**
-	* app首页接口截止
+	* app首頁接口截止
 	*/
 	public function indexappAction()
 	{
@@ -34,7 +34,7 @@ class indexClassAction extends apiAction
 		$arr['reimarr']		= $dbs->gethistory($uid);
 		$arr['agentarr']	= $agent['rows'];
 		$arr['agentstotal']	= $agent['stotal'];
-		$arr['maxupsize']	= c('upfile')->getmaxzhao();//最大上传大小M
+		$arr['maxupsize']	= c('upfile')->getmaxzhao();//最大上傳大小M
 		$this->showreturn($arr);
 	}
 	
@@ -51,7 +51,7 @@ class indexClassAction extends apiAction
 	}
 	
 	
-	//应用获取数据
+	//應用獲取數據
 	public function getyydataAction()
 	{
 		$num 	= $this->post('num');
@@ -76,9 +76,9 @@ class indexClassAction extends apiAction
 	
 	public function pushtestAction()
 	{
-		m('reim')->pushagent('1','会议','关于端午节放假通知');
-		//$a = c('apiCloud')->send(1,'通知','内容');
-		//$a = c('JPush')->send('2','发来一条消息', '内容');
+		m('reim')->pushagent('1','會議','關于端午節放假通知');
+		//$a = c('apiCloud')->send(1,'通知','內容');
+		//$a = c('JPush')->send('2','發來一條消息', '內容');
 		//print_r($a);
 		echo 'ok';
 	}

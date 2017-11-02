@@ -9,5 +9,5 @@ function initbodys(){
 }
 
 function changesubmit(d){
-	if(d.yjdt<=d.jydt)return '预计归还必须大于借阅日期';
+	if(d.yjdt<=d.jydt)return '預計歸還必須大于借閱日期';
 }

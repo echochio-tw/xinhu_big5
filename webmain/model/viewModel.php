@@ -33,25 +33,25 @@ class viewClassModel extends Model
 		}
 	}
 	
-	//返回可查看条件
+	//返回可查看條件
 	public function viewwhere($mid, $uid=0, $ufid='')
 	{
 		$this->getursss($mid, $uid);
 		return $this->getsswhere(0, $ufid);
 	}
 	
-	//是否有新增权限
+	//是否有新增權限
 	public function isadd($mid, $uid=0)
 	{
 		$this->getursss($mid, $uid);
 		$bo  = false;
 		$type = $this->urs['type'];
-		if($type==1)return true; //管理员有添加
+		if($type==1)return true; //管理員有添加
 		$bo  = $this->getsswhere(1);
 		return $bo;
 	}
 	
-	//是否有导入权限
+	//是否有導入權限
 	public function isdaoru($mid, $uid=0)
 	{
 		$this->getursss($mid, $uid);
@@ -60,14 +60,14 @@ class viewClassModel extends Model
 	}
 	
 	
-	//是否有编辑数据权限
+	//是否有編輯數據權限
 	public function editwhere($mid, $uid=0)
 	{
 		$this->getursss($mid, $uid);
 		return $this->getsswhere(2);
 	}
 	
-	//是否有删除数据权限
+	//是否有刪除數據權限
 	public function deletewhere($mid, $uid=0)
 	{
 		$this->getursss($mid, $uid);
@@ -94,20 +94,20 @@ class viewClassModel extends Model
 			if($sw=='{receid}'){
 				$sw = $this->addb->getjoinstr('receid', $this->urs, 1);
 			}
-			//我所有下属的下属
+			//我所有下屬的下屬
 			if($sw=='{allsuper}'){
 				$sw = "`$ufid` in(select `id` from `[Q]admin` where instr(`superpath`,'[$uid]')>0)";
 			}
-			//我的直属下属
+			//我的直屬下屬
 			if($sw=='{super}'){
 				$sw1= $this->rock->dbinstr('superid',$uid);
 				$sw = "`$ufid` in(select `id` from `[Q]admin` where $sw1)";
 			}
-			//同一个部门下人员
+			//同一個部門下人員
 			if($sw=='{dept}' && !isempt($this->urs['deptid'])){
 				$sw = "`$ufid` in(select `id` from `[Q]admin` where `deptid`=".$this->urs['deptid'].")";
 			}
-			//所有数据
+			//所有數據
 			if($sw=='all'){
 				return ' and 1=1';
 			}

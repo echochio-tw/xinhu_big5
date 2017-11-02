@@ -1,6 +1,6 @@
 <?php
 /**
-	工作日报
+	工作日報
 */
 class agent_dailyClassModel extends agentModel
 {
@@ -32,7 +32,7 @@ class agent_dailyClassModel extends agentModel
 		$ydarr	= explode(',', m('log')->getread('daily', $uid));
 		foreach($rowd as $k=>$rs){
 			if(!in_array($rs['id'], $ydarr) && $rs['uid'] != $uid){
-				$rows[$k]['statustext'] 	= '未读';
+				$rows[$k]['statustext'] 	= '未讀';
 				$rows[$k]['statuscolor'] 	= '#ED5A5A';
 			}else{
 				$rows[$k]['ishui']			= 1;

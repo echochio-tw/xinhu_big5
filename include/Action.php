@@ -1,13 +1,13 @@
 <?php 
 /**
 	*****************************************************************
-	* 联系QQ： 290802026/1073744729									*
+	* 聯系QQ： 290802026/1073744729									*
 	* 版  本： V2.0													*
-	* 开发者：雨中磐石工作室										*
-	* 邮  箱： qqqq2900@126.com										*
-	* 网  址： http://www.rockoa.com/								*
-	* 说  明: 主控制器处理											*
-	* 备  注: 未经允许不得商业出售，代码欢迎参考纠正				*
+	* 開發者：雨中磐石工作室										*
+	* 郵  箱： qqqq2900@126.com										*
+	* 網  址： http://www.rockoa.com/								*
+	* 說  明: 主控制器處理											*
+	* 備  注: 未經允許不得商業出售，代碼歡迎參考糾正				*
 	*****************************************************************
 */
 
@@ -16,14 +16,14 @@ abstract class mainAction{
 	public $rock;
 	public $db;
 	public $smarty;
-	public $smartydata	= array();	//模版数据
+	public $smartydata	= array();	//模版數據
 	public $assigndata	= array();
-	public $display		= true;		//是否显示模板	
-	public $bodytitle	= '';		//副标题
-	public $keywords	= '';		//关键词
-	public $description	= '';		//说明
-	public $linkdb		= true;		//是否连接数据库
-	public $params		= array();	//参数
+	public $display		= true;		//是否顯示模板	
+	public $bodytitle	= '';		//副標題
+	public $keywords	= '';		//關鍵詞
+	public $description	= '';		//說明
+	public $linkdb		= true;		//是否連接數據庫
+	public $params		= array();	//參數
 	public $now;
 	public $date;
 	public $ip;
@@ -38,7 +38,7 @@ abstract class mainAction{
 	public $importjs	= '';
 	public $perfix		= '';
 	public $tplname		= '';		//模板文件
-	public $tplpath		= '';		//模板文件路径
+	public $tplpath		= '';		//模板文件路徑
 	public $tpltype		= 'tpl';
 	public $tpldom		= 'html';
 	public $displayfile	= '';
@@ -80,7 +80,7 @@ abstract class mainAction{
 	private function initConstruct()
 	{
 		$linkdb			= $this->rock->get('linkdb','true');
-		$this->params	= explode('-', $this->rock->get('s'));	//参数
+		$this->params	= explode('-', $this->rock->get('s'));	//參數
 		if($linkdb == 'true' && $this->linkdb){
 			$this->initMysqllink();
 		}

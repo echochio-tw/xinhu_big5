@@ -1,5 +1,5 @@
 <?php
-//单据提醒设置
+//單據提醒設置
 class flow_remindClassModel extends flowModel
 {
 	
@@ -16,13 +16,13 @@ class flow_remindClassModel extends flowModel
 	
 	public function getstatusarr()
 	{
-		$barr[1] = array('启用','green');
+		$barr[1] = array('啟用','green');
 		$barr[0] = array('停用','#888888');
 		return $barr;
 	}
 
 
-	//多个连表查询
+	//多個連表查詢
 	public function flowbillwhere($uid, $lx)
 	{
 		return array(
@@ -34,7 +34,7 @@ class flow_remindClassModel extends flowModel
 	}
 	
 
-	//获取进入需要提醒内容
+	//獲取進入需要提醒內容
 	public function getreminddt($dt='',$modenum='')
 	{
 		if($dt=='')$dt = $this->rock->date;
@@ -57,7 +57,7 @@ class flow_remindClassModel extends flowModel
 					if(!contain($timestr, '['.$time.']')){
 						$rs['runtime']  = $time;
 						$rs['runtimes'] = date('Y-m-d H:i:s',$time);
-						$rs['rates'] 	= $ratea[$i]; //频率类型
+						$rs['rates'] 	= $ratea[$i]; //頻率類型
 						$nrows[] = $rs;
 						$timestr.='['.$time.']';
 					}
@@ -67,7 +67,7 @@ class flow_remindClassModel extends flowModel
 		return $nrows;
 	}
 	
-	//判断时间是否可使用
+	//判斷時間是否可使用
 	private function getssdt($dt, $nw, $rate, $valstr, $uid, $startdts)
 	{
 		$timea  = array();
@@ -75,7 +75,7 @@ class flow_remindClassModel extends flowModel
 		$val 	= $vala[0];
 		$val2 	= arrvalue($vala, 1);
 		
-		//仅一次
+		//僅一次
 		if($rate=='o' && contain($val, $dt)){
 			$timea[] = strtotime($val);
 		}
@@ -85,7 +85,7 @@ class flow_remindClassModel extends flowModel
 			$time = ''.$dt.' '.$val.'';
 			$timea[] = strtotime($time);
 		}
-		//每小时
+		//每小時
 		if($rate=='h'){
 			$ksis	= substr($startdts, 11);
 			if(isempt($val2))$val2 = '23:59:59';
@@ -116,12 +116,12 @@ class flow_remindClassModel extends flowModel
 		return $timea;
 	}
 	
-	//时间段读取
+	//時間段讀取
 	public function getremindtodo($startdt='', $enddt='')
 	{
 		if($startdt=='')$startdt = $this->rock->now;
 		$stime= strtotime($startdt);
-		if($enddt=='')$enddt	= date('Y-m-d H:i:s', $stime + 300); //默认是5分钟内提醒
+		if($enddt=='')$enddt	= date('Y-m-d H:i:s', $stime + 300); //默認是5分鐘內提醒
 		$dt	  = substr($startdt, 0, 10);
 		$rows = $this->getreminddt($startdt);
 		
@@ -130,10 +130,10 @@ class flow_remindClassModel extends flowModel
 		$modenums	= '';
 		$kqd		= m('kaoqin');
 		foreach($rows as $k=>$rs){
-			$rate 	= $rs['rates']; //频率类型
+			$rate 	= $rs['rates']; //頻率類型
 			$bo 	= true;
 			if($rs['runtime']>=$stime && $rs['runtime']<=$etime){
-				//工作日休息日判断
+				//工作日休息日判斷
 				if($rate=='g' || $rate=='x'){
 					$isw = $kqd->isworkdt($rs['uid'], $dt);
 					if($isw==1 && $rate=='x')$bo = false;
@@ -151,8 +151,8 @@ class flow_remindClassModel extends flowModel
 		foreach($modrs as $k=>$rs)$modearr[$rs['num']] = $rs;
 		
 		
-		$flowtodoid = ''; //单据通知设置ID
-		$subscribid = array(); //订阅的
+		$flowtodoid = ''; //單據通知設置ID
+		$subscribid = array(); //訂閱的
 		
 		foreach($sarr as $k=>$rs){
 			$mid 	= $rs['mid'];
@@ -172,7 +172,7 @@ class flow_remindClassModel extends flowModel
 				$recename  .= ','.$rs['recename'].'';
 			}
 			
-			//订阅的
+			//訂閱的
 			if($rs['modenum']=='subscribe'){
 				$subscribid[] = array(
 					'id'	=> $mid,
@@ -191,10 +191,10 @@ class flow_remindClassModel extends flowModel
 			));
 		}
 		
-		//单据通知提醒需要另外提醒
+		//單據通知提醒需要另外提醒
 		if($flowtodoid !='')$this->flowtodosettx(substr($flowtodoid, 1));
 		
-		//订阅的处理(建议用异步的)
+		//訂閱的處理(建議用異步的)
 		if($subscribid){
 			if(getconfig('asynsend')){
 				print_r($subscribid);
@@ -208,7 +208,7 @@ class flow_remindClassModel extends flowModel
 					));
 				}
 			}else{
-				//没有异步直接调用
+				//沒有異步直接調用
 				$subflow = m('flow')->initflow('subscribeinfo');
 				foreach($subscribid as $subo){
 					$subflow->subscribe($subo['id'],$subo['uid'],$subo['receid'],$subo['recename']);
@@ -219,18 +219,18 @@ class flow_remindClassModel extends flowModel
 		return $sarr;
 	}
 	
-	//单据通知设置的，必须有触发条件和选择计划任务
+	//單據通知設置的，必須有觸發條件和選擇計劃任務
 	private function flowtodosettx($tids)
 	{
 		$rows = $this->db->getall('select a.*,b.num as modenum from `[Q]flow_todo` a left join `[Q]flow_set` b on a.`setid`=b.`id` where a.`id` in('.$tids.') and b.`status`=1 and a.`status`=1 and a.`botask`=1 and a.whereid>0');
 		
-		//有设置了提醒
+		//有設置了提醒
 		foreach($rows as $rk=>$rs){
 			
 			$modenum 	= $rs['modenum'];
 			$flow		= m('flow')->initflow($modenum);
 			$flowrows 	= $flow->gettodorows($rs['whereid']);
-			$tostr 		= '';//提醒的内容
+			$tostr 		= '';//提醒的內容
 			$todofields	= array();
 			if(!isempt($rs['todofields']))$todofields = explode(',', $rs['todofields']);
 			$title 		= $rs['name'];
@@ -244,7 +244,7 @@ class flow_remindClassModel extends flowModel
 				$receid  = $rs['receid']; //接收人
 				//提交人
 				if($rs['toturn']=='1' && isset($rs1['optid']))$receid = $this->strappend($receid,$rs1['optid']);
-				//参与人
+				//參與人
 				if($rs['tocourse']=='1'){
 					$cyrenId	= $this->billmodel->getmou('allcheckid', "`table`='".$flow->mtable."' and `mid`='".$rs1['id']."'");
 					$receid = $this->strappend($receid, $cyrenId);
@@ -261,7 +261,7 @@ class flow_remindClassModel extends flowModel
 				}
 			}
 			
-			//相同内容转化
+			//相同內容轉化
 			if($sanda){
 				$sendarr	= array();
 				foreach($sanda as $uid=>$narr){
@@ -278,14 +278,14 @@ class flow_remindClassModel extends flowModel
 					}
 				}
 				
-				//发送
+				//發送
 				foreach($sendarr as $key=>$rowss){
 					$uids = '';
 					$cont = $rowss[0]['cont'];
 					foreach($rowss as $k=>$rsc){
 						$uids.=','.$rsc['uid'].'';
 					}
-					//发送
+					//發送
 					if($uids!=''){
 						$uids = substr($uids, 1);
 						$flow->push($uids, '', $cont, $title);

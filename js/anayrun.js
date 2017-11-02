@@ -1,5 +1,5 @@
 /**
-*	异步通信处理
+*	異步通信處理
 */
 var anayrun = {
 	init:function(){
@@ -25,9 +25,9 @@ var anayrun = {
 	},
 	senderror:function(str, url){
 		notifyobj.show({
-			title:'JS异步处理',
+			title:'JS異步處理',
 			type:'error',
-			body:'地址：'+url+'，处理出错：'+str+''
+			body:'地址：'+url+'，處理出錯：'+str+''
 		});
 	}
 };

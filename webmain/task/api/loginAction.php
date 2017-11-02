@@ -17,7 +17,7 @@ class loginClassAction extends apiAction
 				'face'  	=> $arr['face'],
 				'apptx'  	=> $arr['apptx'],
 				'token'  	=> $arr['token'],
-				'iskq'  	=> (int)m('userinfo')->getmou('iskq', $arr['uid']), //判断是否需要考勤
+				'iskq'  	=> (int)m('userinfo')->getmou('iskq', $arr['uid']), //判斷是否需要考勤
 				'title'		=> getconfig('apptitle'),
 				'weblogo'	=> getconfig('weblogo')
 			);
@@ -40,7 +40,7 @@ class loginClassAction extends apiAction
 	}
 	
 	/**
-	*	下载图片
+	*	下載圖片
 	*/
 	public function downimgAction()
 	{
@@ -59,7 +59,7 @@ class loginClassAction extends apiAction
 	}
 	
 	/**
-	*	读取可上传最大M
+	*	讀取可上傳最大M
 	*/
 	public function getmaxupAction()
 	{
@@ -70,7 +70,7 @@ class loginClassAction extends apiAction
 	}
 	
 	/**
-	*	钉钉jssdk签名
+	*	釘釘jssdk簽名
 	*/
 	public function ddsignAction()
 	{
@@ -89,7 +89,7 @@ class loginClassAction extends apiAction
 	}
 	
 	/**
-	*	钉钉获取登录
+	*	釘釘獲取登錄
 	*/
 	public function dingcheckAction()
 	{
@@ -102,7 +102,7 @@ class loginClassAction extends apiAction
 		}
 	}
 	
-	//初始化验证
+	//初始化驗證
 	public function initsetAction()
 	{
 		$barr['title'] 	= getconfig('reimtitle','REIM');

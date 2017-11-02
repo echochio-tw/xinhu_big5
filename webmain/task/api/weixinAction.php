@@ -1,9 +1,9 @@
 <?php 
-//保存打卡记录等
+//保存打卡記錄等
 class weixinClassAction extends apiAction{
 
 	/**
-	*	获取jssdk签名
+	*	獲取jssdk簽名
 	*/
 	public function getsignAction()
 	{

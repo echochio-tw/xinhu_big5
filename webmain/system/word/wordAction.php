@@ -4,7 +4,7 @@ class wordClassAction extends Action
 
 	public function getmywordtypeAjax()
 	{
-		$showlx = (int)$this->post('showlx',0); //0个人,1部门
+		$showlx = (int)$this->post('showlx',0); //0個人,1部門
 		$bo 	= $showlx==1;
 		$pid 	= m('word')->getfolderid($this->adminid, $bo);
 		$rows 	= m('word')->getfoldrows($this->adminid, $bo);
@@ -27,7 +27,7 @@ class wordClassAction extends Action
 	public function wordbeforeaction($table)
 	{
 		$typeid = (int)$this->post('typeid',0);
-		$showlx = (int)$this->post('showlx',0); //0个人,1部门
+		$showlx = (int)$this->post('showlx',0); //0個人,1部門
 		$bo 	= $showlx==1;
 		if($showlx==0){
 			//$pid 	= m('word')->getfolderid($this->adminid);
@@ -126,7 +126,7 @@ class wordClassAction extends Action
 		backmsg();
 	}
 	
-	//移动
+	//移動
 	public function movefileAjax()
 	{
 		$fid	= $this->post('fid','0');

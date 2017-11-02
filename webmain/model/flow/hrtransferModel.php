@@ -1,10 +1,10 @@
 <?php
 /**
-*	人事模块.调动的
+*	人事模塊.調動的
 */
 class flow_hrtransferClassModel extends flowModel
 {
-	//审核完成处理
+	//審核完成處理
 	protected function flowcheckfinsh($zt){
 		m('hr')->hrrun();
 	}

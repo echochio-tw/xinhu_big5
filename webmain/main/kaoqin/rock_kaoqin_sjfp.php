@@ -7,17 +7,17 @@ $(document).ready(function(){
 		tablename:'kqdist',celleditor:true,fanye:true,params:{'type':type},
 		url:publicstore('{mode}','{dir}'),storeafteraction:'kqdistafter',storebeforeaction:'kqdistbefore',
 		columns:[{
-			text:'针对人员',dataIndex:'recename',sortable:true
+			text:'針對人員',dataIndex:'recename',sortable:true
 		},{
-			text:'对应规则',dataIndex:'mid',sortable:true
+			text:'對應規則',dataIndex:'mid',sortable:true
 		},{
-			text:'开始日期',dataIndex:'startdt',sortable:true
+			text:'開始日期',dataIndex:'startdt',sortable:true
 		},{
 			text:'截止日期',dataIndex:'enddt',sortable:true
 		},{
-			text:'状态',dataIndex:'status',type:'checkbox',editor:true,sortable:true
+			text:'狀態',dataIndex:'status',type:'checkbox',editor:true,sortable:true
 		},{
-			text:'排序号',dataIndex:'sort',editor:true,sortable:true
+			text:'排序號',dataIndex:'sort',editor:true,sortable:true
 		},{
 			text:'ID',dataIndex:'id'
 		}],
@@ -51,19 +51,19 @@ $(document).ready(function(){
 				tablename:'kqdist',isedit:lx,submitfields:'recename,receid,mid,startdt,enddt,sort',
 				params:{otherfields:'type='+type+''},
 				items:[{
-					labelText:'针对人员',name:'recename',required:true,type:'changeuser',changeuser:{
-						type:'deptusercheck',idname:'receid',title:'选择人员'
+					labelText:'針對人員',name:'recename',required:true,type:'changeuser',changeuser:{
+						type:'deptusercheck',idname:'receid',title:'選擇人員'
 					},clearbool:true
 				},{
 					name:'receid',type:'hidden'
 				},{
-					labelText:'开始日期',name:'startdt',type:'date',view:'date',required:true
+					labelText:'開始日期',name:'startdt',type:'date',view:'date',required:true
 				},{
 					labelText:'截止日期',name:'enddt',type:'date',view:'date',required:true
 				},{
-					labelText:'对应规则',name:'mid',type:'select',valuefields:'id',displayfields:'name',store:gzdata,required:true
+					labelText:'對應規則',name:'mid',type:'select',valuefields:'id',displayfields:'name',store:gzdata,required:true
 				},{
-					labelText:'排序号',name:'sort',type:'number',value:'0'
+					labelText:'排序號',name:'sort',type:'number',value:'0'
 				}],
 				success:function(){
 					a.reload();
@@ -91,22 +91,22 @@ $(document).ready(function(){
 		<button class="btn btn-primary" click="clickwin,0" type="button"><i class="icon-plus"></i> 新增</button>
 	</td>
 	<td  style="padding-left:10px">
-		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="针对人员/部门">
+		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="針對人員/部門">
 	</td>
 	<td  style="padding-left:10px">
-		<select class="form-control" style="width:150px" id="sekw_{rand}" ><option value="0">-对应规则-</option></select>
+		<select class="form-control" style="width:150px" id="sekw_{rand}" ><option value="0">-對應規則-</option></select>
 	</td>
 	<td  style="padding-left:10px">
 		<button class="btn btn-default" click="search" type="button">搜索</button>
 	</td>
 	<td width="100%"></td>
 	<td align="right" nowrap>
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button> &nbsp; 
-		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 删除</button>
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button> &nbsp; 
+		<button class="btn btn-danger" id="del_{rand}" click="del" disabled type="button"><i class="icon-trash"></i> 刪除</button>
 		
 	</td>
 </tr></table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">排序号：数字越小优先级别越高。</div>
+<div class="tishi">排序號：數字越小優先級別越高。</div>

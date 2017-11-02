@@ -1,12 +1,12 @@
 <?php 
 /**
 	*****************************************************************
-	* 联系QQ： 290802026/1073744729									*
+	* 聯系QQ： 290802026/1073744729									*
 	* 版  本： V2.0													*
-	* 开发者：雨中磐石工作室										*
-	* 邮  箱： qqqq2900@126.com										*
-	* 说  明: 基础操作类方法										*
-	* 备  注: 未经允许不得商业出售，代码欢迎参考纠正				*
+	* 開發者：雨中磐石工作室										*
+	* 郵  箱： qqqq2900@126.com										*
+	* 說  明: 基礎操作類方法										*
+	* 備  注: 未經允許不得商業出售，代碼歡迎參考糾正				*
 	*****************************************************************
 */ 
 final class rockClass
@@ -32,7 +32,7 @@ final class rockClass
 		$this->host		= isset($_SERVER['HTTP_HOST'])		? $_SERVER['HTTP_HOST']		: '' ;
 		$this->url		= '';
 		$this->isqywx	= false;
-		$this->win		=  php_uname();
+		$this->win		= php_uname();
 		$this->HTTPweb	= isset($_SERVER['HTTP_USER_AGENT'])? $_SERVER['HTTP_USER_AGENT']	: '' ;
 		$this->web		= $this->getbrowser();
 		$this->unarr	= explode(',','1,2');
@@ -45,7 +45,7 @@ final class rockClass
 	}
 	
 	/**
-	*	特殊字符过滤
+	*	特殊字符過濾
 	*/
 	public function xssrepstr($str)
 	{
@@ -56,7 +56,7 @@ final class rockClass
 		return str_ireplace($xpd, $xpds, $str);
 	}
 	
-	//获取IP
+	//獲取IP
 	public function getclientip()
 	{
 		$ip = 'unknow';
@@ -122,7 +122,7 @@ final class rockClass
 		return $this->jmuncode($val, $lx, $name);
 	}
 	
-	//get和post参数处理$lx=1:rockjm，6:basejm, 3:判断是否rockjm
+	//get和post參數處理$lx=1:rockjm，6:basejm, 3:判斷是否rockjm
 	public function jmuncode($s, $lx=0, $na)
 	{
 		$jmbo = false;
@@ -159,7 +159,7 @@ final class rockClass
 			$txt.=''.chr(10).''.chr(10).'【POST】'.$pstr.'';
 		}
 		$txt.=''.chr(10).''.chr(10).'【IP】'.chr(10).''.$this->ip.'';
-		$txt.=''.chr(10).''.chr(10).'【浏览器】'.chr(10).''.$this->HTTPweb.'';
+		$txt.=''.chr(10).''.chr(10).'【瀏覽器】'.chr(10).''.$this->HTTPweb.'';
 		$this->createtxt(''.UPDIR.'/'.date('Y-m').'/'.$lx.''.date('YmdHis').'_'.rand(1000,9000).'.log', $txt);
 	}
 	
@@ -212,7 +212,7 @@ final class rockClass
 		}
 	}	
 	
-	//保存cookie，默认是7天
+	//保存cookie，默認是7天
 	public function savecookie($namarr,$valarr,$expire=360,$path='/',$domain='')
 	{
 		$time 	= time()+$expire*3600*24;
@@ -224,7 +224,7 @@ final class rockClass
 		}
 	}
 	
-	//获取cookie
+	//獲取cookie
 	public function cookie($name,$dev='')
 	{
 		$val	= '';
@@ -243,7 +243,7 @@ final class rockClass
 		return $val;
 	}
 	
-	//删除cookie
+	//刪除cookie
 	public function clearcookie($name,$path='/',$domain='')
 	{
 		//$domain=(empty($domain))?$this->host:$domain;
@@ -254,7 +254,7 @@ final class rockClass
 		}
 	}
 	
-	//删除所有cookie
+	//刪除所有cookie
 	public function clearallcookie()
 	{
 		foreach($_COOKIE as $key=>$value){
@@ -262,7 +262,7 @@ final class rockClass
 		}
 	}	
 	
-	//跳转
+	//跳轉
 	public function location($url)
 	{
 		header('location:'.$url.'');
@@ -319,7 +319,7 @@ final class rockClass
 	}
 	
 	/**
-		全角半角转换
+		全角半角轉換
 	*/
 	public function replace($str,$quantoban=true)
 	{
@@ -334,18 +334,18 @@ final class rockClass
 	}
 	
 	/**
-		过滤特殊符合
+		過濾特殊符合
 	*/
 	public function repmark($str)
 	{
 		$search=array('select','delete','join','inner','outer');
-		$str=strtolower($str);//转为小写
+		$str=strtolower($str);//轉為小寫
 		$str=str_replace($search,'',$str);
 		return $str;
 	}
 	
 	/**
-		html编码
+		html編碼
 	*/
 	public function htmlescape($str)
 	{
@@ -354,7 +354,7 @@ final class rockClass
 	}
 	
 	/**
-		小数点位数
+		小數點位數
 	*/
 	public function number($num,$w=2)
 	{
@@ -376,7 +376,7 @@ final class rockClass
 	}
 	
 	/**
-		将&#39;转换'
+		將&#39;轉換'
 	*/
 	public function covexec($str)
 	{
@@ -389,7 +389,7 @@ final class rockClass
 		return $str;
 	}
 	
-	//判断是否为空
+	//判斷是否為空
 	public function isempt($str)
 	{
 		$bool=false;
@@ -420,7 +420,7 @@ final class rockClass
 		return $url;	
 	}	
 	
-	//设置所有的GET方法
+	//設置所有的GET方法
 	public function setallcan($rep=4)
 	{
 		foreach($_GET as $key=>$val)$GLOBALS['get_'.$key]=$this->get($key,'',0);
@@ -428,7 +428,7 @@ final class rockClass
 	}
 	
 	/**
-		如果字符为空，使用默认的
+		如果字符為空，使用默認的
 	*/
 	public function repempt($str,$dev='')
 	{
@@ -447,7 +447,7 @@ final class rockClass
 	}
 	
 	/**
-		采集字符串截取
+		採集字符串截取
 	*/
 	public function getcai($content,$start,$end)
 	{
@@ -465,7 +465,7 @@ final class rockClass
 	}
 	
 	/**
-	*	写入文件
+	*	寫入文件
 	*/
 	public function createtxt($path, $txt)
 	{
@@ -482,7 +482,7 @@ final class rockClass
 	}
 	
 	/**
-	*	创建文件夹
+	*	創建文件夾
 	*/
 	public function createdir($path, $oi=1)
 	{
@@ -560,7 +560,7 @@ final class rockClass
 	}
 	
 	/*
-	*	获取当前访问全部url
+	*	獲取當前訪問全部url
 	*/
 	public function nowurl()
 	{
@@ -571,7 +571,7 @@ final class rockClass
 	}
 	
 	/**
-	*	获取当前访问URL地址
+	*	獲取當前訪問URL地址
 	*/
 	public function url()
 	{
@@ -597,7 +597,7 @@ final class rockClass
 	}
 	
 	/**
-	*	函数参数转为key
+	*	函數參數轉為key
 	*/
 	public function getfunkey($arr=array(),$qz='a')
 	{

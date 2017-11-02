@@ -1,4 +1,4 @@
-﻿function initbody(){
+function initbody(){
 	objcont = $('#content_allmainview');
 	objtabs = $('#tabs_title');
 	resizewh();
@@ -23,7 +23,7 @@
 	},{
 		name:'<i class="icon-picture"></i> 修改頭像',num:'face'
 	},{
-		name:'<i class="icon-magic"></i> 切換顏色',num:'style',url:'system,geren,style',names:'切換顏色'
+		name:'<i class="icon-magic"></i> 切換皮膚',num:'style',url:'system,geren,style',names:'切換皮膚'
 	},{
 		name:'<i class="icon-user"></i> 帳號('+adminuser+')',num:'user'
 	}];
@@ -66,14 +66,14 @@
 	}
 	setTimeout(_loadjsurl,1000);
 	
-	//每次ajax请求时判断
+	//每次ajax請求時判斷
 	$.ajaxSetup({
 		statusCode:{
 			200:function(){
 			}
 		}
 	});
-	//禁止后退
+	//禁止後退
 	$(document.body).keydown(function(e){
 		var lxs = e.target.nodeName.toLowerCase();
 		var bo  = (lxs=='input' || lxs=='textarea');
@@ -83,9 +83,9 @@
 
 
 function _searchmenus(){
-	js.prompt('搜索菜单','请输入搜索菜单名：',function(jg,txt){
+	js.prompt('搜索菜單','請輸入搜索菜單名：',function(jg,txt){
 		if(jg=='yes' && txt){
-			$('#menulisttop').html('搜索结果');
+			$('#menulisttop').html('搜索結果');
 			$('#menulist').html('<div style="padding:30px;" align="center"><img src="images/mloading.gif"></div>');
 			js.ajax(js.getajaxurl('getmenusou','index'),{key:txt}, function(da){
 				showmenula(da);
@@ -130,7 +130,7 @@ function opentixiang(){
 }
 
 function clickhome(){
-	var ad = {num:'home',url:'home,index',icons:'home',name:'首页',hideclose:true};
+	var ad = {num:'home',url:'home,index',icons:'home',name:'首頁',hideclose:true};
 	if(homeurl!='')ad.url= homeurl;
 	if(homename!='')ad.name= homename;
 	addtabs(ad);
@@ -263,7 +263,7 @@ function addiframe(a){
 }
 
 
-//选择卡右键
+//選擇卡右鍵
 function tabsright(num,e){
 	function _closeother(nu){
 		var nus,d1;
@@ -280,8 +280,8 @@ function tabsright(num,e){
 			if(lx==0)closetabs(num);
 			if(lx==1){
 				var d1 = tabsarr[num],s1=''+PROJECT+'/'+d1.urlpath+'';
-				var s  = '['+d1.name+']页面地址是：'+s1+'<div style="word-wrap:break-word;">，在[系统→基础管理→菜单管理]设置URL地址为：'+d1.url+'';
-				if(HOST=='127.0.0.1')s+='&nbsp;<a onclick="_openfile(\''+jm.base64encode(s1)+'\')" href="javascript:;">[打开]</a>';
+				var s  = '['+d1.name+']頁面地址是：'+s1+'<div style="word-wrap:break-word;">，在[系統→基礎管理→菜單管理]設置URL地址為：'+d1.url+'';
+				if(HOST=='127.0.0.1')s+='&nbsp;<a onclick="_openfile(\''+jm.base64encode(s1)+'\')" href="javascript:;">[打開]</a>';
 				s+='</div>';
 				js.alert(s);
 			}
@@ -291,10 +291,10 @@ function tabsright(num,e){
 		}
 	});
 	var to= tabsarr[num],d = [];
-	if(!to.hideclose)d.push({'name':'关闭','num':num,lx:0});
-	if(num==nowtabs.num)d.push({'name':'关闭其它页面','num':num,lx:2});
-	if(admintype==1)d.push({'name':'查看页面地址','num':num,lx:1});
-	if(homeurl=='')d.push({'name':'新窗口打开',tobj:to,'num':num,lx:4});
+	if(!to.hideclose)d.push({'name':'關閉','num':num,lx:0});
+	if(num==nowtabs.num)d.push({'name':'關閉其它頁面','num':num,lx:2});
+	if(admintype==1)d.push({'name':'查看頁面地址','num':num,lx:1});
+	if(homeurl=='')d.push({'name':'新窗口打開',tobj:to,'num':num,lx:4});
 	d.push({'name':'全部刷新','num':num,lx:3});
 	tabsrights.setData(d);
 	tabsrights.showAt(e.clientX,e.clientY+5);
@@ -304,7 +304,7 @@ function _opentabls(d){
 	window.open(url);
 }
 
-//开发时打开文件
+//開發時打開文件
 function _openfile(s){
 	js.ajax(js.getajaxurl('openfile','index'),{file:s},function(ds){
 		if(ds!='ok')js.msg('msg', ds);
@@ -312,7 +312,7 @@ function _openfile(s){
 }
 
 /**
-*	添加选择卡
+*	添加選擇卡
 */
 function addtabs(a){
 	var url = a.url,
@@ -350,7 +350,7 @@ function addtabs(a){
 		urlpms += ",'"+nus[0]+"':'"+nus[1]+"'";
 	}
 	if(urlpms!='')urlpms = urlpms.substr(1);
-	var bgs = '<div id="mainloaddiv" style="width:'+viewwidth+'px;height:'+viewheight+'px;overflow:hidden;background:#000000;color:white;filter:Alpha(opacity=20);opacity:0.2;z-index:3;position:absolute;left:0px;line-height:'+viewheight+'px;top:0px;" align="center"><img src="images/mloading.gif"  align="absmiddle">&nbsp;加载中...</div>';
+	var bgs = '<div id="mainloaddiv" style="width:'+viewwidth+'px;height:'+viewheight+'px;overflow:hidden;background:#000000;color:white;filter:Alpha(opacity=20);opacity:0.2;z-index:3;position:absolute;left:0px;line-height:'+viewheight+'px;top:0px;" align="center"><img src="images/mloading.gif"  align="absmiddle">&nbsp;加載中...</div>';
 	$('#indexcontent').append(bgs);
 	a.urlpath = url+'.php';
 	objcont.append('<div temp="content" id="content_'+num+'"></div>');
@@ -371,7 +371,7 @@ function addtabs(a){
 		},
 		error:function(){
 			$('#mainloaddiv').remove();
-			var s = 'Error:加载出错喽,'+url+'';
+			var s = 'Error:加載出錯嘍,'+url+'';
 			$('#content_'+num+'').html(s);
 		}
 	});

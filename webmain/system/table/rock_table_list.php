@@ -10,15 +10,15 @@ $(document).ready(function(){
 		},{
 			text:'引擎',dataIndex:'engine'
 		},{
-			text:'总记录数',dataIndex:'rows',sortable:true
+			text:'總記錄數',dataIndex:'rows',sortable:true
 		},{
-			text:'说明',dataIndex:'explain',editor:true
+			text:'說明',dataIndex:'explain',editor:true
 		},{
-			text:'创建时间',dataIndex:'cjsj',sortable:true
+			text:'創建時間',dataIndex:'cjsj',sortable:true
 		},{
 			text:'字符集',dataIndex:'TABLE_COLLATION'
 		},{
-			text:'更新时间',dataIndex:'gxsj',sortable:true
+			text:'更新時間',dataIndex:'gxsj',sortable:true
 		}],
 		itemclick:function(){
 			btn(false);
@@ -65,7 +65,7 @@ $(document).ready(function(){
 	
 	
 	<td align="right" nowrap>
-		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 编辑 </button>
+		<button class="btn btn-info" id="edit_{rand}" click="clickwin,1" disabled type="button"><i class="icon-edit"></i> 編輯 </button>
 	</td>
 	</tr>
 	</table>
@@ -73,4 +73,4 @@ $(document).ready(function(){
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">数据库表格管理请谨慎操作！</div>
+<div class="tishi">數據庫表格管理請謹慎操作！</div>

@@ -1,6 +1,6 @@
 <?php 
 /**
-*	桌面首页项(系统日志)
+*	桌面首頁項(系統日志)
 */
 defined('HOST') or die ('not access');
 
@@ -23,7 +23,7 @@ homeobject.showsysloglist=function(a){
 </script>
 <div align="left" id="homesysloglist" class="list-group">
 <div class="list-group-item  list-group-item-default">
-	<i class="icon-bookmark-empty"></i> 系统日志
+	<i class="icon-bookmark-empty"></i> 系統日志
 	<a style="float:right" onclick="openxtrilises()">更多&gt;&gt;</a>
 </div>
 </div>

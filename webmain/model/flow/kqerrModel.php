@@ -2,7 +2,7 @@
 class flow_kqerrClassModel extends flowModel
 {
 
-	//审核完成了添加到打卡记录
+	//審核完成了添加到打卡記錄
 	protected function flowcheckfinsh($zt)
 	{
 		m('kqdkjl')->insert(array(

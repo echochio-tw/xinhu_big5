@@ -36,7 +36,7 @@ function addchengesss(){
 }
 function changesubmit(){
 	var jg = parseFloat(form('money').value);
-	if(jg<=0)return '报销金额不能小于0';
+	if(jg<=0)return '報銷金額不能小于0';
 }
 function changesubmitbefore(){
 	cchangtongss();

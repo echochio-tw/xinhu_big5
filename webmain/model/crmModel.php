@@ -6,7 +6,7 @@ class crmClassModel extends Model
 		$this->settable('customer');
 	}
 	
-	//读取我的客户和共享给我的
+	//讀取我的客戶和共享給我的
 	public function getmycust($uid, $id=0)
 	{
 		if(isempt($id))$id = 0;
@@ -17,7 +17,7 @@ class crmClassModel extends Model
 	
 	
 	
-	//读取我的销售机会
+	//讀取我的銷售機會
 	public function getmysale($uid, $id=0)
 	{
 		$where 	= '`uid`='.$uid.' and `state`=1 and (`htid`=0 or `id`='.$id.')';
@@ -25,7 +25,7 @@ class crmClassModel extends Model
 		return $rows;
 	}
 	
-	//读取我的合同
+	//讀取我的合同
 	public function getmyract($uid, $id=0)
 	{
 		$where 	= '`uid`='.$uid.' and (`isover`=0 or `id`='.$id.')';
@@ -33,7 +33,7 @@ class crmClassModel extends Model
 		return $rows;
 	}
 	
-	//更新合同状态
+	//更新合同狀態
 	public function ractmoney($htid)
 	{
 		if(isempt($htid))return false;
@@ -47,7 +47,7 @@ class crmClassModel extends Model
 		$oispay	= $ors['ispay'];
 		$htid	= $ors['id'];
 		$money 	= $this->db->getmou('[Q]custfina','sum(money)','htid='.$htid.' and `ispay`=1');
-		$moneyy	= $this->getmoneys($htid); //已创建收付款单金额
+		$moneyy	= $this->getmoneys($htid); //已創建收付款單金額
 		$symon	= $zmoney - $money;
 		$ispay	= 0;
 		$isover	= 0;
@@ -97,7 +97,7 @@ class crmClassModel extends Model
 				$fu_moneyz 	 += $money;	
 			}
 		}
-		//当月已收付
+		//當月已收付
 		$sql = "SELECT type,sum(money)money FROM `[Q]custfina` where `createid`='$uid' and ispay=1 and paydt like '$month%' GROUP BY type";
 		$rows 	= $this->db->getall($sql);
 		foreach($rows as $k=>$rs){
@@ -109,7 +109,7 @@ class crmClassModel extends Model
 		return $arr;
 	}
 	
-	//客户转移
+	//客戶轉移
 	public function movetouser($uid, $sid, $toid)
 	{
 		$rows 	= $this->getrows("`id` in($sid) and `uid`='$this->adminid'",'id,name');
@@ -131,7 +131,7 @@ class crmClassModel extends Model
 		}
 	}
 	
-	//客户统计
+	//客戶統計
 	public function custtotal($ids='')
 	{
 		$wher	= '';
@@ -162,7 +162,7 @@ class crmClassModel extends Model
 		}
 	}
 	
-	//合同状态金额更新
+	//合同狀態金額更新
 	public function custractupzt($htid='')
 	{
 		$where1= $where2= '';
@@ -178,7 +178,7 @@ class crmClassModel extends Model
 			$this->ractmoney($htid);
 		}
 		
-		//更新收付款单
+		//更新收付款單
 		$rows = $this->db->getall('SELECT a.id,a.htid,a.htnum,b.num FROM `[Q]custfina` a left join `[Q]custract` b on a.htid=b.id where a.htid>0 and a.htnum<>b.num ');
 		foreach($rows as $k=>$rs){
 			$htid = $rs['htid'];

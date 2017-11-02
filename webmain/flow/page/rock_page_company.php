@@ -1,15 +1,15 @@
 <?php
 /**
-*	模块：company.公司单位，
-*	说明：自定义区域内可写您想要的代码，模块列表页面，生成分为2块
-*	来源：流程模块→表单元素管理→[模块.公司单位]→生成列表页
+*	模塊：company.公司單位，
+*	說明：自定義區域內可寫您想要的代碼，模塊列表頁面，生成分為2塊
+*	來源：流程模塊→表單元素管理→[模塊.公司單位]→生成列表頁
 */
 defined('HOST') or die ('not access');
 ?>
 <script>
 $(document).ready(function(){
 	{params}
-	var modenum = 'company',modename='公司单位',isflow=0,modeid='63',atype = params.atype,pnum=params.pnum;
+	var modenum = 'company',modename='公司單位',isflow=0,modeid='63',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
 	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"name","name":"\u540d\u79f0","fieldstype":"text","ispx":"0","isalign":"1","islb":"1"},{"fields":"nameen","name":"\u5bf9\u5e94\u82f1\u6587\u540d","fieldstype":"text","ispx":"0","isalign":"0","islb":"0"},{"fields":"pid","name":"\u6240\u5c5e\u5355\u4f4d","fieldstype":"select","ispx":"0","isalign":"0","islb":"0"},{"fields":"fuzename","name":"\u5bf9\u5e94\u8d1f\u8d23\u4eba","fieldstype":"changeusercheck","ispx":"0","isalign":"0","islb":"1"},{"fields":"city","name":"\u6240\u5728\u57ce\u5e02","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"address","name":"\u5730\u5740","fieldstype":"text","ispx":"0","isalign":"1","islb":"1"},{"fields":"tel","name":"\u7535\u8bdd","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"fax","name":"\u4f20\u771f","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"},{"fields":"sort","name":"\u6392\u5e8f\u53f7","fieldstype":"number","ispx":"0","isalign":"0","islb":"1"},{"fields":"id","name":"ID","fieldstype":"text","ispx":"0","isalign":"0","islb":"1"}],fieldsselarr= [];
 	
@@ -35,7 +35,7 @@ $(document).ready(function(){
 			var canss = js.apply({key:s,keystatus:zt}, cans);
 			a.setparams(canss,true);
 		},
-		//高级搜索
+		//高級搜索
 		searchhigh:function(){
 			new highsearchclass({
 				modenum:modenum,
@@ -49,7 +49,7 @@ $(document).ready(function(){
 			get('key_{rand}').value='';
 			a.setparams(d,true);
 		},
-		//导出
+		//導出
 		daochu:function(o1,lx,lx1,e){
 			if(!this.daochuobj)this.daochuobj=$.rockmenu({
 				width:120,top:35,donghua:false,data:[],
@@ -57,7 +57,7 @@ $(document).ready(function(){
 					c.daonchuclick(d);
 				}
 			});
-			var d = [{name:'导出全部',lx:0},{name:'导出当前页',lx:1},{name:'订阅此列表',lx:2}];
+			var d = [{name:'導出全部',lx:0},{name:'導出當前頁',lx:1},{name:'訂閱此列表',lx:2}];
 			this.daochuobj.setData(d);
 			var lef = $(o1).offset();
 			this.daochuobj.showAt(lef.left, lef.top+35);
@@ -69,9 +69,9 @@ $(document).ready(function(){
 		},
 		subscribelist:function(){
 			js.subscribe({
-				title:'公司单位('+nowtabs.name+')',
-				cont:'公司单位('+nowtabs.name+')的列表的',
-				explain:'订阅[公司单位]的列表',
+				title:'公司單位('+nowtabs.name+')',
+				cont:'公司單位('+nowtabs.name+')的列表的',
+				explain:'訂閱[公司單位]的列表',
 				objtable:a
 			});
 		},
@@ -121,15 +121,15 @@ $(document).ready(function(){
 		},
 		daoru:function(){
 			window.managelistcompany = a;
-			addtabs({num:'daorucompany',url:'flow,input,daoru,modenum=company',icons:'plus',name:'导入公司单位'});
+			addtabs({num:'daorucompany',url:'flow,input,daoru,modenum=company',icons:'plus',name:'導入公司單位'});
 		},
 		initcolumns:function(bots){
 			var num = 'columns_'+modenum+'_'+pnum+'',d=[],d1,d2={},i,len=fieldsarr.length,bok;
 			var nstr= fieldsselarr[num];if(!nstr)nstr='';
 			if(nstr)nstr=','+nstr+',';
 			if(nstr=='' && isflow==1){
-				d.push({text:'申请人',dataIndex:'base_name',sortable:true});
-				d.push({text:'申请人部门',dataIndex:'base_deptname',sortable:true});
+				d.push({text:'申請人',dataIndex:'base_name',sortable:true});
+				d.push({text:'申請人部門',dataIndex:'base_deptname',sortable:true});
 			}
 			for(i=0;i<len;i++){
 				d1 = fieldsarr[i];
@@ -147,7 +147,7 @@ $(document).ready(function(){
 					d.push(d2);
 				}
 			}
-			if(isflow==1)d.push({text:'状态',dataIndex:'statustext'});
+			if(isflow==1)d.push({text:'狀態',dataIndex:'statustext'});
 			if(nstr=='' || nstr.indexOf(',caozuo,')>=0)d.push({text:'',dataIndex:'caozuo',callback:'opegs{rand}'});
 			if(!bots){
 				bootparams.columns=d;
@@ -164,7 +164,7 @@ $(document).ready(function(){
 			return url;
 		},
 		printlist:function(){
-			js.msg('success','可使用导出，然后打开在打印');
+			js.msg('success','可使用導出，然後打開在打印');
 		},
 		getbtnstr:function(txt, click, ys, ots){
 			if(!ys)ys='default';
@@ -189,12 +189,12 @@ $(document).ready(function(){
 		}
 	};	
 	
-	//表格参数设定
+	//表格參數設定
 	var bootparams = {
 		fanye:true,modenum:modenum,modename:modename,statuschange:false,tablename:jm.base64decode('Y29tcGFueQ::'),
 		url:c.storeurl(),storeafteraction:'storeaftershow',storebeforeaction:'storebeforeshow',
 		params:{atype:atype},
-		columns:[{text:"名称",dataIndex:"name",align:"left"},{text:"对应负责人",dataIndex:"fuzename"},{text:"所在城市",dataIndex:"city"},{text:"地址",dataIndex:"address",align:"left"},{text:"电话",dataIndex:"tel"},{text:"传真",dataIndex:"fax"},{text:"排序号",dataIndex:"sort"},{text:"ID",dataIndex:"id"},{
+		columns:[{text:"名稱",dataIndex:"name",align:"left"},{text:"對應負責人",dataIndex:"fuzename"},{text:"所在城市",dataIndex:"city"},{text:"地址",dataIndex:"address",align:"left"},{text:"電話",dataIndex:"tel"},{text:"傳真",dataIndex:"fax"},{text:"排序號",dataIndex:"sort"},{text:"ID",dataIndex:"id"},{
 			text:'',dataIndex:'caozuo',callback:'opegs{rand}'
 		}],
 		itemdblclick:function(){
@@ -209,7 +209,7 @@ $(document).ready(function(){
 		c.reload();
 	}
 	
-//[自定义区域start]
+//[自定義區域start]
 
 bootparams.fanye=false;
 bootparams.celleditor=true;
@@ -218,13 +218,13 @@ c.setcolumns('sort',{
 	'editor':true
 });
 
-//[自定义区域end]
+//[自定義區域end]
 
 	js.initbtn(c);
 	var a = $('#viewcompany_{rand}').bootstable(bootparams);
 	c.init();
-	var ddata = [{name:'高级搜索',lx:0}];
-	if(admintype==1)ddata.push({name:'自定义列显示',lx:2});
+	var ddata = [{name:'高級搜索',lx:0}];
+	if(admintype==1)ddata.push({name:'自定義列顯示',lx:2});
 	ddata.push({name:'打印',lx:1});
 	$('#downbtn_{rand}').rockmenu({
 		width:120,top:35,donghua:false,
@@ -246,7 +246,7 @@ c.setcolumns('sort',{
 	<tr>
 		<td style="padding-right:10px;" id="tdleft_{rand}" nowrap><button id="addbtn_{rand}" class="btn btn-primary" click="clickwin,0" disabled type="button"><i class="icon-plus"></i> 新增</button></td>
 		<td>
-			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="关键字">
+			<input class="form-control" style="width:160px" id="key_{rand}" placeholder="關鍵字">
 		</td>
 		
 		<td style="padding-left:10px">
@@ -257,7 +257,7 @@ c.setcolumns('sort',{
 		<td  width="90%" style="padding-left:10px"><div id="changatype{rand}" class="btn-group"></div></td>
 	
 		<td align="right" id="tdright_{rand}" nowrap>
-			<button class="btn btn-default" click="daochu" type="button">导出 <i class="icon-angle-down"></i></button> 
+			<button class="btn btn-default" click="daochu" type="button">導出 <i class="icon-angle-down"></i></button> 
 		</td>
 	</tr>
 	</table>

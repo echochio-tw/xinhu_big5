@@ -20,7 +20,7 @@ js.ajax  = function(m,a,d,funs, mod,checs, erfs, glx){
 		return;
 	}
 	if(typeof(bs)=='object')d=js.apply(d,bs);
-	var tsnr = '努力处理中...';
+	var tsnr = '努力處理中...';
 	if(mod=='wait')js.msg(mod, tsnr);
 	function errsoers(ts){
 		js.setmsg(ts);
@@ -43,13 +43,13 @@ js.ajax  = function(m,a,d,funs, mod,checs, erfs, glx){
 			}
 		},
 		error:function(e){
-			errsoers('内部出错:'+e.responseText+'');
+			errsoers('內部出錯:'+e.responseText+'');
 		}
 	};
 	$.ajax(ajaxcan);
 	js.ajax_time = setTimeout(function(){
 		if(js.ajaxbool){
-			errsoers('Error:请求超时?');
+			errsoers('Error:請求超時?');
 		}
 	}, 1000*30);
 }
@@ -124,7 +124,7 @@ var im={
 		if(lx=='close')this.close();
 		if(lx=='file')this.sendfile(true);
 		if(lx=='change')this.changesend(o);
-		if(lx=='cropput')js.msg('msg','请使用快捷键Ctrl+V');
+		if(lx=='cropput')js.msg('msg','請使用快捷鍵Ctrl+V');
 	},
 	close:function(){
 		window.close();
@@ -138,11 +138,11 @@ var im={
 		return $(window).height()-hei+ss;
 	},
 	
-	//判断是否可以发消息
+	//判斷是否可以發消息
 	sendbool:function(){
 		var bo = true;
 		if(receinfor.type=='group' && receinfor.innei==0)bo=false;
-		if(!bo)js.msg('msg','你不在此会话中，不允许发送');
+		if(!bo)js.msg('msg','你不在此會話中，不允許發送');
 		return bo;
 	},
 	
@@ -151,7 +151,7 @@ var im={
 		var iref = (!iref)?false:true;
 		var minid= 0;
 		if(iref)minid=this.minid;
-		if(o1)$(o1).html('<img src="images/loadings.gif" height="14" width="15" align="absmiddle"> 加载中...');
+		if(o1)$(o1).html('<img src="images/loadings.gif" height="14" width="15" align="absmiddle"> 加載中...');
 		this.boolload 	= true;
 		this.isshangla 	= false;
 		js.ajax('reim','getrecord',{type:this.type,gid:this.gid,minid:minid,lastdt:''},function(ret){
@@ -178,7 +178,7 @@ var im={
 		var i,len 	= a.length,cont,lex,nas,fase,nr,d,na=[],rnd,sid;
 		$('#loadmored').remove();
 		if(isbf){
-			if(len>0)this.showobj.prepend('<div class="showblanks">---------↑以上是新加载---------</div>');
+			if(len>0)this.showobj.prepend('<div class="showblanks">---------↑以上是新加載---------</div>');
 			na = a;
 		}else{
 			for(i= len-1; i>=0; i--)na.push(a[i]);
@@ -213,13 +213,13 @@ var im={
 		if(len>0 && !isls){
 			var s = '<div id="histordiv" class="showblanks" >';
 			if(ret.wdtotal==0){
-				s+='---------↑以上是历史记录---------';
+				s+='---------↑以上是歷史記錄---------';
 				if(len>=5){
-					this.showobj.prepend('<div id="loadmored" class="showblanks" ><a href="javascript:;" onclick="im.loadmoreda(this)">点击加载更多...</a></div>');
+					this.showobj.prepend('<div id="loadmored" class="showblanks" ><a href="javascript:;" onclick="im.loadmoreda(this)">點擊加載更多...</a></div>');
 					this.isshangla = true;
 				}
 			}else{
-				s+='---↑以上是历史,还有未读信息'+ret.wdtotal+'条,<a href="javascript:;" onclick="im.loaddata(this)">点击加载</a>---';
+				s+='---↑以上是歷史,還有未讀信息'+ret.wdtotal+'條,<a href="javascript:;" onclick="im.loaddata(this)">點擊加載</a>---';
 			}
 			s+='</div>';
 			if(!isbf)this.addcont(s);
@@ -228,10 +228,10 @@ var im={
 	},
 	contright:function(o1,e){
 		var o=$(o1),rnd=o.attr('rand');
-		this.randmess = rnd;//,{name:'转发...',lx:4}
+		this.randmess = rnd;//,{name:'轉發...',lx:4}
 		var ids=rnd.replace('mess_',''),da=this.showdata[ids];
 		this.rightdata = da;
-		var d=[{name:'复制',lx:0},{name:'删除',lx:1},{name:'刷新',lx:5}];
+		var d=[{name:'復制',lx:0},{name:'刪除',lx:1},{name:'刷新',lx:5}];
 		if(this.type=='group')d.push({name:'@TA',lx:3});
 		
 		//if(da.sendid==adminid)d.push({name:'撤回',lx:6});
@@ -252,7 +252,7 @@ var im={
 			if(ids)js.ajax('reim','clearrecord',{type:this.type,gid:this.gid,ids:ids},false,'none');
 		}
 		if(lx==2){
-			js.confirm('确定要清除1个月前的记录吗？',function(lx){
+			js.confirm('確定要清除1個月前的記錄嗎？',function(lx){
 				if(lx=='yes')im.clearjilss(30);
 			});
 		}
@@ -261,7 +261,7 @@ var im={
 			if(cont)this.addinput('@'+cont);
 		}
 		if(lx==4){
-			js.changeuser(false,'usercheck','转发给...', {
+			js.changeuser(false,'usercheck','轉發給...', {
 				onselect:function(sna,sid){
 					if(!sid)return;
 					im.zhuangfa(sid, ids);
@@ -275,7 +275,7 @@ var im={
 			$('#qipaocont_'+this.randmess+'').html('撤回消息');
 		}
 	},
-	//转发
+	//轉發
 	zhuangfa:function(touid, ids){
 		
 	},
@@ -322,7 +322,7 @@ var im={
 		if(isempt(nr))return false;
 		var conss = jm.base64encode(nr);
 		if(conss.length>500){
-			js.msg('msg','发送内容太多了');
+			js.msg('msg','發送內容太多了');
 			return;
 		}
 		var nuid= js.now('time'),optdt = js.serverdt();
@@ -344,7 +344,7 @@ var im={
 	senderror:function(nuid){
 		js.ajaxbool = false;
 		get(nuid).src='images/error.png';
-		get(nuid).title='发送失败';
+		get(nuid).title='發送失敗';
 	},
 	sendsuccess:function(d,nuid){
 		this.bool = false;
@@ -357,7 +357,7 @@ var im={
 		d.messid=d.id;
 		d.face  = adminface;
 		var bo  = serversend(d);
-		//if(!bo)js.msg('msg','信息不能及时推送，但已保存到服务器');
+		//if(!bo)js.msg('msg','信息不能及時推送，但已保存到服務器');
 	},
 	addinput:function(s){
 		var val = this.inputobj.val()+s;
@@ -385,7 +385,7 @@ var im={
 		strformat.upobj = uploadobj;
 		if(bo)uploadobj.click();
 	},
-	//上传的文件预览显示
+	//上傳的文件預覽顯示
 	sendfileshow:function(f, snr){
 		if(!f)f={};
 		f.face 	= adminface;
@@ -453,7 +453,7 @@ var im={
 			var oatg = this.getpath();
 			nw.Shell.openItem(''+oatg+'/images/reimcaptScreen.exe');
 		}else{
-			js.msg('msg','无法截屏，请使用PC客户端/第三方快捷键，<a href="http://www.rockoa.com/view_client.html" target="_blank">[去下载]</a>');
+			js.msg('msg','無法截屏，請使用PC客戶端/第三方快捷鍵，<a href="http://www.rockoa.com/view_client.html" target="_blank">[去下載]</a>');
 			return;
 		}
 	},
@@ -478,10 +478,10 @@ var im={
 		uploadobj.sendbase64(o.src);
 	},
 	
-	//显示用户
+	//顯示用戶
 	showuser:function(){
-		var s = '<div id="showuserlist" style="height:160px;overflow:auto;padding:5px 10px"><div align="center" style="padding:10px;"><img src="images/mloading.gif" align="absmiddle">&nbsp;加载人员...</div></div>';
-		js.tanbody('syscogshow','会话上人员',350,100,{html:s});
+		var s = '<div id="showuserlist" style="height:160px;overflow:auto;padding:5px 10px"><div align="center" style="padding:10px;"><img src="images/mloading.gif" align="absmiddle">&nbsp;加載人員...</div></div>';
+		js.tanbody('syscogshow','會話上人員',350,100,{html:s});
 		js.ajax('reim','getgroupuser',{type:this.type,gid:this.gid},function(ret){
 			im.showusershow(ret.uarr);
 		},'none', false,false,'get');
@@ -499,10 +499,10 @@ var im={
 		$('#showuserlist').html(s);
 	},
 	
-	//邀请
+	//邀請
 	yaoqing:function(){
 		if(this.type!='group')return;
-		js.changeuser(false,'usercheck','邀请人到会话中', {
+		js.changeuser(false,'usercheck','邀請人到會話中', {
 			onselect:function(sna,sid){
 				if(!sid)return;
 				im.yaoqings(sid);
@@ -510,11 +510,11 @@ var im={
 		});
 	},
 	yaoqings:function(sid){
-		js.msg('wait','邀请中...');
+		js.msg('wait','邀請中...');
 		js.ajax('reim','yaoqinguid',{val:sid,gid:this.gid},function(da){
 			if(da.indexOf('success')==0){
 				var uids = da.replace('success','');
-				js.alert('邀请成功','',function(){
+				js.alert('邀請成功','',function(){
 					location.reload();
 				});
 				//if(uids != '')
@@ -524,10 +524,10 @@ var im={
 		});
 	},
 	
-	//退出会话
+	//退出會話
 	exitgroup:function(){
 		if(this.type!='group')return;
-		js.confirm('确定要退出会话吗？',function(lx){
+		js.confirm('確定要退出會話嗎？',function(lx){
 			if(lx=='yes'){
 				im.exitgroups();
 			}
@@ -536,7 +536,7 @@ var im={
 	exitgroups:function(){
 		js.msg('wait','退出中...');
 		js.ajax('reim','exitgroup',{gid:this.gid}, function(da){
-			js.alert('成功退出会话','',function(){
+			js.alert('成功退出會話','',function(){
 				try{opener.reim.exitgroup(im.gid)}catch(e){}
 				im.close();
 			});

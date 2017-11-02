@@ -1,6 +1,6 @@
 <?php
 /**
-*	此文件是流程模块【carmwx.车辆维修】对应接口文件。
+*	此文件是流程模塊【carmwx.車輛維修】對應接口文件。
 */ 
 class mode_carmwxClassAction extends inputAction{
 	
@@ -14,7 +14,7 @@ class mode_carmwxClassAction extends inputAction{
 	protected function savebefore($table, $arr, $id, $addbo){
 		$carid 	= $arr['carid'];
 		$to 	= m($table)->rows('id<>'.$id.' and `carid`='.$carid.' and `type`=0 and `status`=0');
-		if($to>0)return '当前车辆已申请了维修在处理中了';
+		if($to>0)return '當前車輛已申請了維修在處理中了';
 	}
 }	
 			

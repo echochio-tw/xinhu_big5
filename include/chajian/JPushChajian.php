@@ -1,11 +1,11 @@
 <?php 
 /**
-	极光推送
+	極光推送
 */
 include_once(ROOT_PATH.'/include/JPush/JPush.php');
 class JPushChajian extends Chajian{
 	
-	//有自己的推送key填写这里，默认自己是没有啊
+	//有自己的推送key填寫這裡，默認自己是沒有啊
 	private $app_key 		= '';
 	private $master_secret 	= '';
 	
@@ -26,7 +26,7 @@ class JPushChajian extends Chajian{
 		$this->push_url.= '&version='.VERSION.'&rnd='.time().'';
 	}
 	
-	//获取推送到某个用户
+	//獲取推送到某個用戶
 	private function getalias($uid, $lx=0)
 	{
 		if($uid=='')return false;
@@ -90,7 +90,7 @@ class JPushChajian extends Chajian{
 	//-------------最新原生app推送
 	public function push($title,$desc, $cont, $palias)
 	{
-		//使用官网来推送
+		//使用官網來推送
 		$alias		= $palias['alias'];
 		$xmalias	= $palias['xmalias']; //小米的
 		$uids		= $palias['uids'];
@@ -110,7 +110,7 @@ class JPushChajian extends Chajian{
 		}	
 	}
 	
-	//发送消息的推送
+	//發送消息的推送
 	public function sendMessage($alias, $title='', $cont='')
 	{
 		if(!$alias)return false;
@@ -118,8 +118,8 @@ class JPushChajian extends Chajian{
 		$obj 	= $client->push()->setPlatform('all');
 		$obj->addAlias($alias);
 		$result	= $obj
-			->setMessage($cont, $title) //发信息
-			->setOptions(null, 0)		//不保存离线消息
+			->setMessage($cont, $title) //發信息
+			->setOptions(null, 0)		//不保存離線消息
 			->send();
 		$msg = json_encode($result);	
 		return $result;

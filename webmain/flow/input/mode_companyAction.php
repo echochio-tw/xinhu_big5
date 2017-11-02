@@ -1,14 +1,14 @@
 <?php
 /**
-*	此文件是流程模块【company.公司单位】对应接口文件。
+*	此文件是流程模塊【company.公司單位】對應接口文件。
 */ 
 class mode_companyClassAction extends inputAction{
 	
 	
 	protected function savebefore($table, $arr, $id, $addbo){
-		if($id>0 && $arr['pid']==$id)return '上级不能选自己';
+		if($id>0 && $arr['pid']==$id)return '上級不能選自己';
 		$name = $arr['name'];
-		if(m($table)->rows("`name`='$name' and `id`<>$id")>0)return '名称['.$name.']已存在';
+		if(m($table)->rows("`name`='$name' and `id`<>$id")>0)return '名稱['.$name.']已存在';
 	}
 	
 	protected function saveafter($table, $arr, $id, $addbo){

@@ -7,7 +7,7 @@ class mode_finhkdClassAction extends inputAction{
 		$uid 	= $arr['uid'];
 		$money  = floatval($arr['money']);
 		$to 	= m('fina')->totaljie($uid, $id);
-		if($money > $to)return '还款金额超过需还金额';
+		if($money > $to)return '還款金額超過需還金額';
 	}
 	
 	

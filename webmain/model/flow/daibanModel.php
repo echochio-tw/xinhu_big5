@@ -3,7 +3,7 @@ class flow_daibanClassModel extends flowModel
 {
 	
 	/**
-	*	每天流程待办提醒
+	*	每天流程待辦提醒
 	*/
 	public function tododay()
 	{
@@ -18,15 +18,15 @@ class flow_daibanClassModel extends flowModel
 			}
 		}
 		foreach($arr as $uid => $strarr){
-			$this->flowweixinarr['url'] = $this->getwxurl();//设置微信提醒的详情链接
+			$this->flowweixinarr['url'] = $this->getwxurl();//設置微信提醒的詳情鏈接
 			$str = '';
 			$k 	 = 0;
 			foreach($strarr as $mod=>$sl){
 				$k++;
 				if($k>1)$str.="\n";
-				$str.="".$k.".$mod(".$sl."条);";
+				$str.="".$k.".$mod(".$sl."條);";
 			}
-			if($str != '')$this->push($uid, '', $str, '流程待办处理');
+			if($str != '')$this->push($uid, '', $str, '流程待辦處理');
 		}
 	}
 }

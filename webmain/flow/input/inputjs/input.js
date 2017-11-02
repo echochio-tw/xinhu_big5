@@ -1,9 +1,9 @@
 /**
-*	createname：信呼开发团队-雨中磐石
+*	createname：信呼開發團隊-雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock
 *	Date:2016-01-01
-*	remark：本文件页面是系统公共录入页面上主要js文件，处理录入页面上交互设计，公式计算等。
+*	remark：本文件頁面是系統公共錄入頁面上主要js文件，處理錄入頁面上交互設計，公式計算等。
 	                              xhxh
 	                             xhxh
    xh       xh                 xh  xh
@@ -18,7 +18,7 @@ xh xh   xhxhxhxhxh    xhxhxh       xh
 */
 
 var ismobile=0,firstrs={},alldata={},isxiang=0,
-	subdataminlen=[];//子表至少行数
+	subdataminlen=[];//子表至少行數
 function initbodys(){};
 function savesuccess(){};
 function eventaddsubrows(){}
@@ -30,12 +30,12 @@ function geturlact(act,cns){
 function initbody(){
 	js.tanstyle = 1;
 	$('body').keydown(function(et){
-		var code	= event.keyCode;
+		var code	= et.keyCode;
 		if(code==27){
 			c.close();
 			return false;
 		}
-		if(event.altKey){
+		if(et.altKey){
 			if(code == 83){
 				get('AltS').click();
 				return false;
@@ -58,7 +58,7 @@ function initbody(){
 	if(nfid==''){
 		c.showdata();
 	}else{
-		alert('录入页面缺少必要的字段：'+nfid+'');
+		alert('錄入頁面缺少必要的字段：'+nfid+'');
 	}
 	
 	if(ismobile==1)f.fileobj = $.rockupload({
@@ -72,7 +72,7 @@ function initbody(){
 function changesubmit(d){};
 function changesubmitbefore(){};
 
-//函数触发
+//函數觸發
 function oninputblur(name,zb,obj,zbxu,row){};
 
 var f={
@@ -95,7 +95,7 @@ js.apiurl = function(m,a,cans){
 var c={
 	callback:function(cs){
 		var calb = js.request('callback');
-		var msg  = (mid=='0')?'新增':'编辑'
+		var msg  = (mid=='0')?'新增':'編輯'
 		if(!calb){
 			if(ismobile==0){
 				try{parent.js.msg('success',''+msg+'保存成功');}catch(e){}
@@ -134,8 +134,8 @@ var c={
 	onselectdata:{},
 	selectdata:function(s1,ced,fid,tit,zbis){
 		if(isedit==0)return;
-		if(!tit)tit='请选择...';
-		if(s1.indexOf('[SQL]')==0){js.msg('msg','此元素类型的不支持数据源是SQL的');return;}
+		if(!tit)tit='請選擇...';
+		if(s1.indexOf('[SQL]')==0){js.msg('msg','此元素類型的不支持數據源是SQL的');return;}
 		var a1 = s1.split(','),idobj=false,acttyle='act';
 		var fids = a1[1];
 		if(fids){
@@ -174,26 +174,26 @@ var c={
 			val=d[fid];
 			if(arr[i].isbt=='1'){
 				if(flx=='uploadfile' && val=='0'){
-					this.showtx('请选择'+nas+'');
+					this.showtx('請選擇'+nas+'');
 					return false;
 				}
 				if(isempt(val)){
 					if(form(fid))form(fid).focus();
-					this.showtx(''+nas+'不能为空');
+					this.showtx(''+nas+'不能為空');
 					return false;
 				}
 			}
 			if(val && flx=='email'){
 				if(!js.email(val)){
-					this.showtx(''+nas+'格式不对');
+					this.showtx(''+nas+'格式不對');
 					form(fid).focus();
 					return false;
 				}
 			}
 		}
-		//子表判断记录是不是空
+		//子表判斷記錄是不是空
 		len = subfielsa.length;
-		for(i=0;i<this.subcount;i++){//子表数
+		for(i=0;i<this.subcount;i++){//子表數
 			zbd = this.getsubdata(i);
 			zbs = subdataminlen[i];
 			zbmc= zbnamearr[i];
@@ -202,21 +202,21 @@ var c={
 				this.showtx('['+zbmc+']至少要'+zbs+'行');
 				return false;
 			}
-			for(j1=0;j1<zbd.length;j1++){//总行
+			for(j1=0;j1<zbd.length;j1++){//總行
 				for(j=0;j<subfielsa.length;j++){//必填字段
 					sda = subfielsa[j];
-					if(sda.iszb==(i+1)){//子表要对应
+					if(sda.iszb==(i+1)){//子表要對應
 						flx = sda.type;
 						val = zbd[j1][sda.fields];
 						fid = ''+sda.fields+''+i+'_'+zbd[j1]._hang+'';
 						if(isempt(val)){
 							if(form(fid))form(fid).focus();
-							this.showtx('['+sda.zbname+']第'+(j1+1)+'行上'+sda.name+'不能为空');
+							this.showtx('['+sda.zbname+']第'+(j1+1)+'行上'+sda.name+'不能為空');
 							return false;
 						}
 						if(flx=='number'&&parseFloat(val)==0){
 							if(form(fid))form(fid).focus();
-							this.showtx('['+sda.zbname+']第'+(j1+1)+'行上'+sda.name+'不能为0');
+							this.showtx('['+sda.zbname+']第'+(j1+1)+'行上'+sda.name+'不能為0');
 							return false;
 						}
 					}
@@ -225,7 +225,7 @@ var c={
 		}
 		if(firstrs.isbt==1){
 			if(!d.sysnextoptid && form('sysnextopt')){
-				this.showtx('请指定['+firstrs.name+']处理人');
+				this.showtx('請指定['+firstrs.name+']處理人');
 				form('sysnextopt').focus();
 				return false;
 			}
@@ -248,13 +248,13 @@ var c={
 			c.backsave(a, str);
 		}, 'post', function(){
 			get('AltS').disabled=false;
-			js.setmsg('error:内部错误,可F12调试');
+			js.setmsg('error:內部錯誤,可F12調試');
 		});
 	},
 	backsave:function(a,str){
 		var msg = a.msg;
 		if(a.success){
-			var msgs  = (mid=='0')?'新增':'编辑'
+			var msgs  = (mid=='0')?'新增':'編輯'
 			var sumsg = ''+msgs+'保存成功';
 			js.setmsg(sumsg,'green');
 			js.msg('success',sumsg);
@@ -270,7 +270,7 @@ var c={
 		}else{
 			if(typeof(msg)=='undefined')msg=str;
 			get('AltS').disabled=false;
-			this.showtx(msg);//错误提醒
+			this.showtx(msg);//錯誤提醒
 		}
 	},
 	showdata:function(){
@@ -282,19 +282,19 @@ var c={
 			c.initinput();
 			initbodys(smid);
 		}else{
-			js.setmsg('加载数据中...');
+			js.setmsg('加載數據中...');
 			js.ajax(geturlact('getdata'),{mid:smid,flownum:moders.num},function(str){
 				c.showdataback(js.decode(str));	
 			},'post', function(){
-				js.setmsg('error:内部错误,可F12调试');
+				js.setmsg('error:內部錯誤,可F12調試');
 			});
 		}
 	},
-	//初始上传框
+	//初始上傳框
+	filearr:{},
 	initinput:function(){
 		var o,o1,sna,i,tsye,uptp,tdata,farr=alldata.filearr,far;
 		var o = $('div[id^="filed_"]');
-		if(isedit==1)o.show();
 		for(i=0;i<o.length;i++){
 			o1 = o[i];sna= $(o1).attr('tnam');tsye=$(o1).attr('tsye');tdata=$(o1).attr('tdata');
 			if(isedit==1){
@@ -302,6 +302,9 @@ var c={
 				if(tsye=='file'){
 					uptp='*';
 					if(!isempt(tdata))uptp=tdata;
+					$('#'+sna+'_divadd').show();
+				}else{
+					$(o1).show();
 				}
 				$.rockupload({
 					'inputfile':''+o1.id+'_inp',
@@ -313,14 +316,33 @@ var c={
 							get('imgview_'+sna+'').src = d.filepath;
 							form(sna).value=d.filepath;
 						}else if(tsye=='file'){
-							$('#fileview_'+sna+'').html(c.showfilestr(d));
-							form(sna).value=d.id;
+							$('#meng_'+c.uprnd+'').remove();
+							$('#up_'+c.uprnd+'').attr('upid_'+sna+'',d.id);
+							c.upfbo = false;
+							c.filearr['f'+d.id+''] = f;
+							c.showupid(sna);//顯示ID	
 						}
 					},
 					'onprogress':function(f,bl){
 						var sna= f.sname,tsye=f.snape;
 						if(tsye=='file'){
-							$('#fileview_'+sna+'').html('上传中('+bl+'%)...');
+							$('#meng_'+c.uprnd+'').html(''+bl+'%');
+						}
+					},
+					onchange:function(f){
+						var sna= f.sname,tsye=f.snape;
+						if(tsye=='file'){
+							var flx = js.filelxext(f.fileext);
+							c.uprnd = js.getrand();
+							c.upfbo = true;
+							var s='<div onclick="c.clickupfile(this,\''+sna+'\')" id="up_'+c.uprnd+'" title="'+f.filename+'('+f.filesizecn+')"  class="upload_items">';
+							if(f.isimg){
+								s+='<img class="imgs" src="'+f.imgviewurl+'">'
+							}else{
+								s+='<div class="upload_items_items"><img src="web/images/fileicons/'+flx+'.gif" alian="absmiddle"> ('+f.filesizecn+')<br>'+f.filename+'</div>';
+							}
+							s+='<div id="meng_'+c.uprnd+'" class="upload_items_meng" style="font-size:16px">0%</div></div>';
+							$('#'+sna+'_divadd').before(s);
 						}
 					}
 				});
@@ -329,28 +351,94 @@ var c={
 			if(tsye=='img'){
 				if(val)get('imgview_'+sna+'').src=val;
 			}
-			if(tsye=='file' && val && val>0){
-				far = farr['f'+val];
-				if(far){
-					$('#fileview_'+sna+'').html(c.showfilestr(far));
-				}else{
-					form(sna).value='0';
+			//顯示上傳文件信息
+			if(tsye=='file' && farr){
+				var fid,f,s;
+				for(fid in farr){
+					f = farr[fid];
+					if(!f)continue;
+					s='<div onclick="c.clickupfile(this,\''+sna+'\')" title="'+f.filename+'('+f.filesizecn+')" upid_'+sna+'="'+f.id+'" class="upload_items">';
+					if(js.isimg(f.fileext)){
+						s+='<img class="imgs" src="'+f.thumbpath+'">';
+					}else{
+						s+='<div class="upload_items_items"><img src="web/images/fileicons/'+js.filelxext(f.fileext)+'.gif" alian="absmiddle"> ('+f.filesizecn+')<br>'+f.filename+'</div>';
+					}
+					s+='</div>';
+					$('#'+sna+'_divadd').before(s);
+					this.filearr[fid] = f;
 				}
+				this.showupid(sna);
 			}
 		}
+		
+		if(ismobile==1){
+			$('div[tmp="mobilezbiao"]').css('width',''+($(window).width()-12)+'px');
+		}
 	},
+	
+	//多文件點擊上傳
+	uploadfilei:function(sna){
+		if(isedit==0)return;
+		if(this.upfbo){js.msg('msg','請等待上傳完成在添加');return;}
+		get('filed_'+sna+'_inp').click();
+	},
+	//上傳完成
+	showupid:function(sna){
+		var os = $('div[upid_'+sna+']'),fvid='';
+		for(var i=0;i<os.length;i++){
+			fvid+=','+$(os[i]).attr('upid_'+sna+'')+'';
+		}
+		if(fvid!='')fvid=fvid.substr(1);
+		form(sna).value=fvid;
+	},
+	//上傳文件點擊
+	clickupfile:function(o1,sna, xs){
+		this.yuobj = o1;
+		var o = $(o1);
+		var fid = o.attr('upid_'+sna+'');
+		if(isempt(fid))return;
+		var f = this.filearr['f'+fid+''];if(!f)return;
+		if(isedit==0 || xs){
+			if(js.isimg(f.fileext)){
+				var src = f.imgviewurl;
+				if(!src)src=f.thumbpath.replace('_s','');
+				this.showviews(src);
+			}else{
+				js.downshow(fid);
+			}
+		}else{
+			js.confirm('確定要刪除文件：'+o1.title+'嗎？<a style="color:blue" href="javascript:;" onclick="c.clickupfile(c.yuobj,\''+sna+'\', true)">[預覽]</a>',function(jg){
+				if(jg=='yes'){
+					o.remove();
+					c.showupid(sna);
+					$.get(js.getajaxurl('delfile','upload','public',{id:fid}));
+				}
+			});
+		}
+	},
+	
 	showfilestr:function(d){
 		var flx = js.filelxext(d.fileext);
 		var s = '<img src="web/images/fileicons/'+flx+'.gif" align="absmiddle" height=16 width=16> <a href="javascript:;" onclick="js.downshow('+d.id+')">'+d.filename+'</a> ('+d.filesizecn+')';
 		return s;
 	},
-	showviews:function(o1){
-		$.imgview({'url':o1.src,'ismobile':ismobile==1});
+	
+	loadicons:function(){
+		if(!this.loacdis){
+			$('body').append('<link rel="stylesheet" type="text/css" href="web/res/fontawesome/css/font-awesome.min.css">');
+			this.loacdis= true;
+		}
 	},
+	showviews:function(o1){
+		this.loadicons();
+		var url = (typeof(o1)=='string')? o1 : o1.src;
+		$.imgview({'url':url,'ismobile':ismobile==1});
+	},
+	
 	initdatelx:function(){
 		
 	},
-	subcount:3,//子表数量
+	subcount:3,//子表數量
 	showdataback:function(a){
 		if(a.success){
 			var da = a.data;
@@ -403,7 +491,7 @@ var c={
 			initbodys(form('id').value);
 			if(isedit==0){
 				this.formdisabled();
-				js.setmsg('无权编辑，查看<a href="http://www.rockoa.com/view_wqbj.html" target="_blank" class="blue">[帮助]</a>');
+				js.setmsg('無權編輯，查看<a href="http://www.rockoa.com/view_wqbj.html" target="_blank" class="blue">[幫助]</a>');
 			}else{
 				$('#AltS').show();
 				c.initdatelx();
@@ -512,7 +600,7 @@ var c={
 		}
 		var o1=get('tablesub'+xu+'').rows;
 		if(o1.length<=2){
-			js.msg('msg','最后一行不能删除');
+			js.msg('msg','最後一行不能刪除');
 			return;
 		}
 		$(o).parent().parent().remove();
@@ -533,7 +621,7 @@ var c={
 	insertrow:function(xu, d, isad){
 		var o2 = get('tablesub'+xu+'');
 		if(!o2){
-			alert('表单设计有误，请重新设计多行子表');
+			alert('表單設計有誤，請重新設計多行子表');
 			return;
 		}
 		var o=$('#tablesub'+xu+'');
@@ -572,7 +660,7 @@ var c={
 			if(form(ans)&&d[fasr[i]])form(ans).value=d[fasr[i]];
 		}
 	},
-	//设置子表行数据
+	//設置子表行數據
 	setrowdata:function(xu, oj, d){
 		var ans;
 		for(var i in d){
@@ -580,7 +668,7 @@ var c={
 			if(form(ans))form(ans).value=d[i];
 		}
 	},
-	//根据名称获取第几个子，哪一行[第几个子表，第几行]
+	//根據名稱獲取第幾個子，哪一行[第幾個子表，第幾行]
 	getxuandoi:function(fid){
 		var naa = fid.substr(fid.lastIndexOf('_')-1);
 		var spa = naa.split('_');
@@ -659,17 +747,17 @@ var c={
 		o.prev().show();
 	},
 	
-	//----强大公式计算函数处理start-----
+	//----強大公式計算函數處理start-----
 	inputblur:function(o1,zb){
 		if(isedit==0)return;
 		var ans=[],nae,nae2,i,len=gongsiarr.length,d,iszb,iszbs,diszb,gongsi,gs1,gs2,bgsa,lens,blarr,j,val,nams;
 		
 		if(zb==1){
 			ans = this.getxuandoi(o1.name);
-			nae = ans[3]; //表单name名称
+			nae = ans[3]; //表單name名稱
 			nae2= ans[2]; //格式0_0
 			iszb= parseFloat(ans[0]);
-			iszbs = iszb+1; //第几个子表
+			iszbs = iszb+1; //第幾個子表
 		}else{
 			nae = o1.name;
 		}
@@ -680,7 +768,7 @@ var c={
 			if((gongsi+d.fields).indexOf(nae)<0 || isempt(gongsi))continue;
 			diszb   = parseFloat(d.iszb);
 			if(diszb==0){
-				//主表字段公式计算[{zb0.count}*{zb0.price}] - [{discount}]
+				//主表字段公式計算[{zb0.count}*{zb0.price}] - [{discount}]
 				bgsa = this.splitgongs(gongsi);
 				lens = bgsa.length;
 				gongsi = bgsa[lens-1];
@@ -695,7 +783,7 @@ var c={
 				this.gongsv(d.fields, gongsi,d.gongsi);
 				
 			}else if(diszb==iszbs && zb==1){
-				this.zhujisuags(gongsi, d.fields, nae2, false);//子表行内计算
+				this.zhujisuags(gongsi, d.fields, nae2, false);//子表行內計算
 			}
 		}
 		oninputblur(nae,zb, o1,ans[0],ans[1]);
@@ -728,7 +816,7 @@ var c={
 		var str = '',blarr,zb,i,dds,kes,gss,i1;
 		if(gongsi.indexOf('zb0.')>-1 || gongsi.indexOf('zb1.')>-1 || gongsi.indexOf('zb2.')>-1){
 			blarr = this.pipematch(gongsi);
-			zb    = blarr[0].split('.')[0].replace('zb','');//哪个子表
+			zb    = blarr[0].split('.')[0].replace('zb','');//哪個子表
 			dds   = this.getsubdata(zb);
 			for(i=0;i<dds.length;i++){
 				gss = gongsi+'';
@@ -750,7 +838,7 @@ var c={
 				if(vals[1] && vals[1].length>2)val=js.float(val);
 				form(ne).value=val;
 			}catch(e){
-				alert(''+ne+'计算公式设置有错误：'+gongss+'\n\n'+vlas+'');
+				alert(''+ne+'計算公式設置有錯誤：'+gongss+'\n\n'+vlas+'');
 			}
 		}
 		return val;

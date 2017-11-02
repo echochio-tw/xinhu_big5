@@ -40,7 +40,7 @@ function initbody(){
 		var hudong = e.distanceY-startyy;
 		var hei = hudong>0 ? -1 : 1;
 		
-		//计算滑动速度
+		//計算滑動速度
 		var hms = 300;
 		var jgs = (hms-jg)/0.2 * hei;
 		if(jg<hms){
@@ -55,7 +55,7 @@ function initbody(){
 			var heig = $('body').scrollTop() - startyys;
 			
 			
-			var s = '在时间：'+jg+',滑动：'+hudong+'，总滚动：'+heig+'';
+			var s = '在時間：'+jg+',滑動：'+hudong+'，總滾動：'+heig+'';
 			js.debug(s);
 		},2000);
 	});
@@ -67,7 +67,7 @@ function initbody(){
 
 <body style="background-color:#eeeeee">
 <?php
-for($i=0;$i<=100; $i++)echo '<div style="padding:10px; border-bottom:1px #cccccc solid">测试'.$i.'</div>';
+for($i=0;$i<=100; $i++)echo '<div style="padding:10px; border-bottom:1px #cccccc solid">測試'.$i.'</div>';
 ?>
 
 

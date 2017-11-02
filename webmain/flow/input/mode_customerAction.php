@@ -1,5 +1,5 @@
 <?php
-//客户录入
+//客戶錄入
 class mode_customerClassAction extends inputAction{
 	
 

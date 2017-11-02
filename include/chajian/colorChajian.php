@@ -1,11 +1,11 @@
 <?php 
 /**
-	颜色操作
+	顏色操作
 */
 class colorChajian extends Chajian{
 
 	/**
-		颜色
+		顏色
 	*/
 	public function color($color,$l=127.5)
 	{

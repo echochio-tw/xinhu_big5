@@ -7,7 +7,7 @@ class menuClassAction extends Action
 		$this->rows		= array();
 		$type 			= $this->get('type');
 		$where 			= '';
-		//权限那来的
+		//權限那來的
 		if($type != ''){
 			$where		= 'and `status`=1 and `ispir`=1';
 			if($type=='view')$where = 'and `status`=1';
@@ -33,7 +33,7 @@ class menuClassAction extends Action
 		}
 	}
 	
-	//下级需要验证，那上级也必须验证的
+	//下級需要驗證，那上級也必須驗證的
 	private function updatepirss()
 	{
 		$rows 	= $this->db->getall('select `pid` from `[Q]menu` where `pid`>0 and `ispir`=1 group by `pid`');

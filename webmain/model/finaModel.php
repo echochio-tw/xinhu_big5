@@ -7,7 +7,7 @@ class finaClassModel extends Model
 		$this->settable('fininfom');
 	}
 	
-	//统计我未还款
+	//統計我未還款
 	public function totaljie($uid, $id=0)
 	{
 		$where 	= 'and id<>'.$id.'';
@@ -22,7 +22,7 @@ class finaClassModel extends Model
 		return '(select `uid` from `[Q]fininfom` where `type`=2 and `status`=1)';
 	}
 	
-	//统计
+	//統計
 	public function totalfkd($rows, $uids)
 	{
 		$carr = $barr = array();
@@ -31,7 +31,7 @@ class finaClassModel extends Model
 		$hkto = $this->db->getall("select uid,sum(money)money from `[Q]fininfom` where `uid` in($uids) and `type`=2 and `status`=1");
 		foreach($hkto as $k=>$rs)$carr[$rs['uid']] = $rs['money'];
 		
-		//还的
+		//還的
 		$hkto = $this->db->getall("select uid,sum(money)money from `[Q]fininfom` where `uid` in($uids) and `type`=3 and `status`=1");
 		foreach($hkto as $k=>$rs)$barr[$rs['uid']] = $rs['money'];
 		

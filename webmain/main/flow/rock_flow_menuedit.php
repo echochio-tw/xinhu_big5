@@ -50,7 +50,7 @@ $(document).ready(function(){
 		<table cellspacing="0" border="0" width="100%" align="center" cellpadding="0">
 		
 		<tr>
-			<td  align="right" >编号：</td>
+			<td  align="right" >編號：</td>
 			<td class="tdinput"><input name="num" maxlength="20" onblur="this.value=strreplace(this.value)" class="form-control"></td>
 			
 			
@@ -59,33 +59,33 @@ $(document).ready(function(){
 		
 		<tr>
 			
-			<td  align="right" >类型：</td>
-			<td class="tdinput"><select name="type" class="form-control"><option value="1">弹出填写说明</option><option value="0">直接操作</option><option value="2">人员选择(单人)</option><option value="3">人员选择(多人)</option><option value="4">更新字段</option></select></td>
-			<td  align="right" >字段名称：</td>
+			<td  align="right" >類型：</td>
+			<td class="tdinput"><select name="type" class="form-control"><option value="1">彈出填寫說明</option><option value="0">直接操作</option><option value="2">人員選擇(單人)</option><option value="3">人員選擇(多人)</option><option value="4">更新字段</option></select></td>
+			<td  align="right" >字段名稱：</td>
 			<td class="tdinput"><input name="fields" class="form-control"></td>
 		</tr>
 		
 		<tr>
-			<td  align="right" ><font color=red>*</font> 显示名称：</td>
+			<td  align="right" ><font color=red>*</font> 顯示名稱：</td>
 			<td class="tdinput"><input name="name" maxlength="20" onblur="this.value=strreplace(this.value)" class="form-control"></td>
 			
-			<td  align="right" >动作名称：</td>
+			<td  align="right" >動作名稱：</td>
 			<td class="tdinput"><input name="actname" maxlength="20" onblur="this.value=strreplace(this.value)" class="form-control"></td>
 		</tr>
 		
 	
 		<tr>
-			<td  align="right" width="15%" nowrap >状态名称：</td>
+			<td  align="right" width="15%" nowrap >狀態名稱：</td>
 			<td width="35%"  class="tdinput"><input maxlength="20" onblur="this.value=strreplace(this.value)" name="statusname" class="form-control"></td>
 			
-			<td  width="15%" align="right" nowrap>对应状态值：</td>
+			<td  width="15%" align="right" nowrap>對應狀態值：</td>
 			<td width="35%"  class="tdinput"><select name="statusvalue" class="form-control"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></td>
 		</tr>
 		
 		<tr>
-			<td align="right">状态名颜色：</td>
+			<td align="right">狀態名顏色：</td>
 			<td class="tdinput">
-			<select name="statuscolor" class="form-control"><option value="">-无-</option>
+			<select name="statuscolor" class="form-control"><option value="">-無-</option>
 			<option style="background-color:red" value="red">red</option>
 			<option style="background-color:green" value="green">green</option>
 			<option style="background-color:blue" value="blue">blue</option>
@@ -102,22 +102,22 @@ $(document).ready(function(){
 			<option style="background-color:orange" value="orange">orange</option>
 			</select>
 			</td>
-			<td align="right">排序号：</td>
+			<td align="right">排序號：</td>
 			<td class="tdinput"><input name="sort" value="0" maxlength="3" type="number"  onfocus="js.focusval=this.value" onblur="js.number(this)" class="form-control"></td>
 		</tr>
 	
 		<tr>
-			<td align="right">条件：</td>
-			<td class="tdinput" colspan="3"><textarea  name="wherestr" style="height:60px" class="form-control"></textarea><font color=#888888>为空或者条件满足时显示菜单</font></td>
+			<td align="right">條件：</td>
+			<td class="tdinput" colspan="3"><textarea  name="wherestr" style="height:60px" class="form-control"></textarea><font color=#888888>為空或者條件滿足時顯示菜單</font></td>
 		</tr>
 		
 		<tr>
-			<td align="right">更新内容：</td>
-			<td class="tdinput" colspan="3"><textarea  name="upgcont" style="height:60px" class="form-control"></textarea><font color=#888888>当触发时同时更新对应记录为这个内容</font></td>
+			<td align="right">更新內容：</td>
+			<td class="tdinput" colspan="3"><textarea  name="upgcont" style="height:60px" class="form-control"></textarea><font color=#888888>當觸發時同時更新對應記錄為這個內容</font></td>
 		</tr>
 	
 		<tr>
-			<td align="right">说明：</td>
+			<td align="right">說明：</td>
 			<td class="tdinput" colspan="3"><textarea  name="explain" style="height:60px" class="form-control"></textarea></td>
 		</tr>
 	
@@ -125,10 +125,10 @@ $(document).ready(function(){
 		<tr>
 			<td  align="right" ></td>
 			<td class="tdinput" colspan="3">
-				<label><input name="status" value="1" checked type="checkbox"> 启用</label>&nbsp; &nbsp; 
-				<label><input name="islog" value="1" checked type="checkbox"> 写入日志</label>&nbsp; &nbsp; 
-				<label><input name="issm" value="1" checked type="checkbox"> 必须填写说明</label>&nbsp; &nbsp; 
-				<label><input name="iszs" value="1" type="checkbox"> 显示在详情页</label>&nbsp; &nbsp; 
+				<label><input name="status" value="1" checked type="checkbox"> 啟用</label>&nbsp; &nbsp; 
+				<label><input name="islog" value="1" checked type="checkbox"> 寫入日志</label>&nbsp; &nbsp; 
+				<label><input name="issm" value="1" checked type="checkbox"> 必須填寫說明</label>&nbsp; &nbsp; 
+				<label><input name="iszs" value="1" type="checkbox"> 顯示在詳情頁</label>&nbsp; &nbsp; 
 			</td>
 		</tr>
 

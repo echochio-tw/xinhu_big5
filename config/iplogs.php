@@ -1,6 +1,6 @@
 <?php
 /**
-*	添加方法日志，和IP限制判断
+*	添加方法日志，和IP限制判斷
 */
 function ipwhiteshow($ip, $rock){
 	$iplist = ''.ROOT_PATH.'/config/iplist.php';
@@ -14,20 +14,20 @@ function ipwhiteshow($ip, $rock){
 		);
 	}
 
-	//白名单判断
+	//白名單判斷
 	$whiteip = $iparr['whiteip'];
 	if($whiteip!=''){
 		$whiteipa = explode(',', $whiteip);
 		foreach($whiteipa as $ips){
 			$bo = strpos($ip, $ips);
 			if($bo===0 || $ips=='*'){
-				$bool = 1; //可以访问
+				$bool = 1; //可以訪問
 				break;
 			}
 		}
 	}
 	
-	//黑名单判断
+	//黑名單判斷
 	if($bool==0){
 		$blackip = $iparr['blackip'];
 		if($blackip!=''){
@@ -35,7 +35,7 @@ function ipwhiteshow($ip, $rock){
 			foreach($blackipa as $ips){
 				$bo = strpos($ip, $ips);
 				if($bo===0 || $ips=='*'){
-					$bool = 2;//不能访问
+					$bool = 2;//不能訪問
 					break;
 				}
 			}
@@ -55,7 +55,7 @@ function ipwhiteshow($ip, $rock){
 		$str2 = arrvalue($GLOBALS,'HTTP_RAW_POST_DATA');
 	}
 	
-	//创建访问日志
+	//創建訪問日志
 	$logs = ''.UPDIR.'/logs/'.date('Y-m-d').'/'.date('H').'/'.date('H.i.s').'_'.$act.'_'.$ip.'_'.rand(100,999).'.log';
 	$logstr = '【datetime】：'.$rock->now.'
 【URL】：'.$rock->nowurl().'	
@@ -71,7 +71,7 @@ function ipwhiteshow($ip, $rock){
 	if(DEBUG)$rock->createtxt($logs, $logstr);
 	
 	
-	if($bool==2)exit('您IP['.$ip.']禁止访问我们站点，可联系我们admin@rockoa.com');
+	if($bool==2)exit('您IP['.$ip.']禁止訪問我們站點，可聯系我們admin@rockoa.com');
 }
 
 function ipwhiteshows($ips, $rock){

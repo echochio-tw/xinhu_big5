@@ -76,19 +76,19 @@ var editor,arr=<?=$da['fieldsjson']?>,moders=<?=json_encode($da['moders'])?>,gon
 				}
 				$coursestr .= '</tr></table>';
 				$coursestr .= '</div>';
-				//判断流程步骤是否上步指定
+				//判斷流程步驟是否上步指定
 				if($firstrs && $firstrs['checktype']=='change'){
 					$firstrs['isbt'] = 0;
-					$placeholder = '可不选,如自己选择不要随意选择';
+					$placeholder = '可不選,如自己選擇不要隨意選擇';
 					$stsp = '<div style="padding-top:20px"><table width="100%"><tr><td width="15%" nowrap height="30" align="right">';
 					if($firstrs['checktype']=='change'){
 						$stsp.='<font color=red>*</font>';
-						$placeholder = '必须指定人员';
+						$placeholder = '必須指定人員';
 						$firstrs['isbt'] = 1;
 					}
 					$stsp.= ''.$firstrs['name'].'：</td>';
 					$stsp.= '<td width="100%"><input  class="inputs" style="width:99%" id="sysnextchange" value="" placeholder="'.$placeholder.'" readonly type="text" name="sysnextopt"><input name="sysnextoptid" value="" id="sysnextchange_id" type="hidden"><input name="sysnextcustidid" value="'.$firstrs['id'].'" type="hidden"></td>';
-					$stsp.= '<td nowrap><a href="javascript:;" onclick="js.changeclear(\'sysnextchange\')" class="webbtn">×</a><a href="javascript:;" id="btnchange_recename" onclick="js.changeuser(\'sysnextchange\',\'changeusercheck\')" class="webbtn">选择</a></td>';
+					$stsp.= '<td nowrap><a href="javascript:;" onclick="js.changeclear(\'sysnextchange\')" class="webbtn">×</a><a href="javascript:;" id="btnchange_recename" onclick="js.changeuser(\'sysnextchange\',\'changeusercheck\',\'選擇'.$firstrs['name'].'\',{changerange:\''.$firstrs['checktypeid'].'\'})" class="webbtn">選擇</a></td>';
 					$stsp.= '</tr></table></div>';
 					echo $stsp;
 				}

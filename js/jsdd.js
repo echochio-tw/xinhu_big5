@@ -1,5 +1,5 @@
 /**
-*	钉钉jssdk授权
+*	釘釘jssdk授權
 */
 js.jssdkddcall  = function(bo){
 	

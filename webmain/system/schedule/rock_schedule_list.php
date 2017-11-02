@@ -34,7 +34,7 @@ $(document).ready(function(){
 			addtabs({num:'guanlieschedule',url:'flow,page,schedule,atype=my',name:'日程管理'});
 		},
 		calendarshow:function(){
-			addtabs({num:'guanlieschedulemonth',url:'{dir},{mode},calendar',name:'日程月视图'});
+			addtabs({num:'guanlieschedulemonth',url:'{dir},{mode},calendar',name:'日程月視圖'});
 		}
 	};
 	js.initbtn(c);
@@ -77,12 +77,12 @@ $(document).ready(function(){
 	
 	</td>
 	<td align="right" nowrap>
-		<button class="btn btn-default" click="calendarshow" type="button"><i class="icon-calendar"></i> 月视图</button>&nbsp; 
-		<button class="btn btn-default" click="daochu,1" type="button">导出</button>
+		<button class="btn btn-default" click="calendarshow" type="button"><i class="icon-calendar"></i> 月視圖</button>&nbsp; 
+		<button class="btn btn-default" click="daochu,1" type="button">導出</button>
 	</td>
 </tr>
 </table>
 </div>
 <div class="blank10"></div>
 <div id="view_{rand}"></div>
-<div class="tishi">列表上显示的是：我创建的日程/提醒给我的</div>
+<div class="tishi">列表上顯示的是：我創建的日程/提醒給我的</div>

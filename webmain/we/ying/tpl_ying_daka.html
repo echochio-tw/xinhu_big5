@@ -58,7 +58,7 @@ function addkqinfor(bo){
 		dakaci = oi;
 		if(bo==0){
 			$('#dkbtn').html('第'+oi+'次打卡');
-			js.dw.init(isgzh); //定位开始
+			js.dw.init(isgzh); //定位開始
 		}
 	},'mode', false,false, 'get');
 }
@@ -70,21 +70,21 @@ function showtimessabc(){
 	setTimeout('showtimessabc()',1000);
 }
 
-//显示考勤位置
+//顯示考勤位置
 function showkqrswz(){
 	var s = '';
 	if(kqrs){
 		s+=','+kqrs.name+'';
-		if(kqrs.iswgd=='1')s=',无固定位置';
+		if(kqrs.iswgd=='1')s=',無固定位置';
 		if(kqors && kqrs.iswgd=='0')for(var i=0;i<kqors.length;i++){
 			s+=','+kqors[i].name+'';
 			if(kqors[i].iswgd=='1'){
-				s=',无固定位置';
+				s=',無固定位置';
 				break;
 			}
 		}
 	}
-	if(s=='')s='没设置考勤位置';
+	if(s=='')s='沒設置考勤位置';
 	if(s!='')s=s.substr(1);
 	$('#weizhi').html(s);
 }
@@ -100,7 +100,7 @@ js.dw.ondwerr=function(msg){
 	$('#dwshow').html(''+msg+',<a href="javascript:;" onclick="js.dw.start()">[在定位]</a>');
 }
 
-//定位成功后回调
+//定位成功後回調
 js.dw.ondwcall = function(res){
 	latitude 	= res.latitude;
 	longitude 	= res.longitude;
@@ -110,13 +110,13 @@ js.dw.ondwcall = function(res){
 	$('#dwshow').html(''+res.addressinfo+',<a href="javascript:;" onclick="js.dw.start()">[更新]</a>');
 	var i,kqrsa,enddt,juli;
 	
-	addbo		= true;//可以添加记录
+	addbo		= true;//可以添加記錄
 	for(i=0;i<kqallrs.length;i++){
 		kqrsa = kqallrs[i];
 		enddt = new qq.maps.LatLng(parseFloat(kqrsa.location_x), parseFloat(kqrsa.location_y));
 		juli  = parseInt(qq.maps.geometry.spherical.computeDistanceBetween(center, enddt));
 		if(juli<0)juli = 0-juli;
-		if(kqrsa['iswgd']=='1')juli=0; //无固定位置的
+		if(kqrsa['iswgd']=='1')juli=0; //無固定位置的
 		kqallrs[i]['kqjuli'] = juli;
 		kqjuli = juli;
 	}
@@ -130,7 +130,7 @@ js.dw.ondwcall = function(res){
 	}
 }
 
-//判断有没有在考勤地点上
+//判斷有沒有在考勤地點上
 function isfenwein(){
 	var i,kqrsa,slju,sljus,iskqbo=false;
 	for(i=0;i<kqallrs.length;i++){
@@ -145,13 +145,13 @@ function isfenwein(){
 var addkaoqinbool=false;
 function addkaoqin(o1){
 	if(addkaoqinbool){
-		js.wx.alert('已保存过了，请退出页面');
+		js.wx.alert('已保存過了，請退出頁面');
 		return;
 	}
-	if(js.dw.dwbool){js.wx.alert('正在定位，稍后在添加');return;}
-	if(latitude=='' || kqjuli==-1){js.wx.alert('定位没有成功，不能添加');return;}
-	if(!addbo){js.wx.alert('请重新定位后在打卡');return;}
-	//if(!isfenwein()){js.wx.alert('当前位置距离考勤点有'+kqjuli+'米,考勤设置误差不能超过'+kqwucha+'米，故不能添加考勤打卡！');return;}
+	if(js.dw.dwbool){js.wx.alert('正在定位，稍後在添加');return;}
+	if(latitude=='' || kqjuli==-1){js.wx.alert('定位沒有成功，不能添加');return;}
+	if(!addbo){js.wx.alert('請重新定位後在打卡');return;}
+	//if(!isfenwein()){js.wx.alert('當前位置距離考勤點有'+kqjuli+'米,考勤設置誤差不能超過'+kqwucha+'米，故不能添加考勤打卡！');return;}
 	if(isfenwein()){
 		adddk('打卡',1);
 	}else{
@@ -173,12 +173,12 @@ function adddk(ts, lx){
 }
 
 function addbeizhu(o1){
-	js.wx.prompt('加备注','请输入备注说明：',function(txt){
+	js.wx.prompt('加備注','請輸入備注說明：',function(txt){
 		explain = txt;
 		if(txt){
-			$(o1).html('备注：'+txt+'');
+			$(o1).html('備注：'+txt+'');
 		}else{
-			$(o1).html('加备注...');
+			$(o1).html('加備注...');
 		}
 	});
 }
@@ -217,11 +217,11 @@ function changetab(lx){
 	<div id="dwshow" style="font-size:14px;color:#aaaaaa;padding:0px 10px">等待定位</div>
 
 </div>
-<div class="r-padding10 r-border-t" style="background:white;padding:15px 10px; background-color:#f5f5f5">考勤范围：<font color="#888888" id="weizhi">没设置考勤位置</font></div>
+<div class="r-padding10 r-border-t" style="background:white;padding:15px 10px; background-color:#f5f5f5">考勤範圍：<font color="#888888" id="weizhi">沒設置考勤位置</font></div>
 <div id="shangbshow" style="background:white">
 <table width="100%"  class="r-border-t">
-<tr><td align="center" nowrap height="60px"><div style="padding:0px 20px"><b>上班</b></div></td><td width="99%"><div style="color:#888888;font-size:14px">09:00-12:00</div><div><font color=#888888>加载中</font></div></td></tr>
-<tr><td colspan="2"><div style="margin:0px 10px" class="r-border-t"></div></td></tr><tr><td align="center" nowrap height="60px"><div style="padding:0px 20px"><b>下班</b></div></td><td width="99%"><div style="color:#888888;font-size:14px">13:00-18:00</div><div><font color=#888888>加载中</font></div></td></tr>
+<tr><td align="center" nowrap height="60px"><div style="padding:0px 20px"><b>上班</b></div></td><td width="99%"><div style="color:#888888;font-size:14px">09:00-12:00</div><div><font color=#888888>加載中</font></div></td></tr>
+<tr><td colspan="2"><div style="margin:0px 10px" class="r-border-t"></div></td></tr><tr><td align="center" nowrap height="60px"><div style="padding:0px 20px"><b>下班</b></div></td><td width="99%"><div style="color:#888888;font-size:14px">13:00-18:00</div><div><font color=#888888>加載中</font></div></td></tr>
 </table>
 </div>
 <div class="r-border-t"></div>
@@ -230,8 +230,8 @@ function changetab(lx){
 		<div class="addbtnss" id="dkbtn" onclick="addkaoqin(this)">第1次打卡</div>
 	</div>
 </div>
-<div class="r-padding10" align="center" style="font-size:14px;"><a id="beshuomdiv" onclick="addbeizhu(this)" href="javascript:;">加备注...</a></div>
-<div class="r-padding10 r-wrap" align="center" style="font-size:14px;color:#888888;">今日打卡：<span id="todyadak">无</id></div>
+<div class="r-padding10" align="center" style="font-size:14px;"><a id="beshuomdiv" onclick="addbeizhu(this)" href="javascript:;">加備注...</a></div>
+<div class="r-padding10 r-wrap" align="center" style="font-size:14px;color:#888888;">今日打卡：<span id="todyadak">無</id></div>
 
 
 <div style="height:55px; overflow:hidden"></div>	
@@ -252,7 +252,7 @@ function changetab(lx){
 		<div class="weui_tabbar_icon">
 			<i class="icon-bar-chart"></i>
 		</div>
-		<p class="weui_tabbar_label">考勤统计</p>
+		<p class="weui_tabbar_label">考勤統計</p>
 	</a>
 </div>
 </body>

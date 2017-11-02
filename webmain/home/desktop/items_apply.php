@@ -1,13 +1,13 @@
 <?php 
 /**
-*	桌面首页项(我的申请)
+*	桌面首頁項(我的申請)
 */
 defined('HOST') or die ('not access');
 
 ?>
 <script>
 moemyapplylist=function(){
-	addtabs({num:'applymy',url:'main,fwork,bill,atype=my',icons:'align-left',name:'我的申请'});
+	addtabs({num:'applymy',url:'main,fwork,bill,atype=my',icons:'align-left',name:'我的申請'});
 }
 homeobject.showapplylist=function(a){
 	var s='',a1,i;
@@ -22,7 +22,7 @@ homeobject.showapplylist=function(a){
 </script>
 <div align="left" id="myapplylist" style="min-width:300px" class="list-group">
 <div class="list-group-item  list-group-item-info">
-	<i class="icon-align-left"></i> 我的申请(<span id="myapplylisttotal">0</span>)
+	<i class="icon-align-left"></i> 我的申請(<span id="myapplylisttotal">0</span>)
 	<a style="float:right" onclick="moemyapplylist()">更多&gt;&gt;</a>
 </div>
 </div>

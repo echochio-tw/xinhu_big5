@@ -7,13 +7,13 @@ $(document).ready(function(){
 	var at = $('#optionview_{rand}').bootstree({
 		url:js.getajaxurl('gettreedata','option','system',{'num':'knowtikutype'}),
 		columns:[{
-			text:'题库分类',dataIndex:'name',align:'left',xtype:'treecolumn'
+			text:'題庫分類',dataIndex:'name',align:'left',xtype:'treecolumn'
 		}],
 		load:function(d){
 			if(sspid==0){
 				typeid = d.pid;
 				sspid = d.pid;
-				c.loadfile('0','所有题库');
+				c.loadfile('0','所有題庫');
 			}
 		},
 		itemdblclick:function(d){
@@ -25,11 +25,11 @@ $(document).ready(function(){
 	var a = $('#view_{rand}').bootstable({
 		tablename:modenum,celleditor:false,autoLoad:false,modenum:modenum,fanye:true,params:{atype:'xuexi'},
 		columns:[{
-			text:'题名',dataIndex:'title',editor:false,align:'left'
+			text:'題名',dataIndex:'title',editor:false,align:'left'
 		},{
-			text:'分类',dataIndex:'typename'
+			text:'分類',dataIndex:'typename'
 		},{
-			text:'类型',dataIndex:'type'
+			text:'類型',dataIndex:'type'
 		},{
 			text:'A',dataIndex:'ana'
 		},{
@@ -40,7 +40,7 @@ $(document).ready(function(){
 			text:'D',dataIndex:'and'
 		},{
 			text:'答案',dataIndex:'answer',renderer:function(v,d,oi){
-				return '<a href="javascript:;" onclick="openxiangs(\'知识学习\',\'knowtiku\','+d.id+')">查看</a>';
+				return '<a href="javascript:;" onclick="openxiangs(\'知識學習\',\'knowtiku\','+d.id+')">查看</a>';
 			}
 		}]
 	});
@@ -56,7 +56,7 @@ $(document).ready(function(){
 		genmu:function(){
 			typeid = sspid;
 			at.changedata={};
-			this.loadfile('0','所有题库');
+			this.loadfile('0','所有題庫');
 		},
 		daochu:function(){
 			a.exceldown();
@@ -87,12 +87,12 @@ $(document).ready(function(){
 	<div>
 	<table width="100%"><tr>
 		<td align="left" nowrap>
-			<button class="btn btn-default" click="genmu"  type="button">所有题库</button>&nbsp; 
+			<button class="btn btn-default" click="genmu"  type="button">所有題庫</button>&nbsp; 
 			
 		</td>
 		
 		<td style="padding-left:10px">
-		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="题名/分类">
+		<input class="form-control" style="width:200px" id="key_{rand}"   placeholder="題名/分類">
 		</td>
 		<td style="padding-left:10px">
 			<button class="btn btn-default" click="search" type="button">搜索</button> 
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			&nbsp;&nbsp;<span id="megss{rand}"></span>
 		</td>
 		<td align="right">
-			<button class="btn btn-default"  click="daochu" type="button">导出</button>
+			<button class="btn btn-default"  click="daochu" type="button">導出</button>
 		</td>
 	</tr></table>
 	</div>

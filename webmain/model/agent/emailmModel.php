@@ -22,7 +22,7 @@ class agent_emailmClassModel extends agentModel
 		return $a;
 	}
 	
-	//数据替换
+	//數據替換
 	protected function agentrows($rows, $rowd, $uid){
 		if($rows){
 			foreach($rowd as $k=>$rs){

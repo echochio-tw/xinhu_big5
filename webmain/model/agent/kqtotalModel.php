@@ -1,6 +1,6 @@
 <?php
 /**
-*	考勤统计
+*	考勤統計
 */
 class agent_kqtotalClassModel extends agentModel
 {
@@ -25,10 +25,10 @@ class agent_kqtotalClassModel extends agentModel
 			$cont 	= '';
 			
 			$rwnk = $this->rock->arrvalue($rs, 'workdate');
-			if(!isempt($rwnk))$cont.='<font color=#888888>入职日期：</font>'.$rwnk.'<br>';
+			if(!isempt($rwnk))$cont.='<font color=#888888>入職日期：</font>'.$rwnk.'<br>';
 			
 			$rwnk = $this->rock->arrvalue($rs, 'quitdt');
-			if(!isempt($rwnk))$cont.='<font color=#888888>离职日期：</font>'.$rwnk.'<br>';
+			if(!isempt($rwnk))$cont.='<font color=#888888>離職日期：</font>'.$rwnk.'<br>';
 			
 			$carr 	= $mdts->alltotal($month, $rs['id']);
 			foreach($carr['fields'] as $k=>$v){
@@ -40,7 +40,7 @@ class agent_kqtotalClassModel extends agentModel
 			}
 	
 			$rows[] = array(
-				'title' => ''.$rs['name'].'['.$month.']统计',
+				'title' => ''.$rs['name'].'['.$month.']統計',
 				'cont'	=> $cont,
 				'uid'	=> $rs['id']
 			);

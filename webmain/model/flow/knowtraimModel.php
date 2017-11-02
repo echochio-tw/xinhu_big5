@@ -1,12 +1,12 @@
 <?php
 /**
-*	考试培训
+*	考試培訓
 */
 class flow_knowtraimClassModel extends flowModel
 {
 	public function initModel()
 	{
-		$this->statearr = explode(',','<font color=#ff6600>还未开始</font>,<font color=green>进行中</font>,<font color=#888888>已结束</font>');
+		$this->statearr = explode(',','<font color=#ff6600>還未開始</font>,<font color=green>進行中</font>,<font color=#888888>已結束</font>');
 	}
 	
 	public function getstatestr($zt)
@@ -19,13 +19,13 @@ class flow_knowtraimClassModel extends flowModel
 		if($this->rs['status']==1)$this->sendtodo();
 	}
 	
-	//审核完成后发通知
+	//審核完成後發通知
 	protected function flowcheckfinsh($zt)
 	{
 		if($zt==1)$this->sendtodo();
 	}
 	
-	//发通知给对应人员
+	//發通知給對應人員
 	public function sendtodo()
 	{
 		$rows = m('knowtrais')->getall('mid='.$this->id.' and `isks`=0','uid');
@@ -34,7 +34,7 @@ class flow_knowtraimClassModel extends flowModel
 		if($ids=='')return;
 		$ids	= substr($ids, 1);
 		
-		$cont	= ''.$this->adminname.'发布培训考试,主题：{title}，时间{startdt}至{enddt}。';
+		$cont	= ''.$this->adminname.'發布培訓考試,主題：{title}，時間{startdt}至{enddt}。';
 		$this->push($ids,'', $cont);
 	}
 	
@@ -49,20 +49,20 @@ class flow_knowtraimClassModel extends flowModel
 		$zt 		 = $rs['state'];
 		$rs['state'] = $this->getstatestr($zt);
 		if($lx==1 && $zt==1){
-			//我当前状态
+			//我當前狀態
 			$ors	= m('knowtrais')->getone('`mid`='.$rs['id'].' and `uid`='.$this->adminid.'');
 			if($ors){
 				if($ors['isks']=='0'){
-					$rs['state'] .= '&nbsp;<a class="zhu"  href="index.php?m=hr&a=kaoshi&d=main&id='.$this->id.'">去考试</a>';
+					$rs['state'] .= '&nbsp;<a class="zhu"  href="index.php?m=hr&a=kaoshi&d=main&id='.$this->id.'">去考試</a>';
 				}else{
-					$rs['state'] .= '&nbsp;&nbsp;已考试分数：'.$ors['fenshu'].'';
+					$rs['state'] .= '&nbsp;&nbsp;已考試分數：'.$ors['fenshu'].'';
 				}
 			}
 		}
 		return $rs;
 	}
 	
-	//更新题库状态
+	//更新題庫狀態
 	public function reloadstate($id='')
 	{
 		$where  = '1=1';
@@ -87,13 +87,13 @@ class flow_knowtraimClassModel extends flowModel
 		$this->reloadstate();
 	}
 	
-	//每天通知未考试培训人员
+	//每天通知未考試培訓人員
 	public function todaytodo()
 	{
 		
 	}
 	
-	//得条件
+	//得條件
 	public function gettikuwhere($tiid)
 	{
 		if(isempt($tiid))return '';

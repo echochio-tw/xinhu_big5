@@ -11,7 +11,8 @@ $(document).ready(function(){
 	{params}
 	var modenum = 'hrtrsalary',modename='調薪申請',isflow=1,modeid='37',atype = params.atype,pnum=params.pnum;
 	if(!atype)atype='';if(!pnum)pnum='';
- var fieldsarr = [{"name":"申請人","fields":"base_name"},{"name":"申請人部門","fields":"base_deptname"},{"name":"單號","fields":"sericnum"},{"fields":"ranking","name":"職位","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"applydt","name":"申請日期","fieldstype":"date","ispx":"0","isalign":"0","islb":"1"},{"fields":"floats","name":"調薪幅度","fieldstype":"number","ispx":"1","isalign":"0","islb":"1"},{"fields":"effectivedt","name":"生效日期","fieldstype":"date","ispx":"1","isalign":"0","islb":"1"},{"fields":"explain","name":"說明","fieldstype":"textarea","ispx":"0","isalign":"0","islb":"1"}],fieldsselarr= [];
+	var fieldsarr = [{"name":"\u7533\u8bf7\u4eba","fields":"base_name"},{"name":"\u7533\u8bf7\u4eba\u90e8\u95e8","fields":"base_deptname"},{"name":"\u5355\u53f7","fields":"sericnum"},{"fields":"ranking","name":"\u804c\u4f4d","fieldstype":"text","ispx":"1","isalign":"0","islb":"1"},{"fields":"applydt","name":"\u7533\u8bf7\u65e5\u671f","fieldstype":"date","ispx":"0","isalign":"0","islb":"1"},{"fields":"floats","name":"\u8c03\u85aa\u5e45\u5ea6","fieldstype":"number","ispx":"1","isalign":"0","islb":"1"},{"fields":"effectivedt","name":"\u751f\u6548\u65e5\u671f","fieldstype":"date","ispx":"1","isalign":"0","islb":"1"},{"fields":"explain","name":"\u8bf4\u660e","fieldstype":"textarea","ispx":"0","isalign":"0","islb":"1"}],fieldsselarr= [];
+	
 	var c = {
 		reload:function(){
 			a.reload();

@@ -8,12 +8,12 @@ class userClassAction extends apiAction
 		$oldpass	= $this->post('passoldPost');
 		$pasword	= $this->post('passwordPost');
 		$msg		= '';
-		if($this->isempt($pasword))$msg ='新密码不能为空';
+		if($this->isempt($pasword))$msg ='新密碼不能為空';
 		if($msg == ''){
 			$oldpassa	= $this->db->getmou($this->T('admin'),"`pass`","`id`='$id'");
-			if($oldpassa != md5($oldpass))$msg ='旧密码不正确';
+			if($oldpassa != md5($oldpass))$msg ='舊密碼不正確';
 			if($msg==''){
-				if($oldpassa == md5($pasword))$msg ='新旧密码不能相同';
+				if($oldpassa == md5($pasword))$msg ='新舊密碼不能相同';
 			}
 		}
 		if($msg == ''){

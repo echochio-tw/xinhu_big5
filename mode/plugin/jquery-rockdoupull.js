@@ -1,5 +1,5 @@
 /**
-*	jqury的下拉上拉加载插件，带样式滚动条，呵呵。
+*	jqury的下拉上拉加載插件，帶樣式滾動條，呵呵。
 *	createname：雨中磐石
 *	homeurl：http://www.rockoa.com/
 *	Copyright (c) 2016 rainrock (xh829.com)
@@ -15,15 +15,15 @@
 			ondrag:function(){},
 			ondrayrl:function(){},
 			ondrayrlend:false,
-			scrollbool:true,		//是否添加滚动条样式
-			downbool:false,			//是否下拉加载
-			upbool:false,			//是否上拉加载
+			scrollbool:true,		//是否添加滾動條樣式
+			downbool:false,			//是否下拉加載
+			upbool:false,			//是否上拉加載
 			leftbool:false,			//左
 			rightbool:false,		//右
 			ondownbefore:function(){return true},
 			onupbefore:function(){return true},
 			downbgcolor:'#f1f1f1', 	//下拉背景
-			upmsgdiv:'' 			//上来提示区域
+			upmsgdiv:'' 			//上來提示區域
 		}, options);
 		
 		var obj 	= element;
@@ -95,12 +95,12 @@
 				this.ondrayrl(ler, e);
 			}
 
-			//左滑动
+			//左滑動
 			if(this.leftbool && ler<0  && this.up_ysa==2){
 				this.mobj.css('transform','translateX('+ler+'px)');
 			}
 			
-			//右滑动
+			//右滑動
 			if(this.rightbool && ler>0 && this.up_ysa==2){
 				this.mobj.css('transform','translateX('+ler+'px)');
 			}
@@ -113,7 +113,7 @@
 			this.upheight = hei;
 			if(hei>200)return;
 			var sid = 'downs_'+this.rand+'',tx= '↓ 下拉刷新',o1;
-			if(hei>50)tx='↑ 释放立即刷新';
+			if(hei>50)tx='↑ 釋放立即刷新';
 			if(get(sid)){
 				o1 = $('#'+sid+'');
 				o1.css('height',''+hei+'px').find('div').html(tx);
@@ -127,7 +127,7 @@
 			hei = hei*0.6;
 			this.upheight = hei;
 			if(hei<-200)return;
-			var a = {msg:'↑ 上拉刷新','msgok': '↓ 释放立即刷新','msgdiv':this.upmsgdiv},i;
+			var a = {msg:'↑ 上拉刷新','msgok': '↓ 釋放立即刷新','msgdiv':this.upmsgdiv},i;
 			if(typeof(bsrs)=='object'){
 				for(i in bsrs)a[i]=bsrs[i];
 			}
@@ -187,7 +187,7 @@
 			setTimeout(function(){o1.slideUp(200,function(){o1.remove();});}, 500);
 		};
 		this.ondownerror=function(ts){
-			if(!ts)ts='× 超时失败';
+			if(!ts)ts='× 超時失敗';
 			this.ondownok(ts);
 		};
 		this.onupok=function(ts){
@@ -195,7 +195,7 @@
 			this.upstartbo 	= false;
 		};
 		this.onuperror=function(ts){
-			if(!ts)ts='× 超时失败';
+			if(!ts)ts='× 超時失敗';
 			this.ondownok(ts);
 		};
 		this._initscrool=function(){
@@ -233,7 +233,7 @@
 				this.resize();
 			}
 			zh	= wzh-obj.clientHeight;
-			mh	= obj.clientHeight-this.scroor_h; //可滚动高度
+			mh	= obj.clientHeight-this.scroor_h; //可滾動高度
 			bl  = top/zh;
 			var jgt = bl*mh;
 			$('#'+this.scrollsid+'').css('top',''+jgt+'px').show();
@@ -246,7 +246,7 @@
 		}
 		
 		/**
-		*	窗口改变时重新设置滚动条
+		*	窗口改變時重新設置滾動條
 		*/
 		this.resize = function(){
 			if(!this.scrollbool)return;
@@ -269,13 +269,13 @@
 	};
 
 	/**
-	*	长按
+	*	長按
 	*/
 	function longpress(element, options){
 		var me 		= this;
 		var opts 	= $.extend({
 			ondragstart:function(){return true;}, //按下前
-			ondragend:function(){return true;}, //按下后
+			ondragend:function(){return true;}, //按下後
 			downbgcolor:'#f1f1f1', 	//下拉背景
 			presstime:500,
 			onpress:function(){}
@@ -313,7 +313,7 @@
 			
 			if(this.anxiamiao>=this.presstime){
 				this._dragend(e);
-				this.onpress();//触发
+				this.onpress();//觸發
 			}
 		};
 		

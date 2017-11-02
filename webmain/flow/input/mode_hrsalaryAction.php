@@ -1,5 +1,5 @@
 <?php
-//薪资
+//薪資
 class mode_hrsalaryClassAction extends inputAction{
 	
 
@@ -9,7 +9,7 @@ class mode_hrsalaryClassAction extends inputAction{
 		if($lastdt>$this->date)return ''.$month.'月份超前了';
 		$uname 	= $arr['uname'];
 		$xuid 	= $arr['xuid'];
-		if(m($table)->rows('id<>'.$id.' and `xuid`='.$xuid.' and `month`=\''.$month.'\'')>0)return ''.$month.'月份['.$uname.']的薪资已申请过了'.$lastdt.'';
+		if(m($table)->rows('id<>'.$id.' and `xuid`='.$xuid.' and `month`=\''.$month.'\'')>0)return ''.$month.'月份['.$uname.']的薪資已申請過了'.$lastdt.'';
 	}
 	
 	
@@ -26,7 +26,7 @@ class mode_hrsalaryClassAction extends inputAction{
 	
 	
 	/**
-	*	薪资初始化，主要计算考勤
+	*	薪資初始化，主要計算考勤
 	*/
 	public function initdatasAjax()
 	{
@@ -42,10 +42,10 @@ class mode_hrsalaryClassAction extends inputAction{
 			foreach($sfiels as $sfie)$a[$sfie] = $lrs[$sfie];
 		}
 		$urs 	= m('admin')->getone($xuid,'quitdt,workdate');
-		if(contain($urs['workdate'],$month))$sm.=''.$urs['workdate'].'入职;';
-		if(contain($urs['quitdt'],$month))$sm.=''.$urs['quitdt'].'离职;';
+		if(contain($urs['workdate'],$month))$sm.=''.$urs['workdate'].'入職;';
+		if(contain($urs['quitdt'],$month))$sm.=''.$urs['quitdt'].'離職;';
 		$txrs 	= m('hrtrsalary')->getone("`uid`='$xuid' and `effectivedt` like '$month%' and `status`=1");
-		if($txrs)$sm.=''.$txrs['effectivedt'].'起调薪'.$txrs['floats'].';';
+		if($txrs)$sm.=''.$txrs['effectivedt'].'起調薪'.$txrs['floats'].';';
 		
 		$a['reward'] = floatval(m('reward')->getmou('sum(money)', "`objectid`='$xuid' and `status`=1 and `type`=0 and `applydt` like '$month%'"));
 		$a['punish'] = floatval(m('reward')->getmou('sum(money)', "`objectid`='$xuid' and `status`=1 and `type`=1 and `applydt` like '$month%'"));

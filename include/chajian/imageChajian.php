@@ -1,19 +1,19 @@
 <?php
 /**
-	gd2库图片处理，添加水印
+	gd2庫圖片處理，添加水印
 	
 */
 class imageChajian extends Chajian
 {
-	public $ext; 	//图片类型
-	public $img; 	//图片对象
-	public $mime; 	//图片对象
-	public $path; 	//图片地址
+	public $ext; 	//圖片類型
+	public $img; 	//圖片對象
+	public $mime; 	//圖片對象
+	public $path; 	//圖片地址
 	public $w 		= 0;
 	public $h 		= 0;
 	public $bool	= false;
 	public $size 	= 0;
-	public $whbili	= 0;//高和宽的比例
+	public $whbili	= 0;//高和寬的比例
 	
 	
 	protected function initChajian()
@@ -22,7 +22,7 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		创建图片对象$rotate旋转角度
+		創建圖片對象$rotate旋轉角度
 		
 	*/
 	public function createimg($path,$rotate=0)
@@ -36,10 +36,10 @@ class imageChajian extends Chajian
 		$img		= $this->createimgobj($path);
 		$this->img	= $img;
 		if(!$img)return false;
-		//判断是否旋转
+		//判斷是否旋轉
 		if($rotate != 0 && $rotate<360 && $rotate>-360){
 			$white	= $this->color('#ffffff',$img);
-			$img	= imagerotate($img, $rotate, $white);//旋转
+			$img	= imagerotate($img, $rotate, $white);//旋轉
 		}
 		
 		
@@ -53,7 +53,7 @@ class imageChajian extends Chajian
 	
 	
 	/**
-		获取图片对象
+		獲取圖片對象
 	*/
 	public function createimgobj($path)
 	{
@@ -81,7 +81,7 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		获取图片的格式
+		獲取圖片的格式
 	*/
 	public function getext($img_name)
 	{
@@ -107,7 +107,7 @@ class imageChajian extends Chajian
 	public function addwater($str,$color='#000000',$size=20,$align='rb')
 	{
 		if(!$this->bool)return;
-		$font	= '../fonts/FZZHYJW.TTF';	//方正稚艺简体
+		$font	= '../fonts/FZZHYJW.TTF';	//方正稚藝簡體
 		$lw 	= strlen($str)*($size/2);
 		$lh		= $size*0.5;
 		$color	= $this->color($color,$this->img);
@@ -132,12 +132,12 @@ class imageChajian extends Chajian
 		imagettftext($this->img, $size,0, $x, $y, $color, $font, $str);
 		$sapath	= str_replace('.'.$this->ext.'', '_water.'.$this->ext.'', $this->path);
 		$sapath	= $this->path;
-		$this->saveas($sapath, $this->img);//另存为
+		$this->saveas($sapath, $this->img);//另存為
 	}
 	
 	/**
-		添加图片水印
-		@params	$align 图片位置
+		添加圖片水印
+		@params	$align 圖片位置
 	*/
 	public function imgwater($imgpath,$align='rb')
 	{
@@ -167,7 +167,7 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		创建颜色
+		創建顏色
 	*/
 	public function color($color,$img)
 	{
@@ -182,7 +182,7 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		注销图片
+		注銷圖片
 	*/
 	private function destroy()
 	{
@@ -190,7 +190,7 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		另存图片
+		另存圖片
 	*/
 	private function saveas($spath,$img)
 	{
@@ -216,8 +216,8 @@ class imageChajian extends Chajian
 	}
 	
 	/**
-		图片缩略图
-		@param	$w 宽
+		圖片縮略圖
+		@param	$w 寬
 		@param	$h 高
 	*/
 	public function thumbnail($w,$h,$lx=0)
@@ -229,18 +229,18 @@ class imageChajian extends Chajian
 		$tx	= 0;
 		$ty	= 0;
 		
-		//开始截的位置
+		//開始截的位置
 		$sx	= 0;
 		$sy	= 0;
 		
 		if($w > $mw){
-			if($lx==1){//整图缩略可以看到白边
+			if($lx==1){//整圖縮略可以看到白邊
 				$tx = ($w-$mw)/2;
 			}else if($lx == 0){//可能去掉看不到的
 				$mw = $w;
 				$mh	= $mw/$this->whbili;
 				$nbl= $mh/$this->h;
-				$sy = ($mh-$h)/2/$nbl;	//当前缩放比例
+				$sy = ($mh-$h)/2/$nbl;	//當前縮放比例
 			}
 		}
 		if($h > $mh){
@@ -250,19 +250,19 @@ class imageChajian extends Chajian
 				$mh = $h;
 				$mw	= $mh*$this->whbili;
 				$nbl= $mw/$this->w;
-				$sx = ($mw-$w)/2/$nbl;	//当前缩放比例
+				$sx = ($mw-$w)/2/$nbl;	//當前縮放比例
 			}
 		}
 		//imagecopyresized
-		imagecopyresampled($tmpimg, $this->img, $tx,$ty, $sx,$sy, $mw,$mh,$this->w,$this->h);//生成缩略图
+		imagecopyresampled($tmpimg, $this->img, $tx,$ty, $sx,$sy, $mw,$mh,$this->w,$this->h);//生成縮略圖
 		//$sapath	= str_replace('.'.$this->ext.'', '_thumb'.$w.'x'.$h.'.'.$this->ext.'', $this->path);
 		$sapath	= str_replace('.'.$this->ext.'', '_s.'.$this->ext.'', $this->path);
-		$this->saveass($this->mime ,$tmpimg, $sapath);//保存图片
+		$this->saveass($this->mime ,$tmpimg, $sapath);//保存圖片
 		return $sapath;
 	}
 	
 	/**
-		图片显示宽高
+		圖片顯示寬高
 	*/	
 	public function imgwh($mw,$mh)
 	{

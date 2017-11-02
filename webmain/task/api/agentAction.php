@@ -2,7 +2,7 @@
 class agentClassAction extends apiAction
 {
 	/**
-	*	手机app读取应用
+	*	手機app讀取應用
 	*/
 	public function dataAction()
 	{
@@ -12,7 +12,7 @@ class agentClassAction extends apiAction
 	}
 	
 	/**
-	*	app上读取数组的
+	*	app上讀取數組的
 	*/
 	public function dataappAction()
 	{

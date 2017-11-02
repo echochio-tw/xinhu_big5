@@ -13,7 +13,7 @@ class goodsClassModel extends Model
 		}
 	}
 	
-	//判断是否存在相同库存
+	//判斷是否存在相同庫存
 	public function existsgoods($rs, $id=0)
 	{
 		$where 	= "`id`<>".$id." and `typeid`=".$rs['typeid']." and `name`='".$rs['name']."' and ifnull(`guige`,'')='".$rs['guige']."' and ifnull(`xinghao`,'')='".$rs['xinghao']."'";
@@ -44,11 +44,13 @@ class goodsClassModel extends Model
 	
 	public function getgoodsdata()
 	{
-		$rowss  = m('goods')->getall('1=1','id,name');
+		$rowss  = m('goods')->getall('1=1','id,name,xinghao');
 		$rows	= array();
 		foreach($rowss as $k=>$rs){
+			$name 	= $rs['name'];
+			if(!isempt($rs['xinghao']))$name.='('.$rs['xinghao'].')';
 			$rows[] = array(
-				'name' => $rs['name'],
+				'name' 	=> $name,
 				'value' => $rs['id'],
 			);
 		}

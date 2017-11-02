@@ -3,13 +3,13 @@ header('Access-Control-Allow-Origin: *');
 class uploadClassAction extends apiAction
 {
 	/**
-	*	上传文件
+	*	上傳文件
 	*/
 	public function upfileAction()
 	{
 		if(!$_FILES)exit('sorry!');
 		$upimg	= c('upfile');
-		$maxsize= (int)$this->get('maxsize', $upimg->getmaxzhao());//上传最大M
+		$maxsize= (int)$this->get('maxsize', $upimg->getmaxzhao());//上傳最大M
 		$uptypes= '*';
 		$upimg->initupfile($uptypes, ''.UPDIR.'|'.date('Y-m').'', $maxsize);
 		$upses	= $upimg->up('file');
@@ -19,7 +19,7 @@ class uploadClassAction extends apiAction
 	}
 	
 	/**
-	*	上传时初始化看是不是存在文件
+	*	上傳時初始化看是不是存在文件
 	*/
 	public function initfileAction()
 	{
@@ -43,9 +43,9 @@ class uploadClassAction extends apiAction
 	
 	public function upfileappAction()
 	{
-		if(!$_FILES)$this->showreturn('', '禁止访问', 201);
+		if(!$_FILES)$this->showreturn('', '禁止訪問', 201);
 		$upimg	= c('upfile');
-		$maxsize= (int)$this->get('maxsize', $upimg->getmaxzhao());//上传最大M
+		$maxsize= (int)$this->get('maxsize', $upimg->getmaxzhao());//上傳最大M
 		$uptypes= '*';
 		$upimg->initupfile($uptypes, ''.UPDIR.'|'.date('Y-m').'', $maxsize);
 		$upses	= $upimg->up('file');
@@ -60,7 +60,7 @@ class uploadClassAction extends apiAction
 		if(isempt($cont))exit('sorry not cont');
 		$cont 	= str_replace(' ','', $cont);
 		$cont	= $this->rock->jm->base64decode($cont);
-		$arr 	= c('down')->createimage($cont,'png','截图');
+		$arr 	= c('down')->createimage($cont,'png','截圖');
 		$this->returnjson($arr);
 	}
 	

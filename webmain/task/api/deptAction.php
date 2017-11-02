@@ -16,7 +16,7 @@ class deptClassAction extends apiAction
 	}
 	
 	/**
-	*	app获取数据
+	*	app獲取數據
 	*/
 	public function dataappAction()
 	{

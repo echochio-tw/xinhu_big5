@@ -1,6 +1,6 @@
 <?php 
 /**
-*	连接官网API，短信发送
+*	連接官網API，短信發送
 */
 
 class xinhuapiChajian extends Chajian{
@@ -44,7 +44,7 @@ class xinhuapiChajian extends Chajian{
 	}
 	
 	/**
-	*	get获取数据
+	*	get獲取數據
 	*/
 	public function getdata($mod, $act, $can=array())
 	{
@@ -53,13 +53,13 @@ class xinhuapiChajian extends Chajian{
 		if(!isempt($cont) && contain($cont, 'success')){
 			$data  	= json_decode($cont, true);
 		}else{
-			$data 	= returnerror('无法访问到信呼官网的'.$this->updatekey.','.$cont.'');
+			$data 	= returnerror('無法訪問到信呼官網的'.$this->updatekey.','.$cont.'');
 		}
 		return $data;
 	}
 	
 	/**
-	*	post发送数据
+	*	post發送數據
 	*/
 	public function postdata($mod, $act, $can=array())
 	{
@@ -68,18 +68,18 @@ class xinhuapiChajian extends Chajian{
 		if(!isempt($cont) && contain($cont, 'success')){
 			$data  	= json_decode($cont, true);
 		}else{
-			$data 	= returnerror('无法访问到信呼官网的'.$this->updatekey.','.$cont.'');
+			$data 	= returnerror('無法訪問到信呼官網的'.$this->updatekey.','.$cont.'');
 		}
 		return $data;
 	}
 	
 	/**
-	*	发送短信
-	*	$tomobile 手机号
-	*	$qiannum 短信签名编号
-	*	$tplnum 短信模版编号
-	*	$params 模版上的参数
-	*	$url 详情URL
+	*	發送短信
+	*	$tomobile 手機號
+	*	$qiannum 短信簽名編號
+	*	$tplnum 短信模版編號
+	*	$params 模版上的參數
+	*	$url 詳情URL
 	*	$addlog 是否添加日志
 	*/
 	public function send($tomobile,$qiannum, $tplnum, $params=array(), $url='', $addlog=true)
@@ -88,7 +88,7 @@ class xinhuapiChajian extends Chajian{
 		$para['sys_tplnum']   = $tplnum;
 		$para['sys_qiannum']  = $qiannum;
 		
-		$para['sys_url']   	  = $this->rock->jm->base64encode($url); //详情的URL
+		$para['sys_url']   	  = $this->rock->jm->base64encode($url); //詳情的URL
 		foreach($params as $k=>$v)$para['can_'.$k.''] = $v;
 		
 		$barr 	= $this->postdata('sms','send', $para);
@@ -98,16 +98,16 @@ class xinhuapiChajian extends Chajian{
 	
 	
 	/**
-	*	根据用户ID获取手机号，发送短信
+	*	根據用戶ID獲取手機號，發送短信
 	*/
 	public function sendsms($receid, $qiannum, $tplnum, $params=array(), $url='', $addlog=true, $isyb=true)
 	{
-		if(isempt($receid))return returnerror('没有接收人');
+		if(isempt($receid))return returnerror('沒有接收人');
 		$tomobile = m('admin')->getjoinfields($receid, 'mobile');
 		
-		if(isempt($tomobile))return returnerror('接收人['.$receid.']可能没设置手机号');
+		if(isempt($tomobile))return returnerror('接收人['.$receid.']可能沒設置手機號');
 		
-		//异步发送
+		//異步發送
 		if(getconfig('asynsend') && $isyb){
 			$ybbo = m('reim')->asynurl('asynrun','sendsms', array(
 				'tomobile' 		=> $tomobile,
@@ -116,14 +116,14 @@ class xinhuapiChajian extends Chajian{
 				'url' 			=> $this->rock->jm->base64encode($url),
 				'params' 		=> $this->rock->jm->base64encode(json_encode($params)),
 			));
-			if($ybbo)return returnsuccess('异步发送');
+			if($ybbo)return returnsuccess('異步發送');
 		}
 		
 		return $this->send($tomobile, $qiannum, $tplnum, $params, $url, $addlog);
 	}
 	
 	/**
-	*	添加异步
+	*	添加異步
 	*/
 	public function sendanay($m, $a,$can=array(), $runtime=0)
 	{
@@ -134,33 +134,33 @@ class xinhuapiChajian extends Chajian{
 	
 	public function sendanayurl($runurl, $runtime=0)
 	{
-		if(isempt($runurl))return returnerror('异步调用地址不能为空');
+		if(isempt($runurl))return returnerror('異步調用地址不能為空');
 		$para	= array(
 			'runurl' => $this->rock->jm->base64encode($runurl),
 			'runtime' => $runtime,
 		);
 		$barr 	= $this->postdata('anay','send', $para);
 		
-		if(!$barr['success'])m('log')->addlogs('调用官网异步', $barr['msg'],2);
+		if(!$barr['success'])m('log')->addlogs('調用官網異步', $barr['msg'],2);
 		
 		return $barr;
 	}
 	
 	/**
-	*	获取验证码(1分钟内只能获取一次)，有效期5分钟
-	*	$tomobile 接收手机号
-	*	$qiannum 签名编号
-	*	$tplnum 模版编号
+	*	獲取驗證碼(1分鐘內只能獲取一次)，有效期5分鐘
+	*	$tomobile 接收手機號
+	*	$qiannum 簽名編號
+	*	$tplnum 模版編號
 	*/
 	public function getvercode($tomobile, $tplnum='', $qiannum='')
 	{
 		if($tplnum=='')$tplnum = 'defyzm';
 		$otme 	= floatval($this->rock->cookie('sms_vertime',0));
-		if(isempt($tomobile))return returnerror('接收手机号不能为空');
+		if(isempt($tomobile))return returnerror('接收手機號不能為空');
 		
-		$jgtims = 60;//每次获取间隔秒数
+		$jgtims = 60;//每次獲取間隔秒數
 		$jgtime	= time()-$otme;
-		if($otme>0 && $jgtime<$jgtims)return returnerror('获取太频繁,请'.($jgtims-$jgtime).'秒后在试');
+		if($otme>0 && $jgtime<$jgtims)return returnerror('獲取太頻繁,請'.($jgtims-$jgtime).'秒後在試');
 
 		$code 	= rand(100000,999999);
 		$params['code'] = $code;
@@ -173,32 +173,32 @@ class xinhuapiChajian extends Chajian{
 	}
 	
 	/**
-	*	验证验证码是否正确,最多只能验证5次
+	*	驗證驗證碼是否正確,最多只能驗證5次
 	*/
 	public function checkcode($tomobile, $code)
 	{
-		if(isempt($tomobile))return returnerror('手机号不能为空');
-		if(isempt($code))return returnerror('验证码不能为空');
+		if(isempt($tomobile))return returnerror('手機號不能為空');
+		if(isempt($code))return returnerror('驗證碼不能為空');
 		$codes 	= md5($tomobile.$code);
 		$vercode= $this->rock->cookie('sms_vercode');
-		$yztime = (int)$this->rock->cookie('sms_yztime','1'); //验证次数
+		$yztime = (int)$this->rock->cookie('sms_yztime','1'); //驗證次數
 		$otme 	= floatval($this->rock->cookie('sms_vertime',0));
-		if($otme<=0)return returnerror('未获取验证码');
+		if($otme<=0)return returnerror('未獲取驗證碼');
 		$youxiaq= 5*60;//
-		if(time() - $otme > $youxiaq)return returnerror('验证码已过期');
+		if(time() - $otme > $youxiaq)return returnerror('驗證碼已過期');
 		$keys 	= 'sms_vercode,sms_vertime,sms_yztime';
 		if($vercode != $codes){
 			$yztime++;
 			$this->rock->savecookie('sms_yztime', $yztime, 1/24/12);
 			if($yztime>5)$this->rock->clearcookie($keys);
-			return returnerror('验证码错误');
+			return returnerror('驗證碼錯誤');
 		}
-		$this->rock->clearcookie($keys); //正确就清除
+		$this->rock->clearcookie($keys); //正確就清除
 		return returnsuccess('ok');
 	}
 	
 	/**
-	*	发送用官网计划任务
+	*	發送用官網計劃任務
 	*/
 	public function starttask()
 	{
@@ -211,7 +211,7 @@ class xinhuapiChajian extends Chajian{
 		return $barr;
 	}
 	/**
-	*	停止计划任务
+	*	停止計劃任務
 	*/
 	public function stoptask()
 	{
