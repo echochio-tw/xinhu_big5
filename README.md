@@ -70,7 +70,7 @@
 
 1，PHP後端語言：HTTP：//www.php.net/
 
-2中，MySQL數據庫：HTTPS：//www.mysql.com/
+2，MySQL數據庫：HTTPS：//www.mysql.com/
 
 3，引導後台樣式組件：HTTP：//v3.bootcss.com/components/
 
